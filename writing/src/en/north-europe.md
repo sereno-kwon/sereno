@@ -1,7 +1,7 @@
 ---
 title: Fragments of a Northern European Journey
 slug: north-europe
-summary: On the boat to Artipelag, I turn over the time that has passed.
+summary: On the boat to Artipelag, I am turning over the time that has passed.
 translated: auto
 ---
 ## Staying in Holbæk
@@ -22,11 +22,11 @@ Seeing how simply things were set up, by logic and by task, I once again gained 
 
 ## On the Boat to Artipelag
 
-On the boat to Artipelag, I turn over the time that has passed. A city is the cradle of a person's thought. The time that flowed so quickly in Seoul flows slowly and solidly the farther I go, to London, Copenhagen, and Stockholm.
+On the boat to Artipelag, I am turning over the time that has passed. A city is the cradle of a person's thought. The time that flowed so quickly in Seoul flows slowly and solidly the farther I go, to London, Copenhagen, and Stockholm.
 
-Time has a relative context, not an absolute meaning. Depending on the choices I make, time changes its grain. The reason time flows relatively slowly in travel is that I choose time **meaningfully, on my own initiative.** And because I am far from the noise.
+Time has a relative context, not an absolute meaning. Depending on the choices I make, time changes its grain. The reason time flows relatively slowly in travel is that I choose time meaningfully, on my own initiative. And because I am far from the noise.
 
-If I fail to set this simple principle on top of daily life and work, a moment comes when money and time devour me. Simpler, and more solid. Forty is a time for shedding, in order to move forward.
+If I fail to set this simple principle on top of daily life and work, a moment comes when money and time devour me. Simpler, and more solid.
 
 ![](img/north-europe-1.jpg)
 

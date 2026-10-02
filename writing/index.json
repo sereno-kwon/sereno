@@ -94,16 +94,16 @@
     "date": "2026-05-01",
     "ko": {
       "title": "북유럽 여행의 편린들",
-      "summary": "Artipelag으로 향하는 선상 위에서 지난 시간을 되뇌여보고 있다."
+      "summary": "Artipelag으로 향하는 선상 위에서 지난 시간을 되뇌여보고 있습니다."
     },
     "en": {
       "title": "Fragments of a Northern European Journey",
-      "summary": "On the boat to Artipelag, I turn over the time that has passed.",
+      "summary": "On the boat to Artipelag, I am turning over the time that has passed.",
       "translated": "auto"
     },
     "ja": {
       "title": "北欧旅行の断片",
-      "summary": "Artipelagへ向かう船の上で、過ぎた時間を反芻している。",
+      "summary": "Artipelagへ向かう船の上で、過ぎた時間を反芻しています。",
       "translated": "auto"
     }
   }
