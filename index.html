@@ -226,3 +226,32 @@
     }
   })();
 </script>
+
+<script>
+  // 메뉴 클릭 시 감가속(ease-in-out) 스크롤
+  (() => {
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const ease = t => t < .5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3) / 2;  // cubic in-out
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href').slice(1);
+        const el = id ? document.getElementById(id) : document.body;
+        if (!el) return;
+        e.preventDefault();
+        history.replaceState(null, '', '#' + id);
+        const from = window.scrollY;
+        const to = Math.min(el.getBoundingClientRect().top + from - 24, document.documentElement.scrollHeight - innerHeight);
+        if (reduce) { window.scrollTo(0, to); return; }
+        const dist = to - from;
+        const dur = Math.min(1100, Math.max(500, Math.abs(dist) * 0.6));
+        const t0 = performance.now();
+        const step = now => {
+          const t = Math.min(1, (now - t0) / dur);
+          window.scrollTo(0, from + dist * ease(t));
+          if (t < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      });
+    });
+  })();
+</script>
