@@ -49,13 +49,35 @@
   .wrap { max-width: 620px; margin: 0 auto; }
 
   header {
-    display: flex; justify-content: space-between; align-items: baseline;
-    padding-block: 28px 0;
+    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10;
+    display: flex; justify-content: space-between; align-items: baseline; gap: 16px;
+    padding-block: 18px 12px;
+    background: var(--bg);
+    border-bottom: 1px solid transparent;
+    transition: border-color .25s;
   }
-  .mark { font-family: var(--display); font-size: 20px; letter-spacing: .08em; color: var(--fg); border: 0; }
-  nav { display: flex; gap: 22px; flex-wrap: wrap; }
-  nav a { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; color: var(--muted); border: 0; }
+  header.scrolled { border-bottom-color: var(--line); }
+  .mark { font-family: var(--display); font-size: 20px; letter-spacing: .08em; color: var(--fg); border: 0; flex: none; }
+  nav { display: flex; gap: 20px; min-width: 0; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  nav::-webkit-scrollbar { display: none; }
+  nav a {
+    font-size: 12px; letter-spacing: .08em; color: var(--muted); border: 0; white-space: nowrap;
+    padding-bottom: 6px; position: relative; transition: color .2s;
+  }
+  nav a::after {
+    content: ""; position: absolute; left: 0; bottom: 0; width: 18px; height: 1px;
+    background: var(--fg); transform: scaleX(0); transform-origin: left; transition: transform .25s ease;
+  }
   nav a:hover { color: var(--fg); }
+  nav a.active { color: var(--fg); }
+  nav a.active::after { transform: scaleX(1); }
+  @media (max-width: 480px) {
+    body { font-size: 15px; }
+    header { padding-block: 14px 10px; }
+    nav { gap: 16px; }
+    .hero { padding-block: 56px 48px; }
+    section { padding-block: 0 56px; }
+  }
 
   .hero { padding-block: 92px 72px; }
   .eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: .14em; color: var(--muted); margin: 0 0 6px; }
@@ -243,7 +265,8 @@
         e.preventDefault();
         history.replaceState(null, '', '#' + id);
         const from = window.scrollY;
-        const to = Math.min(el.getBoundingClientRect().top + from - 24, document.documentElement.scrollHeight - innerHeight);
+        const hh = document.querySelector('header').offsetHeight;
+        const to = Math.min(el.getBoundingClientRect().top + from - hh - 8, document.documentElement.scrollHeight - innerHeight);
         if (reduce) { window.scrollTo(0, to); return; }
         const dist = to - from;
         const dur = Math.min(1100, Math.max(500, Math.abs(dist) * 0.6));
@@ -273,5 +296,29 @@
     } catch (e) {
       note.textContent = '글 목록을 불러오지 못했습니다.';
     }
+  })();
+</script>
+
+<script>
+  // 스크롤 위치에 따라 현재 섹션의 메뉴에 표시
+  (() => {
+    const header = document.querySelector('header');
+    const links = [...document.querySelectorAll('nav a[href^="#"]')];
+    const sections = links.map(a => document.getElementById(a.getAttribute('href').slice(1))).filter(Boolean);
+    const update = () => {
+      header.classList.toggle('scrolled', window.scrollY > 8);
+      const line = header.offsetHeight + window.innerHeight * 0.25;
+      let current = null;
+      for (const sec of sections) { if (sec.getBoundingClientRect().top <= line) current = sec.id; }
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) current = sections[sections.length - 1].id;
+      links.forEach(a => {
+        const on = a.getAttribute('href') === '#' + current;
+        a.classList.toggle('active', on);
+        if (on && a.scrollIntoView) { const nav = a.parentElement; if (nav.scrollWidth > nav.clientWidth) nav.scrollTo({ left: a.offsetLeft - 16, behavior: 'smooth' }); }
+      });
+    };
+    addEventListener('scroll', update, { passive: true });
+    addEventListener('resize', update);
+    update();
   })();
 </script>
