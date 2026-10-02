@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko">
+<html lang="[[lang]]">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -82,7 +82,13 @@
     body { font-size: 15px; }
     header { padding-block: 14px 10px; }
     nav { gap: 16px; }
-    .hero { padding-block: 56px 48px; }
+    .lang { display: flex; align-items: baseline; gap: 8px; flex: none; font-size: 11px; letter-spacing: .08em; }
+  .lang a { border: 0; color: var(--muted); }
+  .lang a.active { color: var(--fg); }
+  .lang a.missing { opacity: .4; }
+  .lang a:hover { color: var(--fg); }
+  .auto-note { font-size: 12px; color: var(--muted); letter-spacing: .02em; margin: 0 0 24px; }
+  .hero { padding-block: 56px 48px; }
     section { padding-block: 0 56px; }
   }
 
@@ -181,8 +187,9 @@
 
 <div class="wrap">
   <header>
-    <a class="mark" href="../index.html">SERENO</a>
-    <nav><a href="../index.html#writing">Writing</a></nav>
+    <a class="mark" href="[[home]]">SERENO</a>
+    <nav><a href="[[home]]#writing">[[writing_label]]</a></nav>
+    <div class="lang" role="group" aria-label="Language">[[lang_switch]]</div>
   </header>
   <article class="post">
     <p class="eyebrow">[[date_label]]</p>
@@ -201,5 +208,9 @@
     <span>Seoul, KR</span>
   </footer>
 </div>
+<script>
+  // 언어 링크를 누르면 홈에서도 같은 언어가 유지되도록 저장
+  document.querySelectorAll('.lang a').forEach(a => a.addEventListener('click', () => { try { localStorage.setItem('sereno-lang', a.textContent.toLowerCase()); } catch (e) {} }));
+</script>
 </body>
 </html>

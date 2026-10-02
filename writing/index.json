@@ -1,38 +1,110 @@
 [
   {
-    "title": "구체어의 식재료",
-    "date": "2026-10-02",
     "slug": "words",
-    "summary": "개념어보다 구체어가 많아지는 것."
+    "date": "2026-10-02",
+    "ko": {
+      "title": "구체어의 식재료",
+      "summary": "개념어보다 구체어가 많아지는 것."
+    },
+    "en": {
+      "title": "The Ingredients of Concrete Words",
+      "summary": "Having more concrete words than abstract ones.",
+      "translated": "auto"
+    },
+    "ja": {
+      "title": "具体語の食材",
+      "summary": "概念語より具体語が増えていくこと。",
+      "translated": "auto"
+    }
   },
   {
-    "title": "안장 위에서의 고립감",
-    "date": "2026-10-01",
     "slug": "solitude",
-    "summary": "개인적인 공간. 저는 자전거를 그렇게 바라보고 있습니다."
+    "date": "2026-10-01",
+    "ko": {
+      "title": "안장 위에서의 고립감",
+      "summary": "개인적인 공간. 저는 자전거를 그렇게 바라보고 있습니다."
+    },
+    "en": {
+      "title": "Solitude in the Saddle",
+      "summary": "A private space. That is how I see the bicycle.",
+      "translated": "auto"
+    },
+    "ja": {
+      "title": "サドルの上の孤立感",
+      "summary": "個人的な空間。私は自転車をそう見ています。",
+      "translated": "auto"
+    }
   },
   {
-    "title": "잘 쉬는 것에 대하여",
-    "date": "2026-09-30",
     "slug": "rest-well",
-    "summary": "유산소 운동을 하는 가장 중요한 이유는 ‘휴식기 심박수’ 입니다."
+    "date": "2026-09-30",
+    "ko": {
+      "title": "잘 쉬는 것에 대하여",
+      "summary": "유산소 운동을 하는 가장 중요한 이유는 ‘휴식기 심박수’ 입니다."
+    },
+    "en": {
+      "title": "On Resting Well",
+      "summary": "The most important reason for aerobic exercise is the resting heart rate.",
+      "translated": "auto"
+    },
+    "ja": {
+      "title": "よく休むということ",
+      "summary": "有酸素運動をする最も重要な理由は「安静時心拍数」です。",
+      "translated": "auto"
+    }
   },
   {
-    "title": "패턴과 루틴",
-    "date": "2026-09-28",
     "slug": "routine",
-    "summary": "스즈키 이치로, 그리고 무라카미 하루키를 좋아합니다"
+    "date": "2026-09-28",
+    "ko": {
+      "title": "패턴과 루틴",
+      "summary": "스즈키 이치로, 그리고 무라카미 하루키를 좋아합니다"
+    },
+    "en": {
+      "title": "Pattern and Routine",
+      "summary": "I admire Ichiro Suzuki, and Haruki Murakami.",
+      "translated": "auto"
+    },
+    "ja": {
+      "title": "パターンとルーティン",
+      "summary": "イチロー、そして村上春樹が好きです",
+      "translated": "auto"
+    }
   },
   {
-    "title": "소금처럼 좋은 빛",
-    "date": "2026-08-05",
     "slug": "light-like-salt",
-    "summary": "좋은 빛은 마치 소금처럼 풍경에 맛을 더한다."
+    "date": "2026-08-05",
+    "ko": {
+      "title": "소금처럼 좋은 빛",
+      "summary": "좋은 빛은 마치 소금처럼 풍경에 맛을 더한다."
+    },
+    "en": {
+      "title": "Light Like Salt",
+      "summary": "Good light, like salt, adds flavor to a landscape.",
+      "translated": "auto"
+    },
+    "ja": {
+      "title": "塩のように良い光",
+      "summary": "良い光は、まるで塩のように風景に味を添える。",
+      "translated": "auto"
+    }
   },
   {
-    "title": "북유럽 여행의 편린들",
-    "date": "2026-05-01",
     "slug": "north-europe",
-    "summary": "Artipelag으로 향하는 선상 위에서 지난 시간을 되뇌여보고 있다."
+    "date": "2026-05-01",
+    "ko": {
+      "title": "북유럽 여행의 편린들",
+      "summary": "Artipelag으로 향하는 선상 위에서 지난 시간을 되뇌여보고 있다."
+    },
+    "en": {
+      "title": "Fragments of a Northern European Journey",
+      "summary": "On the boat to Artipelag, I turn over the time that has passed.",
+      "translated": "auto"
+    },
+    "ja": {
+      "title": "北欧旅行の断片",
+      "summary": "Artipelagへ向かう船の上で、過ぎた時間を反芻している。",
+      "translated": "auto"
+    }
   }
 ]

@@ -64,11 +64,11 @@
   }
   header.scrolled { border-bottom-color: var(--line); }
   .mark { font-family: var(--display); font-size: 20px; letter-spacing: .08em; color: var(--fg); border: 0; flex: none; }
-  nav { position: relative; display: flex; gap: 20px; min-width: 0; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  nav { position: relative; display: flex; gap: 16px; min-width: 0; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
   nav::-webkit-scrollbar { display: none; }
-  @media (max-width: 600px) { nav { -webkit-mask-image: linear-gradient(90deg, transparent, #000 14px, #000 calc(100% - 14px), transparent); mask-image: linear-gradient(90deg, transparent, #000 14px, #000 calc(100% - 14px), transparent); padding-inline: 4px; } }
+  @media (max-width: 1000000px) { nav { -webkit-mask-image: linear-gradient(90deg, transparent, #000 14px, #000 calc(100% - 14px), transparent); mask-image: linear-gradient(90deg, transparent, #000 14px, #000 calc(100% - 14px), transparent); padding-inline: 4px; } }
   nav a {
-    font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); border: 0; white-space: nowrap;
+    font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); border: 0; white-space: nowrap;
     padding-bottom: 6px; position: relative; transition: color .2s;
   }
   nav a::after {
@@ -82,7 +82,13 @@
     body { font-size: 15px; }
     header { padding-block: 14px 10px; }
     nav { gap: 16px; }
-    .hero { padding-block: 56px 48px; }
+    .lang { display: flex; align-items: baseline; gap: 8px; flex: none; font-size: 11px; letter-spacing: .08em; }
+  .lang a { border: 0; color: var(--muted); }
+  .lang a.active { color: var(--fg); }
+  .lang a.missing { opacity: .4; }
+  .lang a:hover { color: var(--fg); }
+  .auto-note { font-size: 12px; color: var(--muted); letter-spacing: .02em; margin: 0 0 24px; }
+  .hero { padding-block: 56px 48px; }
     section { padding-block: 0 56px; }
   }
 
@@ -183,6 +189,7 @@
   <header>
     <a class="mark" href="../index.html">SERENO</a>
     <nav><a href="../index.html#writing">Writing</a></nav>
+    <div class="lang" role="group" aria-label="Language"><a href="index.html" class="active">KO</a><a href="en/index.html" class="">EN</a><a href="ja/index.html" class="">JA</a></div>
   </header>
   <section class="post" style="padding-bottom:0">
     <h2>Writing</h2>
@@ -200,5 +207,9 @@
     <span>Seoul, KR</span>
   </footer>
 </div>
+<script>
+  // 언어 링크를 누르면 홈에서도 같은 언어가 유지되도록 저장
+  document.querySelectorAll('.lang a').forEach(a => a.addEventListener('click', () => { try { localStorage.setItem('sereno-lang', a.textContent.toLowerCase()); } catch (e) {} }));
+</script>
 </body>
 </html>

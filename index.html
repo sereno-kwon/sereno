@@ -331,6 +331,7 @@
     document.documentElement.lang = LANG;
     document.querySelectorAll('[data-i18n]').forEach(el => { el.innerHTML = T(el.dataset.i18n); });
     document.querySelectorAll('.lang button').forEach(b => b.classList.toggle('active', b.dataset.lang === LANG));
+    if (window.renderPosts) window.renderPosts();
     try { localStorage.setItem('sereno-lang', LANG); } catch (e) {}
   }
   (() => {
@@ -406,7 +407,15 @@
       const posts = await res.json();
       if (!posts.length) { note.textContent = T('pEmpty'); return; }
       if (posts.length > 5) document.getElementById('posts-more').hidden = false;
-      list.innerHTML = posts.slice(0, 5).map(p => `<li><a href="writing/${p.slug}.html">${p.title}</a><time datetime="${p.date}">${p.date.slice(0,7).replace('-', '.')}</time></li>`).join('');
+      window.renderPosts = () => {
+        const dir = LANG === 'ko' ? 'writing/' : `writing/${LANG}/`;
+        document.querySelector('#posts-more a').href = dir;
+        list.innerHTML = posts.slice(0, 5).map(p => {
+          const v = p[LANG] || p.ko; const tag = (LANG === 'ko' || p[LANG]) ? '' : ' (KO)';
+          return `<li><a href="${dir}${p.slug}.html">${v.title}${tag}</a><time datetime="${p.date}">${p.date.slice(0,7).replace('-', '.')}</time></li>`;
+        }).join('');
+      };
+      window.renderPosts();
       note.hidden = true;
     } catch (e) {
       note.textContent = T('pError');
