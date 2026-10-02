@@ -213,8 +213,11 @@
     try {
       const res = await fetch('photos/photos.json', { cache: 'no-store' });
       if (!res.ok) throw new Error(res.status);
-      const photos = await res.json();
-      if (!photos.length) { note.textContent = '아직 올라온 사진이 없습니다.'; return; }
+      const all = await res.json();
+      if (!all.length) { note.textContent = '아직 올라온 사진이 없습니다.'; return; }
+      // 매번 무작위로 9장만 보여줍니다 (Fisher-Yates)
+      for (let i = all.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [all[i], all[j]] = [all[j], all[i]]; }
+      const photos = all.slice(0, 9);
       grid.innerHTML = photos.map(p => `
         <figure>
           <a href="photos/${encodeURIComponent(p.full)}" target="_blank" rel="noopener"><img src="photos/${encodeURIComponent(p.thumb)}" alt="${p.caption || ''}" loading="lazy" width="${p.w}" height="${p.h}"></a>
