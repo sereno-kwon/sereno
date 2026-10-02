@@ -83,7 +83,12 @@
     body { font-size: 15px; }
     header { padding-block: 14px 10px; }
     nav { gap: 16px; }
-    .hero { padding-block: 56px 48px; }
+    .lang { display: flex; align-items: baseline; gap: 6px; flex: none; font-size: 11px; letter-spacing: .08em; color: var(--line); }
+  .lang button { all: unset; cursor: pointer; color: var(--muted); font: inherit; letter-spacing: inherit; padding: 2px 0; }
+  .lang button:hover, .lang button.active { color: var(--fg); }
+  .lang button:focus-visible { outline: 1px solid var(--accent); outline-offset: 3px; }
+  @media (max-width: 480px) { .lang { gap: 4px; } }
+  .hero { padding-block: 56px 48px; }
     section { padding-block: 0 56px; }
   }
 
@@ -183,52 +188,55 @@
       <a href="#writing">Writing</a>
       <a href="#contact">Contact</a>
     </nav>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-lang="ko" id="lang-ko">KO</button><span>/</span><button type="button" data-lang="en" id="lang-en">EN</button><span>/</span><button type="button" data-lang="ja" id="lang-ja">JA</button>
+    </div>
   </header>
 
   <div class="hero" id="top">
-    <p class="eyebrow">Seoul · Director of Rubi Company</p>
+    <p class="eyebrow" data-i18n="eyebrow">Seoul · Director of Rubi Company</p>
     <h1>Sereno <span class="pron">/seˈreːno/</span></h1>
-    <div class="entry"><span class="pos"><i>adj.</i> It.</span><p class="def">마음이 침착하고 평화로운 상태</p></div>
-    <p class="lede">자전거를 수입하고, 조립하고, 파는 일을 합니다. 자전거, 모터사이클, 그리고 자동차. 속도를 만들어내는 도구들에 깊은 애정을 갖고 있습니다. 역사와 건축, 클래식과 그 이면에 있는 이야기들. 축적된 시간 속에서 작은 영감을 얻습니다.</p>
+    <div class="entry"><span class="pos"><i>adj.</i> It.</span><p class="def" data-i18n="def">마음이 침착하고 평화로운 상태</p></div>
+    <p class="lede" data-i18n="lede">자전거를 수입하고, 조립하고, 파는 일을 합니다. 자전거, 모터사이클, 그리고 자동차. 속도를 만들어내는 도구들에 깊은 애정을 갖고 있습니다. 역사와 건축, 클래식과 그 이면에 있는 이야기들. 축적된 시간 속에서 작은 영감을 얻습니다.</p>
   </div>
 
   <section id="about">
     <h2>About</h2>
-    <p>세레노입니다. 서울에서 <em>루비컴퍼니</em>를 운영하고 있습니다. 프리미엄 사이클링 브랜드를 수입해서 유통하고, 직접 조립해서 판매하는 시스템을 설계하고 다듬고 있습니다.</p>
-    <p>오브제를 고를 때는 한 가지 기준을 오래 지켜 왔습니다.</p>
-    <p><mark>새롭고 화려한 것보다, 충분히 검증되어 시간이 지나도 변하지 않을 것을 고릅니다.</mark> 회사가 들여오는 브랜드와 개인이 들이는 물건은 결국 같은 저울 위에 오릅니다. 시간의 흐름 속에서도 그 가치가 그대로인 곳들은 저마다의 이유가 있습니다. 이 홈페이지는 그 이유를 더듬고, 보고 겪은 것들을 기록으로 남겨 두는 곳입니다.</p>
+    <p data-i18n="about1">세레노입니다. 서울에서 <em>루비컴퍼니</em>를 운영하고 있습니다. 프리미엄 사이클링 브랜드를 수입해서 유통하고, 직접 조립해서 판매하는 시스템을 설계하고 다듬고 있습니다.</p>
+    <p data-i18n="about2">오브제를 고를 때는 한 가지 기준을 오래 지켜 왔습니다.</p>
+    <p data-i18n="about3"><mark>새롭고 화려한 것보다, 충분히 검증되어 시간이 지나도 변하지 않을 것을 고릅니다.</mark> 회사가 들여오는 브랜드와 개인이 들이는 물건은 결국 같은 저울 위에 오릅니다. 시간의 흐름 속에서도 그 가치가 그대로인 곳들은 저마다의 이유가 있습니다. 이 홈페이지는 그 이유를 더듬고, 보고 겪은 것들을 기록으로 남겨 두는 곳입니다.</p>
   </section>
 
   <section id="work">
     <h2>Work</h2>
-    <p>루비컴퍼니는 세 개의 채널로 움직입니다.</p>
+    <p data-i18n="work0">루비컴퍼니는 세 개의 채널로 움직입니다.</p>
     <ul class="channels">
-      <li><b><a href="https://rubiworkshop.com" target="_blank" rel="noopener">루비워크샵</a></b><span>반포에 위치한 사이클링 아뜰리에.</span></li>
-      <li><b><a href="https://rubisupply.com" target="_blank" rel="noopener">루비서플라이</a></b><span>사이클링 디스트리뷰션. 200곳의 리테일샵과 함께.</span></li>
-      <li><b><a href="https://smartstore.naver.com/rubigarage" target="_blank" rel="noopener">루비개러지</a></b><span>루비워크샵의 조금 다른 공간. 합리적인 발견.</span></li>
+      <li><b><a href="https://rubiworkshop.com" target="_blank" rel="noopener" data-i18n="ch1">루비워크샵</a></b><span data-i18n="work1">반포에 위치한 사이클링 아뜰리에.</span></li>
+      <li><b><a href="https://rubisupply.com" target="_blank" rel="noopener" data-i18n="ch2">루비서플라이</a></b><span data-i18n="work2">사이클링 디스트리뷰션. 200곳의 리테일샵과 함께.</span></li>
+      <li><b><a href="https://smartstore.naver.com/rubigarage" target="_blank" rel="noopener" data-i18n="ch3">루비개러지</a></b><span data-i18n="work3">루비워크샵의 조금 다른 공간. 합리적인 발견.</span></li>
     </ul>
   </section>
 
   <section id="partnership">
     <h2>Partnership</h2>
-    <p>루비서플라이를 통해 국내에 소개하고 있는 브랜드들입니다. 몰튼과 크러스트 바이크, 바스티온, 츠바사의 한국 공식 수입사이며 요헤미티의 국내 총판 및 50개 브랜드의 공식 디스트리뷰터입니다.</p>
+    <p data-i18n="part0">루비서플라이를 통해 국내에 소개하고 있는 브랜드들입니다. 몰튼과 크러스트 바이크, 바스티온, 츠바사의 한국 공식 수입사이며 요헤미티의 국내 총판 및 50개 브랜드의 공식 디스트리뷰터입니다.</p>
     <ul class="channels">
-      <li><b>바이시클</b><span>몰튼 바이시클, 바스티온 사이클, 팔리 사이클, 츠바사 바이시클, 크러스트 바이크, 파슐리 사이클</span></li>
-      <li><b>컴포넌트 &amp; 액세서리</b><span>QUOC, 요헤미티, 울프투스 컴포넌트, 폴 컴포넌트 엔지니어링, 화이트 인더스트리, MKS, 스퍼사이클, 벨로시티, 고키소, 크리스킹, 카본티, THM, 엑스트라라이트, 쉬몰케, 아르떼 디마노, 베르투 사이클, 크레인벨, 니센, 그로우택, 울트라다이나미코, 킹케이지, 훌스로이, 노콘, 혼조, 디워드 디자인, 스톤 체인링, EVT, 아뜰리에 미디엄, 제노</span></li>
+      <li><b data-i18n="part1">바이시클</b><span data-i18n="part1b">몰튼 바이시클, 바스티온 사이클, 팔리 사이클, 츠바사 바이시클, 크러스트 바이크, 파슐리 사이클</span></li>
+      <li><b data-i18n="part2">컴포넌트 &amp; 액세서리</b><span data-i18n="part2b">QUOC, 요헤미티, 울프투스 컴포넌트, 폴 컴포넌트 엔지니어링, 화이트 인더스트리, MKS, 스퍼사이클, 벨로시티, 고키소, 크리스킹, 카본티, THM, 엑스트라라이트, 쉬몰케, 아르떼 디마노, 베르투 사이클, 크레인벨, 니센, 그로우택, 울트라다이나미코, 킹케이지, 훌스로이, 노콘, 혼조, 디워드 디자인, 스톤 체인링, EVT, 아뜰리에 미디엄, 제노</span></li>
     </ul>
   </section>
 
   <section id="photography">
     <h2>Photography</h2>
     <div class="gallery" id="gallery"></div>
-    <p class="sample" id="gallery-note">사진을 불러오는 중입니다.</p>
+    <p class="sample" id="gallery-note" data-i18n="gLoading">사진을 불러오는 중입니다.</p>
   </section>
 
   <section id="writing">
     <h2>Writing</h2>
     <ul class="posts" id="posts"></ul>
-    <p class="sample" id="posts-note">글을 불러오는 중입니다.</p>
-    <p class="more" id="posts-more" hidden><a href="writing/">더 보기 &gt;</a></p>
+    <p class="sample" id="posts-note" data-i18n="pLoading">글을 불러오는 중입니다.</p>
+    <p class="more" id="posts-more" hidden><a href="writing/" data-i18n="more">더 보기 &gt;</a></p>
   </section>
 
   <section id="contact">
@@ -242,9 +250,97 @@
 
   <footer>
     <span>© 2026 Sereno</span>
-    <span>Seoul, KR</span>
+    <span data-i18n="footer">Seoul, KR</span>
   </footer>
 </div>
+
+<script>
+  // 한국어 / English / 日本語
+  const I18N = {
+    ko: {
+      eyebrow: 'Seoul · Director of Rubi Company',
+      def: '마음이 침착하고 평화로운 상태',
+      lede: '자전거를 수입하고, 조립하고, 파는 일을 합니다. 자전거, 모터사이클, 그리고 자동차. 속도를 만들어내는 도구들에 깊은 애정을 갖고 있습니다. 역사와 건축, 클래식과 그 이면에 있는 이야기들. 축적된 시간 속에서 작은 영감을 얻습니다.',
+      about1: '세레노입니다. 서울에서 <em>루비컴퍼니</em>를 운영하고 있습니다. 프리미엄 사이클링 브랜드를 수입해서 유통하고, 직접 조립해서 판매하는 시스템을 설계하고 다듬고 있습니다.',
+      about2: '오브제를 고를 때는 한 가지 기준을 오래 지켜 왔습니다.',
+      about3: '<mark>새롭고 화려한 것보다, 충분히 검증되어 시간이 지나도 변하지 않을 것을 고릅니다.</mark> 회사가 들여오는 브랜드와 개인이 들이는 물건은 결국 같은 저울 위에 오릅니다. 시간의 흐름 속에서도 그 가치가 그대로인 곳들은 저마다의 이유가 있습니다. 이 홈페이지는 그 이유를 더듬고, 보고 겪은 것들을 기록으로 남겨 두는 곳입니다.',
+      work0: '루비컴퍼니는 세 개의 채널로 움직입니다.',
+      ch1: '루비워크샵', ch2: '루비서플라이', ch3: '루비개러지',
+      work1: '반포에 위치한 사이클링 아뜰리에.',
+      work2: '사이클링 디스트리뷰션. 200곳의 리테일샵과 함께.',
+      work3: '루비워크샵의 조금 다른 공간. 합리적인 발견.',
+      part0: '루비서플라이를 통해 국내에 소개하고 있는 브랜드들입니다. 몰튼과 크러스트 바이크, 바스티온, 츠바사의 한국 공식 수입사이며 요헤미티의 국내 총판 및 50개 브랜드의 공식 디스트리뷰터입니다.',
+      part1: '바이시클',
+      part1b: '몰튼 바이시클, 바스티온 사이클, 팔리 사이클, 츠바사 바이시클, 크러스트 바이크, 파슐리 사이클',
+      part2: '컴포넌트 &amp; 액세서리',
+      part2b: 'QUOC, 요헤미티, 울프투스 컴포넌트, 폴 컴포넌트 엔지니어링, 화이트 인더스트리, MKS, 스퍼사이클, 벨로시티, 고키소, 크리스킹, 카본티, THM, 엑스트라라이트, 쉬몰케, 아르떼 디마노, 베르투 사이클, 크레인벨, 니센, 그로우택, 울트라다이나미코, 킹케이지, 훌스로이, 노콘, 혼조, 디워드 디자인, 스톤 체인링, EVT, 아뜰리에 미디엄, 제노',
+      gLoading: '사진을 불러오는 중입니다.', gEmpty: '아직 올라온 사진이 없습니다.', gError: '사진 목록을 불러오지 못했습니다.',
+      pLoading: '글을 불러오는 중입니다.', pEmpty: '아직 올라온 글이 없습니다.', pError: '글 목록을 불러오지 못했습니다.',
+      more: '더 보기 &gt;',
+      footer: 'Seoul, KR'
+    },
+    en: {
+      eyebrow: 'Seoul · Director of Rubi Company',
+      def: 'calm and at peace; clear, untroubled',
+      lede: 'I import, build and sell bicycles. Bicycles, motorcycles and cars: I have a deep affection for the tools that make speed. History and architecture, classical music and the stories behind them. I draw small inspirations from accumulated time.',
+      about1: 'I am Sereno. I run <em>Rubi Company</em> in Seoul, where we import and distribute premium cycling brands, build bikes ourselves and sell them. My work is designing and refining that system.',
+      about2: 'When choosing an object, I have kept to one standard for a long time.',
+      about3: '<mark>Rather than the new and the showy, I choose what has been proven enough to stay the same as time passes.</mark> The brands a company imports and the things a person brings home end up on the same scale. The places whose value holds steady through the passage of time each have their reasons. This site is where I trace those reasons and keep a record of what I have seen and lived through.',
+      work0: 'Rubi Company moves through three channels.',
+      ch1: 'Rubi Workshop', ch2: 'Rubi Supply', ch3: 'Rubi Garage',
+      work1: 'A cycling atelier in Banpo, Seoul.',
+      work2: 'Cycling distribution. Alongside 200 retail shops.',
+      work3: 'A slightly different corner of Rubi Workshop. Sensible finds.',
+      part0: 'The brands we introduce to Korea through Rubi Supply. Official Korean importer for Moulton, Crust Bikes, Bastion and Tsubasa, national distributor for Yohemite, and official distributor for 50 brands.',
+      part1: 'Bicycles',
+      part1b: 'Moulton Bicycles, Bastion Cycles, Parlee Cycles, Tsubasa Bicycles, Crust Bikes, Pashley Cycles',
+      part2: 'Components &amp; Accessories',
+      part2b: 'QUOC, Yohemite, Wolf Tooth Components, Paul Component Engineering, White Industries, MKS, Spurcycle, Velocity, Gokiso, Chris King, Carbon-Ti, THM, Extralite, Schmolke, Artè Dimano, Berthoud Cycles, Crane Bell, Nissen, Growtac, Ultradynamico, King Cage, Hulsroy, Nokon, Honjo, D-Ward Design, Stone Chainring, EVT, Atelier Medium, Zeno',
+      gLoading: 'Loading photos.', gEmpty: 'No photos yet.', gError: 'Could not load the photo list.',
+      pLoading: 'Loading posts.', pEmpty: 'No posts yet.', pError: 'Could not load the post list.',
+      more: 'More &gt;',
+      footer: 'Seoul, KR'
+    },
+    ja: {
+      eyebrow: 'Seoul · Director of Rubi Company',
+      def: '心が落ち着き、穏やかな状態',
+      lede: '自転車を輸入し、組み立て、販売しています。自転車、モーターサイクル、そして自動車。速度を生み出す道具に深い愛着を持っています。歴史と建築、クラシック音楽とその裏側にある物語。積み重なった時間の中から、小さなインスピレーションを得ています。',
+      about1: 'セレーノです。ソウルで<em>Rubi Company</em>を運営しています。プレミアムなサイクリングブランドを輸入して流通させ、自ら組み立てて販売する仕組みを設計し、磨き続けています。',
+      about2: 'ものを選ぶとき、ひとつの基準を長く守ってきました。',
+      about3: '<mark>新しく華やかなものより、十分に検証され、時間が経っても変わらないものを選びます。</mark> 会社が仕入れるブランドも、個人が手に入れるものも、結局は同じ秤の上に載ります。時の流れの中でも価値が変わらないものには、それぞれの理由があります。このサイトは、その理由をたどり、見て経験したことを記録として残しておく場所です。',
+      work0: 'Rubi Companyは三つのチャネルで動いています。',
+      ch1: 'Rubi Workshop', ch2: 'Rubi Supply', ch3: 'Rubi Garage',
+      work1: 'ソウル・盤浦にあるサイクリングアトリエ。',
+      work2: 'サイクリングのディストリビューション。200のリテールショップとともに。',
+      work3: 'Rubi Workshopの少し違う空間。合理的な発見。',
+      part0: 'Rubi Supplyを通じて韓国に紹介しているブランドです。Moulton、Crust Bikes、Bastion、Tsubasaの韓国正規輸入元であり、Yohemiteの国内総代理店、そして50ブランドの正規ディストリビューターです。',
+      part1: 'バイシクル',
+      part1b: 'Moulton Bicycles、Bastion Cycles、Parlee Cycles、Tsubasa Bicycles、Crust Bikes、Pashley Cycles',
+      part2: 'コンポーネント &amp; アクセサリー',
+      part2b: 'QUOC、Yohemite、Wolf Tooth Components、Paul Component Engineering、White Industries、MKS、Spurcycle、Velocity、Gokiso、Chris King、Carbon-Ti、THM、Extralite、Schmolke、Artè Dimano、Berthoud Cycles、Crane Bell、Nissen、Growtac、Ultradynamico、King Cage、Hulsroy、Nokon、Honjo、D-Ward Design、Stone Chainring、EVT、Atelier Medium、Zeno',
+      gLoading: '写真を読み込んでいます。', gEmpty: 'まだ写真はありません。', gError: '写真の一覧を読み込めませんでした。',
+      pLoading: '記事を読み込んでいます。', pEmpty: 'まだ記事はありません。', pError: '記事の一覧を読み込めませんでした。',
+      more: 'もっと見る &gt;',
+      footer: 'Seoul, KR'
+    }
+  };
+  let LANG = 'ko';
+  const T = k => (I18N[LANG] && I18N[LANG][k]) || I18N.ko[k] || '';
+  function applyLang(lang) {
+    LANG = I18N[lang] ? lang : 'ko';
+    document.documentElement.lang = LANG;
+    document.querySelectorAll('[data-i18n]').forEach(el => { el.innerHTML = T(el.dataset.i18n); });
+    document.querySelectorAll('.lang button').forEach(b => b.classList.toggle('active', b.dataset.lang === LANG));
+    try { localStorage.setItem('sereno-lang', LANG); } catch (e) {}
+  }
+  (() => {
+    let saved = null;
+    try { saved = localStorage.getItem('sereno-lang'); } catch (e) {}
+    const nav = (navigator.language || 'ko').slice(0, 2);
+    applyLang(saved || (I18N[nav] ? nav : 'ko'));
+    document.querySelectorAll('.lang button').forEach(b => b.addEventListener('click', () => applyLang(b.dataset.lang)));
+  })();
+</script>
 
 <script>
   (async () => {
@@ -254,7 +350,7 @@
       const res = await fetch('photos/photos.json', { cache: 'no-store' });
       if (!res.ok) throw new Error(res.status);
       const all = await res.json();
-      if (!all.length) { note.textContent = '아직 올라온 사진이 없습니다.'; return; }
+      if (!all.length) { note.textContent = T('gEmpty'); return; }
       // 매번 무작위로 8장만 보여줍니다 (Fisher-Yates)
       for (let i = all.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [all[i], all[j]] = [all[j], all[i]]; }
       const photos = all.slice(0, 8);
@@ -265,7 +361,7 @@
         </figure>`).join('');
       note.hidden = true;
     } catch (e) {
-      note.textContent = '사진 목록을 불러오지 못했습니다.';
+      note.textContent = T('gError');
     }
   })();
 </script>
@@ -308,12 +404,12 @@
       const res = await fetch('writing/index.json', { cache: 'no-store' });
       if (!res.ok) throw new Error(res.status);
       const posts = await res.json();
-      if (!posts.length) { note.textContent = '아직 올라온 글이 없습니다.'; return; }
+      if (!posts.length) { note.textContent = T('pEmpty'); return; }
       if (posts.length > 5) document.getElementById('posts-more').hidden = false;
       list.innerHTML = posts.slice(0, 5).map(p => `<li><a href="writing/${p.slug}.html">${p.title}</a><time datetime="${p.date}">${p.date.slice(0,7).replace('-', '.')}</time></li>`).join('');
       note.hidden = true;
     } catch (e) {
-      note.textContent = '글 목록을 불러오지 못했습니다.';
+      note.textContent = T('pError');
     }
   })();
 </script>
