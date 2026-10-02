@@ -45,6 +45,10 @@ for i, p in enumerate(posts):
     for k, v in fields.items(): page = page.replace('[[' + k + ']]', v)
     (out / f'{p["slug"]}.html').write_text(page, encoding='utf-8')
 
+ltpl = (root / 'scripts' / 'list_template.html').read_text(encoding='utf-8')
+items = '\n'.join(f'      <li><a href="{p["slug"]}.html">{html.escape(p["title"])}</a><time datetime="{p["date"]}">{p["date"][:7].replace("-", ".")}</time></li>' for p in posts)
+(out / 'index.html').write_text(ltpl.replace('[[items]]', items), encoding='utf-8')
+
 (out / 'index.json').write_text(json.dumps([{k: p[k] for k in ('title', 'date', 'slug', 'summary')} for p in posts],
                                            ensure_ascii=False, indent=2), encoding='utf-8')
 print(f'{len(posts)} posts')

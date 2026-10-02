@@ -69,7 +69,7 @@
   nav::-webkit-scrollbar { display: none; }
   @media (max-width: 600px) { nav { -webkit-mask-image: linear-gradient(90deg, transparent, #000 14px, #000 calc(100% - 14px), transparent); mask-image: linear-gradient(90deg, transparent, #000 14px, #000 calc(100% - 14px), transparent); padding-inline: 4px; } }
   nav a {
-    font-size: 12px; letter-spacing: .08em; color: var(--muted); border: 0; white-space: nowrap;
+    font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); border: 0; white-space: nowrap;
     padding-bottom: 6px; position: relative; transition: color .2s;
   }
   nav a::after {
@@ -144,6 +144,9 @@
   .posts a { border: 0; font-weight: 400; min-width: 0; }
   .posts a:hover { color: var(--accent); }
   .posts time { font-family: var(--mono); font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .more { margin-top: 18px; font-size: 14px; }
+  .more a { border: 0; color: var(--muted); letter-spacing: .04em; }
+  .more a:hover { color: var(--fg); }
   .sample { font-family: var(--mono); font-size: 11px; color: var(--muted); margin-top: 12px; letter-spacing: .04em; }
 
   .contact { font-family: var(--mono); font-size: 14px; list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
@@ -221,6 +224,7 @@
     <h2>Writing</h2>
     <ul class="posts" id="posts"></ul>
     <p class="sample" id="posts-note">글을 불러오는 중입니다.</p>
+    <p class="more" id="posts-more" hidden><a href="writing/">더 보기 &gt;</a></p>
   </section>
 
   <section id="contact">
@@ -301,7 +305,8 @@
       if (!res.ok) throw new Error(res.status);
       const posts = await res.json();
       if (!posts.length) { note.textContent = '아직 올라온 글이 없습니다.'; return; }
-      list.innerHTML = posts.map(p => `<li><a href="writing/${p.slug}.html">${p.title}</a><time datetime="${p.date}">${p.date.slice(0,7).replace('-', '.')}</time></li>`).join('');
+      if (posts.length > 5) document.getElementById('posts-more').hidden = false;
+      list.innerHTML = posts.slice(0, 5).map(p => `<li><a href="writing/${p.slug}.html">${p.title}</a><time datetime="${p.date}">${p.date.slice(0,7).replace('-', '.')}</time></li>`).join('');
       note.hidden = true;
     } catch (e) {
       note.textContent = '글 목록을 불러오지 못했습니다.';
