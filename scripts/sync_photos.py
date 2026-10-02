@@ -2,7 +2,7 @@
 """Merge new source images into photos/ and photos/photos.json.
 
 Usage: python3 scripts/sync_photos.py <source_dir> [--keep "stem1,stem2,..."]
-- Every image in <source_dir> becomes photos/<stem>-full.jpg (max 2000px) and photos/<stem>-thumb.jpg (800x1000 crop)
+- Every image in <source_dir> becomes photos/<stem>-full.jpg (max 2000px) and photos/<stem>-thumb.jpg (1200x800, 3:2 crop)
   and is added to photos.json. Existing entries are kept; an entry is replaced if its stem is in <source_dir>.
 - With --keep, entries whose stem is NOT in the keep list (and not in <source_dir>) are removed along with their jpgs.
 - Caption: "2026-09 남양성모성지" -> "남양성모성지"; a stem with no leading date is used whole.
@@ -29,8 +29,8 @@ for f in sorted(src.iterdir()):
     stem = f.stem
     im = ImageOps.exif_transpose(Image.open(f)).convert('RGB')
     full = im.copy(); full.thumbnail((2000, 2000)); full.save(out / f'{stem}-full.jpg', quality=85, optimize=True)
-    ImageOps.fit(im, (800, 1000), Image.LANCZOS).save(out / f'{stem}-thumb.jpg', quality=82, optimize=True)
-    entries[stem] = {'full': f'{stem}-full.jpg', 'thumb': f'{stem}-thumb.jpg', 'caption': caption(stem), 'w': 800, 'h': 1000}
+    ImageOps.fit(im, (1200, 800), Image.LANCZOS).save(out / f'{stem}-thumb.jpg', quality=82, optimize=True)
+    entries[stem] = {'full': f'{stem}-full.jpg', 'thumb': f'{stem}-thumb.jpg', 'caption': caption(stem), 'w': 1200, 'h': 800}
     new += 1
 
 removed = 0

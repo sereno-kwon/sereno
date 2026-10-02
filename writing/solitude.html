@@ -1,0 +1,186 @@
+<title>안장 위에서의 고립감 · SERENO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap">
+<style>
+  /* S-Core Dream (에스코어 드림): 3 Light / 4 Regular / 5 Medium */
+  @font-face { font-family: "S-CoreDream"; font-weight: 300; font-display: swap; src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff") format("woff"); }
+  @font-face { font-family: "S-CoreDream"; font-weight: 400; font-display: swap; src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-4Regular.woff") format("woff"); }
+  @font-face { font-family: "S-CoreDream"; font-weight: 500; font-display: swap; src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-5Medium.woff") format("woff"); }
+
+  /* Layout: one quiet left-aligned column, 620px wide, sections separated by air rather than rules.
+     The only bold move is the wordmark: a large light Cormorant "SERENO" set tight against a tiny mono eyebrow. */
+  :root {
+    --bg: #f6f6f4;
+    --fg: #1c1d21;
+    --muted: #6d6f78;
+    --line: #dcdcd8;
+    --accent: #8b2635;
+    --hl: #f1e2b3;
+    --display: "Cormorant Garamond", "Noto Serif KR", Georgia, serif;
+    --body: "S-CoreDream", "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
+    --mono: "S-CoreDream", "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #141518; --fg: #e6e5e0; --muted: #8e9099; --line: #2b2c31; --accent: #d26a78; --hl: #4a3c17; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #141518; --fg: #e6e5e0; --muted: #8e9099; --line: #2b2c31; --accent: #d26a78; --hl: #4a3c17; color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--body);
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.85;
+    -webkit-font-smoothing: antialiased;
+    padding-inline: 20px;
+    padding-block: 0;
+  }
+  a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--line); transition: border-color .2s; }
+  a:hover, a:focus-visible { border-color: var(--accent); outline: none; }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-color: transparent; }
+
+  .wrap { max-width: 620px; margin: 0 auto; }
+
+  header {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding-block: 28px 0;
+  }
+  .mark { font-family: var(--display); font-size: 20px; letter-spacing: .08em; color: var(--fg); border: 0; }
+  nav { display: flex; gap: 22px; flex-wrap: wrap; }
+  nav a { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; color: var(--muted); border: 0; }
+  nav a:hover { color: var(--fg); }
+
+  .hero { padding-block: 92px 72px; }
+  .eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: .14em; color: var(--muted); margin: 0 0 6px; }
+  h1 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(52px, 11vw, 84px);
+    line-height: .95;
+    letter-spacing: -.01em;
+    margin: 0 0 28px;
+    text-wrap: balance;
+  }
+  .lede { font-size: 18px; max-width: 40ch; margin: 0; }
+
+  section { padding-block: 0 72px; }
+  h2 {
+    font-family: var(--mono); font-weight: 400; font-size: 12px; letter-spacing: .14em;
+    color: var(--muted); text-transform: uppercase; margin: 0 0 22px;
+  }
+  h2::after { content: ""; display: block; width: 28px; height: 1px; background: var(--fg); opacity: .55; margin-top: 12px; }
+  p { margin: 0 0 1.2em; max-width: 62ch; }
+  p:last-child { margin-bottom: 0; }
+  em { font-style: normal; font-weight: 400; }
+  mark { background: linear-gradient(transparent 45%, var(--hl) 45%, var(--hl) 92%, transparent 92%); color: inherit; font-weight: 400; padding-inline: 2px; }
+
+  .channels { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+  .channels li {
+    display: grid; grid-template-columns: 9.5em 1fr; gap: 16px;
+    padding-block: 14px; border-bottom: 1px solid var(--line);
+  }
+  .channels b { font-weight: 400; }
+  .channels span { color: var(--muted); min-width: 0; }
+  @media (max-width: 440px) { .channels li { grid-template-columns: 1fr; gap: 2px; } }
+
+
+  .plain { list-style: none; margin: 0; padding: 0; }
+  .plain li { padding-block: 4px; }
+  .plain .note { color: var(--muted); }
+
+  .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .gallery figure { margin: 0; min-width: 0; }
+  .gallery a { border: 0; display: block; }
+  .gallery img { display: block; width: 100%; max-width: 100%; aspect-ratio: 4 / 5; object-fit: cover; background: var(--line); }
+  .gallery figcaption { font-size: 12px; color: var(--muted); margin-top: 8px; letter-spacing: .02em; }
+  @media (max-width: 440px) { .gallery { grid-template-columns: repeat(2, 1fr); } }
+
+  .posts { list-style: none; margin: 0; padding: 0; }
+  .posts li {
+    display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: baseline;
+    padding-block: 12px; border-bottom: 1px solid var(--line);
+  }
+  .posts li:first-child { border-top: 1px solid var(--line); }
+  .posts a { border: 0; font-weight: 400; min-width: 0; }
+  .posts a:hover { color: var(--accent); }
+  .posts time { font-family: var(--mono); font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .sample { font-family: var(--mono); font-size: 11px; color: var(--muted); margin-top: 12px; letter-spacing: .04em; }
+
+  .contact { font-family: var(--mono); font-size: 14px; list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+  .contact span { color: var(--muted); display: inline-block; width: 7em; }
+  .contact a { border: 0; }
+  .contact a:hover { color: var(--accent); }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding-block: 24px 48px;
+    font-family: var(--mono); font-size: 12px; color: var(--muted);
+    display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .hero { animation: rise .7s ease-out both; }
+    @keyframes rise { from { opacity: .001; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  }
+</style>
+<style>
+  .post { padding-block: 56px 72px; }
+  .post .eyebrow { margin-bottom: 14px; }
+  .post h1 { font-family: var(--body); font-weight: 400; font-size: 30px; line-height: 1.35; letter-spacing: -.01em; margin: 0 0 10px; }
+  .post .summary { color: var(--muted); margin: 0 0 40px; }
+  .post .body p { max-width: 62ch; }
+  .post .body h2 { font-family: var(--body); font-size: 17px; font-weight: 500; text-transform: none; letter-spacing: 0; color: var(--fg); margin: 40px 0 12px; }
+  .post .body h2::after { display: none; }
+  .post .body img { display: block; max-width: 100%; height: auto; margin: 28px 0; }
+  .post .body blockquote { margin: 24px 0; padding-left: 16px; border-left: 1px solid var(--line); color: var(--muted); }
+  .post .body ul, .post .body ol { padding-left: 1.2em; }
+  .post .body a { border-bottom: 1px solid var(--line); }
+  .pager { display: flex; justify-content: space-between; gap: 16px; border-top: 1px solid var(--line); padding-top: 20px; font-size: 14px; }
+  .pager a { border: 0; color: var(--muted); } .pager a:hover { color: var(--fg); }
+</style>
+
+<div class="wrap">
+  <header>
+    <a class="mark" href="../index.html">SERENO</a>
+    <nav><a href="../index.html#writing">Writing</a></nav>
+  </header>
+  <article class="post">
+    <p class="eyebrow">2026.10.01</p>
+    <h1>안장 위에서의 고립감</h1>
+    
+    <div class="body">
+<p>안녕하세요.<br />
+루비워크샵 세레노입니다.</p>
+<p>모두가 느끼고 있을 법한 시대의 빠른 변화와 흐름들, 정신 없이 쏟아져나오는 무수한 정보의 향연들, 그리고 기술의 발전과는 별개로 점점 부족해지고 있는 시간들. 저는 최근에 이 모든 것들이 복합적으로 얽히면서 하루라는 시간을 순식간에 삭제되는 경험을 하고 있습니다. 하루를 보내고 나면 무엇을 했고, 무엇을 이루었나 다시금 스스로에게 되물을만큼 도시의 시간은 정말 정처없이 흘러갑니다.</p>
+<p>그래서일까요.<br />
+자전거의 트랜드에서도 비슷한 면모가 엿보입니다.<br />
+쉴새없이 쏟아져나오는 새로운 브랜드와 라인업을 보며<br />
+최근에 살짝 피로감을 느끼고 있습니다.</p>
+<p>사람들마다 마음의 평화로움을 찾는 방식은 여러 갈래이겠지만, 저에게는 그것이 이동수단입니다. 자동차, 모터사이클, 그리고 자전거가 바로 그것이죠. 속력. 이동하는 과정에서 생기는 자연스러운 고립감, 그리고 고립감으로부터 생기는 공간감. 속력이 만드는 이 공간은 모든 관계로부터 분리된 지극히 개인적인 공간입니다.</p>
+<p>이 공간에 들어서면 묘한 현상이 발생합니다. 시간이 조금씩 느려지고, 일상에서 마주하기 어려운 집중력이 생기고, 이동수단과의 묘한 교감이 발생합니다. 성인이 되면 본능적으로 이동수단을 소유하고 싶다는 마음이 드는 이유는 이러한 맥락에 기인하지 않을까 싶습니다. 말을 길들이고 소를 길들였던 것처럼, 우리의 DNA 속에 내재된 본능인 셈이죠.</p>
+<p>개인적인 공간.</p>
+<p>저는 자전거를 그렇게 바라보고 있습니다.</p>
+<p>좋은 의자와 공간을 바라볼때, 그 의자와 건축을 설계한 건축가의 태도를 한번쯤 생각해보듯, 루비워크샵이 자전거를 바라볼때 이러한 관점을 더해보곤 합니다. 브랜드의 오너와 디자이너는 왜 이렇게 자전거를 만들었을까, 시대의 변화가 이렇게 거칠고 빠름에도 이들은 정적인 자세와 애티튜드를 유지할까.</p>
+<p>팔리 Z-ZERO GT는 르코르뷔지에 같은 모더니스트의 향기가 납니다.</p>
+<p>이제는 영면한 팔리 사이클의 창업자, 밥 팔리 (Bob Parlee)</p>
+<p>원본에 충실한 디자인, 소재와 개념의 정직성, 그것을 베이스로 하는 무한한 확장성. 확실히 현대의 로드바이크와는 다른 고전미를 갖고 있으면서 동시에 다양한 컴포넌트의 채색을 수용할 수 있는 깊은 확장성을 갖고 있습니다. 무개성의 개성화를 놀랍도록 추구한 이 자전거는 개인적인 공간의 정점인 자전거의 가치를 상상할때 하나의 좋은 기준점을 제시해주죠.</p>
+<p>시대의 변화를 수용해야하는 우리 세대의 숙명.<br />
+잠시 그 숙명을 내려놓고 싶을때<br />
+팔리 Z-ZERO GT의 안장위에 오르는 상상을 합니다.</p>
+    </div>
+  </article>
+  <nav class="pager">
+    <span></span>
+    <span></span>
+  </nav>
+  <footer>
+    <span>© 2026 Sereno</span>
+    <span>Seoul, KR</span>
+  </footer>
+</div>

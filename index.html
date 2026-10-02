@@ -98,7 +98,7 @@
   .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
   .gallery figure { margin: 0; min-width: 0; }
   .gallery a { border: 0; display: block; }
-  .gallery img { display: block; width: 100%; max-width: 100%; aspect-ratio: 4 / 5; object-fit: cover; background: var(--line); }
+  .gallery img { display: block; width: 100%; max-width: 100%; aspect-ratio: 3 / 2; object-fit: cover; background: var(--line); }
   .gallery figcaption { font-size: 12px; color: var(--muted); margin-top: 8px; letter-spacing: .02em; }
   @media (max-width: 440px) { .gallery { grid-template-columns: repeat(2, 1fr); } }
 
@@ -213,7 +213,7 @@
       if (!photos.length) { note.textContent = '아직 올라온 사진이 없습니다.'; return; }
       grid.innerHTML = photos.map(p => `
         <figure>
-          <a href="photos/${p.full}" target="_blank" rel="noopener"><img src="photos/${p.thumb}" alt="${p.caption || ''}" loading="lazy" width="${p.w}" height="${p.h}"></a>
+          <a href="photos/${encodeURIComponent(p.full)}" target="_blank" rel="noopener"><img src="photos/${encodeURIComponent(p.thumb)}" alt="${p.caption || ''}" loading="lazy" width="${p.w}" height="${p.h}"></a>
           ${p.caption ? `<figcaption>${p.caption}</figcaption>` : ''}
         </figure>`).join('');
       note.hidden = true;

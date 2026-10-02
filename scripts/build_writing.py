@@ -24,7 +24,7 @@ posts = []
 for f in src.glob('*.md'):
     text = f.read_text(encoding='utf-8')
     m = re.match(r'^---\n(.*?)\n---\n?(.*)$', text, re.S)
-    meta = dict(re.findall(r'^(\w+):\s*(.*)$', m.group(1), re.M)) if m else {}
+    meta = dict(re.findall(r'^(\w+):[ \t]*(.*)$', m.group(1), re.M)) if m else {}
     body = m.group(2) if m else text
     slug = meta.get('slug') or re.sub(r'[^a-z0-9-]+', '-', f.stem.lower()).strip('-')
     posts.append({'title': meta.get('title', f.stem), 'date': meta.get('date', ''), 'slug': slug,
