@@ -1,3 +1,8 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>잘 쉬는 것에 대하여 · SERENO</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap">
@@ -30,6 +35,7 @@
   }
 
   * { box-sizing: border-box; }
+  html { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
   body {
     margin: 0;
     background: var(--bg);
@@ -60,6 +66,7 @@
   .mark { font-family: var(--display); font-size: 20px; letter-spacing: .08em; color: var(--fg); border: 0; flex: none; }
   nav { display: flex; gap: 20px; min-width: 0; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
   nav::-webkit-scrollbar { display: none; }
+  @media (max-width: 600px) { nav { -webkit-mask-image: linear-gradient(90deg, transparent, #000 14px, #000 calc(100% - 14px), transparent); mask-image: linear-gradient(90deg, transparent, #000 14px, #000 calc(100% - 14px), transparent); padding-inline: 4px; } }
   nav a {
     font-size: 12px; letter-spacing: .08em; color: var(--muted); border: 0; white-space: nowrap;
     padding-bottom: 6px; position: relative; transition: color .2s;
@@ -154,6 +161,8 @@
     @keyframes rise { from { opacity: .001; transform: translateY(8px); } to { opacity: 1; transform: none; } }
   }
 </style>
+</head>
+<body>
 <style>
   .post { padding-block: 56px 72px; }
   .post .eyebrow { margin-bottom: 14px; }
@@ -198,3 +207,5 @@
     <span>Seoul, KR</span>
   </footer>
 </div>
+</body>
+</html>
