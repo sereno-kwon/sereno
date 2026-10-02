@@ -183,12 +183,8 @@
 
   <section id="writing">
     <h2>Writing</h2>
-    <ul class="posts">
-      <li><a href="#">남양성모성지, 마리오 보타의 콘크리트</a><time>2026.09</time></li>
-      <li><a href="#">ATB라는 장르는 어디에서 왔는가</a><time>2026.08</time></li>
-      <li><a href="#">검증된 것을 고르는 일에 대하여</a><time>2026.07</time></li>
-    </ul>
-    <p class="sample">예시 목록입니다. 실제 글 제목과 링크로 교체하면 됩니다.</p>
+    <ul class="posts" id="posts"></ul>
+    <p class="sample" id="posts-note">글을 불러오는 중입니다.</p>
   </section>
 
   <section id="contact">
@@ -253,5 +249,22 @@
         requestAnimationFrame(step);
       });
     });
+  })();
+</script>
+
+<script>
+  (async () => {
+    const list = document.getElementById('posts');
+    const note = document.getElementById('posts-note');
+    try {
+      const res = await fetch('writing/index.json', { cache: 'no-store' });
+      if (!res.ok) throw new Error(res.status);
+      const posts = await res.json();
+      if (!posts.length) { note.textContent = '아직 올라온 글이 없습니다.'; return; }
+      list.innerHTML = posts.map(p => `<li><a href="writing/${p.slug}.html">${p.title}</a><time datetime="${p.date}">${p.date.slice(0,7).replace('-', '.')}</time></li>`).join('');
+      note.hidden = true;
+    } catch (e) {
+      note.textContent = '글 목록을 불러오지 못했습니다.';
+    }
   })();
 </script>
