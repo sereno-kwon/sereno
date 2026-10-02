@@ -128,7 +128,7 @@
   .plain li { padding-block: 4px; }
   .plain .note { color: var(--muted); }
 
-  .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
   .gallery figure { margin: 0; min-width: 0; }
   .gallery a { border: 0; display: block; }
   .gallery img { display: block; width: 100%; max-width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; background: var(--line); }
@@ -251,9 +251,9 @@
       if (!res.ok) throw new Error(res.status);
       const all = await res.json();
       if (!all.length) { note.textContent = '아직 올라온 사진이 없습니다.'; return; }
-      // 매번 무작위로 9장만 보여줍니다 (Fisher-Yates)
+      // 매번 무작위로 8장만 보여줍니다 (Fisher-Yates)
       for (let i = all.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [all[i], all[j]] = [all[j], all[i]]; }
-      const photos = all.slice(0, 9);
+      const photos = all.slice(0, 8);
       grid.innerHTML = photos.map(p => `
         <figure>
           <a href="photos/${encodeURIComponent(p.full)}" target="_blank" rel="noopener"><img src="photos/${encodeURIComponent(p.thumb)}" alt="${p.caption || ''}" loading="lazy" width="${p.w}" height="${p.h}"></a>
