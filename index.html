@@ -65,11 +65,11 @@
   }
   header.scrolled { border-bottom-color: var(--line); }
   .mark { font-family: var(--display); font-size: 20px; letter-spacing: .08em; color: var(--fg); border: 0; flex: none; }
-  nav { position: relative; display: flex; gap: 20px; min-width: 0; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  nav { position: relative; display: flex; gap: 16px; min-width: 0; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
   nav::-webkit-scrollbar { display: none; }
-  @media (max-width: 600px) { nav { -webkit-mask-image: linear-gradient(90deg, transparent, #000 14px, #000 calc(100% - 14px), transparent); mask-image: linear-gradient(90deg, transparent, #000 14px, #000 calc(100% - 14px), transparent); padding-inline: 4px; } }
+  @media (max-width: 1000000px) { nav { -webkit-mask-image: linear-gradient(90deg, transparent, #000 14px, #000 calc(100% - 14px), transparent); mask-image: linear-gradient(90deg, transparent, #000 14px, #000 calc(100% - 14px), transparent); padding-inline: 4px; } }
   nav a {
-    font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); border: 0; white-space: nowrap;
+    font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); border: 0; white-space: nowrap;
     padding-bottom: 6px; position: relative; transition: color .2s;
   }
   nav a::after {
@@ -92,13 +92,16 @@
   h1 {
     font-family: var(--display);
     font-weight: 400;
-    font-size: clamp(44px, 9vw, 68px);
-    line-height: .95;
+    font-size: clamp(34px, 6vw, 44px);
+    line-height: 1.1;
     letter-spacing: -.01em;
-    margin: 0 0 10px;
-    text-wrap: balance;
+    margin: 0;
+    display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
   }
-  .tagline { font-size: 14px; letter-spacing: .12em; color: var(--muted); margin: 0 0 30px; }
+  h1 .pron { font-family: var(--display); font-style: italic; font-size: .5em; letter-spacing: 0; color: var(--muted); }
+  .entry { margin: 4px 0 34px; display: flex; align-items: baseline; gap: 10px; }
+  .entry .pos { font-size: 12px; color: var(--muted); letter-spacing: .06em; flex: none; }
+  .entry .def { font-size: 15px; color: var(--muted); margin: 0; }
   .lede { font-size: 18px; max-width: 40ch; margin: 0; }
 
   section { padding-block: 0 72px; }
@@ -183,8 +186,8 @@
 
   <div class="hero" id="top">
     <p class="eyebrow">Seoul · Director of Rubi Company</p>
-    <h1>Sereno</h1>
-    <p class="tagline">마음이 침착하고 평화로운 상태</p>
+    <h1>Sereno <span class="pron">/seˈreːno/</span></h1>
+    <div class="entry"><span class="pos">형용사 · 이탈리아어</span><p class="def">마음이 침착하고 평화로운 상태</p></div>
     <p class="lede">자전거를 수입하고, 조립하고, 파는 일을 합니다. 자전거, 모터사이클, 그리고 자동차. 속도를 만들어내는 도구들에 깊은 애정을 갖고 있습니다. 역사와 건축, 클래식과 그 이면에 있는 이야기들. 축적된 시간 속에서 작은 영감을 얻습니다.</p>
   </div>
 
