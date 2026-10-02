@@ -27,6 +27,17 @@ for f in src.glob('*.md'):
     meta = dict(re.findall(r'^(\w+):[ \t]*(.*)$', m.group(1), re.M)) if m else {}
     body = m.group(2) if m else text
     slug = meta.get('slug') or re.sub(r'[^a-z0-9-]+', '-', f.stem.lower()).strip('-')
+    # images: writing/img/<slug>-<n>.jpg. Placeholders ![](img/<slug>-<n>.*) in the body are resolved to the real file
+    # (or dropped if missing); image files not referenced in the body are appended at the end in order.
+    imgs = {int(m.group(1)): p.name for p in (out / 'img').glob(f'{slug}-*.jpg') if (m := re.fullmatch(rf'{re.escape(slug)}-(\d+)', p.stem))}
+    used = set()
+    def _ph(m):
+        n = int(m.group(1))
+        if n in imgs: used.add(n); return f'![]({ "img/" + imgs[n] })'
+        return ''
+    body = re.sub(rf'!\[[^\]]*\]\(img/{re.escape(slug)}-(\d+)[^)]*\)', _ph, body)
+    extra = [imgs[n] for n in sorted(imgs) if n not in used]
+    if extra: body = body.rstrip() + '\n\n' + '\n\n'.join(f'![](img/{name})' for name in extra) + '\n'
     posts.append({'title': meta.get('title', f.stem), 'date': meta.get('date', ''), 'slug': slug,
                   'summary': meta.get('summary', ''), 'body': markdown.markdown(body, extensions=['extra'])})
 posts.sort(key=lambda p: p['date'], reverse=True)
