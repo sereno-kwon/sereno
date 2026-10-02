@@ -34,13 +34,15 @@ posts.sort(key=lambda p: p['date'], reverse=True)
 for i, p in enumerate(posts):
     prev_ = posts[i+1] if i+1 < len(posts) else None  # older
     next_ = posts[i-1] if i > 0 else None              # newer
-    page = tpl.format(
-        title=html.escape(p['title']),
-        date_label=p['date'].replace('-', '.') if p['date'] else '',
-        summary_html=f'<p class="summary">{html.escape(p["summary"])}</p>' if p['summary'] else '',
-        body=p['body'],
-        prev_html=f'<a href="{prev_["slug"]}.html">← {html.escape(prev_["title"])}</a>' if prev_ else '',
-        next_html=f'<a href="{next_["slug"]}.html">{html.escape(next_["title"])} →</a>' if next_ else '')
+    fields = {
+        'title': html.escape(p['title']),
+        'date_label': p['date'].replace('-', '.') if p['date'] else '',
+        'summary_html': f'<p class="summary">{html.escape(p["summary"])}</p>' if p['summary'] else '',
+        'body': p['body'],
+        'prev_html': f'<a href="{prev_["slug"]}.html">← {html.escape(prev_["title"])}</a>' if prev_ else '',
+        'next_html': f'<a href="{next_["slug"]}.html">{html.escape(next_["title"])} →</a>' if next_ else ''}
+    page = tpl
+    for k, v in fields.items(): page = page.replace('[[' + k + ']]', v)
     (out / f'{p["slug"]}.html').write_text(page, encoding='utf-8')
 
 (out / 'index.json').write_text(json.dumps([{k: p[k] for k in ('title', 'date', 'slug', 'summary')} for p in posts],
