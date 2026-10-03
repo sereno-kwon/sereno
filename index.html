@@ -83,11 +83,10 @@
     body { font-size: 15px; }
     header { padding-block: 14px 10px; }
     nav { gap: 16px; }
-    .lang { display: flex; align-items: baseline; gap: 6px; flex: none; font-size: 11px; letter-spacing: .08em; color: var(--line); }
-  .lang button { all: unset; cursor: pointer; color: var(--muted); font: inherit; letter-spacing: inherit; padding: 2px 0; }
+  .lang { display: flex; align-items: baseline; gap: 16px; flex: none; }
+  .lang button { all: unset; cursor: pointer; font-family: var(--body); font-weight: 300; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); padding-bottom: 6px; transition: color .2s; }
   .lang button:hover, .lang button.active { color: var(--fg); }
   .lang button:focus-visible { outline: 1px solid var(--accent); outline-offset: 3px; }
-  @media (max-width: 480px) { .lang { gap: 4px; } }
   .hero { padding-block: 56px 48px; }
     section { padding-block: 0 56px; }
   }
@@ -189,7 +188,7 @@
       <a href="#contact">Contact</a>
     </nav>
     <div class="lang" role="group" aria-label="Language">
-      <button type="button" data-lang="ko" id="lang-ko">KO</button><span>/</span><button type="button" data-lang="en" id="lang-en">EN</button><span>/</span><button type="button" data-lang="ja" id="lang-ja">JA</button>
+      <button type="button" data-lang="ko" id="lang-ko">KO</button><button type="button" data-lang="en" id="lang-en">EN</button><button type="button" data-lang="ja" id="lang-ja">JA</button>
     </div>
   </header>
 
