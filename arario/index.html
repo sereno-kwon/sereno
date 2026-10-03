@@ -60,6 +60,13 @@
   .lat-h { font-family: var(--latin); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 400; }
   svg { max-width: 100%; height: auto; display: block; }
 
+  /* Language */
+  .lang { display: flex; align-items: baseline; gap: 8px; margin-bottom: 28px; }
+  .lang button { all: unset; cursor: pointer; font-family: var(--body); font-weight: 400; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); transition: color .2s; }
+  .lang button:hover, .lang button.active { color: var(--fg); }
+  .lang button:focus-visible { outline: 1px solid var(--red); outline-offset: 3px; }
+  .lang .sep { font-size: 12px; color: var(--muted); opacity: .5; }
+
   /* Hero */
   .hero { display: grid; gap: 18px; padding-bottom: 40px; border-bottom: 1px solid var(--line); }
   .hero h1 { font-family: var(--latin); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 400; line-height: 1.1; font-size: clamp(26px, 5.2vw, 38px); }
@@ -177,6 +184,9 @@
 </head>
 <body>
 <div class="wrap">
+  <div class="lang" role="group" aria-label="Language">
+    <button type="button" data-lang="ko">KO</button><span class="sep">/</span><button type="button" data-lang="en">EN</button><span class="sep">/</span><button type="button" data-lang="ja">JA</button>
+  </div>
   <header class="hero">
     <div class="art">
       <svg viewBox="-550 -574 1240 800" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="동문모텔 II와 주변 블록을 내려다본 선 드로잉" fill="none" stroke-linejoin="round" stroke-linecap="round"><defs><pattern id="perf-s" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(-8)"><circle cx="3" cy="3" r="1.1" fill="#FBF4EE" fill-opacity="0.35"/></pattern><pattern id="perf-w" patternUnits="userSpaceOnUse" width="5" height="6" patternTransform="rotate(28)"><circle cx="2.5" cy="3" r="1" fill="#FBF4EE" fill-opacity="0.3"/></pattern></defs>
@@ -590,6 +600,32 @@
         io.observe(el);
       });
     }
+  })();
+</script>
+<script src="i18n.js"></script>
+<script>
+  // KO / EN / JA: swaps every matching text node, keeps the Korean original on the node for switching back
+  (() => {
+    const dict = window.PAGE_I18N || {};
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+      acceptNode: n => (n.parentNode && !['SCRIPT', 'STYLE'].includes(n.parentNode.tagName) && n.nodeValue.trim() && !n.parentNode.closest('svg')) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT
+    });
+    const nodes = [];
+    for (let n; (n = walker.nextNode());) nodes.push({ node: n, ko: n.nodeValue });
+    const apply = lang => {
+      document.documentElement.lang = lang;
+      nodes.forEach(({ node, ko }) => {
+        const key = ko.trim();
+        const t = lang === 'ko' ? null : (dict[lang] || {})[key];
+        node.nodeValue = t ? ko.replace(key, t) : ko;
+      });
+      document.querySelectorAll('.lang button').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+      try { localStorage.setItem('sereno-lang', lang); } catch (e) {}
+    };
+    let saved = null; try { saved = localStorage.getItem('sereno-lang'); } catch (e) {}
+    const nav = (navigator.language || 'ko').slice(0, 2);
+    apply((saved && (dict[saved] || saved === 'ko')) ? saved : (dict[nav] ? nav : 'ko'));
+    document.querySelectorAll('.lang button').forEach(b => b.addEventListener('click', () => apply(b.dataset.lang)));
   })();
 </script>
 </body>

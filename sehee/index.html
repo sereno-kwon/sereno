@@ -491,7 +491,7 @@
     };
     let saved = null; try { saved = localStorage.getItem('sereno-lang'); } catch (e) {}
     const nav = (navigator.language || 'ko').slice(0, 2);
-    apply(saved && dict[saved] || saved === 'ko' ? saved : (dict[nav] ? nav : 'ko'));
+    apply((saved && (dict[saved] || saved === 'ko')) ? saved : (dict[nav] ? nav : 'ko'));
     document.querySelectorAll('.lang button').forEach(b => b.addEventListener('click', () => apply(b.dataset.lang)));
   })();
 </script>
