@@ -64,6 +64,7 @@
     transition: border-color .25s;
   }
   header.scrolled { border-bottom-color: var(--line); }
+  @media (min-width: 700px) { header { width: calc(100% + clamp(0px, (100vw - 660px) / 2, 160px)); } }
   .mark { font-family: var(--display); font-size: 20px; letter-spacing: .08em; color: var(--fg); border: 0; flex: none; }
   nav { position: relative; display: flex; gap: 16px; min-width: 0; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
   nav::-webkit-scrollbar { display: none; }
@@ -79,15 +80,16 @@
   nav a:hover { color: var(--fg); }
   nav a.active { color: var(--fg); }
   nav a.active::after { transform: scaleX(1); }
+  .lang { display: flex; align-items: baseline; gap: 8px; flex: none; }
+  .lang .sep { font-family: var(--body); font-weight: 300; font-size: 11px; color: var(--muted); opacity: .5; padding-bottom: 6px; }
+  .lang button { all: unset; cursor: pointer; font-family: var(--body); font-weight: 300; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); padding-bottom: 6px; transition: color .2s; }
+  .lang button:hover, .lang button.active { color: var(--fg); }
+  .lang button:focus-visible { outline: 1px solid var(--accent); outline-offset: 3px; }
   @media (max-width: 480px) {
     body { font-size: 15px; }
     header { padding-block: 14px 10px; }
     nav { gap: 16px; }
-  .lang { display: flex; align-items: baseline; gap: 16px; flex: none; }
-  .lang button { all: unset; cursor: pointer; font-family: var(--body); font-weight: 300; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); padding-bottom: 6px; transition: color .2s; }
-  .lang button:hover, .lang button.active { color: var(--fg); }
-  .lang button:focus-visible { outline: 1px solid var(--accent); outline-offset: 3px; }
-  .hero { padding-block: 56px 48px; }
+    .hero { padding-block: 56px 48px; }
     section { padding-block: 0 56px; }
   }
 
@@ -188,7 +190,7 @@
       <a href="#contact">Contact</a>
     </nav>
     <div class="lang" role="group" aria-label="Language">
-      <button type="button" data-lang="ko" id="lang-ko">KO</button><button type="button" data-lang="en" id="lang-en">EN</button><button type="button" data-lang="ja" id="lang-ja">JA</button>
+      <button type="button" data-lang="ko" id="lang-ko">KO</button><span class="sep">/</span><button type="button" data-lang="en" id="lang-en">EN</button><span class="sep">/</span><button type="button" data-lang="ja" id="lang-ja">JA</button>
     </div>
   </header>
 

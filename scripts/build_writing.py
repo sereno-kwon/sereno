@@ -78,7 +78,7 @@ def render(p, lang, prev_, next_):
         t = (q.get(lang) or q['ko'])['title']
         tag = '' if lang == 'ko' or lang in q else ' ' + UI[lang]['ko_only']
         return f'<a href="{q["slug"]}.html">{"← " if arrow_left else ""}{html.escape(t)}{tag}{"" if arrow_left else " →"}</a>'
-    switcher = ''.join(
+    switcher = '<span class="sep">/</span>'.join(
         f'<a href="{("../" if lang != "ko" else "") + ("" if L == "ko" else L + "/")}{p["slug"]}.html" class="{"active" if L == lang else ""}{"" if L == "ko" or L in p else " missing"}">{L.upper()}</a>'
         for L in LANGS)
     fields = {
@@ -106,7 +106,7 @@ for lang in LANGS:
         f'      <li><a href="{p["slug"]}.html">{html.escape((p.get(lang) or p["ko"])["title"])}{"" if lang == "ko" or lang in p else " " + UI[lang]["ko_only"]}</a>'
         f'<time datetime="{p["date"]}">{p["date"][:7].replace("-", ".")}</time></li>' for p in ordered)
     prefix = '' if lang == 'ko' else '../'
-    switcher = ''.join(f'<a href="{prefix}{"" if L == "ko" else L + "/"}index.html" class="{"active" if L == lang else ""}">{L.upper()}</a>' for L in LANGS)
+    switcher = '<span class="sep">/</span>'.join(f'<a href="{prefix}{"" if L == "ko" else L + "/"}index.html" class="{"active" if L == lang else ""}">{L.upper()}</a>' for L in LANGS)
     page = ltpl.replace('[[items]]', items).replace('[[home]]', prefix + '../index.html').replace('[[lang]]', lang).replace('[[lang_switch]]', switcher)
     (d / 'index.html').write_text(page, encoding='utf-8')
 
