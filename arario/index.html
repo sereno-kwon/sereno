@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>붉은 삼각형</title>
+<meta name="description" content="제주 동문모텔 II의 붉은 파사드와 몰튼 SST Wide, 2015년에 함께 태어난 두 개의 리뉴얼에 대하여.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600&family=Noto+Sans+KR:wght@300;400;500&family=Cinzel:wght@400;500&display=swap">
+<style>
+  /* Layout: one narrow column, like a folded letter. Two spreads (building, bicycle) on soft tinted grounds, a correspondence table between them, and a handwritten-feeling essay on ruled paper at the end. One bright red carries the whole page. */
+  :root {
+    --bg: #F2F0EB;
+    --paper: #FAF8F3;
+    --fg: #23211F;
+    --muted: #6E6A64;
+    --line: #DAD6CE;
+    --red: #D2302A;
+    --red-deep: #9E231F;
+    --steel: #8E9298;
+    --tint-building: #ECE4E0;
+    --tint-bike: #E9E8E1;
+    --letter: #FBF7EC;
+    --letter-rule: rgba(120, 100, 60, 0.13);
+    --letter-margin: #D9A0A0;
+    --hl: rgba(210, 48, 42, 0.22);
+    --display: "Noto Serif KR", "Apple SD Gothic Neo", serif;
+    --body: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    --latin: "Cinzel", "Trajan Pro", "Times New Roman", serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #171615; --paper: #201E1C; --fg: #ECE9E3; --muted: #A4A09A; --line: #363331;
+      --red: #E24A42; --red-deep: #F07A72; --steel: #A9ADB3;
+      --tint-building: #241C1B; --tint-bike: #1F2019;
+      --letter: #26231C; --letter-rule: rgba(255, 235, 190, 0.07); --letter-margin: #8A5B5B; --hl: rgba(226, 74, 66, 0.30);
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #171615; --paper: #201E1C; --fg: #ECE9E3; --muted: #A4A09A; --line: #363331;
+    --red: #E24A42; --red-deep: #F07A72; --steel: #A9ADB3;
+    --tint-building: #241C1B; --tint-bike: #1F2019;
+    --letter: #26231C; --letter-rule: rgba(255, 235, 190, 0.07); --letter-margin: #8A5B5B; --hl: rgba(226, 74, 66, 0.30);
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--fg);
+    font-family: var(--body); font-weight: 300; font-size: 16px; line-height: 1.75;
+    word-break: keep-all; overflow-wrap: anywhere;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding-inline: 20px; padding-block: 56px 72px; }
+  h1, h2, h3, h4 { font-family: var(--display); font-weight: 400; margin: 0; text-wrap: balance; letter-spacing: -0.01em; }
+  p { margin: 0; }
+  .eyebrow { font-size: 12px; letter-spacing: 0.16em; color: var(--muted); text-transform: uppercase; font-weight: 400; }
+  .lat-h { font-family: var(--latin); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 400; }
+  svg { max-width: 100%; height: auto; display: block; }
+
+  /* Hero */
+  .hero { display: grid; gap: 18px; padding-bottom: 40px; border-bottom: 1px solid var(--line); }
+  .hero h1 { font-family: var(--latin); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 400; line-height: 1.1; font-size: clamp(26px, 5.2vw, 38px); }
+  .hero h1 em { font-style: normal; color: var(--red); }
+  .hero p.lede { max-width: 36em; color: var(--muted); font-size: 17px; }
+  .art { display: grid; gap: 6px; justify-items: start; }
+  .art svg { width: min(100%, 620px); }
+  .art .cap { font-family: var(--latin); font-size: 11px; letter-spacing: 0.16em; color: var(--muted); text-transform: uppercase; }
+
+  /* Spreads */
+  .spread { margin-top: 48px; border-radius: 6px; padding: 32px 26px; display: grid; gap: 24px; }
+  .spread.building { background: var(--tint-building); }
+  .spread.bike { background: var(--tint-bike); }
+  .head { display: grid; gap: 8px; }
+  .head h2 { font-size: clamp(26px, 5vw, 34px); line-height: 1.3; }
+  .head .where { color: var(--muted); font-size: 15px; }
+  .head .where b { font-weight: 500; color: var(--fg); }
+  .lede { font-size: 17px; line-height: 1.8; max-width: 34em; }
+
+  .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .fact { padding-block: 14px; padding-inline: 0 12px; min-width: 0; display: grid; gap: 2px; }
+  .fact + .fact { border-left: 1px solid var(--line); padding-inline: 14px 12px; }
+  .fact b { font-family: var(--display); font-weight: 400; font-size: 20px; color: var(--red); font-variant-numeric: tabular-nums; }
+  .fact span { color: var(--muted); font-size: 13px; }
+  @media (max-width: 480px) { .facts { grid-template-columns: 1fr; } .fact + .fact { border-left: 0; border-top: 1px solid var(--line); padding-inline: 0 12px; } }
+
+  .story { display: grid; gap: 26px; }
+  .story-block { display: grid; gap: 8px; }
+  .story-block h3 { font-size: 22px; }
+  .story-block h3 .lat { font-size: 13px; color: var(--muted); letter-spacing: 0.08em; margin-left: 8px; font-family: var(--body); font-weight: 400; }
+  .story-block p:not(.eyebrow) { font-size: 15.5px; line-height: 1.85; max-width: 36em; }
+  .hl { background: linear-gradient(transparent 55%, var(--hl) 55%, var(--hl) 92%, transparent 92%); color: inherit; padding: 0 2px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+
+  .works { display: grid; gap: 14px; }
+  .work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .work { background: var(--paper); border-radius: 6px; padding: 18px 18px 20px; display: grid; gap: 8px; min-width: 0; }
+  .work svg { width: 100%; }
+  .work h4 { font-size: 18px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 8px; }
+  .work h4 .lat { font-family: var(--body); font-size: 12px; color: var(--muted); letter-spacing: 0.06em; font-weight: 400; }
+  .work p { font-size: 14.5px; line-height: 1.8; }
+  @media (max-width: 560px) { .work-grid { grid-template-columns: 1fr; } }
+
+  /* Correspondence table */
+  .corr { margin-top: 48px; padding-top: 36px; border-top: 1px solid var(--line); display: grid; gap: 18px; }
+  .corr h3 { font-size: 20px; }
+  .corr > p { color: var(--muted); max-width: 34em; }
+  .pairs { display: grid; border-top: 1px solid var(--line); }
+  .pair { display: grid; grid-template-columns: 1fr 24px 1fr; gap: 12px; padding-block: 16px; border-bottom: 1px solid var(--line); align-items: start; }
+  .pair .side { min-width: 0; display: grid; gap: 3px; }
+  .pair .side b { font-family: var(--display); font-weight: 400; font-size: 17px; display: block; }
+  .pair .side span { color: var(--muted); font-size: 14px; line-height: 1.7; }
+  .pair .mid { font-family: var(--latin); color: var(--red); text-align: center; padding-top: 4px; font-size: 14px; }
+  .pairs-head { display: grid; grid-template-columns: 1fr 24px 1fr; gap: 12px; padding-bottom: 8px; }
+  .pairs-head .eyebrow:last-child { text-align: right; }
+  @media (max-width: 480px) {
+    .pair { grid-template-columns: 1fr; gap: 6px; }
+    .pair .mid { text-align: left; padding-top: 0; }
+    .pairs-head { display: none; }
+  }
+
+  /* Colour band */
+  .colour { margin-top: 48px; border-radius: 6px; overflow: hidden; display: grid; grid-template-columns: 112px 1fr; }
+  .swatch { background: var(--red); display: grid; align-content: end; padding: 16px 14px; gap: 2px; min-height: 180px; }
+  .swatch .cap { font-family: var(--latin); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #FBF4EE; }
+  .swatch .code { font-size: 12px; color: #FBF4EE; opacity: .8; font-variant-numeric: tabular-nums; }
+  .swatch .tip { width: 18px; height: 18px; border-radius: 50%; background: var(--steel); border: 2px solid #FBF4EE; margin-bottom: 10px; }
+  .colour-body { background: var(--paper); padding: 24px 24px 26px; display: grid; gap: 10px; min-width: 0; }
+  .colour-body h3 { font-size: 22px; }
+  .colour-body p { font-size: 15.5px; line-height: 1.85; max-width: 34em; }
+  @media (max-width: 480px) { .colour { grid-template-columns: 1fr; } .swatch { min-height: 120px; grid-auto-flow: column; justify-content: start; align-items: end; } .swatch .tip { margin-bottom: 0; margin-right: 12px; } }
+
+  /* Spec sheet */
+  .spec { margin-top: 48px; padding-top: 36px; border-top: 1px solid var(--line); display: grid; gap: 18px; }
+  .spec .head h2 { font-size: 20px; }
+  .spec-list { display: grid; border-top: 1px solid var(--line); }
+  .row { display: grid; grid-template-columns: 112px 1fr; gap: 14px; padding-block: 11px; border-bottom: 1px solid var(--line); align-items: baseline; }
+  .row .k { font-size: 12px; letter-spacing: 0.08em; color: var(--muted); font-weight: 400; }
+  .row .v { min-width: 0; font-size: 15px; line-height: 1.7; }
+  .row .v b { font-family: var(--display); font-weight: 400; color: var(--fg); }
+  .row .v em.r { font-style: normal; color: var(--red); font-weight: 500; }
+  @media (max-width: 420px) { .row { grid-template-columns: 1fr; gap: 2px; } }
+
+  /* Essay */
+  .essay {
+    margin-top: 56px; padding: 34px 28px 30px; border-radius: 3px; display: grid; gap: 16px;
+    position: relative; isolation: isolate;
+    background-color: var(--letter);
+    background-image:
+      repeating-linear-gradient(to bottom, transparent 0 31px, var(--letter-rule) 31px 32px),
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.35  0 0 0 0 0.3  0 0 0 0 0.2  0 0 0 0.22 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    background-size: auto 32px, 220px 220px;
+    background-position: 0 24px, 0 0;
+    box-shadow: 0 1px 0 var(--line), 0 12px 30px -18px rgba(0,0,0,.35);
+  }
+  .essay::before {
+    content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: -1;
+    background: linear-gradient(180deg, rgba(255,255,255,.22), transparent 30%, transparent 70%, rgba(0,0,0,.035));
+  }
+  .essay::after { content: ""; position: absolute; left: 18px; top: 0; bottom: 0; width: 1px; background: var(--letter-margin); opacity: .7; pointer-events: none; }
+  .essay h3 { font-size: 24px; }
+  .essay p:not(.eyebrow) { font-family: var(--display); font-weight: 300; font-size: 16px; line-height: 2; max-width: 34em; }
+  .essay .verse { margin-top: 10px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--red-deep); }
+  @media (max-width: 420px) { .essay { padding: 28px 20px 26px; } .essay::after { left: 12px; } }
+
+  .colophon { margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .colophon .lat { font-family: var(--latin); font-size: 11px; letter-spacing: 0.16em; color: var(--muted); text-transform: uppercase; }
+
+  .reveal { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: no-preference) {
+    .js .reveal { opacity: 0; transform: translateY(16px); transition: opacity .7s ease, transform .7s ease; }
+    .js .reveal.in { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <div class="art">
+      <svg viewBox="-550 -574 1240 800" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="동문모텔 II와 주변 블록을 내려다본 선 드로잉" fill="none" stroke-linejoin="round" stroke-linecap="round"><defs><pattern id="perf-s" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(-8)"><circle cx="3" cy="3" r="1.1" fill="#FBF4EE" fill-opacity="0.35"/></pattern><pattern id="perf-w" patternUnits="userSpaceOnUse" width="5" height="6" patternTransform="rotate(28)"><circle cx="2.5" cy="3" r="1" fill="#FBF4EE" fill-opacity="0.3"/></pattern></defs>
+<path d="M-432.1 747.5 L1505.9 -82.1 L432.1 -747.5 L-1505.9 82.1 Z" fill="var(--bg)" stroke="none"/><path d="M-915.3 448.1 L1022.7 -381.5 L1130.1 -315.0 L-807.9 514.6 Z" fill="var(--fg)" fill-opacity="0.05" stroke="none"/><path d="M-861.6 481.4 L1076.4 -348.3" stroke="var(--line)" stroke-width="1" stroke-dasharray="8 8"/><path d="M343.1 415.7 L440.0 374.2 L-633.8 -291.2 L-730.7 -249.7 Z" fill="var(--fg)" fill-opacity="0.05" stroke="none"/><path d="M-754.2 547.9 L1183.8 -281.7 L1291.1 -215.2 L-646.8 614.4 Z" fill="var(--red)" fill-opacity="0.06" stroke="none"/><path d="M-754.2 547.9 L1183.8 -281.7" stroke="var(--muted)" stroke-width="1.2"/><path d="M-646.8 614.4 L1291.1 -215.2" stroke="var(--muted)" stroke-width="1.2"/><path d="M-649.3 545.2 L-592.8 529.4" stroke="var(--muted)" stroke-width="0.8" stroke-opacity="0.7"/><path d="M-552.4 503.7 L-495.9 488.0" stroke="var(--muted)" stroke-width="0.8" stroke-opacity="0.7"/><path d="M-455.6 462.2 L-399.0 446.5" stroke="var(--muted)" stroke-width="0.8" stroke-opacity="0.7"/><path d="M-358.7 420.7 L-302.1 405.0" stroke="var(--muted)" stroke-width="0.8" stroke-opacity="0.7"/><path d="M-261.8 379.3 L-205.2 363.5" stroke="var(--muted)" stroke-width="0.8" stroke-opacity="0.7"/><path d="M-164.9 337.8 L-108.4 322.0" stroke="var(--muted)" stroke-width="0.8" stroke-opacity="0.7"/><path d="M-68.0 296.3 L-11.5 280.6" stroke="var(--muted)" stroke-width="0.8" stroke-opacity="0.7"/><path d="M28.9 254.8 L85.4 239.1" stroke="var(--muted)" stroke-width="0.8" stroke-opacity="0.7"/><path d="M125.8 213.3 L182.3 197.6" stroke="var(--muted)" stroke-width="0.8" stroke-opacity="0.7"/><path d="M222.7 171.9 L279.2 156.1" stroke="var(--muted)" stroke-width="0.8" stroke-opacity="0.7"/><path d="M319.6 130.4 L376.1 114.6" stroke="var(--muted)" stroke-width="0.8" stroke-opacity="0.7"/><path d="M416.5 88.9 L473.0 73.2" stroke="var(--muted)" stroke-width="0.8" stroke-opacity="0.7"/><path d="M513.4 47.4 L569.9 31.7" stroke="var(--muted)" stroke-width="0.8" stroke-opacity="0.7"/><path d="M610.3 5.9 L666.8 -9.8" stroke="var(--muted)" stroke-width="0.8" stroke-opacity="0.7"/><path d="M707.2 -35.5 L763.7 -51.3" stroke="var(--muted)" stroke-width="0.8" stroke-opacity="0.7"/><path d="M804.1 -77.0 L860.6 -92.8" stroke="var(--muted)" stroke-width="0.8" stroke-opacity="0.7"/><path d="M901.0 -118.5 L957.5 -134.3" stroke="var(--muted)" stroke-width="0.8" stroke-opacity="0.7"/><path d="M997.9 -160.0 L1054.4 -175.7" stroke="var(--muted)" stroke-width="0.8" stroke-opacity="0.7"/><path d="M1094.8 -201.5 L1151.3 -217.2" stroke="var(--muted)" stroke-width="0.8" stroke-opacity="0.7"/><path d="M1191.7 -242.9 L1248.2 -258.7" stroke="var(--muted)" stroke-width="0.8" stroke-opacity="0.7"/><path d="M-8.6 207.4 L120.6 152.1 L254.8 235.3 L125.6 290.6 Z" fill="var(--paper)" stroke="var(--fg)" stroke-width="1"/><path d="M-43.2 74.8 L-96.9 41.5" stroke="var(--line)" stroke-width="0.7"/><path d="M21.4 47.1 L-32.3 13.8" stroke="var(--line)" stroke-width="0.7"/><path d="M86.0 19.4 L32.3 -13.8" stroke="var(--line)" stroke-width="0.7"/><path d="M150.6 -8.2 L96.9 -41.5" stroke="var(--line)" stroke-width="0.7"/><path d="M215.2 -35.9 L161.5 -69.1" stroke="var(--line)" stroke-width="0.7"/><path d="M279.8 -63.5 L226.1 -96.8" stroke="var(--line)" stroke-width="0.7"/><path d="M344.4 -91.2 L290.7 -124.4" stroke="var(--line)" stroke-width="0.7"/><path d="M409.0 -118.8 L355.3 -152.1" stroke="var(--line)" stroke-width="0.7"/><path d="M473.6 -146.5 L419.9 -179.8" stroke="var(--line)" stroke-width="0.7"/>
+<path d="M156.7 -292.1 L366.6 -382.0 L366.6 -526.2 L156.7 -436.3 Z" fill="var(--paper)" stroke="var(--fg)" stroke-width="1.0"/><path d="M9.0 -383.6 L156.7 -292.1 L156.7 -436.3 L9.0 -527.8 Z" fill="var(--paper)" stroke="var(--fg)" stroke-width="1.0"/><path d="M9.0 -383.6 L156.7 -292.1 L156.7 -436.3 L9.0 -527.8 Z" fill="var(--fg)" fill-opacity="0.06" stroke="none"/><path d="M156.7 -436.3 L366.6 -526.2 L219.0 -617.6 L9.0 -527.8 Z" fill="var(--paper)" stroke="var(--fg)" stroke-width="1.0"/>
+<path d="M565.2 -242.0 L742.9 -318.0 L742.9 -444.2 L565.2 -368.1 Z" fill="var(--paper)" stroke="var(--fg)" stroke-width="1.0"/><path d="M444.4 -316.8 L565.2 -242.0 L565.2 -368.1 L444.4 -443.0 Z" fill="var(--paper)" stroke="var(--fg)" stroke-width="1.0"/><path d="M444.4 -316.8 L565.2 -242.0 L565.2 -368.1 L444.4 -443.0 Z" fill="var(--fg)" fill-opacity="0.06" stroke="none"/><path d="M565.2 -368.1 L742.9 -444.2 L622.1 -519.0 L444.4 -443.0 Z" fill="var(--paper)" stroke="var(--fg)" stroke-width="1.0"/>
+<path d="M869.2 -273.6 L937.0 -302.7 L937.0 -327.9 L869.2 -298.9 Z" fill="var(--paper)" stroke="var(--muted)" stroke-width="0.8"/><path d="M845.0 -288.6 L869.2 -273.6 L869.2 -298.9 L845.0 -313.8 Z" fill="var(--paper)" stroke="var(--muted)" stroke-width="0.8"/><path d="M845.0 -288.6 L869.2 -273.6 L869.2 -298.9 L845.0 -313.8 Z" fill="var(--fg)" fill-opacity="0.06" stroke="none"/><path d="M869.2 -298.9 L937.0 -327.9 L912.8 -342.9 L845.0 -313.8 Z" fill="var(--paper)" stroke="var(--muted)" stroke-width="0.8"/>
+<path d="M-112.4 -205.0 L81.4 -288.0 L81.4 -396.1 L-112.4 -313.2 Z" fill="var(--paper)" stroke="var(--fg)" stroke-width="1.0"/><path d="M-233.2 -279.9 L-112.4 -205.0 L-112.4 -313.2 L-233.2 -388.0 Z" fill="var(--paper)" stroke="var(--fg)" stroke-width="1.0"/><path d="M-233.2 -279.9 L-112.4 -205.0 L-112.4 -313.2 L-233.2 -388.0 Z" fill="var(--fg)" fill-opacity="0.06" stroke="none"/><path d="M-112.4 -313.2 L81.4 -396.1 L-39.4 -471.0 L-233.2 -388.0 Z" fill="var(--paper)" stroke="var(--fg)" stroke-width="1.0"/>
+<path d="M-46.6 -198.1 L-46.6 -237.7" stroke="var(--fg)" stroke-width="1"/><path d="M-20.7 -252.4 L-28.6 -255.9 L-38.3 -258.1 L-48.7 -258.6 L-59.0 -257.4 L-68.0 -254.6 L-75.0 -250.6 L-79.1 -245.6 L-80.1 -240.2 L-77.8 -234.9 L-72.4 -230.3 L-64.5 -226.7 L-54.8 -224.5 L-44.4 -224.0 L-34.1 -225.2 L-25.1 -228.0 L-18.2 -232.1 L-14.0 -237.1 L-13.0 -242.4 L-15.3 -247.7 L-20.7 -252.4 Z" fill="var(--paper)" stroke="var(--fg)" stroke-width="0.9"/>
+<path d="M323.0 -138.3 L516.8 -221.2 L516.8 -473.6 L323.0 -390.6 Z" fill="var(--line)" stroke="var(--fg)" stroke-width="1.0"/><path d="M161.9 -238.1 L323.0 -138.3 L323.0 -390.6 L161.9 -490.4 Z" fill="var(--line)" stroke="var(--fg)" stroke-width="1.0"/><path d="M161.9 -238.1 L323.0 -138.3 L323.0 -390.6 L161.9 -490.4 Z" fill="var(--fg)" fill-opacity="0.06" stroke="none"/><path d="M323.0 -390.6 L516.8 -473.6 L355.7 -573.4 L161.9 -490.4 Z" fill="var(--line)" stroke="var(--fg)" stroke-width="1.0"/>
+<path d="M571.7 -153.3 L571.7 -193.0" stroke="var(--fg)" stroke-width="1"/><path d="M597.6 -207.7 L589.7 -211.2 L580.0 -213.4 L569.6 -213.9 L559.3 -212.7 L550.3 -209.9 L543.3 -205.8 L539.2 -200.9 L538.2 -195.5 L540.5 -190.2 L545.9 -185.5 L553.8 -182.0 L563.5 -179.8 L573.9 -179.3 L584.2 -180.5 L593.2 -183.3 L600.2 -187.4 L604.3 -192.3 L605.3 -197.7 L603.0 -203.0 L597.6 -207.7 Z" fill="var(--paper)" stroke="var(--fg)" stroke-width="0.9"/>
+<path d="M672.4 -91.0 L866.2 -173.9 L866.2 -246.0 L672.4 -163.0 Z" fill="var(--paper)" stroke="var(--fg)" stroke-width="1.0"/><path d="M612.0 -128.4 L672.4 -91.0 L672.4 -163.0 L612.0 -200.5 Z" fill="var(--paper)" stroke="var(--fg)" stroke-width="1.0"/><path d="M612.0 -128.4 L672.4 -91.0 L672.4 -163.0 L612.0 -200.5 Z" fill="var(--fg)" fill-opacity="0.06" stroke="none"/><path d="M672.4 -163.0 L866.2 -246.0 L805.8 -283.4 L612.0 -200.5 Z" fill="var(--paper)" stroke="var(--fg)" stroke-width="1.0"/>
+<path d="M-389.7 -72.3 L-163.6 -169.1 L-163.6 -331.3 L-389.7 -234.5 Z" fill="var(--paper)" stroke="var(--fg)" stroke-width="1.0"/><path d="M-510.5 -147.1 L-389.7 -72.3 L-389.7 -234.5 L-510.5 -309.3 Z" fill="var(--paper)" stroke="var(--fg)" stroke-width="1.0"/><path d="M-510.5 -147.1 L-389.7 -72.3 L-389.7 -234.5 L-510.5 -309.3 Z" fill="var(--fg)" fill-opacity="0.06" stroke="none"/><path d="M-389.7 -234.5 L-163.6 -331.3 L-284.4 -406.1 L-510.5 -309.3 Z" fill="var(--paper)" stroke="var(--fg)" stroke-width="1.0"/>
+<path d="M560.8 -92.4 L628.7 -121.5 L628.7 -146.7 L560.8 -117.6 Z" fill="var(--paper)" stroke="var(--muted)" stroke-width="0.8"/><path d="M536.7 -107.4 L560.8 -92.4 L560.8 -117.6 L536.7 -132.6 Z" fill="var(--paper)" stroke="var(--muted)" stroke-width="0.8"/><path d="M536.7 -107.4 L560.8 -92.4 L560.8 -117.6 L536.7 -132.6 Z" fill="var(--fg)" fill-opacity="0.06" stroke="none"/><path d="M560.8 -117.6 L628.7 -146.7 L604.5 -161.7 L536.7 -132.6 Z" fill="var(--paper)" stroke="var(--muted)" stroke-width="0.8"/>
+<path d="M907.7 -114.3 L907.7 -154.0" stroke="var(--fg)" stroke-width="1"/><path d="M927.1 -165.9 L921.2 -168.6 L914.0 -170.2 L906.1 -170.5 L898.4 -169.7 L891.6 -167.6 L886.4 -164.5 L883.3 -160.8 L882.6 -156.8 L884.3 -152.8 L888.4 -149.3 L894.3 -146.6 L901.5 -145.0 L909.4 -144.6 L917.1 -145.5 L923.9 -147.6 L929.1 -150.7 L932.2 -154.4 L932.9 -158.4 L931.2 -162.4 L927.1 -165.9 Z" fill="var(--paper)" stroke="var(--fg)" stroke-width="0.9"/>
+<path d="M-317.1 -61.1 L-317.1 -100.8" stroke="var(--fg)" stroke-width="1"/><path d="M-291.3 -115.5 L-299.2 -119.0 L-308.8 -121.2 L-319.3 -121.7 L-329.6 -120.5 L-338.6 -117.7 L-345.5 -113.6 L-349.7 -108.7 L-350.7 -103.3 L-348.3 -98.0 L-343.0 -93.3 L-335.1 -89.8 L-325.4 -87.6 L-314.9 -87.1 L-304.7 -88.3 L-295.6 -91.1 L-288.7 -95.2 L-284.6 -100.1 L-283.6 -105.5 L-285.9 -110.8 L-291.3 -115.5 Z" fill="var(--paper)" stroke="var(--fg)" stroke-width="0.9"/>
+<path d="M0.0 -0.0 L274.5 -117.5 L274.5 -182.4 L0.0 -64.9 Z" fill="var(--paper)" stroke="var(--fg)" stroke-width="1"/><path d="M-36.0 -132.3 L0.0 -0.0 L0.0 -64.9 L-36.0 -197.2 Z" fill="var(--paper)" stroke="var(--fg)" stroke-width="1"/><path d="M40.4 -20.9 L40.4 -75.0" stroke="var(--muted)" stroke-width="0.8"/><path d="M80.7 -38.2 L80.7 -92.2" stroke="var(--muted)" stroke-width="0.8"/><path d="M121.1 -55.5 L121.1 -109.5" stroke="var(--muted)" stroke-width="0.8"/><path d="M161.5 -72.7 L161.5 -126.8" stroke="var(--muted)" stroke-width="0.8"/><path d="M201.9 -90.0 L201.9 -144.1" stroke="var(--muted)" stroke-width="0.8"/><path d="M242.2 -107.3 L242.2 -161.4" stroke="var(--muted)" stroke-width="0.8"/><path d="M16.1 -17.7 L88.8 -48.8 L88.8 -90.3 L16.1 -59.2 Z" fill="var(--fg)" fill-opacity="0.12" stroke="var(--fg)" stroke-width="0.8"/><path d="M0.0 -64.9 L274.5 -182.4 L274.5 -198.6 L0.0 -81.1 Z" fill="var(--red)" stroke="var(--red-deep)" stroke-width="0.8"/><path d="M-36.0 -197.2 L0.0 -64.9 L0.0 -81.1 L-36.0 -213.4 Z" fill="var(--red)" stroke="var(--red-deep)" stroke-width="0.8"/><path d="M0.0 -81.1 L274.5 -198.6 L274.5 -396.9 L0.0 -279.4 Z" fill="var(--red)" stroke="var(--red-deep)" stroke-width="1.2"/><path d="M0.0 -81.1 L274.5 -198.6 L274.5 -396.9 L0.0 -279.4 Z" fill="url(#perf-s)" stroke="none"/><path d="M-36.0 -213.4 L0.0 -81.1 L0.0 -279.4 L-36.0 -411.6 Z" fill="var(--red)" stroke="var(--red-deep)" stroke-width="1.2"/><path d="M-36.0 -213.4 L0.0 -81.1 L0.0 -279.4 L-36.0 -411.6 Z" fill="url(#perf-w)" stroke="none"/><path d="M-36.0 -213.4 L0.0 -81.1 L0.0 -279.4 L-36.0 -411.6 Z" fill="var(--fg)" fill-opacity="0.10" stroke="none"/><path d="M0.0 -279.4 L274.5 -396.9 L-36.0 -411.6 Z" fill="var(--red)" stroke="var(--red-deep)" stroke-width="1"/><path d="M0.0 -279.4 L274.5 -396.9 L-36.0 -411.6 Z" fill="var(--fg)" fill-opacity="0.18" stroke="none"/><path d="M0.0 -279.4 L51.7 -301.5 L51.7 -357.4 L0.0 -335.2 Z" fill="var(--red)" stroke="var(--red-deep)" stroke-width="1"/><path d="M0.0 -279.4 L51.7 -301.5 L51.7 -357.4 L0.0 -335.2 Z" fill="url(#perf-s)" stroke="none"/><path d="M-10.9 -318.3 L0.0 -279.4 L0.0 -335.2 L-10.9 -374.1 Z" fill="var(--red)" stroke="var(--red-deep)" stroke-width="1"/><path d="M-10.9 -318.3 L0.0 -279.4 L0.0 -335.2 L-10.9 -374.1 Z" fill="var(--fg)" fill-opacity="0.10" stroke="none"/><path d="M0.0 -335.2 L51.7 -357.4 L-10.9 -374.1 Z" fill="var(--red)" stroke="var(--red-deep)" stroke-width="1"/><path d="M193.8 -302.8 L261.6 -331.9 L261.6 -348.1 L193.8 -319.1 Z" fill="var(--fg)" fill-opacity="0.7" stroke="none"/><path d="M0.0 -0.0 L0.0 -335.2" stroke="#FBF4EE" stroke-opacity="0.8" stroke-width="1.2"/><g transform="matrix(16.1498 -6.9135 0.0000 -18.0230 0.00 -0.00) scale(1 -1)" font-family="Noto Sans KR, Helvetica Neue, Arial, sans-serif" font-weight="500" fill="#FBF4EE" stroke="none" letter-spacing="0.04"><text x="1.3" y="-13.6" font-size="1.6">ARARIO</text><text x="1.3" y="-11.7" font-size="1.6">MUSEUM</text></g>
+<path d="M313.3 -42.7 L313.3 -82.4" stroke="var(--fg)" stroke-width="1"/><path d="M339.2 -97.0 L331.3 -100.6 L321.6 -102.7 L311.2 -103.2 L300.9 -102.1 L291.9 -99.3 L284.9 -95.2 L280.8 -90.2 L279.8 -84.9 L282.1 -79.6 L287.5 -74.9 L295.4 -71.3 L305.1 -69.2 L315.5 -68.7 L325.8 -69.9 L334.8 -72.7 L341.8 -76.7 L345.9 -81.7 L346.9 -87.1 L344.6 -92.4 L339.2 -97.0 Z" fill="var(--paper)" stroke="var(--fg)" stroke-width="0.9"/>
+<path d="M397.9 26.6 L624.0 -70.2 L624.0 -160.3 L397.9 -63.5 Z" fill="var(--paper)" stroke="var(--fg)" stroke-width="1.0"/><path d="M337.5 -10.9 L397.9 26.6 L397.9 -63.5 L337.5 -101.0 Z" fill="var(--paper)" stroke="var(--fg)" stroke-width="1.0"/><path d="M337.5 -10.9 L397.9 26.6 L397.9 -63.5 L337.5 -101.0 Z" fill="var(--fg)" fill-opacity="0.06" stroke="none"/><path d="M397.9 -63.5 L624.0 -160.3 L563.6 -197.8 L337.5 -101.0 Z" fill="var(--paper)" stroke="var(--fg)" stroke-width="1.0"/>
+<path d="M158.6 30.6 L226.4 1.5 L226.4 -23.7 L158.6 5.3 Z" fill="var(--paper)" stroke="var(--muted)" stroke-width="0.8"/><path d="M134.4 15.6 L158.6 30.6 L158.6 5.3 L134.4 -9.6 Z" fill="var(--paper)" stroke="var(--muted)" stroke-width="0.8"/><path d="M134.4 15.6 L158.6 30.6 L158.6 5.3 L134.4 -9.6 Z" fill="var(--fg)" fill-opacity="0.06" stroke="none"/><path d="M158.6 5.3 L226.4 -23.7 L202.2 -38.7 L134.4 -9.6 Z" fill="var(--paper)" stroke="var(--muted)" stroke-width="0.8"/>
+<path d="M-626.7 85.4 L-400.6 -11.3 L-400.6 -137.5 L-626.7 -40.7 Z" fill="var(--paper)" stroke="var(--fg)" stroke-width="1.0"/><path d="M-747.5 10.6 L-626.7 85.4 L-626.7 -40.7 L-747.5 -115.6 Z" fill="var(--paper)" stroke="var(--fg)" stroke-width="1.0"/><path d="M-747.5 10.6 L-626.7 85.4 L-626.7 -40.7 L-747.5 -115.6 Z" fill="var(--fg)" fill-opacity="0.06" stroke="none"/><path d="M-626.7 -40.7 L-400.6 -137.5 L-521.4 -212.4 L-747.5 -115.6 Z" fill="var(--paper)" stroke="var(--fg)" stroke-width="1.0"/>
+<path d="M55.0 67.9 L55.0 28.2" stroke="var(--fg)" stroke-width="1"/><path d="M80.8 13.6 L72.9 10.0 L63.2 7.9 L52.8 7.4 L42.5 8.6 L33.5 11.3 L26.5 15.4 L22.4 20.4 L21.4 25.8 L23.7 31.0 L29.1 35.7 L37.0 39.3 L46.7 41.4 L57.1 41.9 L67.4 40.7 L76.4 37.9 L83.4 33.9 L87.5 28.9 L88.5 23.5 L86.2 18.2 L80.8 13.6 Z" fill="var(--paper)" stroke="var(--fg)" stroke-width="0.9"/>
+<path d="M155.6 130.3 L349.4 47.3 L349.4 -24.8 L155.6 58.2 Z" fill="var(--paper)" stroke="var(--fg)" stroke-width="1.0"/><path d="M95.2 92.8 L155.6 130.3 L155.6 58.2 L95.2 20.8 Z" fill="var(--paper)" stroke="var(--fg)" stroke-width="1.0"/><path d="M95.2 92.8 L155.6 130.3 L155.6 58.2 L95.2 20.8 Z" fill="var(--fg)" fill-opacity="0.06" stroke="none"/><path d="M155.6 58.2 L349.4 -24.8 L289.0 -62.2 L95.2 20.8 Z" fill="var(--paper)" stroke="var(--fg)" stroke-width="1.0"/>
+<path d="M714.8 172.2 L1005.5 47.7 L1005.5 -60.4 L714.8 64.1 Z" fill="var(--paper)" stroke="var(--fg)" stroke-width="1.0"/><path d="M620.8 114.0 L714.8 172.2 L714.8 64.1 L620.8 5.8 Z" fill="var(--paper)" stroke="var(--fg)" stroke-width="1.0"/><path d="M620.8 114.0 L714.8 172.2 L714.8 64.1 L620.8 5.8 Z" fill="var(--fg)" fill-opacity="0.06" stroke="none"/><path d="M714.8 64.1 L1005.5 -60.4 L911.5 -118.6 L620.8 5.8 Z" fill="var(--paper)" stroke="var(--fg)" stroke-width="1.0"/>
+<path d="M423.3 93.1 L423.3 53.4" stroke="var(--fg)" stroke-width="1"/><path d="M442.6 41.5 L436.7 38.8 L429.5 37.2 L421.6 36.9 L413.9 37.8 L407.1 39.8 L401.9 42.9 L398.8 46.6 L398.1 50.7 L399.8 54.6 L403.9 58.1 L409.8 60.8 L417.0 62.4 L424.9 62.8 L432.6 61.9 L439.4 59.8 L444.6 56.7 L447.7 53.0 L448.4 49.0 L446.7 45.0 L442.6 41.5 Z" fill="var(--paper)" stroke="var(--fg)" stroke-width="0.9"/>
+<path d="M-452.2 193.6 L-226.1 96.8 L-226.1 -101.5 L-452.2 -4.7 Z" fill="var(--paper)" stroke="var(--fg)" stroke-width="1.0"/><path d="M-586.4 110.4 L-452.2 193.6 L-452.2 -4.7 L-586.4 -87.9 Z" fill="var(--paper)" stroke="var(--fg)" stroke-width="1.0"/><path d="M-586.4 110.4 L-452.2 193.6 L-452.2 -4.7 L-586.4 -87.9 Z" fill="var(--fg)" fill-opacity="0.06" stroke="none"/><path d="M-452.2 -4.7 L-226.1 -101.5 L-360.3 -184.6 L-586.4 -87.9 Z" fill="var(--paper)" stroke="var(--fg)" stroke-width="1.0"/>
+<path d="M-85.2 184.1 L-17.3 155.1 L-17.3 129.9 L-85.2 158.9 Z" fill="var(--paper)" stroke="var(--muted)" stroke-width="0.8"/><path d="M-109.3 169.2 L-85.2 184.1 L-85.2 158.9 L-109.3 143.9 Z" fill="var(--paper)" stroke="var(--muted)" stroke-width="0.8"/><path d="M-109.3 169.2 L-85.2 184.1 L-85.2 158.9 L-109.3 143.9 Z" fill="var(--fg)" fill-opacity="0.06" stroke="none"/><path d="M-85.2 158.9 L-17.3 129.9 L-41.5 114.9 L-109.3 143.9 Z" fill="var(--paper)" stroke="var(--muted)" stroke-width="0.8"/>
+<path d="M-246.7 253.3 L-178.8 224.2 L-178.8 199.0 L-246.7 228.0 Z" fill="var(--paper)" stroke="var(--muted)" stroke-width="0.8"/><path d="M-270.8 238.3 L-246.7 253.3 L-246.7 228.0 L-270.8 213.1 Z" fill="var(--paper)" stroke="var(--muted)" stroke-width="0.8"/><path d="M-270.8 238.3 L-246.7 253.3 L-246.7 228.0 L-270.8 213.1 Z" fill="var(--fg)" fill-opacity="0.06" stroke="none"/><path d="M-246.7 228.0 L-178.8 199.0 L-203.0 184.0 L-270.8 213.1 Z" fill="var(--paper)" stroke="var(--muted)" stroke-width="0.8"/>
+<path d="M-264.3 310.0 L-38.2 213.2 L-38.2 123.1 L-264.3 219.9 Z" fill="var(--paper)" stroke="var(--fg)" stroke-width="1.0"/><path d="M-324.7 272.6 L-264.3 310.0 L-264.3 219.9 L-324.7 182.5 Z" fill="var(--paper)" stroke="var(--fg)" stroke-width="1.0"/><path d="M-324.7 272.6 L-264.3 310.0 L-264.3 219.9 L-324.7 182.5 Z" fill="var(--fg)" fill-opacity="0.06" stroke="none"/><path d="M-264.3 219.9 L-38.2 123.1 L-98.6 85.7 L-324.7 182.5 Z" fill="var(--paper)" stroke="var(--fg)" stroke-width="1.0"/>
+<path d="M359.5 324.3 L650.2 199.8 L650.2 37.6 L359.5 162.1 Z" fill="var(--paper)" stroke="var(--fg)" stroke-width="1.0"/><path d="M265.5 266.1 L359.5 324.3 L359.5 162.1 L265.5 103.9 Z" fill="var(--paper)" stroke="var(--fg)" stroke-width="1.0"/><path d="M265.5 266.1 L359.5 324.3 L359.5 162.1 L265.5 103.9 Z" fill="var(--fg)" fill-opacity="0.06" stroke="none"/><path d="M359.5 162.1 L650.2 37.6 L556.2 -20.6 L265.5 103.9 Z" fill="var(--paper)" stroke="var(--fg)" stroke-width="1.0"/>
+<path d="M3.4 272.8 L3.4 233.2" stroke="var(--fg)" stroke-width="1"/><path d="M29.2 218.5 L21.3 214.9 L11.6 212.8 L1.2 212.3 L-9.1 213.5 L-18.1 216.2 L-25.1 220.3 L-29.2 225.3 L-30.2 230.7 L-27.9 236.0 L-22.5 240.6 L-14.6 244.2 L-4.9 246.3 L5.5 246.8 L15.8 245.6 L24.8 242.9 L31.8 238.8 L35.9 233.8 L36.9 228.4 L34.6 223.1 L29.2 218.5 Z" fill="var(--paper)" stroke="var(--fg)" stroke-width="0.9"/>
+<path d="M4.2 476.4 L262.6 365.8 L262.6 239.6 L4.2 350.2 Z" fill="var(--paper)" stroke="var(--fg)" stroke-width="1.0"/><path d="M-89.8 418.2 L4.2 476.4 L4.2 350.2 L-89.8 292.0 Z" fill="var(--paper)" stroke="var(--fg)" stroke-width="1.0"/><path d="M-89.8 418.2 L4.2 476.4 L4.2 350.2 L-89.8 292.0 Z" fill="var(--fg)" fill-opacity="0.06" stroke="none"/><path d="M4.2 350.2 L262.6 239.6 L168.6 181.4 L-89.8 292.0 Z" fill="var(--paper)" stroke="var(--fg)" stroke-width="1.0"/>
+<path d="M-384.2 438.7 L-384.2 399.1" stroke="var(--fg)" stroke-width="1"/><path d="M-364.9 387.2 L-370.8 384.5 L-378.0 382.9 L-385.9 382.5 L-393.6 383.4 L-400.3 385.5 L-405.5 388.6 L-408.7 392.3 L-409.4 396.3 L-407.6 400.3 L-403.6 403.8 L-397.7 406.5 L-390.5 408.1 L-382.6 408.4 L-374.9 407.5 L-368.1 405.5 L-362.9 402.4 L-359.8 398.7 L-359.1 394.6 L-360.8 390.7 L-364.9 387.2 Z" fill="var(--paper)" stroke="var(--fg)" stroke-width="0.9"/>
+</svg>
+      <p class="cap">Jeju · Sanjicheon · Dongmun Motel II</p>
+    </div>
+    <p class="eyebrow">2026년 10월</p>
+    <h1>Triangolo<br><em>rosso.</em></h1>
+    <p class="lede">제주 산지천 변의 붉은 삼각형 건물과, 브라이트 레드로 짓는 한 대의 몰튼. 2015년, 같은 해에 세상에 나온 두 개의 리뉴얼에 대하여. 다시 짓지 않고 디테일로 다시 쓴다는 것.</p>
+  </header>
+
+  <section class="spread building">
+    <div class="head">
+      <p class="eyebrow">건물 · 제주 산지천</p>
+      <h2>동문모텔 II</h2>
+      <p class="where"><b>제주시 산지로 23</b> · 아라리오뮤지엄의 다섯 번째 공간</p>
+    </div>
+    <p class="lede">동문시장과 제주항 사이, 한때 모텔과 여인숙이 모여 있던 골목에 서 있습니다. 좁은 모서리 땅이 만든 삼각형 평면 위에 1975년부터 대진모텔이 있었고, 10년 넘게 비어 있다가 2015년 4월 미술관이 되었습니다. 형태는 그대로 두고, 옛 몸체 위에 붉은 타공 금속 스크린을 한 겹 둘렀습니다.</p>
+    <div class="facts">
+      <div class="fact"><b>1975</b><span>대진모텔로 지어짐</span></div>
+      <div class="fact"><b>2015</b><span>아라리오뮤지엄 동문모텔 II 개관</span></div>
+      <div class="fact"><b>△</b><span>삼각형 평면, 손대지 않음</span></div>
+    </div>
+    <div class="story">
+      <div class="story-block">
+        <p class="eyebrow">형태</p>
+        <h3>삼각형 <span class="lat">Plan</span></h3>
+        <p>리노베이션이 건드리지 않은 전제입니다. 땅의 모양이 정한 삼각형은 입면을 한 면으로 보여주지 않습니다. <mark class="hl">날카로운 모서리를 꼭짓점으로 두 면이 꺾여 들어가고</mark>, 건물 전체가 거리 쪽으로 쐐기처럼 밀고 나옵니다. 개관전의 제목이 '공명하는 삼각형'이었던 이유입니다.</p>
+      </div>
+      <div class="story-block">
+        <p class="eyebrow">색과 질감</p>
+        <h3>단일한 적색 <span class="lat">Monochrome</span></h3>
+        <p>벽돌이나 타일의 색이 아니라 기존 구조체 앞에 세운 타공 금속 패널의 색입니다. 가까이서는 수천 개의 구멍이 빛을 통과시키고, 멀리서는 균질한 붉은 면 하나로 읽힙니다. 그 균질함이 옛 모텔의 윤곽과 돌출부를 오히려 또렷하게 만들고, 스크린 한 겹이 모든 재료를 덮어 <mark class="hl">재료의 경계가 사라지고 건물은 한 덩어리로 읽힙니다.</mark> 1층 유리와 스크린 사이의 붉은 띠, 모서리에서 한 단 더 솟은 스크린, 오른쪽 위에 가늘게 뚫린 수평 창. 이 입면의 디테일은 그것이 전부입니다.</p>
+      </div>
+      <div class="story-block">
+        <p class="eyebrow">안쪽</p>
+        <h3>시멘트 벽 <span class="lat">Interior</span></h3>
+        <p>인테리어는 거의 없고 벽은 그냥 시멘트입니다. 더하는 대신 걷어내서 공간을 만들었고, 그 덜어냄이 세련됨으로 읽힙니다. 보존은 손대지 않음이 아니라 어디에 손을 댈지 아는 일이라는 것을, 이 건물은 안팎에서 보여줍니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="spread bike">
+    <div class="head">
+      <p class="eyebrow">자전거 · 브래드포드 온 에이번</p>
+      <h2>몰튼 SST Wide</h2>
+      <p class="where"><b>TSR의 정제</b> · 2015년부터</p>
+    </div>
+    <p class="lede">같은 해 몰튼은 TSR을 다듬어 SST를 내놓았습니다. 재발명이 아니라 재료와 구조, 제작의 디테일에서 이뤄진 절제된 정제입니다. 헤어핀 스페이스프레임은 그대로 두고, 관절과 끝단과 튜브 몇 군데를 다시 썼습니다. 겉은 거의 같고 안은 다른 자전거입니다.</p>
+    <div class="facts">
+      <div class="fact"><b>2005</b><span>TSR, APB의 후속으로 등장</span></div>
+      <div class="fact"><b>2015</b><span>SST 출시, 동문모텔 II와 같은 해</span></div>
+      <div class="fact"><b>−1kg</b><span>같은 사양 기준 TSR 대비</span></div>
+    </div>
+    <div class="art">
+      <svg viewBox="40 300 1880 1400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="몰튼 SST 와이드 측면 선 드로잉" fill="none" stroke-linejoin="round" stroke-linecap="round">
+<circle cx="390" cy="1270" r="295" stroke="var(--fg)" stroke-width="14" stroke-opacity="0.85"/>
+<circle cx="390" cy="1270" r="281" stroke="var(--bg)" stroke-width="2"/>
+<circle cx="390" cy="1270" r="250" stroke="var(--steel)" stroke-width="7"/>
+<circle cx="390" cy="1270" r="240" stroke="var(--steel)" stroke-width="1.5"/>
+<path d="M415.5757356617852 1285.6806168679198 L628.0 1270.0" stroke="var(--muted)" stroke-width="1.2"/>
+<path d="M411.44523306079776 1290.9786076508444 L622.032843099274 1322.9599822816028" stroke="var(--muted)" stroke-width="1.2"/>
+<path d="M406.23937692664725 1295.224643447119 L604.4305905607757 1373.2643299099789" stroke="var(--muted)" stroke-width="1.2"/>
+<path d="M400.2192106236619 1298.2058102920166 L576.075892827391 1418.3905728423786" stroke="var(--muted)" stroke-width="1.2"/>
+<path d="M393.6866104282989 1299.772620031666 L538.3905728423786 1456.075892827391" stroke="var(--muted)" stroke-width="1.2"/>
+<path d="M386.9691481921164 1299.846506283293 L493.26432990997887 1484.4305905607757" stroke="var(--muted)" stroke-width="1.2"/>
+<path d="M380.40366552131616 1298.4237640817191 L442.95998228160283 1502.032843099274" stroke="var(--muted)" stroke-width="1.2"/>
+<path d="M374.31938313208025 1295.575735661785 L390.0 1508.0" stroke="var(--muted)" stroke-width="1.2"/>
+<path d="M369.02139234915563 1291.4452330607978 L337.04001771839717 1502.032843099274" stroke="var(--muted)" stroke-width="1.2"/>
+<path d="M364.77535655288114 1286.2393769266473 L286.7356700900212 1484.4305905607757" stroke="var(--muted)" stroke-width="1.2"/>
+<path d="M361.7941897079833 1280.2192106236619 L241.60942715762144 1456.075892827391" stroke="var(--muted)" stroke-width="1.2"/>
+<path d="M360.22737996833405 1273.686610428299 L203.92410717260898 1418.3905728423788" stroke="var(--muted)" stroke-width="1.2"/>
+<path d="M360.153493716707 1266.9691481921163 L175.56940943922427 1373.2643299099789" stroke="var(--muted)" stroke-width="1.2"/>
+<path d="M361.57623591828093 1260.403665521316 L157.96715690072594 1322.9599822816028" stroke="var(--muted)" stroke-width="1.2"/>
+<path d="M364.4242643382148 1254.3193831320802 L152.0 1270.0" stroke="var(--muted)" stroke-width="1.2"/>
+<path d="M368.5547669392022 1249.0213923491556 L157.96715690072594 1217.0400177183974" stroke="var(--muted)" stroke-width="1.2"/>
+<path d="M373.76062307335275 1244.775356552881 L175.56940943922424 1166.7356700900211" stroke="var(--muted)" stroke-width="1.2"/>
+<path d="M379.7807893763381 1241.7941897079834 L203.92410717260896 1121.6094271576214" stroke="var(--muted)" stroke-width="1.2"/>
+<path d="M386.3133895717011 1240.227379968334 L241.60942715762138 1083.924107172609" stroke="var(--muted)" stroke-width="1.2"/>
+<path d="M393.0308518078836 1240.153493716707 L286.73567009002113 1055.5694094392243" stroke="var(--muted)" stroke-width="1.2"/>
+<path d="M399.59633447868384 1241.5762359182809 L337.0400177183971 1037.967156900726" stroke="var(--muted)" stroke-width="1.2"/>
+<path d="M405.68061686791975 1244.424264338215 L389.99999999999994 1032.0" stroke="var(--muted)" stroke-width="1.2"/>
+<path d="M410.9786076508443 1248.5547669392022 L442.9599822816026 1037.967156900726" stroke="var(--muted)" stroke-width="1.2"/>
+<path d="M415.22464344711886 1253.7606230733527 L493.2643299099788 1055.5694094392243" stroke="var(--muted)" stroke-width="1.2"/>
+<path d="M418.2058102920167 1259.7807893763381 L538.3905728423786 1083.924107172609" stroke="var(--muted)" stroke-width="1.2"/>
+<path d="M419.77262003166595 1266.313389571701 L576.075892827391 1121.6094271576214" stroke="var(--muted)" stroke-width="1.2"/>
+<path d="M419.846506283293 1273.0308518078837 L604.4305905607758 1166.7356700900214" stroke="var(--muted)" stroke-width="1.2"/>
+<path d="M418.42376408171907 1279.596334478684 L622.032843099274 1217.0400177183972" stroke="var(--muted)" stroke-width="1.2"/>
+<circle cx="390" cy="1270" r="32" stroke="var(--steel)" stroke-width="5" fill="var(--bg)"/>
+<circle cx="1555" cy="1270" r="295" stroke="var(--fg)" stroke-width="14" stroke-opacity="0.85"/>
+<circle cx="1555" cy="1270" r="281" stroke="var(--bg)" stroke-width="2"/>
+<circle cx="1555" cy="1270" r="250" stroke="var(--steel)" stroke-width="7"/>
+<circle cx="1555" cy="1270" r="240" stroke="var(--steel)" stroke-width="1.5"/>
+<path d="M1580.575735661785 1285.6806168679198 L1793.0 1270.0" stroke="var(--muted)" stroke-width="1.2"/>
+<path d="M1576.4452330607978 1290.9786076508444 L1787.032843099274 1322.9599822816028" stroke="var(--muted)" stroke-width="1.2"/>
+<path d="M1571.2393769266473 1295.224643447119 L1769.4305905607757 1373.2643299099789" stroke="var(--muted)" stroke-width="1.2"/>
+<path d="M1565.2192106236619 1298.2058102920166 L1741.075892827391 1418.3905728423786" stroke="var(--muted)" stroke-width="1.2"/>
+<path d="M1558.6866104282988 1299.772620031666 L1703.3905728423786 1456.075892827391" stroke="var(--muted)" stroke-width="1.2"/>
+<path d="M1551.9691481921163 1299.846506283293 L1658.2643299099789 1484.4305905607757" stroke="var(--muted)" stroke-width="1.2"/>
+<path d="M1545.403665521316 1298.4237640817191 L1607.9599822816028 1502.032843099274" stroke="var(--muted)" stroke-width="1.2"/>
+<path d="M1539.3193831320802 1295.575735661785 L1555.0 1508.0" stroke="var(--muted)" stroke-width="1.2"/>
+<path d="M1534.0213923491556 1291.4452330607978 L1502.0400177183972 1502.032843099274" stroke="var(--muted)" stroke-width="1.2"/>
+<path d="M1529.775356552881 1286.2393769266473 L1451.7356700900211 1484.4305905607757" stroke="var(--muted)" stroke-width="1.2"/>
+<path d="M1526.7941897079834 1280.2192106236619 L1406.6094271576214 1456.075892827391" stroke="var(--muted)" stroke-width="1.2"/>
+<path d="M1525.227379968334 1273.686610428299 L1368.924107172609 1418.3905728423788" stroke="var(--muted)" stroke-width="1.2"/>
+<path d="M1525.153493716707 1266.9691481921163 L1340.5694094392243 1373.2643299099789" stroke="var(--muted)" stroke-width="1.2"/>
+<path d="M1526.5762359182809 1260.403665521316 L1322.967156900726 1322.9599822816028" stroke="var(--muted)" stroke-width="1.2"/>
+<path d="M1529.424264338215 1254.3193831320802 L1317.0 1270.0" stroke="var(--muted)" stroke-width="1.2"/>
+<path d="M1533.5547669392022 1249.0213923491556 L1322.967156900726 1217.0400177183974" stroke="var(--muted)" stroke-width="1.2"/>
+<path d="M1538.7606230733527 1244.775356552881 L1340.5694094392243 1166.7356700900211" stroke="var(--muted)" stroke-width="1.2"/>
+<path d="M1544.7807893763381 1241.7941897079834 L1368.924107172609 1121.6094271576214" stroke="var(--muted)" stroke-width="1.2"/>
+<path d="M1551.313389571701 1240.227379968334 L1406.6094271576214 1083.924107172609" stroke="var(--muted)" stroke-width="1.2"/>
+<path d="M1558.0308518078837 1240.153493716707 L1451.7356700900211 1055.5694094392243" stroke="var(--muted)" stroke-width="1.2"/>
+<path d="M1564.596334478684 1241.5762359182809 L1502.0400177183972 1037.967156900726" stroke="var(--muted)" stroke-width="1.2"/>
+<path d="M1570.6806168679198 1244.424264338215 L1555.0 1032.0" stroke="var(--muted)" stroke-width="1.2"/>
+<path d="M1575.9786076508444 1248.5547669392022 L1607.9599822816026 1037.967156900726" stroke="var(--muted)" stroke-width="1.2"/>
+<path d="M1580.224643447119 1253.7606230733527 L1658.2643299099789 1055.5694094392243" stroke="var(--muted)" stroke-width="1.2"/>
+<path d="M1583.2058102920166 1259.7807893763381 L1703.3905728423786 1083.924107172609" stroke="var(--muted)" stroke-width="1.2"/>
+<path d="M1584.772620031666 1266.313389571701 L1741.075892827391 1121.6094271576214" stroke="var(--muted)" stroke-width="1.2"/>
+<path d="M1584.846506283293 1273.0308518078837 L1769.4305905607757 1166.7356700900214" stroke="var(--muted)" stroke-width="1.2"/>
+<path d="M1583.4237640817191 1279.596334478684 L1787.032843099274 1217.0400177183972" stroke="var(--muted)" stroke-width="1.2"/>
+<circle cx="1555" cy="1270" r="32" stroke="var(--steel)" stroke-width="5" fill="var(--bg)"/>
+<circle cx="390" cy="1270" r="82" stroke="var(--steel)" stroke-width="3"/>
+<circle cx="390" cy="1270" r="46" stroke="var(--steel)" stroke-width="3"/>
+<circle cx="390" cy="1270" r="58" stroke="var(--steel)" stroke-width="1.5"/>
+<path d="M390 1270 L870 1240" stroke="var(--red)" stroke-width="9"/>
+<path d="M390 1270 L785 962" stroke="var(--red)" stroke-width="9"/>
+<path d="M870 1240 L715 735" stroke="var(--red)" stroke-width="9"/>
+<path d="M769 912 L1378 888" stroke="var(--red)" stroke-width="9"/>
+<path d="M1386 905 L870 1240" stroke="var(--red)" stroke-width="9"/>
+<path d="M1268 640 L1392 920" stroke="var(--red)" stroke-width="9"/>
+<path d="M1268 640 L1080 900" stroke="var(--red)" stroke-width="4"/>
+<path d="M1080 900 L870 1240" stroke="var(--red)" stroke-width="4"/>
+<path d="M1080 900 L1140 1065" stroke="var(--red)" stroke-width="4"/>
+<path d="M1290 888 L1300 961" stroke="var(--red)" stroke-width="4"/>
+<circle cx="1080" cy="900" r="16" stroke="var(--fg)" stroke-width="3" fill="var(--bg)"/>
+<circle cx="785" cy="962" r="30" stroke="var(--fg)" stroke-width="4" fill="var(--bg)"/>
+<circle cx="785" cy="962" r="12" stroke="var(--fg)" stroke-width="3" fill="var(--fg)"/>
+<path d="M1055 884 L1055 916" stroke="var(--fg)" stroke-width="4"/>
+<path d="M1105 884 L1105 916" stroke="var(--fg)" stroke-width="4"/>
+<circle cx="870" cy="1240" r="104" stroke="var(--steel)" stroke-width="4"/>
+<circle cx="870" cy="1240" r="70" stroke="var(--steel)" stroke-width="2"/>
+<path d="M870 1240 L1039.668938342091 1229.3956913536192" stroke="var(--steel)" stroke-width="12" stroke-linecap="round"/>
+<path d="M1003.739045516707 1231.6413096552058 L1075.598831167475 1227.1500730520327" stroke="var(--fg)" stroke-width="10"/>
+<circle cx="870" cy="1240" r="22" stroke="var(--steel)" stroke-width="5" fill="var(--bg)"/>
+<path d="M852 1138 L384 1225" stroke="var(--fg)" stroke-width="3"/>
+<path d="M852 1342 L384 1315" stroke="var(--fg)" stroke-width="3"/>
+<circle cx="1385" cy="905" r="20" stroke="var(--steel)" stroke-width="6" fill="var(--bg)"/>
+<path d="M1392 920 L1402 1010" stroke="var(--red)" stroke-width="9"/>
+<path d="M1402 1010 L1522 1212" stroke="var(--red)" stroke-width="9"/>
+<path d="M1522 1212 L1555 1270" stroke="var(--steel)" stroke-width="7" stroke-linecap="round"/>
+<circle cx="1522" cy="1212" r="14" stroke="var(--steel)" stroke-width="4" fill="var(--bg)"/>
+<path d="M364 1240 L390 1270 L416 1240" stroke="var(--steel)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1529 1240 L1555 1270 L1581 1240" stroke="var(--steel)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M715 735 L600 470" stroke="var(--steel)" stroke-width="11" stroke-linecap="round"/>
+<path d="M730 735 L700 735" stroke="var(--fg)" stroke-width="5"/>
+<path d="M470 452 L560 428 L680 420 L790 448 L760 470 L600 478 L500 474 Z" stroke="var(--fg)" stroke-width="3" fill="var(--fg)"/>
+<path d="M1268 640 L1300 470" stroke="var(--steel)" stroke-width="11" stroke-linecap="round"/>
+<circle cx="1300" cy="470" r="30" stroke="var(--fg)" stroke-width="4" fill="var(--bg)"/>
+<circle cx="1300" cy="470" r="9" stroke="var(--fg)" stroke-width="3" fill="var(--fg)"/>
+<path d="M1326 478 L1400 560" stroke="var(--fg)" stroke-width="6" stroke-linecap="round"/>
+<path d="M60 1570 L1890 1570" stroke="var(--line)" stroke-width="3"/>
+<path d="M1080 884 L1080 330" stroke="var(--muted)" stroke-width="2" stroke-dasharray="6 8"/>
+<text x="1080" y="330" text-anchor="middle" font-family="Cinzel, serif" font-size="28" letter-spacing="3" fill="var(--muted)" stroke="none">KINGPIN</text>
+<path d="M755 962 L360 900" stroke="var(--muted)" stroke-width="2" stroke-dasharray="6 8"/>
+<text x="360" y="900" text-anchor="start" font-family="Cinzel, serif" font-size="28" letter-spacing="3" fill="var(--muted)" stroke="none">MONOSPHERE</text>
+<path d="M1150 740 L1500 690" stroke="var(--muted)" stroke-width="2" stroke-dasharray="6 8"/>
+<text x="1500" y="690" text-anchor="start" font-family="Cinzel, serif" font-size="28" letter-spacing="3" fill="var(--muted)" stroke="none">HAIRPIN</text>
+<path d="M1536 1212 L1600 950" stroke="var(--muted)" stroke-width="2" stroke-dasharray="6 8"/>
+<text x="1600" y="950" text-anchor="start" font-family="Cinzel, serif" font-size="28" letter-spacing="3" fill="var(--muted)" stroke="none">LEADING LINK</text>
+<path d="M770 1252 L770 1470" stroke="var(--muted)" stroke-width="2" stroke-dasharray="6 8"/>
+<text x="770" y="1470" text-anchor="middle" font-family="Cinzel, serif" font-size="28" letter-spacing="3" fill="var(--muted)" stroke="none">X-BRACE</text>
+<text x="390" y="1660" text-anchor="middle" font-family="Cinzel, serif" font-size="28" letter-spacing="3" fill="var(--steel)" stroke="none">STAINLESS</text>
+<text x="1555" y="1660" text-anchor="middle" font-family="Cinzel, serif" font-size="28" letter-spacing="3" fill="var(--steel)" stroke="none">STAINLESS</text>
+<path d="M390 1300 L390 1630" stroke="var(--muted)" stroke-width="2" stroke-dasharray="6 8"/>
+<path d="M1555 1300 L1555 1630" stroke="var(--muted)" stroke-width="2" stroke-dasharray="6 8"/>
+</svg>
+      <p class="cap">Moulton SST Wide · Side elevation</p>
+    </div>
+    <div class="works">
+      <p class="eyebrow">TSR에서 달라진 것들</p>
+      <div class="work-grid">
+        <article class="work">
+          <svg viewBox="0 0 200 90" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="var(--fg)" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round">
+            <path d="M20 70 L60 20 L120 20 L160 70" stroke="var(--red)" stroke-width="2"/>
+            <path d="M70 70 L80 44 L110 44 L120 70 Z" fill="var(--steel)" fill-opacity="0.35" stroke="var(--steel)" stroke-width="1.6"/>
+            <circle cx="95" cy="58" r="4" stroke="var(--steel)" stroke-width="1.6"/>
+            <path d="M95 62 L95 76" stroke="var(--steel)"/>
+          </svg>
+          <h4>스테인리스 드롭아웃 <span class="lat">Front &amp; rear</span></h4>
+          <p>도장된 크로몰리 대신 전후 스테인리스 드롭아웃. 리어 간격도 130mm 로드 표준으로 바뀌었습니다. 색을 입히지 않고 남겨두는 유일한 부분입니다.</p>
+        </article>
+        <article class="work">
+          <svg viewBox="0 0 200 90" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="var(--fg)" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round">
+            <path d="M16 30 L184 30 M16 62 L184 62" stroke="var(--red)" stroke-width="2"/>
+            <path d="M70 30 L130 62 M130 30 L70 62" stroke="var(--red)" stroke-width="1.6"/>
+            <circle cx="100" cy="46" r="3" fill="var(--red)" stroke="none"/>
+          </svg>
+          <h4>체인스테이 X 브레이스 <span class="lat">Reinforcement</span></h4>
+          <p>새로 더해진 보강재. 숨기지 않고 트러스의 언어 안에서 하나의 선으로 노출시켰습니다. 조절식 머드가드 마운트가 여기에 붙습니다.</p>
+        </article>
+        <article class="work">
+          <svg viewBox="0 0 200 90" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="var(--fg)" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round">
+            <path d="M16 72 L84 48 M116 48 L184 20" stroke="var(--red)" stroke-width="2"/>
+            <circle cx="100" cy="46" r="18" stroke="var(--steel)" stroke-width="1.6"/>
+            <circle cx="100" cy="46" r="9" stroke="var(--steel)" stroke-width="1.6"/>
+            <circle cx="100" cy="46" r="2.5" fill="var(--steel)" stroke="none"/>
+          </svg>
+          <h4>리어 피벗 <span class="lat">Enlarged bearings</span></h4>
+          <p>가장 많이 움직이는 관절. TSR에서 가장 지적받던 지점을 베어링을 키워 고쳤습니다. 겉으로는 같은 서스펜션 레이아웃입니다.</p>
+        </article>
+        <article class="work">
+          <svg viewBox="0 0 200 90" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="var(--fg)" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round">
+            <circle cx="100" cy="46" r="32" stroke="var(--muted)"/>
+            <circle cx="100" cy="46" r="24" stroke="var(--muted)" stroke-width="0.8"/>
+            <path d="M36 46 H16 M164 46 H184" stroke="var(--line)"/>
+            <path d="M58 20 L58 72 M142 20 L142 72" stroke="var(--red)" stroke-width="1.6" stroke-dasharray="3 3"/>
+            <path d="M16 82 H184" stroke="var(--line)"/>
+          </svg>
+          <h4>와이드 클리어런스 <span class="lat">SST Wide</span></h4>
+          <p>정제된 프레임을 다시 거친 노면으로 데려가는 사양. 넓어진 타이어는 이것이 전시물이 아니라 길 위의 물건이라는 선언입니다.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="corr">
+    <h3 class="lat-h">Corrispondenze</h3>
+    <p>두 오브제는 2015년, 같은 해에 세상에 나왔습니다. 하나는 4월 1일 제주 산지천 변에서, 하나는 영국 브래드포드 온 에이번에서. 서로를 알 리 없는 두 리뉴얼의 디테일을 서로 비춰보면 같은 태도가 여섯 번 반복됩니다. 원형의 윤곽은 지키고, 재료와 관절과 표면에서 다시 쓰고, 결국 거리로 되돌려 보내는 것.</p>
+    <div class="pairs">
+      <div class="pairs-head"><p class="eyebrow">동문모텔 II</p><span></span><p class="eyebrow">SST Wide</p></div>
+      <div class="pair">
+        <div class="side"><b>삼각형 매스</b><span>땅이 정한 형태. 리노베이션이 건드리지 않은 전제.</span></div>
+        <div class="mid">↔</div>
+        <div class="side"><b>헤어핀 스페이스프레임</b><span>TSR의 지오메트리를 그대로 이어받은 트러스.</span></div>
+      </div>
+      <div class="pair">
+        <div class="side"><b>단일 적색 스크린</b><span>색으로 재료를 숨겨 형태를 세운다.</span></div>
+        <div class="mid">↔</div>
+        <div class="side"><b>노출된 스테인리스 드롭아웃</b><span>재료를 드러내 어디가 바뀌었는지 선언한다. 같은 전략의 반대 방향.</span></div>
+      </div>
+      <div class="pair">
+        <div class="side"><b>거리로 밀고 나오는 모서리</b><span>구조가 가장 날것으로 드러나는 꼭짓점.</span></div>
+        <div class="mid">↔</div>
+        <div class="side"><b>체인스테이 X 브레이스</b><span>보강을 숨기지 않고 하나의 선으로 노출시킨 지점.</span></div>
+      </div>
+      <div class="pair">
+        <div class="side"><b>시멘트 벽 그대로 둔 내부</b><span>더하는 대신 걷어내서 만든 공간.</span></div>
+        <div class="mid">↔</div>
+        <div class="side"><b>덜어낸 튜브</b><span>테이퍼드 체인스테이, 가벼워진 업라이트, 낮아진 블록. 1kg 남짓의 빼기.</span></div>
+      </div>
+      <div class="pair">
+        <div class="side"><b>10년 방치된 모텔의 약점</b><span>윤곽은 유지하되 구조의 약한 곳은 고쳤다.</span></div>
+        <div class="mid">↔</div>
+        <div class="side"><b>리어 피벗</b><span>가장 많이 움직이는 관절을 다시 만들었다.</span></div>
+      </div>
+      <div class="pair">
+        <div class="side"><b>산지천 원도심의 거리</b><span>미술관이 되었지만 여전히 항구 뒷골목 한가운데.</span></div>
+        <div class="mid">↔</div>
+        <div class="side"><b>와이드 타이어 클리어런스</b><span>정제가 결벽으로 가지 않고 일상의 바닥으로 내려오는 지점.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="colour">
+    <div class="swatch">
+      <div class="tip" aria-hidden="true"></div>
+      <p class="cap">Bright Red</p>
+      <p class="code">Frame colour</p>
+    </div>
+    <div class="colour-body">
+      <p class="eyebrow">색의 결정</p>
+      <h3>붉은 덩어리, 양 끝의 금속</h3>
+      <p>가는 튜브의 선이 한 색 안에서 지워지고 트러스가 하나의 면으로 읽히는 순간, 자전거는 조각이 됩니다. 동문모텔 II가 매스 전체를 단일 적색으로 덮어 한 덩어리로 세운 것과 같은 효과입니다.</p>
+      <p>그리고 건물에는 없는 것이 하나 남습니다. 도장을 입히지 않은 스테인리스 드롭아웃. 붉은 덩어리의 양 끝에서 금속이 그대로 빛나는 지점이, 어디가 TSR이고 어디가 SST인지를 말해주는 유일한 표식입니다. 건물은 스크린 한 겹으로 모든 재료를 덮어 그 경계를 지웠고, 자전거는 그 경계만 남겨둡니다.</p>
+    </div>
+  </section>
+
+  <section class="spec">
+    <div class="head">
+      <p class="eyebrow">빌드 · 루비워크샵</p>
+      <h2 class="lat-h">Specification</h2>
+      <p class="where"><b>Moulton SST Wide Korean Edition</b> · Bright Red · 1×11</p>
+    </div>
+    <p class="lede">프레임 한 색, 부품은 전부 폴리시드 실버. 색이 들어간 부품은 헤드셋과 락링, 싯포스트 클램프 세 곳뿐이고 모두 같은 붉은색입니다. 조립은 실버 쪽으로 갔습니다. 드롭아웃의 금속이 프레임 전체로 번져 트러스의 선이 다시 살아나는 방향입니다.</p>
+    <div class="spec-list">
+      <div class="row"><div class="k">프레임</div><div class="v"><b>Moulton</b> SST Wide Korean Edition, <em class="r">Bright Red</em></div></div>
+      <div class="row"><div class="k">헤드셋</div><div class="v"><b>Chris King</b> NoThreadSet 1" ISO, <em class="r">Red</em></div></div>
+      <div class="row"><div class="k">스템</div><div class="v"><b>Paul</b> Boxcar 31.8 / 15° / 90mm, Polished</div></div>
+      <div class="row"><div class="k">핸들바</div><div class="v"><b>Ritchey</b> Classic Flatbar 560mm, Silver</div></div>
+      <div class="row"><div class="k">그립</div><div class="v"><b>ADM</b> Bespoke Leather Grip, Black</div></div>
+      <div class="row"><div class="k">쉬프터</div><div class="v"><b>Shimano</b> SL-RS700 (R)</div></div>
+      <div class="row"><div class="k">리어 드레일러</div><div class="v"><b>Shimano</b> GRX RD-RX812, 42T</div></div>
+      <div class="row"><div class="k">스프라켓</div><div class="v"><b>Shimano</b> Deore CS-M5100 11s, 11–42</div></div>
+      <div class="row"><div class="k">체인</div><div class="v"><b>Shimano</b> CN-LG500 LinkGlide 11s</div></div>
+      <div class="row"><div class="k">크랭크</div><div class="v"><b>White Industries</b> G30 165mm, Silver / Bronze</div></div>
+      <div class="row"><div class="k">체인링</div><div class="v"><b>White Industries</b> MR30 TSR 1× 46T, Silver</div></div>
+      <div class="row"><div class="k">바텀브라켓</div><div class="v"><b>White Industries</b> BSA 30mm, Silver</div></div>
+      <div class="row"><div class="k">페달</div><div class="v"><b>MKS</b> Allways, Silver</div></div>
+      <div class="row"><div class="k">브레이크</div><div class="v"><b>Shimano</b> BR-TX805 (F/R), <b>Shimano</b> Sora BR-R353 (F), <b>Paul</b> Canti Lever, Silver, <b>Paul</b> IS–Post Adapter 0mm, Polished</div></div>
+      <div class="row"><div class="k">로터</div><div class="v"><b>SwissStop</b> Catalyst Race 140mm CL, <b>Chris King</b> Lockring, <em class="r">Red</em></div></div>
+      <div class="row"><div class="k">케이블</div><div class="v"><b>Nissen</b> Stainless Flat Wire, Clear, Brass caps</div></div>
+      <div class="row"><div class="k">허브</div><div class="v"><b>White Industries</b> T11 Front · CLD Rear, Polished, 28H</div></div>
+      <div class="row"><div class="k">림</div><div class="v"><b>Velocity</b> Cliffhanger 406 Machined, Polished, 28H</div></div>
+      <div class="row"><div class="k">스포크</div><div class="v"><b>Sapim</b> Leader 14G, Silver · Bronze nipples · <b>Velocity</b> skewers 100 / 130</div></div>
+      <div class="row"><div class="k">타이어</div><div class="v"><b>Schwalbe</b> SX-R 406 20×1.8 · SV7 40mm tube · <b>Effetto Mariposa</b> tape</div></div>
+      <div class="row"><div class="k">싯포스트</div><div class="v"><b>Paul</b> Tall and Handsome 31.6, Polished · <b>Wolf Tooth</b> clamp 38.6, <em class="r">Red</em></div></div>
+      <div class="row"><div class="k">새들</div><div class="v"><b>Berthoud</b> Aspin, Black</div></div>
+    </div>
+  </section>
+
+  <section class="essay">
+    <p class="eyebrow">적어둔 글</p>
+    <h3>2015년의 우연</h3>
+    <p>제주 산지천 변에 삼각형 건물이 하나 서 있다. 1975년부터 대진모텔이었고, 10년 넘게 비어 있다가 2015년 아라리오뮤지엄 동문모텔 II가 되었다. 좁은 모서리 땅이 만든 삼각형 평면은 손대지 않았다. 대신 낡은 몸체 위에 붉은 타공 금속 스크린을 둘렀다. 재료의 경계가 사라지자 낡은 모텔의 윤곽이 오히려 또렷해졌고, 건물은 거리로 밀고 나오는 쐐기처럼 보이기 시작했다.</p>
+    <p>같은 2015년, 몰튼은 TSR을 다듬어 SST를 내놓았다. 새로 설계한 것이 아니다. 헤어핀 스페이스프레임의 형태는 그대로 두고, 드롭아웃을 스테인리스로 바꾸고, 체인스테이에 X 브레이스를 넣고, 가장 많이 움직이는 리어 피벗의 베어링을 키우고, 튜브 몇 군데를 덜어냈다. 겉은 거의 같고 안은 다른 자전거다.</p>
+    <p>제주의 모텔과 영국의 자전거가 같은 해에 다시 태어난 것은 우연이다. 그러나 두 리뉴얼은 같은 문장으로 요약된다. 원형을 다시 짓지 않고, 디테일로 다시 쓴다.</p>
+    <p>색의 전략만 반대다. 동문모텔 II는 색으로 재료를 숨겨 형태를 세웠다. SST는 도장하지 않은 스테인리스 드롭아웃을 그대로 남겨, 어디가 바뀌었는지를 드러낸다. 하나는 덮고 하나는 보여주지만, 결국 둘 다 무엇이 원형이고 무엇이 개입인지를 표면에서 읽게 만든다.</p>
+    <p>SST Wide는 그 정제된 프레임을 다시 거친 노면으로 데려간다. 넓어진 타이어 클리어런스는 이것이 전시물이 아니라 길 위의 물건이라는 선언이다. 미술관이 된 모텔이 여전히 항구 뒷골목의 거리 한가운데 서 있는 것과 같은 자세다.</p>
+    <p>그래서 색은 브라이트 레드로 정했다. 가는 튜브의 선이 한 색 안에서 지워지고 트러스가 하나의 면으로 읽히는 순간, 자전거는 조각이 된다. 그리고 그 붉은 덩어리의 양 끝에서 금속이 그대로 빛난다. 건물에는 없는, 자전거에만 남은 경계다.</p>
+    <p class="verse">형태는 땅이 정하고, 색은 내가 정한다.<br>그 사이에서 바뀐 것들은 관절과 끝단에만 남는다.</p>
+  </section>
+
+  <footer class="colophon">
+    <span class="lat">Sereno · 2026</span>
+    <span class="lat">Jeju · Bradford-on-Avon</span>
+  </footer>
+</div>
+
+<script>
+  (function () {
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if ('IntersectionObserver' in window && !reduce) {
+      document.documentElement.classList.add('js');
+      var targets = document.querySelectorAll('.head, .lede, .facts, .story-block, .work, .pair, .corr h3, .corr > p, .colour, .row, .essay > *');
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      Array.prototype.forEach.call(targets, function (el, i) {
+        el.classList.add('reveal');
+        el.style.transitionDelay = (i % 6) * 60 + 'ms';
+        io.observe(el);
+      });
+    }
+  })();
+</script>
+</body>
+</html>
