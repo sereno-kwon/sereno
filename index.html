@@ -147,6 +147,8 @@
   .gear li { display: grid; grid-template-columns: 5em 1fr; gap: 12px; min-width: 0; }
   .gear span { color: var(--muted); }
   .gear b { font-weight: 400; }
+  .gear .br { display: none; }
+  @media (max-width: 600px) { .gear .sep { display: none; } .gear .br { display: block; } }
   @media (max-width: 440px) { .gear li { grid-template-columns: 1fr; gap: 0; } .gear { gap: 10px; } }
   .gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
   .gallery figure { margin: 0; min-width: 0; }
@@ -241,7 +243,7 @@
     <h2>Photography</h2>
     <ul class="gear">
       <li><span data-i18n="gearCam">카메라</span><b>Leica M7 · Leica M10-P</b></li>
-      <li><span data-i18n="gearLens">렌즈</span><b>Summicron 35mm f/2 v4 · APO-Summicron 50mm f/2 ASPH.</b></li>
+      <li><span data-i18n="gearLens">렌즈</span><b>Summicron 35mm f/2 v4<span class="sep"> · </span><span class="br"></span>APO-Summicron 50mm f/2 ASPH.</b></li>
       <li><span data-i18n="gearFilm">필름</span><b>Kodak Ektar 100</b></li>
     </ul>
     <div class="gallery" id="gallery"></div>
