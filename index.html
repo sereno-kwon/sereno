@@ -143,6 +143,11 @@
   .plain li { padding-block: 4px; }
   .plain .note { color: var(--muted); }
 
+  .gear { list-style: none; margin: 0 0 22px; padding: 0; display: grid; gap: 6px; font-size: 14px; }
+  .gear li { display: grid; grid-template-columns: 5em 1fr; gap: 12px; min-width: 0; }
+  .gear span { color: var(--muted); }
+  .gear b { font-weight: 400; }
+  @media (max-width: 440px) { .gear li { grid-template-columns: 1fr; gap: 0; } .gear { gap: 10px; } }
   .gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
   .gallery figure { margin: 0; min-width: 0; }
   .gallery a { border: 0; display: block; }
@@ -234,6 +239,10 @@
 
   <section id="photography">
     <h2>Photography</h2>
+    <ul class="gear">
+      <li><span data-i18n="gearCam">카메라</span><b>Leica M7 · Leica M10-P</b></li>
+      <li><span data-i18n="gearLens">렌즈</span><b>Summicron 35mm f/2 v4 · APO-Summicron 50mm f/2 ASPH.</b></li>
+    </ul>
     <div class="gallery" id="gallery"></div>
     <p class="sample" id="gallery-note" data-i18n="gLoading">사진을 불러오는 중입니다.</p>
   </section>
@@ -280,6 +289,7 @@
       part1b: '몰튼 바이시클, 바스티온 사이클, 팔리 사이클, 츠바사 바이시클, 크러스트 바이크, 파슐리 사이클',
       part2: '컴포넌트 &amp; 액세서리',
       part2b: 'QUOC, 요헤미티, 울프투스 컴포넌트, 폴 컴포넌트 엔지니어링, 화이트 인더스트리, MKS, 스퍼사이클, 벨로시티, 고키소, 크리스킹, 카본티, THM, 엑스트라라이트, 쉬몰케, 아르떼 디마노, 베르투 사이클, 크레인벨, 니센, 그로우택, 울트라다이나미코, 킹케이지, 훌스로이, 노콘, 혼조, 디워드 디자인, 스톤 체인링, EVT, 아뜰리에 미디엄, 제노',
+      gearCam: '카메라', gearLens: '렌즈',
       gLoading: '사진을 불러오는 중입니다.', gEmpty: '아직 올라온 사진이 없습니다.', gError: '사진 목록을 불러오지 못했습니다.',
       pLoading: '글을 불러오는 중입니다.', pEmpty: '아직 올라온 글이 없습니다.', pError: '글 목록을 불러오지 못했습니다.',
       more: '더 보기 &gt;',
@@ -302,6 +312,7 @@
       part1b: 'Moulton Bicycles, Bastion Cycles, Parlee Cycles, Tsubasa Bicycles, Crust Bikes, Pashley Cycles',
       part2: 'Components &amp; Accessories',
       part2b: 'QUOC, Yohemite, Wolf Tooth Components, Paul Component Engineering, White Industries, MKS, Spurcycle, Velocity, Gokiso, Chris King, Carbon-Ti, THM, Extralite, Schmolke, Artè Dimano, Berthoud Cycles, Crane Bell, Nissen, Growtac, Ultradynamico, King Cage, Hulsroy, Nokon, Honjo, D-Ward Design, Stone Chainring, EVT, Atelier Medium, Zeno',
+      gearCam: 'Camera', gearLens: 'Lenses',
       gLoading: 'Loading photos.', gEmpty: 'No photos yet.', gError: 'Could not load the photo list.',
       pLoading: 'Loading posts.', pEmpty: 'No posts yet.', pError: 'Could not load the post list.',
       more: 'More &gt;',
@@ -324,6 +335,7 @@
       part1b: 'Moulton Bicycles、Bastion Cycles、Parlee Cycles、Tsubasa Bicycles、Crust Bikes、Pashley Cycles',
       part2: 'コンポーネント &amp; アクセサリー',
       part2b: 'QUOC、Yohemite、Wolf Tooth Components、Paul Component Engineering、White Industries、MKS、Spurcycle、Velocity、Gokiso、Chris King、Carbon-Ti、THM、Extralite、Schmolke、Artè Dimano、Berthoud Cycles、Crane Bell、Nissen、Growtac、Ultradynamico、King Cage、Hulsroy、Nokon、Honjo、D-Ward Design、Stone Chainring、EVT、Atelier Medium、Zeno',
+      gearCam: 'カメラ', gearLens: 'レンズ',
       gLoading: '写真を読み込んでいます。', gEmpty: 'まだ写真はありません。', gError: '写真の一覧を読み込めませんでした。',
       pLoading: '記事を読み込んでいます。', pEmpty: 'まだ記事はありません。', pError: '記事の一覧を読み込めませんでした。',
       more: 'もっと見る &gt;',
