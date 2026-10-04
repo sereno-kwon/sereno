@@ -1,5 +1,23 @@
 [
   {
+    "slug": "ichiro",
+    "date": "2026-10-04",
+    "ko": {
+      "title": "일상을 채우는 스즈키 이치로의 명언들",
+      "summary": "조금씩 진화하고 느낌은 인간으로서 매우 중요한 일"
+    },
+    "en": {
+      "title": "Ichiro Suzuki's Words for Everyday Life",
+      "summary": "Evolving little by little, and feeling it, is a deeply important thing for a human being",
+      "translated": "auto"
+    },
+    "ja": {
+      "title": "日常を満たすイチローの言葉",
+      "summary": "少しずつ進化し、それを感じることは、人間としてとても大切なこと",
+      "translated": "auto"
+    }
+  },
+  {
     "slug": "words",
     "date": "2026-10-02",
     "ko": {
