@@ -154,6 +154,9 @@
   .taste li { display: grid; grid-template-columns: 5em 1fr; gap: 12px; min-width: 0; }
   .taste span { color: var(--muted); }
   .taste b { font-weight: 400; display: block; }
+  .taste b i { font-style: normal; white-space: nowrap; }
+  .taste .br { display: none; }
+  @media (max-width: 600px) { .taste .sep { display: none; } .taste .br { display: block; } }
   .taste em { font-style: normal; color: var(--muted); display: block; margin-top: 3px; font-size: 13px; line-height: 1.65; }
   @media (max-width: 440px) { .taste li { grid-template-columns: 1fr; gap: 2px; } }
   .gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
@@ -263,7 +266,7 @@
     <ul class="taste">
       <li><span data-i18n="t1">건축</span><div><b>Mario Botta · Tadao Ando</b><em data-i18n="t1n">빛과 재료만으로 공간이 서는 건축. 남양성모성지는 계절이 바뀔 때마다 다시 찾습니다.</em></div></li>
       <li><span data-i18n="t3">역사</span><div><b data-i18n="t3v">로마사 · 일본사 · 제2차 세계대전 · 서양미술사</b><em data-i18n="t3n">사건보다 구조를, 결과보다 원인을 읽습니다. 요즘은 대망 1권을 읽고 있습니다.</em></div></li>
-      <li><span data-i18n="t4">기계</span><div><b>Golf GTI · Volvo XC60 · Honda Monkey 125 · Moulton SST</b><em data-i18n="t4n">오래 다듬어진 기계들. 엔진과 변속기가 어떻게 설계되었는지 들여다보는 일을 좋아합니다.</em></div></li>
+      <li><span data-i18n="t4">기계</span><div><b><i>Golf GTI</i> · <i>Volvo XC60</i><span class="sep"> · </span><span class="br"></span><i>BMW S1000RR</i> · <i>Yamaha TMAX 560</i> · <i>Honda Monkey 125</i></b><em data-i18n="t4n">오래 다듬어진 기계들. 엔진과 변속기가 어떻게 설계되었는지 들여다보는 일을 좋아합니다.</em></div></li>
     </ul>
   </section>
 
