@@ -150,6 +150,12 @@
   .gear .br { display: none; }
   @media (max-width: 600px) { .gear .sep { display: none; } .gear .br { display: block; } }
   @media (max-width: 440px) { .gear li { grid-template-columns: 1fr; gap: 0; } .gear { gap: 10px; } }
+  .taste { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; font-size: 14px; }
+  .taste li { display: grid; grid-template-columns: 5em 1fr; gap: 12px; min-width: 0; }
+  .taste span { color: var(--muted); }
+  .taste b { font-weight: 400; display: block; }
+  .taste em { font-style: normal; color: var(--muted); display: block; margin-top: 3px; font-size: 13px; line-height: 1.65; }
+  @media (max-width: 440px) { .taste li { grid-template-columns: 1fr; gap: 2px; } }
   .gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
   .gallery figure { margin: 0; min-width: 0; }
   .gallery a { border: 0; display: block; }
@@ -198,6 +204,7 @@
       <a href="#work">Work</a>
       <a href="#partnership">Partnership</a>
       <a href="#photography">Photography</a>
+      <a href="#taste">Taste</a>
       <a href="#writing">Writing</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -250,6 +257,18 @@
     <p class="sample" id="gallery-note" data-i18n="gLoading">사진을 불러오는 중입니다.</p>
   </section>
 
+  <section id="taste">
+    <h2>Taste</h2>
+    <p data-i18n="taste0">오래 곁에 두는 것들입니다. 새것보다 검증된 것을, 화려한 것보다 오래 가는 것을 고릅니다.</p>
+    <ul class="taste">
+      <li><span data-i18n="t1">건축</span><div><b>Mario Botta · Tadao Ando</b><em data-i18n="t1n">빛과 재료만으로 공간이 서는 건축. 남양성모성지는 계절이 바뀔 때마다 다시 찾습니다.</em></div></li>
+      <li><span data-i18n="t2">음악</span><div><b data-i18n="t2v">클래식</b><em data-i18n="t2n">작은 소리로 오래 틀어두는 음악. 일할 때는 피아노 독주를, 운전할 때는 교향곡을 듣습니다.</em></div></li>
+      <li><span data-i18n="t3">읽기</span><div><b data-i18n="t3v">로마사 · 제2차 세계대전 · 서양미술사 · 거시경제</b><em data-i18n="t3n">사건보다 구조를, 결과보다 원인을 읽습니다. 요즘은 대망 1권을 읽고 있습니다.</em></div></li>
+      <li><span data-i18n="t4">타는 것</span><div><b>Golf GTI · Volvo XC60 · Honda Monkey 125 · Moulton SST</b><em data-i18n="t4n">오래 다듬어진 기계들. 엔진과 변속기가 어떻게 설계되었는지 들여다보는 일을 좋아합니다.</em></div></li>
+      <li><span data-i18n="t5">만드는 것</span><div><b data-i18n="t5v">일 년에 한 권의 책</b><em data-i18n="t5n">한 도시를 걷고, 필름으로 찍고, 그때의 감각을 문장으로 적어 레이아웃까지 직접 만듭니다.</em></div></li>
+    </ul>
+  </section>
+
   <section id="writing">
     <h2>Writing</h2>
     <ul class="posts" id="posts"></ul>
@@ -292,6 +311,12 @@
       part1b: '몰튼 바이시클, 바스티온 사이클, 팔리 사이클, 츠바사 바이시클, 크러스트 바이크, 파슐리 사이클',
       part2: '컴포넌트 &amp; 액세서리',
       part2b: 'QUOC, 요헤미티, 울프투스 컴포넌트, 폴 컴포넌트 엔지니어링, 화이트 인더스트리, MKS, 스퍼사이클, 벨로시티, 고키소, 크리스킹, 카본티, THM, 엑스트라라이트, 쉬몰케, 아르떼 디마노, 베르투 사이클, 크레인벨, 니센, 그로우택, 울트라다이나미코, 킹케이지, 훌스로이, 노콘, 혼조, 디워드 디자인, 스톤 체인링, EVT, 아뜰리에 미디엄, 제노',
+      taste0: '오래 곁에 두는 것들입니다. 새것보다 검증된 것을, 화려한 것보다 오래 가는 것을 고릅니다.',
+      t1: '건축', t1n: '빛과 재료만으로 공간이 서는 건축. 남양성모성지는 계절이 바뀔 때마다 다시 찾습니다.',
+      t2: '음악', t2v: '클래식', t2n: '작은 소리로 오래 틀어두는 음악. 일할 때는 피아노 독주를, 운전할 때는 교향곡을 듣습니다.',
+      t3: '읽기', t3v: '로마사 · 제2차 세계대전 · 서양미술사 · 거시경제', t3n: '사건보다 구조를, 결과보다 원인을 읽습니다. 요즘은 대망 1권을 읽고 있습니다.',
+      t4: '타는 것', t4n: '오래 다듬어진 기계들. 엔진과 변속기가 어떻게 설계되었는지 들여다보는 일을 좋아합니다.',
+      t5: '만드는 것', t5v: '일 년에 한 권의 책', t5n: '한 도시를 걷고, 필름으로 찍고, 그때의 감각을 문장으로 적어 레이아웃까지 직접 만듭니다.',
       gearCam: '카메라', gearLens: '렌즈', gearFilm: '필름',
       gLoading: '사진을 불러오는 중입니다.', gEmpty: '아직 올라온 사진이 없습니다.', gError: '사진 목록을 불러오지 못했습니다.',
       pLoading: '글을 불러오는 중입니다.', pEmpty: '아직 올라온 글이 없습니다.', pError: '글 목록을 불러오지 못했습니다.',
@@ -315,6 +340,12 @@
       part1b: 'Moulton Bicycles, Bastion Cycles, Parlee Cycles, Tsubasa Bicycles, Crust Bikes, Pashley Cycles',
       part2: 'Components &amp; Accessories',
       part2b: 'QUOC, Yohemite, Wolf Tooth Components, Paul Component Engineering, White Industries, MKS, Spurcycle, Velocity, Gokiso, Chris King, Carbon-Ti, THM, Extralite, Schmolke, Artè Dimano, Berthoud Cycles, Crane Bell, Nissen, Growtac, Ultradynamico, King Cage, Hulsroy, Nokon, Honjo, D-Ward Design, Stone Chainring, EVT, Atelier Medium, Zeno',
+      taste0: 'Things I keep close for a long time. The proven over the new, the lasting over the dazzling.',
+      t1: 'Architecture', t1n: 'Buildings that stand on light and material alone. I return to the Namyang Shrine, a Mario Botta church, each time the season turns.',
+      t2: 'Listening', t2v: 'Classical', t2n: 'Music left playing quietly for hours. Solo piano while working, symphonies while driving.',
+      t3: 'Reading', t3v: 'Roman history · The Second World War · Western art history · Macroeconomics', t3n: 'Structure over events, causes over outcomes. These days I am reading the first volume of Taiko (Tokugawa Ieyasu).',
+      t4: 'Riding', t4n: 'Machines refined over a long time. I like looking into how an engine or a gearbox was designed.',
+      t5: 'Making', t5v: 'One book a year', t5n: 'Walk a city, shoot it on film, write down what it felt like, and lay out the pages myself.',
       gearCam: 'Camera', gearLens: 'Lenses', gearFilm: 'Film',
       gLoading: 'Loading photos.', gEmpty: 'No photos yet.', gError: 'Could not load the photo list.',
       pLoading: 'Loading posts.', pEmpty: 'No posts yet.', pError: 'Could not load the post list.',
@@ -338,6 +369,12 @@
       part1b: 'Moulton Bicycles、Bastion Cycles、Parlee Cycles、Tsubasa Bicycles、Crust Bikes、Pashley Cycles',
       part2: 'コンポーネント &amp; アクセサリー',
       part2b: 'QUOC、Yohemite、Wolf Tooth Components、Paul Component Engineering、White Industries、MKS、Spurcycle、Velocity、Gokiso、Chris King、Carbon-Ti、THM、Extralite、Schmolke、Artè Dimano、Berthoud Cycles、Crane Bell、Nissen、Growtac、Ultradynamico、King Cage、Hulsroy、Nokon、Honjo、D-Ward Design、Stone Chainring、EVT、Atelier Medium、Zeno',
+      taste0: '長く手元に置いているものです。新しいものより検証されたものを、華やかなものより長く続くものを選びます。',
+      t1: '建築', t1n: '光と素材だけで空間が立ち上がる建築。マリオ・ボッタの南陽聖母聖地には、季節が変わるたびに訪れます。',
+      t2: '音楽', t2v: 'クラシック', t2n: '小さな音で長く流しておく音楽。仕事中はピアノ独奏を、運転中は交響曲を聴きます。',
+      t3: '読むもの', t3v: 'ローマ史 · 第二次世界大戦 · 西洋美術史 · マクロ経済', t3n: '出来事より構造を、結果より原因を読みます。最近は『徳川家康』の第一巻を読んでいます。',
+      t4: '乗るもの', t4n: '長い時間をかけて磨かれた機械たち。エンジンや変速機がどう設計されているかを覗き込むのが好きです。',
+      t5: '作るもの', t5v: '一年に一冊の本', t5n: 'ひとつの街を歩き、フィルムで撮り、そのときの感覚を文章にして、レイアウトまで自分で仕上げます。',
       gearCam: 'カメラ', gearLens: 'レンズ', gearFilm: 'フィルム',
       gLoading: '写真を読み込んでいます。', gEmpty: 'まだ写真はありません。', gError: '写真の一覧を読み込めませんでした。',
       pLoading: '記事を読み込んでいます。', pEmpty: 'まだ記事はありません。', pError: '記事の一覧を読み込めませんでした。',
