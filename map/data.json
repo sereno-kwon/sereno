@@ -83,6 +83,11 @@
         "ko": "전력·에너지",
         "en": "Power & Energy",
         "ja": "電力・エネルギー"
+      },
+      "desc": {
+        "ko": "전기가 흐르는 순서대로, 발전에서 소재까지",
+        "en": "In the order electricity flows, from generation to materials",
+        "ja": "電気が流れる順に、発電から素材まで"
       }
     },
     {
@@ -108,6 +113,81 @@
         "ko": "자전거·모빌리티",
         "en": "Cycling & Mobility",
         "ja": "自転車・モビリティ"
+      }
+    },
+    {
+      "slug": "generation-equipment",
+      "parent": "power-energy",
+      "order": 1,
+      "name": {
+        "ko": "발전 설비",
+        "en": "Generation Equipment",
+        "ja": "発電設備"
+      },
+      "desc": {
+        "ko": "가스터빈과 원전 주기기. 3사 과점과 납기 병목",
+        "en": "Gas turbines and nuclear main components. A three-company oligopoly and a delivery bottleneck",
+        "ja": "ガスタービンと原発主機器。3社寡占と納期のボトルネック"
+      }
+    },
+    {
+      "slug": "power-producers",
+      "parent": "power-energy",
+      "order": 2,
+      "name": {
+        "ko": "발전 운영",
+        "en": "Power Producers",
+        "ja": "発電事業者"
+      },
+      "desc": {
+        "ko": "발전소를 소유하고 전기를 파는 회사. 장기 PPA",
+        "en": "Companies that own plants and sell power. Long-term PPAs",
+        "ja": "発電所を所有し電気を売る会社。長期PPA"
+      }
+    },
+    {
+      "slug": "transmission",
+      "parent": "power-energy",
+      "order": 3,
+      "name": {
+        "ko": "송전·변전",
+        "en": "Transmission & Substations",
+        "ja": "送電・変電"
+      },
+      "desc": {
+        "ko": "초고압 변압기, 차단기, HVDC",
+        "en": "Ultra-high-voltage transformers, breakers, HVDC",
+        "ja": "超高圧変圧器、遮断器、HVDC"
+      }
+    },
+    {
+      "slug": "distribution",
+      "parent": "power-energy",
+      "order": 4,
+      "name": {
+        "ko": "배전·데이터센터 전력",
+        "en": "Distribution & Data Center Power",
+        "ja": "配電・データセンター電力"
+      },
+      "desc": {
+        "ko": "배전반, 개폐장치, 데이터센터 전력 스택",
+        "en": "Switchboards, switchgear, the data center power stack",
+        "ja": "配電盤、開閉装置、データセンター電力スタック"
+      }
+    },
+    {
+      "slug": "materials",
+      "parent": "power-energy",
+      "order": 5,
+      "name": {
+        "ko": "소재",
+        "en": "Materials",
+        "ja": "素材"
+      },
+      "desc": {
+        "ko": "방향성 전기강판 등 위 단계의 원가를 결정",
+        "en": "Grain-oriented electrical steel and the like, setting the cost of every stage above",
+        "ja": "方向性電磁鋼板など、上の段階の原価を決める"
       }
     }
   ],
@@ -234,6 +314,277 @@
         "ja": "現代自動車"
       },
       "url": "https://www.hyundai.com",
+      "posts": []
+    },
+    {
+      "slug": "ge-vernova",
+      "industry": "generation-equipment",
+      "order": 1,
+      "status": "관심",
+      "ticker": "GEV",
+      "name": {
+        "ko": "GE 버노바",
+        "en": "GE Vernova",
+        "ja": "GEベルノバ"
+      },
+      "tagline": {
+        "ko": "가스터빈 3사 과점의 한 축, 변압기부터 그리드 자동화까지",
+        "en": "One of the three gas-turbine incumbents, from transformers to grid automation",
+        "ja": "ガスタービン3社寡占の一角、変圧器からグリッド自動化まで"
+      },
+      "url": "https://www.gevernova.com",
+      "posts": []
+    },
+    {
+      "slug": "siemens-energy",
+      "industry": "generation-equipment",
+      "order": 2,
+      "status": "관심",
+      "ticker": "ENR",
+      "name": {
+        "ko": "지멘스 에너지",
+        "en": "Siemens Energy",
+        "ja": "シーメンス・エナジー"
+      },
+      "tagline": {
+        "ko": "가스터빈과 그리드 기술을 함께 가진 독일 회사",
+        "en": "The German company holding both gas turbines and grid technology",
+        "ja": "ガスタービンとグリッド技術を併せ持つドイツ企業"
+      },
+      "url": "https://www.siemens-energy.com",
+      "posts": []
+    },
+    {
+      "slug": "doosan-enerbility",
+      "industry": "generation-equipment",
+      "order": 3,
+      "status": "관심",
+      "ticker": "034020",
+      "name": {
+        "ko": "두산에너빌리티",
+        "en": "Doosan Enerbility",
+        "ja": "斗山エナビリティ"
+      },
+      "tagline": {
+        "ko": "가스터빈 4번째 공급자이자 원전 주기기 제작사",
+        "en": "The fourth gas-turbine supplier and a maker of nuclear main components",
+        "ja": "ガスタービン第4のサプライヤーであり原発主機器メーカー"
+      },
+      "url": "https://www.doosanenerbility.com",
+      "posts": []
+    },
+    {
+      "slug": "bhi",
+      "industry": "generation-equipment",
+      "order": 4,
+      "status": "관심",
+      "ticker": "083650",
+      "name": {
+        "ko": "비에이치아이",
+        "en": "BHI",
+        "ja": "BHI"
+      },
+      "tagline": {
+        "ko": "HRSG 세계 1위, 가스와 원전 보조기기에 함께 걸쳐 있는 회사",
+        "en": "Number one in HRSGs worldwide, spanning gas and nuclear balance-of-plant",
+        "ja": "HRSG世界1位、ガスと原発の補助機器にまたがる会社"
+      },
+      "url": "https://www.bhi.co.kr",
+      "posts": []
+    },
+    {
+      "slug": "kepco-ent",
+      "industry": "generation-equipment",
+      "order": 5,
+      "status": "관심",
+      "ticker": "052690",
+      "name": {
+        "ko": "한전기술",
+        "en": "KEPCO E&C",
+        "ja": "韓電技術"
+      },
+      "tagline": {
+        "ko": "K-원전 노형 설계의 핵심, 정책 민감도가 가장 높은 공기업",
+        "en": "At the core of Korean reactor design, the state company most sensitive to policy",
+        "ja": "韓国型原発の設計の中核、政策感応度が最も高い公企業"
+      },
+      "url": "https://www.kepco-enc.com",
+      "posts": []
+    },
+    {
+      "slug": "constellation",
+      "industry": "power-producers",
+      "order": 1,
+      "status": "관심",
+      "ticker": "CEG",
+      "name": {
+        "ko": "컨스텔레이션 에너지",
+        "en": "Constellation Energy",
+        "ja": "コンステレーション・エナジー"
+      },
+      "tagline": {
+        "ko": "미국 최대 원전 사업자, 빅테크와의 20년 PPA",
+        "en": "The largest nuclear operator in the US, with 20-year PPAs with big tech",
+        "ja": "米国最大の原発事業者、ビッグテックとの20年PPA"
+      },
+      "url": "https://www.constellationenergy.com",
+      "posts": [],
+      "reason": {
+        "ko": "설비 병목의 수혜가 아니라, 병목 때문에 이미 돌아가는 발전소의 가치가 올라가는 쪽. 수주잔고 성장주가 아닌 장기 계약 기반의 복리형 종목.",
+        "en": "Not a beneficiary of the equipment bottleneck, but of what the bottleneck does to plants already running: their value rises. Not a backlog-driven growth stock but a compounder built on long-term contracts.",
+        "ja": "設備ボトルネックの恩恵ではなく、ボトルネックのせいで既に稼働している発電所の価値が上がる側。受注残の成長株ではなく、長期契約に基づく複利型の銘柄。"
+      }
+    },
+    {
+      "slug": "vistra",
+      "industry": "power-producers",
+      "order": 2,
+      "status": "관심",
+      "ticker": "VST",
+      "name": {
+        "ko": "비스트라",
+        "en": "Vistra",
+        "ja": "ビストラ"
+      },
+      "tagline": {
+        "ko": "가스 비중과 레버리지가 더 큰 미국 발전사",
+        "en": "A US power producer with more gas and more leverage",
+        "ja": "ガス比率とレバレッジがより大きい米国の発電会社"
+      },
+      "url": "https://www.vistracorp.com",
+      "posts": []
+    },
+    {
+      "slug": "hd-hyundai-electric",
+      "industry": "transmission",
+      "order": 1,
+      "status": "관심",
+      "ticker": "267260",
+      "name": {
+        "ko": "HD현대일렉트릭",
+        "en": "HD Hyundai Electric",
+        "ja": "HD現代エレクトリック"
+      },
+      "tagline": {
+        "ko": "초고압 변압기 대장주, 미국 앨라배마 현지 공장",
+        "en": "The leading ultra-high-voltage transformer name, with a plant in Alabama",
+        "ja": "超高圧変圧器の主力銘柄、米アラバマに現地工場"
+      },
+      "url": "https://www.hd-hyundaielectric.com",
+      "posts": []
+    },
+    {
+      "slug": "hyosung-heavy",
+      "industry": "transmission",
+      "order": 2,
+      "status": "관심",
+      "ticker": "298040",
+      "name": {
+        "ko": "효성중공업",
+        "en": "Hyosung Heavy Industries",
+        "ja": "暁星重工業"
+      },
+      "tagline": {
+        "ko": "초고압 변압기부터 ESS, HVDC까지 송전과 배전에 걸쳐 있음",
+        "en": "From ultra-high-voltage transformers to ESS and HVDC, spanning transmission and distribution",
+        "ja": "超高圧変圧器からESS、HVDCまで送電と配電にまたがる"
+      },
+      "url": "https://www.hyosungheavyindustries.com",
+      "posts": []
+    },
+    {
+      "slug": "sanil-electric",
+      "industry": "transmission",
+      "order": 3,
+      "status": "관심",
+      "ticker": "062040",
+      "name": {
+        "ko": "산일전기",
+        "en": "Sanil Electric",
+        "ja": "山一電気"
+      },
+      "tagline": {
+        "ko": "미국 데이터센터향 특수 변압기",
+        "en": "Specialty transformers for US data centers",
+        "ja": "米国データセンター向け特殊変圧器"
+      },
+      "url": "https://www.sanil.com",
+      "posts": []
+    },
+    {
+      "slug": "hitachi",
+      "industry": "transmission",
+      "order": 4,
+      "status": "관심",
+      "ticker": "6501",
+      "name": {
+        "ko": "히타치",
+        "en": "Hitachi",
+        "ja": "日立製作所"
+      },
+      "tagline": {
+        "ko": "구 ABB 파워그리드를 품은 Hitachi Energy, 변전 분야 세계 1~2위",
+        "en": "Hitachi Energy, home of the former ABB Power Grids, first or second worldwide in substations",
+        "ja": "旧ABBパワーグリッドを抱えるHitachi Energy、変電分野で世界1~2位"
+      },
+      "url": "https://www.hitachienergy.com",
+      "posts": []
+    },
+    {
+      "slug": "ls-electric",
+      "industry": "distribution",
+      "order": 1,
+      "status": "관심",
+      "ticker": "010120",
+      "name": {
+        "ko": "LS ELECTRIC",
+        "en": "LS ELECTRIC",
+        "ja": "LS ELECTRIC"
+      },
+      "tagline": {
+        "ko": "배전반과 차단기 중심, 데이터센터 대응 제품군",
+        "en": "Centered on switchboards and breakers, with a data center line-up",
+        "ja": "配電盤と遮断器が中心、データセンター対応製品群"
+      },
+      "url": "https://www.ls-electric.com",
+      "posts": []
+    },
+    {
+      "slug": "eaton",
+      "industry": "distribution",
+      "order": 2,
+      "status": "관심",
+      "ticker": "ETN",
+      "name": {
+        "ko": "이턴",
+        "en": "Eaton",
+        "ja": "イートン"
+      },
+      "tagline": {
+        "ko": "그리드와 설비 사이의 개폐장치와 데이터센터 전력 스택",
+        "en": "Switchgear between the grid and the load, and the data center power stack",
+        "ja": "グリッドと設備の間の開閉装置とデータセンター電力スタック"
+      },
+      "url": "https://www.eaton.com",
+      "posts": []
+    },
+    {
+      "slug": "cleveland-cliffs",
+      "industry": "materials",
+      "order": 1,
+      "status": "관심",
+      "ticker": "CLF",
+      "name": {
+        "ko": "클리브랜드-클리프스",
+        "en": "Cleveland-Cliffs",
+        "ja": "クリーブランド・クリフス"
+      },
+      "tagline": {
+        "ko": "미국 유일의 방향성 전기강판(GOES) 생산사",
+        "en": "The only US producer of grain-oriented electrical steel",
+        "ja": "米国唯一の方向性電磁鋼板(GOES)メーカー"
+      },
+      "url": "https://www.clevelandcliffs.com",
       "posts": []
     }
   ]
