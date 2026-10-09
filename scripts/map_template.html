@@ -7,7 +7,7 @@
   .mindmap { display: block; font-family: var(--body); font-size: 13px; font-weight: 300; overflow: visible; transition: height .28s ease; }
   .mindmap .edge { fill: none; stroke: var(--line); stroke-width: 1; }
   .mindmap .node { fill: var(--fg); dominant-baseline: middle; }
-  .mindmap .root { font-family: var(--display); font-size: 17px; letter-spacing: .04em; }
+  .mindmap .root { font-family: var(--body); font-weight: 500; font-size: 15px; letter-spacing: .02em; }
   .mindmap .industry { fill: var(--muted); font-weight: 400; cursor: pointer; }
   .mindmap .industry:hover { fill: var(--fg); }
   .mindmap .company { fill: var(--fg); font-weight: 400; }
@@ -21,7 +21,7 @@
   .mindmap .desc { fill: var(--muted); font-size: 11px; letter-spacing: .02em; }
   .mindmap g { transition: opacity .28s ease; }
   .mindmap .enter { opacity: 0; }
-  .hint { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; color: var(--muted); margin: 28px 0 0; }
+  .hint { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; color: var(--muted); margin: 78px 0 0; }
   .hint a { border: 0; cursor: pointer; }
   .hint a:hover { color: var(--fg); }
   @media (prefers-reduced-motion: reduce) { .mindmap, .mindmap g { transition: none; } }
@@ -78,7 +78,7 @@
   function layout() {
     const vis = []; let row = 0;
     const place = n => {
-      n.x = X0 + n.depth * COL; n.w = textW(n.l) * (n.k === 'root' ? 1.3 : 1);
+      n.x = X0 + n.depth * COL; n.w = textW(n.l) * (n.k === 'root' ? 1.15 : 1);
       const shown = n.open ? (n.c || []) : [];
       if (shown.length) { shown.forEach(place); n.y = (shown[0].y + shown[shown.length - 1].y) / 2; }
       else { n.y = ROW * (row + .5); row++; }
