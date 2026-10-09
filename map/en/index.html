@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="robots" content="noindex">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>[[title]] · SERENO</title>
+<title>Map · SERENO</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap">
 <style>
@@ -182,15 +182,27 @@
   .post .lede { font-size: 16px; color: var(--muted); max-width: 48ch; margin: 0 0 44px; }
   .map-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; margin-inline: -20px; padding-inline: 20px; }
   .map-scroll::-webkit-scrollbar { display: none; }
-  .mindmap { display: block; font-family: var(--body); font-size: 13px; font-weight: 300; overflow: visible; }
+  .mindmap { display: block; font-family: var(--body); font-size: 13px; font-weight: 300; overflow: visible; transition: height .28s ease; }
   .mindmap .edge { fill: none; stroke: var(--line); stroke-width: 1; }
   .mindmap .node { fill: var(--fg); dominant-baseline: middle; }
   .mindmap .root { font-family: var(--display); font-size: 17px; letter-spacing: .04em; }
-  .mindmap .industry { fill: var(--muted); font-weight: 400; }
+  .mindmap .industry { fill: var(--muted); font-weight: 400; cursor: pointer; }
+  .mindmap .industry:hover { fill: var(--fg); }
   .mindmap .company { fill: var(--fg); font-weight: 400; }
+  .mindmap .ticker { fill: var(--muted); font-size: 10px; letter-spacing: .04em; }
+  .mindmap .dot { fill: var(--bg); stroke: var(--muted); stroke-width: 1; cursor: pointer; }
+  .mindmap .dot.closed { fill: var(--muted); }
   .mindmap a { border: 0; }
   .mindmap a:hover .company, .mindmap a:focus-visible .company { fill: var(--accent); }
-  .mindmap a:focus-visible { outline: none; }
+  .mindmap a:focus, .mindmap g:focus { outline: none; }
+  .mindmap g[tabindex]:focus-visible .industry { fill: var(--accent); }
+  .mindmap .desc { fill: var(--muted); font-size: 11px; letter-spacing: .02em; }
+  .mindmap g { transition: opacity .28s ease; }
+  .mindmap .enter { opacity: 0; }
+  .hint { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; color: var(--muted); margin: 28px 0 0; }
+  .hint a { border: 0; cursor: pointer; }
+  .hint a:hover { color: var(--fg); }
+  @media (prefers-reduced-motion: reduce) { .mindmap, .mindmap g { transition: none; } }
 </style>
 
 <div class="wrap">
@@ -201,8 +213,8 @@
   </header>
   <section class="post" style="padding-bottom:0">
     <h2>Map</h2>
-    <p class="lede">The industries I am looking into. A company at the end of a branch leads to what I have written about it.</p>
-    <div class="map-scroll">
+    <p class="lede">The industries I am looking into. A branch opens when pressed; a company at its end leads to what I have written about it.</p>
+    <div class="map-scroll" id="map-scroll">
 <svg class="mindmap" viewBox="0 0 672 630" width="672" height="630" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Interests">
 <path d="M377.0 15.0 C416.5 15.0 416.5 15.0 456.0 15.0" class="edge"/>
 <path d="M369.7 45.0 C412.8 45.0 412.8 45.0 456.0 45.0" class="edge"/>
@@ -273,6 +285,7 @@
 <text x="16.0" y="330.0" class="node root">Interests</text>
 </svg>
     </div>
+    <p class="hint" id="hint" hidden><a id="expand-all">Expand all</a> <span class="sep" style="opacity:.5">/</span> <a id="collapse-all">Collapse all</a></p>
   </section>
   <footer>
     <span>© 2026 Sereno</span>
@@ -281,6 +294,123 @@
 </div>
 <script>
   document.querySelectorAll('.lang a').forEach(a => a.addEventListener('click', () => { try { localStorage.setItem('sereno-lang', a.textContent.toLowerCase()); } catch (e) {} }));
+</script>
+<script>
+(() => {
+  // Interactive mind map: the static SVG above is the no-JS fallback; here it is replaced with a
+  // collapsible tree. Top-level branches start closed; clicking an industry opens or closes it,
+  // clicking a company goes to its page. Positions tween between layouts.
+  const TREE = {"l":"Interests","k":"root","s":"","c":[{"l":"Semiconductors","k":"industry","s":"semiconductors","d":"Foundry, packaging, components","c":[{"l":"Foundry","k":"industry","s":"foundry","c":[{"l":"TSMC","k":"company","s":"tsmc","t":"TSM"}]},{"l":"Memory","k":"industry","s":"memory","c":[{"l":"SK hynix","k":"company","s":"sk-hynix","t":"000660"}]},{"l":"Components & Packaging","k":"industry","s":"components-packaging","c":[{"l":"Samsung Electro-Mechanics","k":"company","s":"samsung-electro-mechanics","t":"009150"}]}]},{"l":"Software & AI","k":"industry","s":"software-ai","d":"Data platforms and sovereign AI","c":[{"l":"Palantir Technologies","k":"company","s":"palantir","t":"PLTR"},{"l":"Alphabet","k":"company","s":"alphabet","t":"GOOGL"}]},{"l":"Holding Companies","k":"industry","s":"holding-companies","d":"Read through the NAV discount","c":[{"l":"SK Square","k":"company","s":"sk-square","t":"402340"}]},{"l":"Power & Energy","k":"industry","s":"power-energy","d":"In the order electricity flows, from generation to materials","c":[{"l":"Generation Equipment","k":"industry","s":"generation-equipment","d":"Gas turbines and nuclear main components. A three-company oligopoly and a delivery bottleneck","c":[{"l":"GE Vernova","k":"company","s":"ge-vernova","t":"GEV"},{"l":"Siemens Energy","k":"company","s":"siemens-energy","t":"ENR"},{"l":"Doosan Enerbility","k":"company","s":"doosan-enerbility","t":"034020"},{"l":"BHI","k":"company","s":"bhi","t":"083650"},{"l":"KEPCO E&C","k":"company","s":"kepco-ent","t":"052690"}]},{"l":"Power Producers","k":"industry","s":"power-producers","d":"Companies that own plants and sell power. Long-term PPAs","c":[{"l":"Constellation Energy","k":"company","s":"constellation","t":"CEG"},{"l":"Vistra","k":"company","s":"vistra","t":"VST"}]},{"l":"Transmission & Substations","k":"industry","s":"transmission","d":"Ultra-high-voltage transformers, breakers, HVDC","c":[{"l":"HD Hyundai Electric","k":"company","s":"hd-hyundai-electric","t":"267260"},{"l":"Hyosung Heavy Industries","k":"company","s":"hyosung-heavy","t":"298040"},{"l":"Sanil Electric","k":"company","s":"sanil-electric","t":"062040"},{"l":"Hitachi","k":"company","s":"hitachi","t":"6501"}]},{"l":"Distribution & Data Center Power","k":"industry","s":"distribution","d":"Switchboards, switchgear, the data center power stack","c":[{"l":"LS ELECTRIC","k":"company","s":"ls-electric","t":"010120"},{"l":"Eaton","k":"company","s":"eaton","t":"ETN"}]},{"l":"Materials","k":"industry","s":"materials","d":"Grain-oriented electrical steel and the like, setting the cost of every stage above","c":[{"l":"Cleveland-Cliffs","k":"company","s":"cleveland-cliffs","t":"CLF"}]}]},{"l":"Digital Assets","k":"industry","s":"digital-assets","d":"Bitcoin and the macro variables around it"}]};
+  const ROW = 30, COL = 150, X0 = 16, PAD = 10, FS = 13, DUR = 280;
+  const NS = 'http://www.w3.org/2000/svg';
+  const scroll = document.getElementById('map-scroll');
+  const old = scroll.querySelector('svg'); if (!old) return;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // state
+  let id = 0;
+  const walk = (n, depth, parent) => { n.id = id++; n.depth = depth; n.parent = parent; n.open = depth === 0; (n.c || []).forEach(ch => walk(ch, depth + 1, n)); };
+  walk(TREE, 0, null);
+
+  const svg = document.createElementNS(NS, 'svg');
+  svg.setAttribute('class', 'mindmap'); svg.setAttribute('xmlns', NS); svg.setAttribute('role', 'tree');
+  const gEdges = document.createElementNS(NS, 'g'); const gNodes = document.createElementNS(NS, 'g');
+  svg.append(gEdges, gNodes); old.replaceWith(svg);
+  document.getElementById('hint').hidden = false;
+
+  const textW = s => [...s].reduce((w, ch) => w + (ch.charCodeAt(0) > 0x2e7f ? FS : FS * .56), 0);
+  const els = new Map(); // node id -> {g, path}
+
+  function layout() {
+    const vis = []; let row = 0;
+    const place = n => {
+      n.x = X0 + n.depth * COL; n.w = textW(n.l) * (n.k === 'root' ? 1.3 : 1);
+      const shown = n.open ? (n.c || []) : [];
+      if (shown.length) { shown.forEach(place); n.y = (shown[0].y + shown[shown.length - 1].y) / 2; }
+      else { n.y = ROW * (row + .5); row++; }
+      vis.push(n);
+    };
+    place(TREE);
+    return { vis, W: Math.max(...vis.map(n => n.x + n.w + (n.c ? 16 : 0))) + 24, H: ROW * row };
+  }
+
+  function edge(p, c) {
+    const x1 = p.x + p.w + PAD + (p.c ? 10 : 0), y1 = p.y, x2 = c.x - PAD, y2 = c.y, mx = (x1 + x2) / 2;
+    return `M${x1.toFixed(1)} ${y1.toFixed(1)} C${mx.toFixed(1)} ${y1.toFixed(1)} ${mx.toFixed(1)} ${y2.toFixed(1)} ${x2.toFixed(1)} ${y2.toFixed(1)}`;
+  }
+
+  function make(n) {
+    const g = document.createElementNS(NS, 'g');
+    const text = document.createElementNS(NS, 'text');
+    text.setAttribute('class', 'node ' + n.k); text.textContent = n.l;
+    if (n.k === 'company') {
+      const a = document.createElementNS(NS, 'a'); a.setAttribute('href', n.s + '.html'); a.append(text); g.append(a);
+      if (n.t) { const tk = document.createElementNS(NS, 'text'); tk.setAttribute('class', 'node ticker'); tk.setAttribute('x', (n.w + 8).toFixed(1)); tk.textContent = n.t; g.append(tk); }
+    } else {
+      g.append(text);
+      if (n.c && n.k !== 'root') {
+        const dot = document.createElementNS(NS, 'circle');
+        dot.setAttribute('class', 'dot'); dot.setAttribute('r', 3); dot.setAttribute('cx', (n.w + PAD + 4).toFixed(1)); dot.setAttribute('cy', 0);
+        g.append(dot);
+        g.setAttribute('tabindex', '0'); g.setAttribute('role', 'treeitem');
+        const toggle = () => { n.open = !n.open; render(n); };
+        g.addEventListener('click', toggle);
+        g.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
+      }
+    }
+    let path = null;
+    if (n.parent) { path = document.createElementNS(NS, 'path'); path.setAttribute('class', 'edge'); gEdges.append(path); }
+    gNodes.append(g);
+    return { g, path };
+  }
+
+  let anim = null;
+  function render(focus) {
+    const { vis, W, H } = layout();
+    const visIds = new Set(vis.map(n => n.id));
+    // remove hidden nodes
+    for (const [nid, el] of els) if (!visIds.has(nid)) { el.g.remove(); el.path && el.path.remove(); els.delete(nid); }
+    // create new ones at their parent's position so they grow out of it
+    const entering = [];
+    for (const n of vis) if (!els.has(n.id)) {
+      const el = make(n); els.set(n.id, el);
+      n.fx = n.parent ? n.parent.px ?? n.x : n.x; n.fy = n.parent ? n.parent.py ?? n.y : n.y;
+      el.g.classList.add('enter'); entering.push(el.g);
+    }
+    for (const n of vis) {
+      if (n.c) { const d = els.get(n.id).g.querySelector('.dot'); d && d.classList.toggle('closed', !n.open); }
+      els.get(n.id).g.setAttribute('aria-expanded', n.c ? String(n.open) : null);
+    }
+    svg.setAttribute('viewBox', `0 0 ${W.toFixed(0)} ${H}`); svg.setAttribute('width', W.toFixed(0)); svg.setAttribute('height', H);
+    const from = vis.map(n => [n.fx ?? n.px ?? n.x, n.fy ?? n.py ?? n.y]);
+    const t0 = performance.now();
+    const step = now => {
+      const k = reduce ? 1 : Math.min(1, (now - t0) / DUR), e = 1 - Math.pow(1 - k, 3);
+      vis.forEach((n, i) => {
+        n.px = from[i][0] + (n.x - from[i][0]) * e; n.py = from[i][1] + (n.y - from[i][1]) * e;
+        els.get(n.id).g.setAttribute('transform', `translate(${n.px.toFixed(1)} ${n.py.toFixed(1)})`);
+      });
+      vis.forEach(n => { const el = els.get(n.id); if (el.path) el.path.setAttribute('d', edge({ ...n.parent, x: n.parent.px, y: n.parent.py }, { x: n.px, y: n.py })); });
+      if (k < 1) anim = requestAnimationFrame(step); else { anim = null; vis.forEach(n => { delete n.fx; delete n.fy; }); }
+    };
+    if (anim) cancelAnimationFrame(anim);
+    requestAnimationFrame(() => { entering.forEach(g => g.classList.remove('enter')); anim = requestAnimationFrame(step); });
+    // keep an opened branch in view on narrow screens
+    if (focus && focus.open && focus.c) requestAnimationFrame(() => {
+      const right = focus.x + COL + 120;
+      if (right > scroll.scrollLeft + scroll.clientWidth) scroll.scrollTo({ left: right - scroll.clientWidth + 20, behavior: reduce ? 'auto' : 'smooth' });
+    });
+  }
+
+  const setAll = (n, v) => { if (n.c) { if (n.k !== 'root') n.open = v; n.c.forEach(ch => setAll(ch, v)); } };
+  document.getElementById('expand-all').addEventListener('click', () => { setAll(TREE, true); render(); });
+  document.getElementById('collapse-all').addEventListener('click', () => { setAll(TREE, false); render(); });
+
+  // deep link: #<industry slug> opens that branch
+  const want = location.hash.slice(1);
+  if (want) { const find = n => (n.s === want && n.k === 'industry') ? n : (n.c || []).map(find).find(Boolean); let m = find(TREE); while (m) { m.open = true; m = m.parent; } }
+  render();
+})();
 </script>
 </body>
 </html>

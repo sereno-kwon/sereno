@@ -27,11 +27,11 @@ mtpl = (root / 'scripts' / 'map_template.html').read_text(encoding='utf-8')
 
 LANGS = ['ko', 'en', 'ja']
 UI = {
-    'ko': {'map': 'Map', 'root': '관심 산업', 'lede': '지금 들여다보고 있는 산업들입니다. 가지 끝의 회사를 누르면 그 회사에 대해 쓴 글로 이어집니다.',
+    'ko': {'map': 'Map', 'expand_all': '모두 펼치기', 'collapse_all': '모두 접기', 'root': '관심 산업', 'lede': '지금 들여다보고 있는 산업들입니다. 가지를 누르면 펼쳐지고, 끝의 회사를 누르면 그 회사에 대해 쓴 글로 이어집니다.',
            'writing': 'Writing', 'no_posts': '아직 이 회사에 대해 쓴 글이 없습니다.', 'site': '홈페이지', 'ticker': '티커', 'back': '← 마인드맵', 'ko_only': '(KO)', 'outline': '목록으로 보기'},
-    'en': {'map': 'Map', 'root': 'Interests', 'lede': 'The industries I am looking into. A company at the end of a branch leads to what I have written about it.',
+    'en': {'map': 'Map', 'expand_all': 'Expand all', 'collapse_all': 'Collapse all', 'root': 'Interests', 'lede': 'The industries I am looking into. A branch opens when pressed; a company at its end leads to what I have written about it.',
            'writing': 'Writing', 'no_posts': 'Nothing written about this company yet.', 'site': 'Website', 'ticker': 'Ticker', 'back': '← Map', 'ko_only': '(KO)', 'outline': 'As a list'},
-    'ja': {'map': 'Map', 'root': '関心領域', 'lede': 'いま見ている産業です。枝の先の会社を押すと、その会社について書いた文章につながります。',
+    'ja': {'map': 'Map', 'expand_all': 'すべて開く', 'collapse_all': 'すべて閉じる', 'root': '関心領域', 'lede': 'いま見ている産業です。枝を押すと開き、先の会社を押すとその会社について書いた文章につながります。',
            'writing': 'Writing', 'no_posts': 'この会社についてはまだ書いていません。', 'site': 'ウェブサイト', 'ticker': 'ティッカー', 'back': '← マップ', 'ko_only': '(KO)', 'outline': 'リストで見る'},
 }
 HIDDEN_STATUS = {'졸업'}
@@ -100,6 +100,14 @@ def svg(lang, prefix):
     parts.append('</svg>')
     return '\n'.join(parts)
 
+def tree_json(node, lang):
+    """compact tree for the client: {l: label, k: kind, s: slug, d: desc?, c: [children]}"""
+    o = {'l': UI[lang]['root'] if node['kind'] == 'root' else t(node['name'], lang), 'k': node['kind'], 's': node['slug']}
+    if node['kind'] == 'industry' and t(node.get('desc'), lang): o['d'] = t(node['desc'], lang)
+    if node['kind'] == 'company' and node.get('ticker'): o['t'] = node['ticker']
+    if node['children']: o['c'] = [tree_json(ch, lang) for ch in node['children']]
+    return o
+
 def outline(node, lang, prefix):
     items = []
     for ch in node['children']:
@@ -129,7 +137,7 @@ for lang in LANGS:
     (d / 'index.html').write_text(fill(mtpl, {
         'lang': lang, 'home': prefix + '../index.html', 'lang_switch': switcher(lang, 'index.html'),
         'map_label': UI[lang]['map'], 'writing_label': UI[lang]['writing'], 'lede': UI[lang]['lede'],
-        'svg': svg(lang, ''),
+        'title': UI[lang]['map'], 'svg': svg(lang, ''), 'expand_all': UI[lang]['expand_all'], 'collapse_all': UI[lang]['collapse_all'], 'tree_json': json.dumps(tree_json(tree, lang), ensure_ascii=False, separators=(',', ':')),
     }), encoding='utf-8')
     for c in comps.values():
         crumbs = ' <span class="sep">›</span> '.join(html.escape(t(p['name'], lang)) for p in path_of(c))
