@@ -117,7 +117,7 @@ def switcher(lang, page):
         f'<a href="{("../" if lang != "ko" else "") + ("" if L == "ko" else L + "/")}{page}" class="{"active" if L == lang else ""}">{L.upper()}</a>' for L in LANGS)
 
 def fill(tpl, fields):
-    page = head + tpl
+    page = head.replace('<meta charset="utf-8">', '<meta charset="utf-8">\n<meta name="robots" content="noindex">') + tpl
     for k, v in fields.items(): page = page.replace('[[' + k + ']]', v)
     return page
 
