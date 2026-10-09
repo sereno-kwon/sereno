@@ -106,16 +106,6 @@
       }
     },
     {
-      "slug": "cycling-mobility",
-      "parent": null,
-      "order": 6,
-      "name": {
-        "ko": "자전거·모빌리티",
-        "en": "Cycling & Mobility",
-        "ja": "自転車・モビリティ"
-      }
-    },
-    {
       "slug": "generation-equipment",
       "parent": "power-energy",
       "order": 1,
@@ -249,32 +239,6 @@
       "posts": []
     },
     {
-      "slug": "moulton",
-      "industry": "cycling-mobility",
-      "order": 1,
-      "status": "관심",
-      "ticker": "",
-      "name": {
-        "ko": "몰튼 바이시클",
-        "en": "Moulton Bicycle Company",
-        "ja": "モールトン"
-      },
-      "tagline": {
-        "ko": "1962년부터 이어지는 영국의 분리형 소경 자전거",
-        "en": "The British separable small-wheel bicycle, in continuous production since 1962",
-        "ja": "1962年から続く英国の分割式小径自転車"
-      },
-      "reason": {
-        "ko": "루비컴퍼니가 한국 공식 수입사로 들여오는 브랜드. 검증된 설계가 시간 속에서 어떻게 유지되는지를 가장 가까이에서 보는 회사.",
-        "en": "The brand Rubi Company brings to Korea as its official importer. The company where I watch, from the closest distance, how a proven design holds up over time.",
-        "ja": "ルビカンパニーが韓国公式輸入元として扱うブランド。検証された設計が時間の中でどう維持されるかを最も近くで見ている会社。"
-      },
-      "url": "https://www.moultonbicycles.co.uk",
-      "posts": [
-        "solitude"
-      ]
-    },
-    {
       "slug": "alphabet",
       "industry": "software-ai",
       "order": 2,
@@ -300,20 +264,6 @@
         "ja": "SKハイニックス"
       },
       "url": "https://www.skhynix.com",
-      "posts": []
-    },
-    {
-      "slug": "hyundai-motor",
-      "industry": "cycling-mobility",
-      "order": 2,
-      "status": "관심",
-      "ticker": "005380",
-      "name": {
-        "ko": "현대차",
-        "en": "Hyundai Motor",
-        "ja": "現代自動車"
-      },
-      "url": "https://www.hyundai.com",
       "posts": []
     },
     {
