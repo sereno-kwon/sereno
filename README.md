@@ -22,3 +22,16 @@
 - 영어 / 일본어: `writing/src/en/<슬러그>.md`, `writing/src/ja/<슬러그>.md`. 앞머리 `translated: auto`는 동기화 때 자동 번역된 것, `manual`은 노션에서 직접 쓴 번역입니다.
 - 직접 번역을 올리려면 노션 Writing에 페이지를 만들고 "언어"를 EN 또는 JA로, "원문 슬러그"에 원문 글의 슬러그를 적고 상태를 발행으로 바꿉니다. 자동 번역을 대체합니다.
 - 생성 결과: `writing/<슬러그>.html`, `writing/en/…`, `writing/ja/…`, 언어별 목록 `writing/index.html`, `writing/en/index.html`, `writing/ja/index.html`
+
+## Map
+
+관심 산업을 마인드맵으로 그리고, 가지 끝의 회사를 Writing 글과 잇는 섹션입니다. 데이터는 노션의 세 데이터베이스에서 옵니다.
+- **Industries**: 산업 트리. "상위 산업"을 비우면 최상위 가지, 채우면 그 아래 가지가 됩니다. "표시" 체크를 풀면 홈페이지에 나오지 않습니다.
+- **Companies**: 회사. "산업" 릴레이션으로 어느 가지 끝에 매달릴지 정합니다. 상태가 "졸업"이면 홈페이지에 나오지 않습니다.
+- **Writing**의 "관련 회사" 릴레이션: 글에 회사를 걸어두면 그 회사 페이지에 글이 모입니다.
+
+동기화 예약 작업이 세 DB를 읽어 `map/data.json`을 만들고(산업 `industries[]`, 회사 `companies[]`, 회사의 `posts[]`에 글 슬러그), `scripts/build_map.py`가 다음을 생성합니다.
+- `map/index.html`, `map/en/index.html`, `map/ja/index.html`: 마인드맵(SVG)과 목록
+- `map/<슬러그>.html`, `map/en/…`, `map/ja/…`: 회사 페이지 (한 줄 소개, 관심 이유, 티커, 홈페이지, 관련 글)
+
+페이지 스타일은 `scripts/post_template.html`의 머리 부분을 그대로 가져다 쓰므로 Writing과 같이 움직입니다. 이름·설명·소개·이유의 EN/JA는 노션에 적은 값을 쓰고, 비우면 동기화 때 자동 번역합니다. `map/data.json` 외의 `map/` 파일은 자동 생성됩니다.

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Writing · SERENO</title>
+<title>몰튼 바이시클 · SERENO</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap">
 <style>
@@ -179,15 +179,12 @@
 <style>
   .post { padding-block: 56px 72px; }
   .post .eyebrow { margin-bottom: 14px; }
+  .post .eyebrow .sep { opacity: .5; padding-inline: 2px; }
   .post h1 { font-family: var(--body); font-weight: 400; font-size: 30px; line-height: 1.35; letter-spacing: -.01em; margin: 0 0 10px; }
-  .post .summary { color: var(--muted); margin: 0 0 40px; }
+  .post .summary { color: var(--muted); margin: 0 0 32px; }
   .post .body p { max-width: 62ch; }
-  .post .body h2 { font-family: var(--body); font-size: 17px; font-weight: 500; text-transform: none; letter-spacing: 0; color: var(--fg); margin: 40px 0 12px; }
-  .post .body h2::after { display: none; }
-  .post .body img { display: block; max-width: 100%; height: auto; margin: 28px 0; }
-  .post .body blockquote { margin: 24px 0; padding-left: 16px; border-left: 1px solid var(--line); color: var(--muted); }
-  .post .body ul, .post .body ol { padding-left: 1.2em; }
-  .post .body a { border-bottom: 1px solid var(--line); }
+  .contact { margin-top: 28px; }
+  .post .body h2 { margin-top: 56px; }
   .pager { display: flex; justify-content: space-between; gap: 16px; border-top: 1px solid var(--line); padding-top: 20px; font-size: 14px; }
   .pager a { border: 0; color: var(--muted); } .pager a:hover { color: var(--fg); }
 </style>
@@ -195,28 +192,30 @@
 <div class="wrap">
   <header>
     <a class="mark" href="../index.html">SERENO</a>
-    <nav><a href="../index.html#writing">Writing</a></nav>
-    <div class="lang" role="group" aria-label="Language"><a href="index.html" class="active">KO</a><span class="sep">/</span><a href="en/index.html" class="">EN</a><span class="sep">/</span><a href="ja/index.html" class="">JA</a></div>
+    <nav><a href="index.html" class="active">Map</a><a href="../index.html#writing">Writing</a></nav>
+    <div class="lang" role="group" aria-label="Language"><a href="moulton.html" class="active">KO</a><span class="sep">/</span><a href="en/moulton.html" class="">EN</a><span class="sep">/</span><a href="ja/moulton.html" class="">JA</a></div>
   </header>
-  <section class="post" style="padding-bottom:0">
-    <h2>Writing</h2>
-    <ul class="posts">
-      <li><a href="ichiro.html">일상을 채우는 스즈키 이치로의 명언들</a><time datetime="2026-10-04">2026.10</time></li>
-      <li><a href="words.html">구체어의 식재료</a><time datetime="2026-10-02">2026.10</time></li>
-      <li><a href="solitude.html">안장 위에서의 고립감</a><time datetime="2026-10-01">2026.10</time></li>
-      <li><a href="rest-well.html">잘 쉬는 것에 대하여</a><time datetime="2026-09-30">2026.09</time></li>
-      <li><a href="routine.html">패턴과 루틴</a><time datetime="2026-09-28">2026.09</time></li>
-      <li><a href="light-like-salt.html">소금처럼 좋은 빛</a><time datetime="2026-08-05">2026.08</time></li>
-      <li><a href="north-europe.html">북유럽 여행의 편린들</a><time datetime="2026-05-01">2026.05</time></li>
-    </ul>
-  </section>
+  <article class="post">
+    <p class="eyebrow">자전거·모빌리티</p>
+    <h1>몰튼 바이시클</h1>
+    <p class="summary">1962년부터 이어지는 영국의 분리형 소경 자전거</p>
+    <div class="body">
+<p>루비컴퍼니가 한국 공식 수입사로 들여오는 브랜드. 검증된 설계가 시간 속에서 어떻게 유지되는지를 가장 가까이에서 보는 회사.</p>
+<ul class="contact"><li><span>홈페이지</span><a href="https://www.moultonbicycles.co.uk" target="_blank" rel="noopener">moultonbicycles.co.uk</a></li></ul>
+      <h2>Writing</h2>
+<ul class="posts"><li><a href="../writing/solitude.html">안장 위에서의 고립감</a><time datetime="2026-10-01">2026.10</time></li></ul>
+    </div>
+  </article>
+  <div class="pager">
+    <span><a href="index.html">← 마인드맵</a></span>
+    <span></span>
+  </div>
   <footer>
     <span>© 2026 Sereno</span>
     <span>Seoul, KR</span>
   </footer>
 </div>
 <script>
-  // 언어 링크를 누르면 홈에서도 같은 언어가 유지되도록 저장
   document.querySelectorAll('.lang a').forEach(a => a.addEventListener('click', () => { try { localStorage.setItem('sereno-lang', a.textContent.toLowerCase()); } catch (e) {} }));
 </script>
 </body>

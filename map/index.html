@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Writing · SERENO</title>
+<title>[[title]] · SERENO</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap">
 <style>
@@ -178,37 +178,71 @@
 <body>
 <style>
   .post { padding-block: 56px 72px; }
-  .post .eyebrow { margin-bottom: 14px; }
-  .post h1 { font-family: var(--body); font-weight: 400; font-size: 30px; line-height: 1.35; letter-spacing: -.01em; margin: 0 0 10px; }
-  .post .summary { color: var(--muted); margin: 0 0 40px; }
-  .post .body p { max-width: 62ch; }
-  .post .body h2 { font-family: var(--body); font-size: 17px; font-weight: 500; text-transform: none; letter-spacing: 0; color: var(--fg); margin: 40px 0 12px; }
-  .post .body h2::after { display: none; }
-  .post .body img { display: block; max-width: 100%; height: auto; margin: 28px 0; }
-  .post .body blockquote { margin: 24px 0; padding-left: 16px; border-left: 1px solid var(--line); color: var(--muted); }
-  .post .body ul, .post .body ol { padding-left: 1.2em; }
-  .post .body a { border-bottom: 1px solid var(--line); }
-  .pager { display: flex; justify-content: space-between; gap: 16px; border-top: 1px solid var(--line); padding-top: 20px; font-size: 14px; }
-  .pager a { border: 0; color: var(--muted); } .pager a:hover { color: var(--fg); }
+  .post .lede { font-size: 16px; color: var(--muted); max-width: 48ch; margin: 0 0 44px; }
+  .map-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; margin-inline: -20px; padding-inline: 20px; }
+  .map-scroll::-webkit-scrollbar { display: none; }
+  .mindmap { display: block; font-family: var(--body); font-size: 13px; font-weight: 300; overflow: visible; }
+  .mindmap .edge { fill: none; stroke: var(--line); stroke-width: 1; }
+  .mindmap .node { fill: var(--fg); dominant-baseline: middle; }
+  .mindmap .root { font-family: var(--display); font-size: 17px; letter-spacing: .04em; }
+  .mindmap .industry { fill: var(--muted); font-weight: 400; }
+  .mindmap .company { fill: var(--fg); font-weight: 400; }
+  .mindmap a { border: 0; }
+  .mindmap a:hover .company, .mindmap a:focus-visible .company { fill: var(--accent); }
+  .mindmap a:focus-visible { outline: none; }
+  .outline-label { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin: 56px 0 14px; }
+  .tree { list-style: none; margin: 0; padding: 0 0 0 14px; border-left: 1px solid var(--line); }
+  .tree > li { padding-block: 4px; }
+  .tree .ind { font-weight: 400; color: var(--muted); }
+  .tree .note { color: var(--muted); font-size: 13px; }
+  .tree .company a { border: 0; font-weight: 400; }
+  .tree .company a:hover { color: var(--accent); }
+  .tree .ticker { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: .04em; margin-left: 6px; }
+  .tree .tree { margin-top: 4px; }
 </style>
 
 <div class="wrap">
   <header>
     <a class="mark" href="../index.html">SERENO</a>
-    <nav><a href="../index.html#writing">Writing</a></nav>
+    <nav><a href="../index.html#map" class="active">Map</a><a href="../index.html#writing">Writing</a></nav>
     <div class="lang" role="group" aria-label="Language"><a href="index.html" class="active">KO</a><span class="sep">/</span><a href="en/index.html" class="">EN</a><span class="sep">/</span><a href="ja/index.html" class="">JA</a></div>
   </header>
   <section class="post" style="padding-bottom:0">
-    <h2>Writing</h2>
-    <ul class="posts">
-      <li><a href="ichiro.html">일상을 채우는 스즈키 이치로의 명언들</a><time datetime="2026-10-04">2026.10</time></li>
-      <li><a href="words.html">구체어의 식재료</a><time datetime="2026-10-02">2026.10</time></li>
-      <li><a href="solitude.html">안장 위에서의 고립감</a><time datetime="2026-10-01">2026.10</time></li>
-      <li><a href="rest-well.html">잘 쉬는 것에 대하여</a><time datetime="2026-09-30">2026.09</time></li>
-      <li><a href="routine.html">패턴과 루틴</a><time datetime="2026-09-28">2026.09</time></li>
-      <li><a href="light-like-salt.html">소금처럼 좋은 빛</a><time datetime="2026-08-05">2026.08</time></li>
-      <li><a href="north-europe.html">북유럽 여행의 편린들</a><time datetime="2026-05-01">2026.05</time></li>
-    </ul>
+    <h2>Map</h2>
+    <p class="lede">지금 들여다보고 있는 산업들입니다. 가지 끝의 회사를 누르면 그 회사에 대해 쓴 글로 이어집니다.</p>
+    <div class="map-scroll">
+<svg class="mindmap" viewBox="0 0 542 210" width="542" height="210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="관심 산업">
+<path d="M378.0 15.0 C417.0 15.0 417.0 15.0 456.0 15.0" class="edge"/>
+<path d="M398.3 45.0 C427.1 45.0 427.1 45.0 456.0 45.0" class="edge"/>
+<path d="M215.0 30.0 C260.5 30.0 260.5 15.0 306.0 15.0" class="edge"/>
+<path d="M215.0 30.0 C260.5 30.0 260.5 45.0 306.0 45.0" class="edge"/>
+<path d="M262.8 75.0 C284.4 75.0 284.4 75.0 306.0 75.0" class="edge"/>
+<path d="M228.0 105.0 C267.0 105.0 267.0 105.0 306.0 105.0" class="edge"/>
+<path d="M274.3 195.0 C290.1 195.0 290.1 195.0 306.0 195.0" class="edge"/>
+<path d="M85.3 112.5 C120.6 112.5 120.6 30.0 156.0 30.0" class="edge"/>
+<path d="M85.3 112.5 C120.6 112.5 120.6 75.0 156.0 75.0" class="edge"/>
+<path d="M85.3 112.5 C120.6 112.5 120.6 105.0 156.0 105.0" class="edge"/>
+<path d="M85.3 112.5 C120.6 112.5 120.6 135.0 156.0 135.0" class="edge"/>
+<path d="M85.3 112.5 C120.6 112.5 120.6 165.0 156.0 165.0" class="edge"/>
+<path d="M85.3 112.5 C120.6 112.5 120.6 195.0 156.0 195.0" class="edge"/>
+<a href="tsmc.html"><text x="466.0" y="15.0" class="node company">TSMC</text></a>
+<text x="316.0" y="15.0" class="node industry">파운드리</text>
+<a href="samsung-electro-mechanics.html"><text x="466.0" y="45.0" class="node company">삼성전기</text></a>
+<text x="316.0" y="45.0" class="node industry">부품·패키징</text>
+<text x="166.0" y="30.0" class="node industry">반도체</text>
+<a href="palantir.html"><text x="316.0" y="75.0" class="node company">팔란티어</text></a>
+<text x="166.0" y="75.0" class="node industry">소프트웨어·AI</text>
+<a href="sk-square.html"><text x="316.0" y="105.0" class="node company">SK스퀘어</text></a>
+<text x="166.0" y="105.0" class="node industry">지주회사</text>
+<text x="166.0" y="135.0" class="node industry">전력·에너지</text>
+<text x="166.0" y="165.0" class="node industry">디지털 자산</text>
+<a href="moulton.html"><text x="316.0" y="195.0" class="node company">몰튼 바이시클</text></a>
+<text x="166.0" y="195.0" class="node industry">자전거·모빌리티</text>
+<text x="16.0" y="112.5" class="node root">관심 산업</text>
+</svg>
+    </div>
+    <p class="outline-label">목록으로 보기</p>
+<ul class="tree"><li><span class="ind">반도체</span> <span class="note">파운드리, 패키징, 부품</span><ul class="tree"><li><span class="ind">파운드리</span><ul class="tree"><li class="company"><a href="tsmc.html">TSMC</a> <span class="ticker">TSM</span></li></ul></li><li><span class="ind">부품·패키징</span><ul class="tree"><li class="company"><a href="samsung-electro-mechanics.html">삼성전기</a> <span class="ticker">009150</span></li></ul></li></ul></li><li><span class="ind">소프트웨어·AI</span> <span class="note">데이터 플랫폼과 소버린 AI</span><ul class="tree"><li class="company"><a href="palantir.html">팔란티어</a> <span class="ticker">PLTR</span></li></ul></li><li><span class="ind">지주회사</span> <span class="note">NAV 할인율로 보는 회사들</span><ul class="tree"><li class="company"><a href="sk-square.html">SK스퀘어</a> <span class="ticker">402340</span></li></ul></li><li><span class="ind">전력·에너지</span></li><li><span class="ind">디지털 자산</span> <span class="note">비트코인과 매크로 변수</span></li><li><span class="ind">자전거·모빌리티</span><ul class="tree"><li class="company"><a href="moulton.html">몰튼 바이시클</a></li></ul></li></ul>
   </section>
   <footer>
     <span>© 2026 Sereno</span>
@@ -216,7 +250,6 @@
   </footer>
 </div>
 <script>
-  // 언어 링크를 누르면 홈에서도 같은 언어가 유지되도록 저장
   document.querySelectorAll('.lang a').forEach(a => a.addEventListener('click', () => { try { localStorage.setItem('sereno-lang', a.textContent.toLowerCase()); } catch (e) {} }));
 </script>
 </body>

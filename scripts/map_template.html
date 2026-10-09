@@ -1,0 +1,51 @@
+<body>
+<style>
+  .post { padding-block: 56px 72px; }
+  .post .lede { font-size: 16px; color: var(--muted); max-width: 48ch; margin: 0 0 44px; }
+  .map-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; margin-inline: -20px; padding-inline: 20px; }
+  .map-scroll::-webkit-scrollbar { display: none; }
+  .mindmap { display: block; font-family: var(--body); font-size: 13px; font-weight: 300; overflow: visible; }
+  .mindmap .edge { fill: none; stroke: var(--line); stroke-width: 1; }
+  .mindmap .node { fill: var(--fg); dominant-baseline: middle; }
+  .mindmap .root { font-family: var(--display); font-size: 17px; letter-spacing: .04em; }
+  .mindmap .industry { fill: var(--muted); font-weight: 400; }
+  .mindmap .company { fill: var(--fg); font-weight: 400; }
+  .mindmap a { border: 0; }
+  .mindmap a:hover .company, .mindmap a:focus-visible .company { fill: var(--accent); }
+  .mindmap a:focus-visible { outline: none; }
+  .outline-label { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin: 56px 0 14px; }
+  .tree { list-style: none; margin: 0; padding: 0 0 0 14px; border-left: 1px solid var(--line); }
+  .tree > li { padding-block: 4px; }
+  .tree .ind { font-weight: 400; color: var(--muted); }
+  .tree .note { color: var(--muted); font-size: 13px; }
+  .tree .company a { border: 0; font-weight: 400; }
+  .tree .company a:hover { color: var(--accent); }
+  .tree .ticker { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: .04em; margin-left: 6px; }
+  .tree .tree { margin-top: 4px; }
+</style>
+
+<div class="wrap">
+  <header>
+    <a class="mark" href="[[home]]">SERENO</a>
+    <nav><a href="[[home]]#map" class="active">[[map_label]]</a><a href="[[home]]#writing">[[writing_label]]</a></nav>
+    <div class="lang" role="group" aria-label="Language">[[lang_switch]]</div>
+  </header>
+  <section class="post" style="padding-bottom:0">
+    <h2>[[map_label]]</h2>
+    <p class="lede">[[lede]]</p>
+    <div class="map-scroll">
+[[svg]]
+    </div>
+    <p class="outline-label">[[outline_label]]</p>
+[[outline]]
+  </section>
+  <footer>
+    <span>© 2026 Sereno</span>
+    <span>Seoul, KR</span>
+  </footer>
+</div>
+<script>
+  document.querySelectorAll('.lang a').forEach(a => a.addEventListener('click', () => { try { localStorage.setItem('sereno-lang', a.textContent.toLowerCase()); } catch (e) {} }));
+</script>
+</body>
+</html>

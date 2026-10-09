@@ -1,0 +1,45 @@
+<body>
+<style>
+  .post { padding-block: 56px 72px; }
+  .post .eyebrow { margin-bottom: 14px; }
+  .post .eyebrow .sep { opacity: .5; padding-inline: 2px; }
+  .post h1 { font-family: var(--body); font-weight: 400; font-size: 30px; line-height: 1.35; letter-spacing: -.01em; margin: 0 0 10px; }
+  .post .summary { color: var(--muted); margin: 0 0 32px; }
+  .post .body p { max-width: 62ch; }
+  .contact { margin-top: 28px; }
+  .post .body h2 { margin-top: 56px; }
+  .pager { display: flex; justify-content: space-between; gap: 16px; border-top: 1px solid var(--line); padding-top: 20px; font-size: 14px; }
+  .pager a { border: 0; color: var(--muted); } .pager a:hover { color: var(--fg); }
+</style>
+
+<div class="wrap">
+  <header>
+    <a class="mark" href="[[home]]">SERENO</a>
+    <nav><a href="index.html" class="active">[[map_label]]</a><a href="[[home]]#writing">[[writing_label]]</a></nav>
+    <div class="lang" role="group" aria-label="Language">[[lang_switch]]</div>
+  </header>
+  <article class="post">
+    <p class="eyebrow">[[crumbs]]</p>
+    <h1>[[title]]</h1>
+    [[tagline_html]]
+    <div class="body">
+[[reason_html]]
+[[meta_html]]
+      <h2>[[writing_label]]</h2>
+[[posts_html]]
+    </div>
+  </article>
+  <div class="pager">
+    <span><a href="index.html">[[back]]</a></span>
+    <span></span>
+  </div>
+  <footer>
+    <span>© 2026 Sereno</span>
+    <span>Seoul, KR</span>
+  </footer>
+</div>
+<script>
+  document.querySelectorAll('.lang a').forEach(a => a.addEventListener('click', () => { try { localStorage.setItem('sereno-lang', a.textContent.toLowerCase()); } catch (e) {} }));
+</script>
+</body>
+</html>

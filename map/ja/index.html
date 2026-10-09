@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="ko">
+<html lang="ja">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Writing · SERENO</title>
+<title>[[title]] · SERENO</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap">
 <style>
@@ -178,37 +178,71 @@
 <body>
 <style>
   .post { padding-block: 56px 72px; }
-  .post .eyebrow { margin-bottom: 14px; }
-  .post h1 { font-family: var(--body); font-weight: 400; font-size: 30px; line-height: 1.35; letter-spacing: -.01em; margin: 0 0 10px; }
-  .post .summary { color: var(--muted); margin: 0 0 40px; }
-  .post .body p { max-width: 62ch; }
-  .post .body h2 { font-family: var(--body); font-size: 17px; font-weight: 500; text-transform: none; letter-spacing: 0; color: var(--fg); margin: 40px 0 12px; }
-  .post .body h2::after { display: none; }
-  .post .body img { display: block; max-width: 100%; height: auto; margin: 28px 0; }
-  .post .body blockquote { margin: 24px 0; padding-left: 16px; border-left: 1px solid var(--line); color: var(--muted); }
-  .post .body ul, .post .body ol { padding-left: 1.2em; }
-  .post .body a { border-bottom: 1px solid var(--line); }
-  .pager { display: flex; justify-content: space-between; gap: 16px; border-top: 1px solid var(--line); padding-top: 20px; font-size: 14px; }
-  .pager a { border: 0; color: var(--muted); } .pager a:hover { color: var(--fg); }
+  .post .lede { font-size: 16px; color: var(--muted); max-width: 48ch; margin: 0 0 44px; }
+  .map-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; margin-inline: -20px; padding-inline: 20px; }
+  .map-scroll::-webkit-scrollbar { display: none; }
+  .mindmap { display: block; font-family: var(--body); font-size: 13px; font-weight: 300; overflow: visible; }
+  .mindmap .edge { fill: none; stroke: var(--line); stroke-width: 1; }
+  .mindmap .node { fill: var(--fg); dominant-baseline: middle; }
+  .mindmap .root { font-family: var(--display); font-size: 17px; letter-spacing: .04em; }
+  .mindmap .industry { fill: var(--muted); font-weight: 400; }
+  .mindmap .company { fill: var(--fg); font-weight: 400; }
+  .mindmap a { border: 0; }
+  .mindmap a:hover .company, .mindmap a:focus-visible .company { fill: var(--accent); }
+  .mindmap a:focus-visible { outline: none; }
+  .outline-label { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin: 56px 0 14px; }
+  .tree { list-style: none; margin: 0; padding: 0 0 0 14px; border-left: 1px solid var(--line); }
+  .tree > li { padding-block: 4px; }
+  .tree .ind { font-weight: 400; color: var(--muted); }
+  .tree .note { color: var(--muted); font-size: 13px; }
+  .tree .company a { border: 0; font-weight: 400; }
+  .tree .company a:hover { color: var(--accent); }
+  .tree .ticker { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: .04em; margin-left: 6px; }
+  .tree .tree { margin-top: 4px; }
 </style>
 
 <div class="wrap">
   <header>
-    <a class="mark" href="../index.html">SERENO</a>
-    <nav><a href="../index.html#writing">Writing</a></nav>
-    <div class="lang" role="group" aria-label="Language"><a href="index.html" class="active">KO</a><span class="sep">/</span><a href="en/index.html" class="">EN</a><span class="sep">/</span><a href="ja/index.html" class="">JA</a></div>
+    <a class="mark" href="../../index.html">SERENO</a>
+    <nav><a href="../../index.html#map" class="active">Map</a><a href="../../index.html#writing">Writing</a></nav>
+    <div class="lang" role="group" aria-label="Language"><a href="../index.html" class="">KO</a><span class="sep">/</span><a href="../en/index.html" class="">EN</a><span class="sep">/</span><a href="../ja/index.html" class="active">JA</a></div>
   </header>
   <section class="post" style="padding-bottom:0">
-    <h2>Writing</h2>
-    <ul class="posts">
-      <li><a href="ichiro.html">일상을 채우는 스즈키 이치로의 명언들</a><time datetime="2026-10-04">2026.10</time></li>
-      <li><a href="words.html">구체어의 식재료</a><time datetime="2026-10-02">2026.10</time></li>
-      <li><a href="solitude.html">안장 위에서의 고립감</a><time datetime="2026-10-01">2026.10</time></li>
-      <li><a href="rest-well.html">잘 쉬는 것에 대하여</a><time datetime="2026-09-30">2026.09</time></li>
-      <li><a href="routine.html">패턴과 루틴</a><time datetime="2026-09-28">2026.09</time></li>
-      <li><a href="light-like-salt.html">소금처럼 좋은 빛</a><time datetime="2026-08-05">2026.08</time></li>
-      <li><a href="north-europe.html">북유럽 여행의 편린들</a><time datetime="2026-05-01">2026.05</time></li>
-    </ul>
+    <h2>Map</h2>
+    <p class="lede">いま見ている産業です。枝の先の会社を押すと、その会社について書いた文章につながります。</p>
+    <div class="map-scroll">
+<svg class="mindmap" viewBox="0 0 568 210" width="568" height="210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="関心領域">
+<path d="M404.0 15.0 C430.0 15.0 430.0 15.0 456.0 15.0" class="edge"/>
+<path d="M456.0 45.0 C456.0 45.0 456.0 45.0 456.0 45.0" class="edge"/>
+<path d="M215.0 30.0 C260.5 30.0 260.5 15.0 306.0 15.0" class="edge"/>
+<path d="M215.0 30.0 C260.5 30.0 260.5 45.0 306.0 45.0" class="edge"/>
+<path d="M281.6 75.0 C293.8 75.0 293.8 75.0 306.0 75.0" class="edge"/>
+<path d="M228.0 105.0 C267.0 105.0 267.0 105.0 306.0 105.0" class="edge"/>
+<path d="M293.0 195.0 C299.5 195.0 299.5 195.0 306.0 195.0" class="edge"/>
+<path d="M78.0 112.5 C117.0 112.5 117.0 30.0 156.0 30.0" class="edge"/>
+<path d="M78.0 112.5 C117.0 112.5 117.0 75.0 156.0 75.0" class="edge"/>
+<path d="M78.0 112.5 C117.0 112.5 117.0 105.0 156.0 105.0" class="edge"/>
+<path d="M78.0 112.5 C117.0 112.5 117.0 135.0 156.0 135.0" class="edge"/>
+<path d="M78.0 112.5 C117.0 112.5 117.0 165.0 156.0 165.0" class="edge"/>
+<path d="M78.0 112.5 C117.0 112.5 117.0 195.0 156.0 195.0" class="edge"/>
+<a href="tsmc.html"><text x="466.0" y="15.0" class="node company">TSMC</text></a>
+<text x="316.0" y="15.0" class="node industry">ファウンドリ</text>
+<a href="samsung-electro-mechanics.html"><text x="466.0" y="45.0" class="node company">サムスン電機</text></a>
+<text x="316.0" y="45.0" class="node industry">部品・パッケージング</text>
+<text x="166.0" y="30.0" class="node industry">半導体</text>
+<a href="palantir.html"><text x="316.0" y="75.0" class="node company">パランティア</text></a>
+<text x="166.0" y="75.0" class="node industry">ソフトウェア・AI</text>
+<a href="sk-square.html"><text x="316.0" y="105.0" class="node company">SKスクエア</text></a>
+<text x="166.0" y="105.0" class="node industry">持株会社</text>
+<text x="166.0" y="135.0" class="node industry">電力・エネルギー</text>
+<text x="166.0" y="165.0" class="node industry">デジタル資産</text>
+<a href="moulton.html"><text x="316.0" y="195.0" class="node company">モールトン</text></a>
+<text x="166.0" y="195.0" class="node industry">自転車・モビリティ</text>
+<text x="16.0" y="112.5" class="node root">関心領域</text>
+</svg>
+    </div>
+    <p class="outline-label">リストで見る</p>
+<ul class="tree"><li><span class="ind">半導体</span> <span class="note">ファウンドリ、パッケージング、部品</span><ul class="tree"><li><span class="ind">ファウンドリ</span><ul class="tree"><li class="company"><a href="tsmc.html">TSMC</a> <span class="ticker">TSM</span></li></ul></li><li><span class="ind">部品・パッケージング</span><ul class="tree"><li class="company"><a href="samsung-electro-mechanics.html">サムスン電機</a> <span class="ticker">009150</span></li></ul></li></ul></li><li><span class="ind">ソフトウェア・AI</span> <span class="note">データプラットフォームとソブリンAI</span><ul class="tree"><li class="company"><a href="palantir.html">パランティア</a> <span class="ticker">PLTR</span></li></ul></li><li><span class="ind">持株会社</span> <span class="note">NAVディスカウントで見る会社</span><ul class="tree"><li class="company"><a href="sk-square.html">SKスクエア</a> <span class="ticker">402340</span></li></ul></li><li><span class="ind">電力・エネルギー</span></li><li><span class="ind">デジタル資産</span> <span class="note">ビットコインとマクロ変数</span></li><li><span class="ind">自転車・モビリティ</span><ul class="tree"><li class="company"><a href="moulton.html">モールトン</a></li></ul></li></ul>
   </section>
   <footer>
     <span>© 2026 Sereno</span>
@@ -216,7 +250,6 @@
   </footer>
 </div>
 <script>
-  // 언어 링크를 누르면 홈에서도 같은 언어가 유지되도록 저장
   document.querySelectorAll('.lang a').forEach(a => a.addEventListener('click', () => { try { localStorage.setItem('sereno-lang', a.textContent.toLowerCase()); } catch (e) {} }));
 </script>
 </body>

@@ -65,9 +65,9 @@
   }
   header.scrolled { border-bottom-color: var(--line); }
   @media (min-width: 700px) {
-    header { display: grid; grid-template-columns: auto 1fr; column-gap: 24px; row-gap: 2px; align-items: baseline; }
+    header { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 24px; row-gap: 2px; align-items: baseline; }
     .mark { grid-column: 1; grid-row: 1; }
-    nav { grid-column: 2; grid-row: 1; justify-self: end; }
+    nav { grid-column: 2; grid-row: 1; justify-self: end; max-width: 100%; }
     .lang { grid-column: 1; grid-row: 2; }
   }
   .mark { font-family: var(--display); font-size: 20px; letter-spacing: .08em; color: var(--fg); border: 0; flex: none; }
@@ -208,6 +208,7 @@
       <a href="#partnership">Partnership</a>
       <a href="#photography">Photography</a>
       <a href="#taste">Taste</a>
+      <a href="#map">Map</a>
       <a href="#writing">Writing</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -271,6 +272,12 @@
     </ul>
   </section>
 
+  <section id="map">
+    <h2>Map</h2>
+    <p data-i18n="map0">지금 들여다보고 있는 산업들을 하나의 지도로 두고 있습니다. 가지가 뻗어 나가고, 끝에는 회사가 있습니다. 회사마다 그에 대해 쓴 글이 모입니다.</p>
+    <p class="more"><a href="map/" id="map-link" data-i18n="mapMore">지도 보기 &gt;</a></p>
+  </section>
+
   <section id="writing">
     <h2>Writing</h2>
     <ul class="posts" id="posts"></ul>
@@ -322,6 +329,7 @@
       gLoading: '사진을 불러오는 중입니다.', gEmpty: '아직 올라온 사진이 없습니다.', gError: '사진 목록을 불러오지 못했습니다.',
       pLoading: '글을 불러오는 중입니다.', pEmpty: '아직 올라온 글이 없습니다.', pError: '글 목록을 불러오지 못했습니다.',
       more: '더 보기 &gt;',
+      map0: '지금 들여다보고 있는 산업들을 하나의 지도로 두고 있습니다. 가지가 뻗어 나가고, 끝에는 회사가 있습니다. 회사마다 그에 대해 쓴 글이 모입니다.', mapMore: '지도 보기 &gt;',
       footer: 'Seoul, KR'
     },
     en: {
@@ -350,6 +358,7 @@
       gLoading: 'Loading photos.', gEmpty: 'No photos yet.', gError: 'Could not load the photo list.',
       pLoading: 'Loading posts.', pEmpty: 'No posts yet.', pError: 'Could not load the post list.',
       more: 'More &gt;',
+      map0: 'The industries I am looking into, kept as one map. Branches spread, and at the end of each is a company. What I write about a company gathers there.', mapMore: 'See the map &gt;',
       footer: 'Seoul, KR'
     },
     ja: {
@@ -378,6 +387,7 @@
       gLoading: '写真を読み込んでいます。', gEmpty: 'まだ写真はありません。', gError: '写真の一覧を読み込めませんでした。',
       pLoading: '記事を読み込んでいます。', pEmpty: 'まだ記事はありません。', pError: '記事の一覧を読み込めませんでした。',
       more: 'もっと見る &gt;',
+      map0: 'いま見ている産業をひとつの地図にしています。枝が伸び、その先に会社があります。会社ごとに、それについて書いた文章が集まります。', mapMore: '地図を見る &gt;',
       footer: 'Seoul, KR'
     }
   };
@@ -387,6 +397,7 @@
     LANG = I18N[lang] ? lang : 'ko';
     document.documentElement.lang = LANG;
     document.querySelectorAll('[data-i18n]').forEach(el => { el.innerHTML = T(el.dataset.i18n); });
+    const ml = document.getElementById('map-link'); if (ml) ml.href = LANG === 'ko' ? 'map/' : `map/${LANG}/`;
     document.querySelectorAll('.lang button').forEach(b => b.classList.toggle('active', b.dataset.lang === LANG));
     if (window.renderPosts) window.renderPosts();
     try { localStorage.setItem('sereno-lang', LANG); } catch (e) {}
