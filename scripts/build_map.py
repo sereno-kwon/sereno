@@ -129,7 +129,7 @@ for lang in LANGS:
     (d / 'index.html').write_text(fill(mtpl, {
         'lang': lang, 'home': prefix + '../index.html', 'lang_switch': switcher(lang, 'index.html'),
         'map_label': UI[lang]['map'], 'writing_label': UI[lang]['writing'], 'lede': UI[lang]['lede'],
-        'svg': svg(lang, ''), 'outline': outline(tree, lang, ''), 'outline_label': UI[lang]['outline'],
+        'svg': svg(lang, ''),
     }), encoding='utf-8')
     for c in comps.values():
         crumbs = ' <span class="sep">›</span> '.join(html.escape(t(p['name'], lang)) for p in path_of(c))
