@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en">
+<html lang="ja">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>[[title]] · SERENO</title>
+<title>アルファベット · SERENO</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap">
 <style>
@@ -178,69 +178,38 @@
 <body>
 <style>
   .post { padding-block: 56px 72px; }
-  .post .lede { font-size: 16px; color: var(--muted); max-width: 48ch; margin: 0 0 44px; }
-  .map-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; margin-inline: -20px; padding-inline: 20px; }
-  .map-scroll::-webkit-scrollbar { display: none; }
-  .mindmap { display: block; font-family: var(--body); font-size: 13px; font-weight: 300; overflow: visible; }
-  .mindmap .edge { fill: none; stroke: var(--line); stroke-width: 1; }
-  .mindmap .node { fill: var(--fg); dominant-baseline: middle; }
-  .mindmap .root { font-family: var(--display); font-size: 17px; letter-spacing: .04em; }
-  .mindmap .industry { fill: var(--muted); font-weight: 400; }
-  .mindmap .company { fill: var(--fg); font-weight: 400; }
-  .mindmap a { border: 0; }
-  .mindmap a:hover .company, .mindmap a:focus-visible .company { fill: var(--accent); }
-  .mindmap a:focus-visible { outline: none; }
+  .post .eyebrow { margin-bottom: 14px; }
+  .post .eyebrow .sep { opacity: .5; padding-inline: 2px; }
+  .post h1 { font-family: var(--body); font-weight: 400; font-size: 30px; line-height: 1.35; letter-spacing: -.01em; margin: 0 0 10px; }
+  .post .summary { color: var(--muted); margin: 0 0 32px; }
+  .post .body p { max-width: 62ch; }
+  .contact { margin-top: 28px; }
+  .post .body h2 { margin-top: 56px; }
+  .pager { display: flex; justify-content: space-between; gap: 16px; border-top: 1px solid var(--line); padding-top: 20px; font-size: 14px; }
+  .pager a { border: 0; color: var(--muted); } .pager a:hover { color: var(--fg); }
 </style>
 
 <div class="wrap">
   <header>
     <a class="mark" href="../../index.html">SERENO</a>
-    <nav><a href="../../index.html#map" class="active">Map</a><a href="../../index.html#writing">Writing</a></nav>
-    <div class="lang" role="group" aria-label="Language"><a href="../index.html" class="">KO</a><span class="sep">/</span><a href="../en/index.html" class="active">EN</a><span class="sep">/</span><a href="../ja/index.html" class="">JA</a></div>
+    <nav><a href="index.html" class="active">Map</a><a href="../../index.html#writing">Writing</a></nav>
+    <div class="lang" role="group" aria-label="Language"><a href="../alphabet.html" class="">KO</a><span class="sep">/</span><a href="../en/alphabet.html" class="">EN</a><span class="sep">/</span><a href="../ja/alphabet.html" class="active">JA</a></div>
   </header>
-  <section class="post" style="padding-bottom:0">
-    <h2>Map</h2>
-    <p class="lede">The industries I am looking into. A company at the end of a branch leads to what I have written about it.</p>
-    <div class="map-scroll">
-<svg class="mindmap" viewBox="0 0 672 300" width="672" height="300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Interests">
-<path d="M377.0 15.0 C416.5 15.0 416.5 15.0 456.0 15.0" class="edge"/>
-<path d="M369.7 45.0 C412.8 45.0 412.8 45.0 456.0 45.0" class="edge"/>
-<path d="M486.2 75.0 C471.1 75.0 471.1 75.0 456.0 75.0" class="edge"/>
-<path d="M277.9 45.0 C292.0 45.0 292.0 15.0 306.0 15.0" class="edge"/>
-<path d="M277.9 45.0 C292.0 45.0 292.0 45.0 306.0 45.0" class="edge"/>
-<path d="M277.9 45.0 C292.0 45.0 292.0 75.0 306.0 75.0" class="edge"/>
-<path d="M270.6 120.0 C288.3 120.0 288.3 105.0 306.0 105.0" class="edge"/>
-<path d="M270.6 120.0 C288.3 120.0 288.3 135.0 306.0 135.0" class="edge"/>
-<path d="M299.8 165.0 C302.9 165.0 302.9 165.0 306.0 165.0" class="edge"/>
-<path d="M307.0 270.0 C306.5 270.0 306.5 255.0 306.0 255.0" class="edge"/>
-<path d="M307.0 270.0 C306.5 270.0 306.5 285.0 306.0 285.0" class="edge"/>
-<path d="M91.5 157.5 C123.8 157.5 123.8 45.0 156.0 45.0" class="edge"/>
-<path d="M91.5 157.5 C123.8 157.5 123.8 120.0 156.0 120.0" class="edge"/>
-<path d="M91.5 157.5 C123.8 157.5 123.8 165.0 156.0 165.0" class="edge"/>
-<path d="M91.5 157.5 C123.8 157.5 123.8 195.0 156.0 195.0" class="edge"/>
-<path d="M91.5 157.5 C123.8 157.5 123.8 225.0 156.0 225.0" class="edge"/>
-<path d="M91.5 157.5 C123.8 157.5 123.8 270.0 156.0 270.0" class="edge"/>
-<a href="tsmc.html"><text x="466.0" y="15.0" class="node company">TSMC</text></a>
-<text x="316.0" y="15.0" class="node industry">Foundry</text>
-<a href="sk-hynix.html"><text x="466.0" y="45.0" class="node company">SK hynix</text></a>
-<text x="316.0" y="45.0" class="node industry">Memory</text>
-<a href="samsung-electro-mechanics.html"><text x="466.0" y="75.0" class="node company">Samsung Electro-Mechanics</text></a>
-<text x="316.0" y="75.0" class="node industry">Components &amp; Packaging</text>
-<text x="166.0" y="45.0" class="node industry">Semiconductors</text>
-<a href="palantir.html"><text x="316.0" y="105.0" class="node company">Palantir Technologies</text></a>
-<a href="alphabet.html"><text x="316.0" y="135.0" class="node company">Alphabet</text></a>
-<text x="166.0" y="120.0" class="node industry">Software &amp; AI</text>
-<a href="sk-square.html"><text x="316.0" y="165.0" class="node company">SK Square</text></a>
-<text x="166.0" y="165.0" class="node industry">Holding Companies</text>
-<text x="166.0" y="195.0" class="node industry">Power &amp; Energy</text>
-<text x="166.0" y="225.0" class="node industry">Digital Assets</text>
-<a href="moulton.html"><text x="316.0" y="255.0" class="node company">Moulton Bicycle Company</text></a>
-<a href="hyundai-motor.html"><text x="316.0" y="285.0" class="node company">Hyundai Motor</text></a>
-<text x="166.0" y="270.0" class="node industry">Cycling &amp; Mobility</text>
-<text x="16.0" y="157.5" class="node root">Interests</text>
-</svg>
+  <article class="post">
+    <p class="eyebrow">ソフトウェア・AI</p>
+    <h1>アルファベット</h1>
+    
+    <div class="body">
+
+<ul class="contact"><li><span>ティッカー</span>GOOGL</li><li><span>ウェブサイト</span><a href="https://abc.xyz" target="_blank" rel="noopener">abc.xyz</a></li></ul>
+      <h2>Writing</h2>
+<p class="sample">この会社についてはまだ書いていません。</p>
     </div>
-  </section>
+  </article>
+  <div class="pager">
+    <span><a href="index.html">← マップ</a></span>
+    <span></span>
+  </div>
   <footer>
     <span>© 2026 Sereno</span>
     <span>Seoul, KR</span>

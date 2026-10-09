@@ -1,43 +1,240 @@
 {
   "industries": [
-    {"slug": "semiconductors", "parent": null, "order": 1,
-     "name": {"ko": "반도체", "en": "Semiconductors", "ja": "半導体"},
-     "desc": {"ko": "파운드리, 패키징, 부품", "en": "Foundry, packaging, components", "ja": "ファウンドリ、パッケージング、部品"}},
-    {"slug": "foundry", "parent": "semiconductors", "order": 1,
-     "name": {"ko": "파운드리", "en": "Foundry", "ja": "ファウンドリ"}},
-    {"slug": "components-packaging", "parent": "semiconductors", "order": 2,
-     "name": {"ko": "부품·패키징", "en": "Components & Packaging", "ja": "部品・パッケージング"}},
-    {"slug": "software-ai", "parent": null, "order": 2,
-     "name": {"ko": "소프트웨어·AI", "en": "Software & AI", "ja": "ソフトウェア・AI"},
-     "desc": {"ko": "데이터 플랫폼과 소버린 AI", "en": "Data platforms and sovereign AI", "ja": "データプラットフォームとソブリンAI"}},
-    {"slug": "holding-companies", "parent": null, "order": 3,
-     "name": {"ko": "지주회사", "en": "Holding Companies", "ja": "持株会社"},
-     "desc": {"ko": "NAV 할인율로 보는 회사들", "en": "Read through the NAV discount", "ja": "NAVディスカウントで見る会社"}},
-    {"slug": "power-energy", "parent": null, "order": 4,
-     "name": {"ko": "전력·에너지", "en": "Power & Energy", "ja": "電力・エネルギー"}},
-    {"slug": "digital-assets", "parent": null, "order": 5,
-     "name": {"ko": "디지털 자산", "en": "Digital Assets", "ja": "デジタル資産"},
-     "desc": {"ko": "비트코인과 매크로 변수", "en": "Bitcoin and the macro variables around it", "ja": "ビットコインとマクロ変数"}},
-    {"slug": "cycling-mobility", "parent": null, "order": 6,
-     "name": {"ko": "자전거·모빌리티", "en": "Cycling & Mobility", "ja": "自転車・モビリティ"}}
+    {
+      "slug": "semiconductors",
+      "parent": null,
+      "order": 1,
+      "name": {
+        "ko": "반도체",
+        "en": "Semiconductors",
+        "ja": "半導体"
+      },
+      "desc": {
+        "ko": "파운드리, 패키징, 부품",
+        "en": "Foundry, packaging, components",
+        "ja": "ファウンドリ、パッケージング、部品"
+      }
+    },
+    {
+      "slug": "foundry",
+      "parent": "semiconductors",
+      "order": 1,
+      "name": {
+        "ko": "파운드리",
+        "en": "Foundry",
+        "ja": "ファウンドリ"
+      }
+    },
+    {
+      "slug": "components-packaging",
+      "parent": "semiconductors",
+      "order": 3,
+      "name": {
+        "ko": "부품·패키징",
+        "en": "Components & Packaging",
+        "ja": "部品・パッケージング"
+      }
+    },
+    {
+      "slug": "memory",
+      "parent": "semiconductors",
+      "order": 2,
+      "name": {
+        "ko": "메모리",
+        "en": "Memory",
+        "ja": "メモリ"
+      }
+    },
+    {
+      "slug": "software-ai",
+      "parent": null,
+      "order": 2,
+      "name": {
+        "ko": "소프트웨어·AI",
+        "en": "Software & AI",
+        "ja": "ソフトウェア・AI"
+      },
+      "desc": {
+        "ko": "데이터 플랫폼과 소버린 AI",
+        "en": "Data platforms and sovereign AI",
+        "ja": "データプラットフォームとソブリンAI"
+      }
+    },
+    {
+      "slug": "holding-companies",
+      "parent": null,
+      "order": 3,
+      "name": {
+        "ko": "지주회사",
+        "en": "Holding Companies",
+        "ja": "持株会社"
+      },
+      "desc": {
+        "ko": "NAV 할인율로 보는 회사들",
+        "en": "Read through the NAV discount",
+        "ja": "NAVディスカウントで見る会社"
+      }
+    },
+    {
+      "slug": "power-energy",
+      "parent": null,
+      "order": 4,
+      "name": {
+        "ko": "전력·에너지",
+        "en": "Power & Energy",
+        "ja": "電力・エネルギー"
+      }
+    },
+    {
+      "slug": "digital-assets",
+      "parent": null,
+      "order": 5,
+      "name": {
+        "ko": "디지털 자산",
+        "en": "Digital Assets",
+        "ja": "デジタル資産"
+      },
+      "desc": {
+        "ko": "비트코인과 매크로 변수",
+        "en": "Bitcoin and the macro variables around it",
+        "ja": "ビットコインとマクロ変数"
+      }
+    },
+    {
+      "slug": "cycling-mobility",
+      "parent": null,
+      "order": 6,
+      "name": {
+        "ko": "자전거·모빌리티",
+        "en": "Cycling & Mobility",
+        "ja": "自転車・モビリティ"
+      }
+    }
   ],
   "companies": [
-    {"slug": "tsmc", "industry": "foundry", "order": 1, "status": "관심", "ticker": "TSM",
-     "name": {"ko": "TSMC", "en": "TSMC", "ja": "TSMC"},
-     "url": "https://www.tsmc.com", "posts": []},
-    {"slug": "samsung-electro-mechanics", "industry": "components-packaging", "order": 1, "status": "관심", "ticker": "009150",
-     "name": {"ko": "삼성전기", "en": "Samsung Electro-Mechanics", "ja": "サムスン電機"},
-     "url": "https://www.samsungsem.com", "posts": []},
-    {"slug": "palantir", "industry": "software-ai", "order": 1, "status": "관심", "ticker": "PLTR",
-     "name": {"ko": "팔란티어", "en": "Palantir Technologies", "ja": "パランティア"},
-     "url": "https://www.palantir.com", "posts": []},
-    {"slug": "sk-square", "industry": "holding-companies", "order": 1, "status": "관심", "ticker": "402340",
-     "name": {"ko": "SK스퀘어", "en": "SK Square", "ja": "SKスクエア"},
-     "url": "https://www.sksquare.com", "posts": []},
-    {"slug": "moulton", "industry": "cycling-mobility", "order": 1, "status": "관심", "ticker": "",
-     "name": {"ko": "몰튼 바이시클", "en": "Moulton Bicycle Company", "ja": "モールトン"},
-     "tagline": {"ko": "1962년부터 이어지는 영국의 분리형 소경 자전거", "en": "The British separable small-wheel bicycle, in continuous production since 1962", "ja": "1962年から続く英国の分割式小径自転車"},
-     "reason": {"ko": "루비컴퍼니가 한국 공식 수입사로 들여오는 브랜드. 검증된 설계가 시간 속에서 어떻게 유지되는지를 가장 가까이에서 보는 회사.", "en": "The brand Rubi Company brings to Korea as its official importer. The company where I watch, from the closest distance, how a proven design holds up over time.", "ja": "ルビカンパニーが韓国公式輸入元として扱うブランド。検証された設計が時間の中でどう維持されるかを最も近くで見ている会社。"},
-     "url": "https://www.moultonbicycles.co.uk", "posts": ["solitude"]}
+    {
+      "slug": "tsmc",
+      "industry": "foundry",
+      "order": 1,
+      "status": "관심",
+      "ticker": "TSM",
+      "name": {
+        "ko": "TSMC",
+        "en": "TSMC",
+        "ja": "TSMC"
+      },
+      "url": "https://www.tsmc.com",
+      "posts": []
+    },
+    {
+      "slug": "samsung-electro-mechanics",
+      "industry": "components-packaging",
+      "order": 1,
+      "status": "관심",
+      "ticker": "009150",
+      "name": {
+        "ko": "삼성전기",
+        "en": "Samsung Electro-Mechanics",
+        "ja": "サムスン電機"
+      },
+      "url": "https://www.samsungsem.com",
+      "posts": []
+    },
+    {
+      "slug": "palantir",
+      "industry": "software-ai",
+      "order": 1,
+      "status": "관심",
+      "ticker": "PLTR",
+      "name": {
+        "ko": "팔란티어",
+        "en": "Palantir Technologies",
+        "ja": "パランティア"
+      },
+      "url": "https://www.palantir.com",
+      "posts": []
+    },
+    {
+      "slug": "sk-square",
+      "industry": "holding-companies",
+      "order": 1,
+      "status": "관심",
+      "ticker": "402340",
+      "name": {
+        "ko": "SK스퀘어",
+        "en": "SK Square",
+        "ja": "SKスクエア"
+      },
+      "url": "https://www.sksquare.com",
+      "posts": []
+    },
+    {
+      "slug": "moulton",
+      "industry": "cycling-mobility",
+      "order": 1,
+      "status": "관심",
+      "ticker": "",
+      "name": {
+        "ko": "몰튼 바이시클",
+        "en": "Moulton Bicycle Company",
+        "ja": "モールトン"
+      },
+      "tagline": {
+        "ko": "1962년부터 이어지는 영국의 분리형 소경 자전거",
+        "en": "The British separable small-wheel bicycle, in continuous production since 1962",
+        "ja": "1962年から続く英国の分割式小径自転車"
+      },
+      "reason": {
+        "ko": "루비컴퍼니가 한국 공식 수입사로 들여오는 브랜드. 검증된 설계가 시간 속에서 어떻게 유지되는지를 가장 가까이에서 보는 회사.",
+        "en": "The brand Rubi Company brings to Korea as its official importer. The company where I watch, from the closest distance, how a proven design holds up over time.",
+        "ja": "ルビカンパニーが韓国公式輸入元として扱うブランド。検証された設計が時間の中でどう維持されるかを最も近くで見ている会社。"
+      },
+      "url": "https://www.moultonbicycles.co.uk",
+      "posts": [
+        "solitude"
+      ]
+    },
+    {
+      "slug": "alphabet",
+      "industry": "software-ai",
+      "order": 2,
+      "status": "관심",
+      "ticker": "GOOGL",
+      "name": {
+        "ko": "알파벳",
+        "en": "Alphabet",
+        "ja": "アルファベット"
+      },
+      "url": "https://abc.xyz",
+      "posts": []
+    },
+    {
+      "slug": "sk-hynix",
+      "industry": "memory",
+      "order": 1,
+      "status": "관심",
+      "ticker": "000660",
+      "name": {
+        "ko": "SK하이닉스",
+        "en": "SK hynix",
+        "ja": "SKハイニックス"
+      },
+      "url": "https://www.skhynix.com",
+      "posts": []
+    },
+    {
+      "slug": "hyundai-motor",
+      "industry": "cycling-mobility",
+      "order": 2,
+      "status": "관심",
+      "ticker": "005380",
+      "name": {
+        "ko": "현대차",
+        "en": "Hyundai Motor",
+        "ja": "現代自動車"
+      },
+      "url": "https://www.hyundai.com",
+      "posts": []
+    }
   ]
 }
