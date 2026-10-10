@@ -1,8 +1,7 @@
 /* SERENO hidden page: KO / EN / JA. Keys are the exact Korean text nodes on the page. */
 window.SEHEE_I18N = {
   en: {
-    '2026년 10월': 'October 2026',
-    '소중한 가을 시간, 미감과 여유를 찾아 떠나는 여행.': 'A precious stretch of autumn, a journey in search of beauty and ease.',
+    '미감을 찾아 떠나는 여행.': 'A journey in search of beauty.',
     '그 다음에': 'What comes next',
     '클래식 여행': 'A classical outing',
     '12월 12일 토요일': 'Saturday, December 12',
@@ -127,8 +126,7 @@ window.SEHEE_I18N = {
     '베네치아의 비엔날레': 'The Venice Biennale'
   },
   ja: {
-    '2026년 10월': '2026年10月',
-    '소중한 가을 시간, 미감과 여유를 찾아 떠나는 여행.': '大切な秋の時間、美しさとゆとりを探しに出かける旅。',
+    '미감을 찾아 떠나는 여행.': '美しさを探しに出かける旅。',
     '그 다음에': 'この先のこと',
     '클래식 여행': 'クラシックへの旅',
     '12월 12일 토요일': '12月12日 土曜日',
