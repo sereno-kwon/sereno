@@ -147,11 +147,12 @@
   /* Date picker */
   .ask { margin-top: 48px; padding-top: 36px; border-top: 1px solid var(--line); display: grid; gap: 18px; }
   .hero + .ask { margin-top: 40px; padding-top: 0; border-top: 0; }
-  .hero + .day { margin-top: 40px; }
+
   .ask h3 { font-size: 24px; }
   .ask h3.lat-h { font-family: "Cinzel", "Trajan Pro", "Trajan", "Times New Roman", serif; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 400; font-size: 20px; }
   .ask p { color: var(--muted); max-width: 34em; }
-  .dates { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .dates { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  @media (max-width: 680px) { .dates { grid-template-columns: 1fr 1fr; } }
   .date { background: var(--paper); border: 1px solid var(--line); border-radius: 6px; padding: 18px 20px; display: grid; gap: 4px; min-width: 0; }
   .date .d-name { font-family: var(--display); font-size: 22px; }
   .date .d-sub { color: var(--muted); font-size: 14px; }
@@ -225,8 +226,8 @@
       <button type="button" data-lang="ko">KO</button><span class="sep">/</span><button type="button" data-lang="en">EN</button><span class="sep">/</span><button type="button" data-lang="ja">JA</button>
     </div>
     <nav class="site-nav" aria-label="섹션">
-      <a href="#concert">클래식 여행</a>
       <a href="#schedule">일정</a>
+      <a href="#concert">클래식 여행</a>
       <a href="#san">뮤지엄 산</a>
       <a href="#park">서울대공원</a>
       <a href="#next">그 다음에</a>
@@ -240,6 +241,27 @@
     <h1 class="ita">Sono tua<br>disposizione.</h1>
     <p>소중한 가을 시간, 미감과 여유를 찾아 떠나는 여행.</p>
   </header>
+
+  <section class="ask" id="schedule">
+    <h3>일정</h3>
+    <div class="dates">
+      <div class="date">
+        <p class="eyebrow">10월 18일 일요일</p>
+        <p class="d-name">뮤지엄 산</p>
+        <p class="d-sub">오전 8시, 세희씨 집 앞에서</p>
+      </div>
+      <div class="date">
+        <p class="eyebrow">10월 25일 일요일</p>
+        <p class="d-name">서울대공원</p>
+        <p class="d-sub">가루와 도도도 함께</p>
+      </div>
+      <div class="date">
+        <p class="eyebrow">12월 12일 토요일</p>
+        <p class="d-name">BBC 필하모닉</p>
+        <p class="d-sub">오후 5시, 예술의전당 콘서트홀</p>
+      </div>
+    </div>
+  </section>
 
   <section class="day hall" id="concert">
     <div class="day-head">
@@ -305,22 +327,6 @@
       </div>
     </div>
 
-  </section>
-
-  <section class="ask" id="schedule">
-    <h3>일정</h3>
-    <div class="dates">
-      <div class="date">
-        <p class="eyebrow">10월 18일 일요일</p>
-        <p class="d-name">뮤지엄 산</p>
-        <p class="d-sub">오전 8시, 세희씨 집 앞에서</p>
-      </div>
-      <div class="date">
-        <p class="eyebrow">10월 25일 일요일</p>
-        <p class="d-name">서울대공원</p>
-        <p class="d-sub">가루와 도도도 함께</p>
-      </div>
-    </div>
   </section>
 
   <section class="day san" id="san">
