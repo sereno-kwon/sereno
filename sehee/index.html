@@ -54,6 +54,11 @@
   .eyebrow { font-size: 12px; letter-spacing: 0.16em; color: var(--muted); text-transform: uppercase; font-weight: 400; }
 
   /* Language */
+  .logo { display: block; margin: 0 0 22px; width: 190px; height: auto; }
+  .logo img { display: block; width: 100%; height: auto; }
+  .logo .dark { display: none; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .logo .light { display: none; } :root:not([data-theme="light"]) .logo .dark { display: block; } }
+  :root[data-theme="dark"] .logo .light { display: none; } :root[data-theme="dark"] .logo .dark { display: block; }
   .lang { display: flex; align-items: baseline; gap: 8px; margin-bottom: 28px; }
   .lang button { all: unset; cursor: pointer; font-family: var(--body); font-weight: 400; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); transition: color .2s; }
   .lang button:hover, .lang button.active { color: var(--fg); }
@@ -167,6 +172,10 @@
 </head>
 <body>
 <div class="wrap">
+  <div class="logo" aria-label="Jeonsehee">
+    <img class="light" src="logo-light.png" alt="Jeonsehee" width="677" height="116">
+    <img class="dark" src="logo-dark.png" alt="" width="677" height="116">
+  </div>
   <div class="lang" role="group" aria-label="Language">
     <button type="button" data-lang="ko">KO</button><span class="sep">/</span><button type="button" data-lang="en">EN</button><span class="sep">/</span><button type="button" data-lang="ja">JA</button>
   </div>
