@@ -4,7 +4,7 @@ date: 2026-10-01
 slug: solitude
 summary: 개인적인 공간. 저는 자전거를 그렇게 바라보고 있습니다.
 notion: 3edee7486ef880f2b4fec205d0c9fea0
-edited: 2026-10-02T12:30:55.087Z
+edited: 2026-10-09T09:50:19.799Z
 ---
 안녕하세요.  
 루비워크샵 세레노입니다.

@@ -83,11 +83,6 @@
         "ko": "전력·에너지",
         "en": "Power & Energy",
         "ja": "電力・エネルギー"
-      },
-      "desc": {
-        "ko": "전기가 흐르는 순서대로, 발전에서 소재까지",
-        "en": "In the order electricity flows, from generation to materials",
-        "ja": "電気が流れる順に、発電から素材まで"
       }
     },
     {
