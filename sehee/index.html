@@ -67,8 +67,7 @@
     border-bottom: 1px solid transparent; transition: border-color .25s;
   }
   .site-head.scrolled { border-bottom-color: var(--line); }
-  .site-head .logo { width: 132px; margin: 0 0 8px; }
-  .site-head .lang { margin: 0; }
+  .site-head .logo { width: 132px; margin: 0; }
   .site-nav { position: relative; display: flex; gap: 16px; min-width: 0; margin-top: 10px; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
   .site-nav::-webkit-scrollbar { display: none; }
   .site-nav a {
@@ -85,16 +84,10 @@
     .site-nav { -webkit-mask-image: linear-gradient(90deg, transparent, #000 14px, #000 calc(100% - 14px), transparent); mask-image: linear-gradient(90deg, transparent, #000 14px, #000 calc(100% - 14px), transparent); padding-inline: 4px; margin-inline: -4px; }
   }
   @media (min-width: 700px) {
-    .site-head { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 24px; align-items: baseline; }
+    .site-head { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 24px; align-items: center; }
     .site-head .logo { grid-column: 1; grid-row: 1; }
-    .site-head .lang { grid-column: 1; grid-row: 2; }
-    .site-nav { grid-column: 2; grid-row: 1 / span 2; justify-self: end; align-self: center; margin-top: 0; }
+    .site-nav { grid-column: 2; grid-row: 1; justify-self: end; margin-top: 0; }
   }
-  .lang { display: flex; align-items: baseline; gap: 8px; margin-bottom: 28px; }
-  .lang button { all: unset; cursor: pointer; font-family: var(--body); font-weight: 400; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); transition: color .2s; }
-  .lang button:hover, .lang button.active { color: var(--fg); }
-  .lang button:focus-visible { outline: 1px solid var(--amber); outline-offset: 3px; }
-  .lang .sep { font-size: 12px; color: var(--muted); opacity: .5; }
 
   /* Hero */
   .hero { display: grid; gap: 18px; padding-bottom: 40px; border-bottom: 1px solid var(--line); }
@@ -177,7 +170,6 @@
   .story-block { display: grid; gap: 8px; }
   .story-block h3 { font-size: 22px; }
   .story-block h3 .lat { font-size: 13px; color: var(--muted); letter-spacing: 0.08em; margin-left: 8px; font-family: var(--body); font-weight: 400; }
-  html[lang="en"] .story-block h3 .lat { display: none; }
   .hl { background: linear-gradient(transparent 55%, var(--hl) 55%, var(--hl) 92%, transparent 92%); color: inherit; padding: 0 2px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
   .story-block p:not(.eyebrow) { font-size: 15.5px; line-height: 1.85; max-width: 36em; }
   .works { display: grid; gap: 14px; }
@@ -224,9 +216,6 @@
     <div class="logo" aria-label="Jeonsehee">
       <img class="light" src="logo-light.png" alt="Jeonsehee" width="677" height="116">
       <img class="dark" src="logo-dark.png" alt="" width="677" height="116">
-    </div>
-    <div class="lang" role="group" aria-label="Language">
-      <button type="button" data-lang="ko">KO</button><span class="sep">/</span><button type="button" data-lang="en">EN</button><span class="sep">/</span><button type="button" data-lang="ja">JA</button>
     </div>
     <nav class="site-nav" aria-label="섹션">
       <a href="#schedule">일정</a>
@@ -835,32 +824,6 @@
   })();
 </script>
 
-<script src="i18n.js"></script>
-<script>
-  // KO / EN / JA: swaps every matching text node, keeps the Korean original on the node for switching back
-  (() => {
-    const dict = window.SEHEE_I18N || {};
-    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
-      acceptNode: n => (n.parentNode && !['SCRIPT', 'STYLE', 'svg'].includes(n.parentNode.tagName) && n.nodeValue.trim() && !n.parentNode.closest('svg')) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT
-    });
-    const nodes = [];
-    for (let n; (n = walker.nextNode());) nodes.push({ node: n, ko: n.nodeValue });
-    const apply = lang => {
-      document.documentElement.lang = lang;
-      nodes.forEach(({ node, ko }) => {
-        const key = ko.trim();
-        const t = lang === 'ko' ? null : (dict[lang] || {})[key];
-        node.nodeValue = t ? ko.replace(key, t) : ko;
-      });
-      document.querySelectorAll('.lang button').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
-      try { localStorage.setItem('sereno-lang', lang); } catch (e) {}
-    };
-    let saved = null; try { saved = localStorage.getItem('sereno-lang'); } catch (e) {}
-    const nav = (navigator.language || 'ko').slice(0, 2);
-    apply((saved && (dict[saved] || saved === 'ko')) ? saved : (dict[nav] ? nav : 'ko'));
-    document.querySelectorAll('.lang button').forEach(b => b.addEventListener('click', () => apply(b.dataset.lang)));
-  })();
-</script>
 <script>
   // 메뉴 클릭 시 감가속 스크롤 + 현재 섹션 표시
   (() => {
