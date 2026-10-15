@@ -22,6 +22,7 @@
     --tint-hall: #E4E6E7;
     --tint-tokyo: #EDE7E2;
     --tint-clay: #EBE6E0;
+    --tint-book: #E8E9E4;
     --tint-park: #F0E9DB;
     --letter: #FBF7EC;
     --letter-rule: rgba(120, 100, 60, 0.13);
@@ -33,14 +34,14 @@
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
       --bg: #171A15; --paper: #1F241D; --fg: #ECEBE3; --muted: #A3A89B; --line: #353B31;
-      --moss: #8FAE7B; --amber: #D9A05B; --tint-san: #1C221A; --tint-park: #262118; --tint-hall: #1A1E21; --tint-tokyo: #211D1A; --tint-clay: #221E1C;
+      --moss: #8FAE7B; --amber: #D9A05B; --tint-san: #1C221A; --tint-park: #262118; --tint-hall: #1A1E21; --tint-tokyo: #211D1A; --tint-clay: #221E1C; --tint-book: #1C1F1D;
       --letter: #26231C; --letter-rule: rgba(255, 235, 190, 0.07); --letter-margin: #8A5B5B; --hl: rgba(217, 160, 91, 0.30);
       color-scheme: dark;
     }
   }
   :root[data-theme="dark"] {
     --bg: #171A15; --paper: #1F241D; --fg: #ECEBE3; --muted: #A3A89B; --line: #353B31;
-    --moss: #8FAE7B; --amber: #D9A05B; --tint-san: #1C221A; --tint-park: #262118; --tint-hall: #1A1E21; --tint-tokyo: #211D1A; --tint-clay: #221E1C;
+    --moss: #8FAE7B; --amber: #D9A05B; --tint-san: #1C221A; --tint-park: #262118; --tint-hall: #1A1E21; --tint-tokyo: #211D1A; --tint-clay: #221E1C; --tint-book: #1C1F1D;
     --letter: #26231C; --letter-rule: rgba(255, 235, 190, 0.07); --letter-margin: #8A5B5B; --hl: rgba(217, 160, 91, 0.30);
     color-scheme: dark;
   }
@@ -107,6 +108,7 @@
   .day.hall { background: var(--tint-hall); }
   .day.tokyo { background: var(--tint-tokyo); }
   .day.clay { background: var(--tint-clay); }
+  .day.book { background: var(--tint-book); }
   .poster { display: grid; gap: 10px; justify-items: start; }
   .poster img { width: 100%; max-width: 300px; height: auto; border-radius: 4px; display: block; }
   .poster .cap { font-size: 13px; color: var(--muted); }
@@ -231,6 +233,7 @@
       <a href="#park">서울대공원</a>
       <a href="#pottery">도자기</a>
       <a href="#daikanyama">다이칸야마</a>
+      <a href="#library">서재</a>
       <a href="#next">그 다음에</a>
     </nav>
   </div>
@@ -1274,6 +1277,25 @@
     </div>
 
     <p class="lede">동선은 미리 짜지 않으려고 합니다. 골목이 좁고 가게가 작아서, 걷다가 눈에 들어오는 곳으로 들어가는 편이 훨씬 재미있는 동네예요.</p>
+  </section>
+
+  <section class="day book" id="library">
+    <div class="day-head">
+      <p class="eyebrow">천천히 쌓아가는 목록</p>
+      <h2>서재</h2>
+      <p class="where"><b>읽어보면 좋을 책들</b> · 생각날 때마다 한 권씩 더합니다</p>
+    </div>
+    <p class="lede">순서는 없습니다. 끝까지 읽어야 하는 것도 아니고요. 마음이 가는 것부터 펼쳐보면 됩니다.</p>
+
+    <div class="works">
+      <div class="pieces">
+        <article class="piece">
+          <h4>서양미술사 <span class="lat">곰브리치</span></h4>
+          <p class="eyebrow">E. H. Gombrich · The Story of Art</p>
+          <p>유럽 여행을 가기 전에 미리 떠나는 미술여행.</p>
+        </article>
+      </div>
+    </div>
   </section>
 
   <section class="next" id="next">
