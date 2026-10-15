@@ -21,6 +21,7 @@
     --tint-san: #E7EAE1;
     --tint-hall: #E4E6E7;
     --tint-tokyo: #EDE7E2;
+    --tint-clay: #EBE6E0;
     --tint-park: #F0E9DB;
     --letter: #FBF7EC;
     --letter-rule: rgba(120, 100, 60, 0.13);
@@ -32,14 +33,14 @@
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
       --bg: #171A15; --paper: #1F241D; --fg: #ECEBE3; --muted: #A3A89B; --line: #353B31;
-      --moss: #8FAE7B; --amber: #D9A05B; --tint-san: #1C221A; --tint-park: #262118; --tint-hall: #1A1E21; --tint-tokyo: #211D1A;
+      --moss: #8FAE7B; --amber: #D9A05B; --tint-san: #1C221A; --tint-park: #262118; --tint-hall: #1A1E21; --tint-tokyo: #211D1A; --tint-clay: #221E1C;
       --letter: #26231C; --letter-rule: rgba(255, 235, 190, 0.07); --letter-margin: #8A5B5B; --hl: rgba(217, 160, 91, 0.30);
       color-scheme: dark;
     }
   }
   :root[data-theme="dark"] {
     --bg: #171A15; --paper: #1F241D; --fg: #ECEBE3; --muted: #A3A89B; --line: #353B31;
-    --moss: #8FAE7B; --amber: #D9A05B; --tint-san: #1C221A; --tint-park: #262118; --tint-hall: #1A1E21; --tint-tokyo: #211D1A;
+    --moss: #8FAE7B; --amber: #D9A05B; --tint-san: #1C221A; --tint-park: #262118; --tint-hall: #1A1E21; --tint-tokyo: #211D1A; --tint-clay: #221E1C;
     --letter: #26231C; --letter-rule: rgba(255, 235, 190, 0.07); --letter-margin: #8A5B5B; --hl: rgba(217, 160, 91, 0.30);
     color-scheme: dark;
   }
@@ -105,9 +106,13 @@
   .day.park { background: var(--tint-park); }
   .day.hall { background: var(--tint-hall); }
   .day.tokyo { background: var(--tint-tokyo); }
+  .day.clay { background: var(--tint-clay); }
   .poster { display: grid; gap: 10px; justify-items: start; }
   .poster img { width: 100%; max-width: 300px; height: auto; border-radius: 4px; display: block; }
   .poster .cap { font-size: 13px; color: var(--muted); }
+  .snap { display: grid; gap: 10px; justify-items: start; }
+  .snap img { width: 100%; max-width: 330px; height: auto; border-radius: 4px; display: block; }
+  .snap .cap { font-size: 13px; color: var(--muted); }
   .pieces { display: grid; gap: 14px; }
   .piece { background: var(--paper); border-radius: 6px; padding: 18px 18px 20px; display: grid; gap: 8px; }
   .piece h4 { font-family: var(--display); font-weight: 400; font-size: 19px; margin: 0; }
@@ -224,6 +229,7 @@
       <a href="#concert">클래식 여행</a>
       <a href="#san">뮤지엄 산</a>
       <a href="#park">서울대공원</a>
+      <a href="#pottery">도자기</a>
       <a href="#daikanyama">다이칸야마</a>
       <a href="#next">그 다음에</a>
     </nav>
@@ -788,6 +794,38 @@
     </div>
   </section>
 
+  <section class="day clay" id="pottery">
+    <div class="day-head">
+      <p class="eyebrow">언젠가, 혜화동에서</p>
+      <h2>도자기 클래스</h2>
+      <p class="where"><b>서울 종로구 혜화동</b> · 대학로 뒷길</p>
+    </div>
+    <p class="lede">흙을 만지는 일은 머리로 하는 게 아니라 손으로 하는 일이라서, 하는 동안에는 다른 생각이 잘 안 납니다. 둘이 나란히 앉아 각자 하나씩 만들어 보면 좋겠어요. 잘 만들 필요는 없고, 삐뚤어진 대로 쓰면 그것대로 오래 쓰게 됩니다.</p>
+
+    <div class="snap">
+      <img src="pottery.jpg" alt="물레 위의 백자 항아리를 다듬는 손" width="506" height="760" loading="lazy">
+      <p class="cap">혜화동 · 물레 앞에서</p>
+    </div>
+
+    <div class="works">
+      <p class="eyebrow">하루에 끝나지 않는 일</p>
+      <div class="pieces">
+        <article class="piece">
+          <h4>그날 하는 것 <span class="lat">성형</span></h4>
+          <p>물레에 흙을 올리고 모양을 잡는 데까지가 그날의 몫입니다. 보통 두 시간 남짓 걸리고, 처음에는 대부분 한 번쯤 무너뜨립니다. 다시 뭉쳐서 올리면 되니까 괜찮아요.</p>
+        </article>
+        <article class="piece">
+          <h4>그다음에 일어나는 일 <span class="lat">건조 · 초벌 · 유약 · 재벌</span></h4>
+          <p>그릇은 바로 가져올 수 없습니다. 그늘에서 천천히 말리고, 한 번 굽고, 유약을 입혀 다시 굽습니다. 다 더하면 보통 한 달 안팎이 걸려요. 잊고 지내다가 연락을 받고 찾으러 가는 것까지가 이 수업의 재미입니다.</p>
+        </article>
+        <article class="piece">
+          <h4>알아두면 좋은 것 <span class="lat">준비물</span></h4>
+          <p>옷에 흙물이 튀니까 편한 옷이 좋고, 손톱은 짧은 편이 낫습니다. 앞치마와 도구는 보통 공방에서 빌려줍니다.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <section class="day tokyo" id="daikanyama">
     <div class="day-head">
       <p class="eyebrow">언젠가, 도쿄에서</p>
@@ -1261,7 +1299,7 @@
   (function () {
     var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if ('IntersectionObserver' in window && !reduce) {
-      var targets = document.querySelectorAll('.day-head, .lede, .map, .stop, .notes, .story-block, .work, .piece, .poster, .essay > *, .ask h3, .date, .duomo, .next h3, .next-list li');
+      var targets = document.querySelectorAll('.day-head, .lede, .map, .stop, .notes, .story-block, .work, .piece, .poster, .snap, .essay > *, .ask h3, .date, .duomo, .next h3, .next-list li');
       var io = new IntersectionObserver(function (entries) {
         entries.forEach(function (e) {
           if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
