@@ -28,7 +28,7 @@
     {
       "slug": "components-packaging",
       "parent": "semiconductors",
-      "order": 3,
+      "order": 2,
       "name": {
         "ko": "부품·패키징",
         "en": "Components & Packaging",

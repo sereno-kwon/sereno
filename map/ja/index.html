@@ -217,8 +217,8 @@
     <div class="map-scroll" id="map-scroll">
 <svg class="mindmap" viewBox="0 0 672 630" width="672" height="630" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="関心領域">
 <path d="M404.0 15.0 C430.0 15.0 430.0 15.0 456.0 15.0" class="edge"/>
-<path d="M365.0 45.0 C410.5 45.0 410.5 45.0 456.0 45.0" class="edge"/>
-<path d="M456.0 75.0 C456.0 75.0 456.0 75.0 456.0 75.0" class="edge"/>
+<path d="M456.0 45.0 C456.0 45.0 456.0 45.0 456.0 45.0" class="edge"/>
+<path d="M365.0 75.0 C410.5 75.0 410.5 75.0 456.0 75.0" class="edge"/>
 <path d="M215.0 45.0 C260.5 45.0 260.5 15.0 306.0 15.0" class="edge"/>
 <path d="M215.0 45.0 C260.5 45.0 260.5 45.0 306.0 45.0" class="edge"/>
 <path d="M215.0 45.0 C260.5 45.0 260.5 75.0 306.0 75.0" class="edge"/>
@@ -251,10 +251,10 @@
 <path d="M78.0 330.0 C117.0 330.0 117.0 615.0 156.0 615.0" class="edge"/>
 <a href="tsmc.html"><text x="466.0" y="15.0" class="node company">TSMC</text></a>
 <text x="316.0" y="15.0" class="node industry">ファウンドリ</text>
-<a href="sk-hynix.html"><text x="466.0" y="45.0" class="node company">SKハイニックス</text></a>
-<text x="316.0" y="45.0" class="node industry">メモリ</text>
-<a href="samsung-electro-mechanics.html"><text x="466.0" y="75.0" class="node company">サムスン電機</text></a>
-<text x="316.0" y="75.0" class="node industry">部品・パッケージング</text>
+<a href="samsung-electro-mechanics.html"><text x="466.0" y="45.0" class="node company">サムスン電機</text></a>
+<text x="316.0" y="45.0" class="node industry">部品・パッケージング</text>
+<a href="sk-hynix.html"><text x="466.0" y="75.0" class="node company">SKハイニックス</text></a>
+<text x="316.0" y="75.0" class="node industry">メモリ</text>
 <text x="166.0" y="45.0" class="node industry">半導体</text>
 <a href="palantir.html"><text x="316.0" y="105.0" class="node company">パランティア</text></a>
 <a href="alphabet.html"><text x="316.0" y="135.0" class="node company">アルファベット</text></a>
@@ -300,7 +300,7 @@
   // Interactive mind map: the static SVG above is the no-JS fallback; here it is replaced with a
   // collapsible tree. Top-level branches start closed; clicking an industry opens or closes it,
   // clicking a company goes to its page. Positions tween between layouts.
-  const TREE = {"l":"関心領域","k":"root","s":"","c":[{"l":"半導体","k":"industry","s":"semiconductors","d":"ファウンドリ、パッケージング、部品","c":[{"l":"ファウンドリ","k":"industry","s":"foundry","c":[{"l":"TSMC","k":"company","s":"tsmc","t":"TSM"}]},{"l":"メモリ","k":"industry","s":"memory","c":[{"l":"SKハイニックス","k":"company","s":"sk-hynix","t":"000660"}]},{"l":"部品・パッケージング","k":"industry","s":"components-packaging","c":[{"l":"サムスン電機","k":"company","s":"samsung-electro-mechanics","t":"009150"}]}]},{"l":"ソフトウェア・AI","k":"industry","s":"software-ai","d":"データプラットフォームとソブリンAI","c":[{"l":"パランティア","k":"company","s":"palantir","t":"PLTR"},{"l":"アルファベット","k":"company","s":"alphabet","t":"GOOGL"}]},{"l":"持株会社","k":"industry","s":"holding-companies","d":"NAVディスカウントで見る会社","c":[{"l":"SKスクエア","k":"company","s":"sk-square","t":"402340"}]},{"l":"電力・エネルギー","k":"industry","s":"power-energy","c":[{"l":"発電設備","k":"industry","s":"generation-equipment","d":"ガスタービンと原発主機器。3社寡占と納期のボトルネック","c":[{"l":"GEベルノバ","k":"company","s":"ge-vernova","t":"GEV"},{"l":"シーメンス・エナジー","k":"company","s":"siemens-energy","t":"ENR"},{"l":"斗山エナビリティ","k":"company","s":"doosan-enerbility","t":"034020"},{"l":"BHI","k":"company","s":"bhi","t":"083650"},{"l":"韓電技術","k":"company","s":"kepco-ent","t":"052690"}]},{"l":"発電事業者","k":"industry","s":"power-producers","d":"発電所を所有し電気を売る会社。長期PPA","c":[{"l":"コンステレーション・エナジー","k":"company","s":"constellation","t":"CEG"},{"l":"ビストラ","k":"company","s":"vistra","t":"VST"}]},{"l":"送電・変電","k":"industry","s":"transmission","d":"超高圧変圧器、遮断器、HVDC","c":[{"l":"HD現代エレクトリック","k":"company","s":"hd-hyundai-electric","t":"267260"},{"l":"暁星重工業","k":"company","s":"hyosung-heavy","t":"298040"},{"l":"山一電気","k":"company","s":"sanil-electric","t":"062040"},{"l":"日立製作所","k":"company","s":"hitachi","t":"6501"}]},{"l":"配電・データセンター電力","k":"industry","s":"distribution","d":"配電盤、開閉装置、データセンター電力スタック","c":[{"l":"LS ELECTRIC","k":"company","s":"ls-electric","t":"010120"},{"l":"イートン","k":"company","s":"eaton","t":"ETN"}]},{"l":"素材","k":"industry","s":"materials","d":"方向性電磁鋼板など、上の段階の原価を決める","c":[{"l":"クリーブランド・クリフス","k":"company","s":"cleveland-cliffs","t":"CLF"}]}]},{"l":"デジタル資産","k":"industry","s":"digital-assets","d":"ビットコインとマクロ変数"}]};
+  const TREE = {"l":"関心領域","k":"root","s":"","c":[{"l":"半導体","k":"industry","s":"semiconductors","d":"ファウンドリ、パッケージング、部品","c":[{"l":"ファウンドリ","k":"industry","s":"foundry","c":[{"l":"TSMC","k":"company","s":"tsmc","t":"TSM"}]},{"l":"部品・パッケージング","k":"industry","s":"components-packaging","c":[{"l":"サムスン電機","k":"company","s":"samsung-electro-mechanics","t":"009150"}]},{"l":"メモリ","k":"industry","s":"memory","c":[{"l":"SKハイニックス","k":"company","s":"sk-hynix","t":"000660"}]}]},{"l":"ソフトウェア・AI","k":"industry","s":"software-ai","d":"データプラットフォームとソブリンAI","c":[{"l":"パランティア","k":"company","s":"palantir","t":"PLTR"},{"l":"アルファベット","k":"company","s":"alphabet","t":"GOOGL"}]},{"l":"持株会社","k":"industry","s":"holding-companies","d":"NAVディスカウントで見る会社","c":[{"l":"SKスクエア","k":"company","s":"sk-square","t":"402340"}]},{"l":"電力・エネルギー","k":"industry","s":"power-energy","c":[{"l":"発電設備","k":"industry","s":"generation-equipment","d":"ガスタービンと原発主機器。3社寡占と納期のボトルネック","c":[{"l":"GEベルノバ","k":"company","s":"ge-vernova","t":"GEV"},{"l":"シーメンス・エナジー","k":"company","s":"siemens-energy","t":"ENR"},{"l":"斗山エナビリティ","k":"company","s":"doosan-enerbility","t":"034020"},{"l":"BHI","k":"company","s":"bhi","t":"083650"},{"l":"韓電技術","k":"company","s":"kepco-ent","t":"052690"}]},{"l":"発電事業者","k":"industry","s":"power-producers","d":"発電所を所有し電気を売る会社。長期PPA","c":[{"l":"コンステレーション・エナジー","k":"company","s":"constellation","t":"CEG"},{"l":"ビストラ","k":"company","s":"vistra","t":"VST"}]},{"l":"送電・変電","k":"industry","s":"transmission","d":"超高圧変圧器、遮断器、HVDC","c":[{"l":"HD現代エレクトリック","k":"company","s":"hd-hyundai-electric","t":"267260"},{"l":"暁星重工業","k":"company","s":"hyosung-heavy","t":"298040"},{"l":"山一電気","k":"company","s":"sanil-electric","t":"062040"},{"l":"日立製作所","k":"company","s":"hitachi","t":"6501"}]},{"l":"配電・データセンター電力","k":"industry","s":"distribution","d":"配電盤、開閉装置、データセンター電力スタック","c":[{"l":"LS ELECTRIC","k":"company","s":"ls-electric","t":"010120"},{"l":"イートン","k":"company","s":"eaton","t":"ETN"}]},{"l":"素材","k":"industry","s":"materials","d":"方向性電磁鋼板など、上の段階の原価を決める","c":[{"l":"クリーブランド・クリフス","k":"company","s":"cleveland-cliffs","t":"CLF"}]}]},{"l":"デジタル資産","k":"industry","s":"digital-assets","d":"ビットコインとマクロ変数"}]};
   const ROW = 30, COL = 150, X0 = 16, PAD = 10, FS = 13, DUR = 280;
   const NS = 'http://www.w3.org/2000/svg';
   const scroll = document.getElementById('map-scroll');
