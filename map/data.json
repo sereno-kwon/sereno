@@ -174,6 +174,126 @@
         "en": "Grain-oriented electrical steel and the like, setting the cost of every stage above",
         "ja": "方向性電磁鋼板など、上の段階の原価を決める"
       }
+    },
+    {
+      "slug": "robotics",
+      "parent": null,
+      "order": 6,
+      "name": {
+        "ko": "로보틱스",
+        "en": "Robotics",
+        "ja": "ロボティクス"
+      },
+      "desc": {
+        "ko": "구동부에서 모델까지, 로봇이 만들어지는 순서대로",
+        "en": "From actuators to models, in the order a robot gets built",
+        "ja": "駆動部からモデルまで、ロボットが作られる順に"
+      }
+    },
+    {
+      "slug": "robot-actuators",
+      "parent": "robotics",
+      "order": 1,
+      "name": {
+        "ko": "구동부",
+        "en": "Actuators & Drives",
+        "ja": "駆動部"
+      },
+      "desc": {
+        "ko": "감속기와 모터. 가장 대체하기 어려운 고비부",
+        "en": "Reducers and motors, the hardest part to second-source",
+        "ja": "減速機とモーター。もっとも代替しにくい部分"
+      }
+    },
+    {
+      "slug": "robot-sensing",
+      "parent": "robotics",
+      "order": 2,
+      "name": {
+        "ko": "센서·인식",
+        "en": "Sensing & Perception",
+        "ja": "センサー・認識"
+      },
+      "desc": {
+        "ko": "라이다, 머신비전, 힘·토크 센서",
+        "en": "Lidar, machine vision, force and torque sensing",
+        "ja": "ライダー、マシンビジョン、力・トルクセンサー"
+      }
+    },
+    {
+      "slug": "robot-compute",
+      "parent": "robotics",
+      "order": 3,
+      "name": {
+        "ko": "컴퓨트",
+        "en": "Compute",
+        "ja": "コンピュート"
+      },
+      "desc": {
+        "ko": "로봇 안에 들어가는 연산과 모터 제어 반도체",
+        "en": "The silicon inside a robot, from inference to motor control",
+        "ja": "ロボットに入る演算とモーター制御の半導体"
+      }
+    },
+    {
+      "slug": "industrial-cobots",
+      "parent": "robotics",
+      "order": 4,
+      "name": {
+        "ko": "산업용·협동 로봇",
+        "en": "Industrial Arms & Cobots",
+        "ja": "産業用・協働ロボット"
+      },
+      "desc": {
+        "ko": "이미 돈을 벌고 있는 로봇",
+        "en": "The robots already earning their keep",
+        "ja": "すでに稼いでいるロボット"
+      }
+    },
+    {
+      "slug": "humanoids",
+      "parent": "robotics",
+      "order": 5,
+      "name": {
+        "ko": "휴머노이드",
+        "en": "Humanoids",
+        "ja": "ヒューマノイド"
+      },
+      "desc": {
+        "ko": "아직 양산 전야. 누가 먼저 공장에 넣느냐의 싸움",
+        "en": "Still on the eve of volume. The race is who gets into a factory first",
+        "ja": "まだ量産前夜。誰が先に工場へ入れるかの勝負"
+      }
+    },
+    {
+      "slug": "robot-software",
+      "parent": "robotics",
+      "order": 6,
+      "name": {
+        "ko": "소프트웨어·시뮬레이션",
+        "en": "Software & Simulation",
+        "ja": "ソフトウェア・シミュレーション"
+      },
+      "desc": {
+        "ko": "로봇 파운데이션 모델은 대부분 비상장. 상장사는 시뮬레이션·디지털 트윈 쪽에 있음",
+        "en": "The foundation-model layer is mostly private; the listed names sit in simulation and digital twins",
+        "ja": "ロボットの基盤モデルはほぼ非上場。上場企業はシミュレーション側にいる"
+      }
+    },
+    {
+      "slug": "robot-applications",
+      "parent": "robotics",
+      "order": 7,
+      "name": {
+        "ko": "적용처",
+        "en": "Applications",
+        "ja": "応用先"
+      },
+      "desc": {
+        "ko": "물류, 수술, 농업. 수요를 끌고 가는 쪽",
+        "en": "Logistics, surgery, agriculture. The side that pulls demand",
+        "ja": "物流、手術、農業。需要を引っぱる側"
+      }
     }
   ],
   "companies": [
@@ -530,6 +650,462 @@
         "ja": "米国唯一の方向性電磁鋼板(GOES)メーカー"
       },
       "url": "https://www.clevelandcliffs.com",
+      "posts": []
+    },
+    {
+      "slug": "harmonic-drive",
+      "industry": "robot-actuators",
+      "order": 1,
+      "status": "관심",
+      "ticker": "6324.T",
+      "name": {
+        "ko": "하모닉드라이브",
+        "en": "Harmonic Drive Systems",
+        "ja": "ハーモニック・ドライブ・システムズ"
+      },
+      "url": "https://www.hds.co.jp",
+      "tagline": {
+        "ko": "파동기어 감속기의 원조. 휴머노이드 관절의 병목",
+        "en": "The original strain-wave reducer maker, and the bottleneck in humanoid joints",
+        "ja": "波動歯車減速機の元祖。ヒューマノイド関節のボトルネック"
+      },
+      "posts": []
+    },
+    {
+      "slug": "nabtesco",
+      "industry": "robot-actuators",
+      "order": 2,
+      "status": "관심",
+      "ticker": "6268.T",
+      "name": {
+        "ko": "나브테스코",
+        "en": "Nabtesco",
+        "ja": "ナブテスコ"
+      },
+      "url": "https://www.nabtesco.com",
+      "tagline": {
+        "ko": "산업용 로봇의 무거운 관절을 맡는 RV 감속기",
+        "en": "RV reducers for the heavy joints of industrial arms",
+        "ja": "産業用ロボットの重い関節を担うRV減速機"
+      },
+      "posts": []
+    },
+    {
+      "slug": "hiwin",
+      "industry": "robot-actuators",
+      "order": 3,
+      "status": "관심",
+      "ticker": "2049.TW",
+      "name": {
+        "ko": "하이윈",
+        "en": "Hiwin Technologies",
+        "ja": "ハイウィン"
+      },
+      "url": "https://www.hiwin.tw",
+      "tagline": {
+        "ko": "볼스크류와 리니어 가이드. 직선 운동의 대만 강자",
+        "en": "Ball screws and linear guides, Taiwan’s strength in linear motion",
+        "ja": "ボールねじとリニアガイド。直線運動の台湾の強者"
+      },
+      "posts": []
+    },
+    {
+      "slug": "sbb-tech",
+      "industry": "robot-actuators",
+      "order": 4,
+      "status": "관심",
+      "ticker": "389500",
+      "name": {
+        "ko": "에스비비테크",
+        "en": "SBB Tech",
+        "ja": "SBBテック"
+      },
+      "url": "https://www.sbbtech.com",
+      "tagline": {
+        "ko": "하모닉 감속기 국산화. 국내 로봇 부품의 시험대",
+        "en": "Localising the harmonic reducer, a test case for Korean robot parts",
+        "ja": "ハーモニック減速機の国産化。韓国ロボット部品の試金石"
+      },
+      "posts": []
+    },
+    {
+      "slug": "keyence",
+      "industry": "robot-sensing",
+      "order": 1,
+      "status": "관심",
+      "ticker": "6861.T",
+      "name": {
+        "ko": "키엔스",
+        "en": "Keyence",
+        "ja": "キーエンス"
+      },
+      "url": "https://www.keyence.com",
+      "tagline": {
+        "ko": "머신비전과 센서. 공장 자동화의 이익률 교과서",
+        "en": "Machine vision and sensors, the margin textbook of factory automation",
+        "ja": "マシンビジョンとセンサー。工場自動化の利益率の教科書"
+      },
+      "posts": []
+    },
+    {
+      "slug": "cognex",
+      "industry": "robot-sensing",
+      "order": 2,
+      "status": "관심",
+      "ticker": "CGNX",
+      "name": {
+        "ko": "코그넥스",
+        "en": "Cognex",
+        "ja": "コグネックス"
+      },
+      "url": "https://www.cognex.com",
+      "tagline": {
+        "ko": "로봇이 집을 물건을 찾아내는 비전 소프트웨어",
+        "en": "The vision software that finds the part a robot is about to pick",
+        "ja": "ロボットがつかむ物を見つけ出すビジョンソフトウェア"
+      },
+      "posts": []
+    },
+    {
+      "slug": "hesai",
+      "industry": "robot-sensing",
+      "order": 3,
+      "status": "관심",
+      "ticker": "HSAI",
+      "name": {
+        "ko": "헤사이",
+        "en": "Hesai Group",
+        "ja": "ヘサイ"
+      },
+      "url": "https://www.hesaitech.com",
+      "tagline": {
+        "ko": "라이다 출하 1위. 자동차를 넘어 로봇으로 넘어오는 중",
+        "en": "The lidar volume leader, moving from cars into robots",
+        "ja": "ライダー出荷1位。自動車からロボットへ移りつつある"
+      },
+      "posts": []
+    },
+    {
+      "slug": "nvidia",
+      "industry": "robot-compute",
+      "order": 1,
+      "status": "관심",
+      "ticker": "NVDA",
+      "name": {
+        "ko": "엔비디아",
+        "en": "NVIDIA",
+        "ja": "エヌビディア"
+      },
+      "url": "https://www.nvidia.com",
+      "tagline": {
+        "ko": "젯슨 토르로 연산을, 아이작 그루트로 모델을. 양쪽을 다 쥔 회사",
+        "en": "Jetson Thor for the compute, Isaac GR00T for the model. It holds both ends",
+        "ja": "ジェットソン・トールで演算を、アイザックGR00Tでモデルを。両端を握る会社"
+      },
+      "posts": []
+    },
+    {
+      "slug": "texas-instruments",
+      "industry": "robot-compute",
+      "order": 2,
+      "status": "관심",
+      "ticker": "TXN",
+      "name": {
+        "ko": "텍사스인스트루먼트",
+        "en": "Texas Instruments",
+        "ja": "テキサス・インスツルメンツ"
+      },
+      "url": "https://www.ti.com",
+      "tagline": {
+        "ko": "관절 하나마다 들어가는 모터 드라이버와 아날로그",
+        "en": "The motor drivers and analog parts that go into every single joint",
+        "ja": "関節ごとに入るモータードライバーとアナログ"
+      },
+      "posts": []
+    },
+    {
+      "slug": "infineon",
+      "industry": "robot-compute",
+      "order": 3,
+      "status": "관심",
+      "ticker": "IFX.DE",
+      "name": {
+        "ko": "인피니언",
+        "en": "Infineon Technologies",
+        "ja": "インフィニオン"
+      },
+      "url": "https://www.infineon.com",
+      "tagline": {
+        "ko": "모터를 돌리는 전력 반도체와 자기 센서",
+        "en": "The power semiconductors and magnetic sensors that turn the motors",
+        "ja": "モーターを回すパワー半導体と磁気センサー"
+      },
+      "posts": []
+    },
+    {
+      "slug": "fanuc",
+      "industry": "industrial-cobots",
+      "order": 1,
+      "status": "관심",
+      "ticker": "6954.T",
+      "name": {
+        "ko": "화낙",
+        "en": "Fanuc",
+        "ja": "ファナック"
+      },
+      "url": "https://www.fanuc.co.jp",
+      "tagline": {
+        "ko": "산업용 로봇과 CNC의 기준점",
+        "en": "The reference point for industrial arms and CNC",
+        "ja": "産業用ロボットとCNCの基準点"
+      },
+      "posts": []
+    },
+    {
+      "slug": "yaskawa",
+      "industry": "industrial-cobots",
+      "order": 2,
+      "status": "관심",
+      "ticker": "6506.T",
+      "name": {
+        "ko": "야스카와전기",
+        "en": "Yaskawa Electric",
+        "ja": "安川電機"
+      },
+      "url": "https://www.yaskawa.co.jp",
+      "tagline": {
+        "ko": "서보 모터부터 로봇까지 수직으로 가진 회사",
+        "en": "Servo motors through to finished robots, all in one house",
+        "ja": "サーボモーターからロボットまで垂直に持つ会社"
+      },
+      "posts": []
+    },
+    {
+      "slug": "teradyne",
+      "industry": "industrial-cobots",
+      "order": 3,
+      "status": "관심",
+      "ticker": "TER",
+      "name": {
+        "ko": "테라다인",
+        "en": "Teradyne",
+        "ja": "テラダイン"
+      },
+      "url": "https://www.teradyne.com",
+      "tagline": {
+        "ko": "반도체 검사장비와 유니버설로봇을 함께 가짐",
+        "en": "Semiconductor test equipment and Universal Robots under one roof",
+        "ja": "半導体検査装置とユニバーサルロボットを併せ持つ"
+      },
+      "posts": []
+    },
+    {
+      "slug": "doosan-robotics",
+      "industry": "industrial-cobots",
+      "order": 4,
+      "status": "관심",
+      "ticker": "454910",
+      "name": {
+        "ko": "두산로보틱스",
+        "en": "Doosan Robotics",
+        "ja": "ドゥサンロボティクス"
+      },
+      "url": "https://www.doosanrobotics.com",
+      "tagline": {
+        "ko": "협동로봇 단품에서 턴키 솔루션으로 옮겨가는 중",
+        "en": "Moving from selling cobot units to selling turnkey lines",
+        "ja": "協働ロボット単品からターンキー提供へ移行中"
+      },
+      "posts": []
+    },
+    {
+      "slug": "tesla",
+      "industry": "humanoids",
+      "order": 1,
+      "status": "관심",
+      "ticker": "TSLA",
+      "name": {
+        "ko": "테슬라",
+        "en": "Tesla",
+        "ja": "テスラ"
+      },
+      "url": "https://www.tesla.com",
+      "tagline": {
+        "ko": "옵티무스. 아직 전량 사내용이고 양산 라인을 깔고 있음",
+        "en": "Optimus: still entirely in-house, with the production line going in",
+        "ja": "オプティマス。まだ全量社内用で、量産ラインを敷いている"
+      },
+      "posts": []
+    },
+    {
+      "slug": "unitree",
+      "industry": "humanoids",
+      "order": 2,
+      "status": "관심",
+      "ticker": "688836.SS",
+      "name": {
+        "ko": "유니트리",
+        "en": "Unitree Robotics",
+        "ja": "ユニツリー"
+      },
+      "url": "https://www.unitree.com",
+      "tagline": {
+        "ko": "2026년 8월 상하이 STAR 상장. 가격으로 판을 깨는 쪽",
+        "en": "Listed on the Shanghai STAR market in August 2026, breaking the price floor",
+        "ja": "2026年8月に上海STAR上場。価格で場を崩す側"
+      },
+      "posts": []
+    },
+    {
+      "slug": "rainbow-robotics",
+      "industry": "humanoids",
+      "order": 3,
+      "status": "관심",
+      "ticker": "277810",
+      "name": {
+        "ko": "레인보우로보틱스",
+        "en": "Rainbow Robotics",
+        "ja": "レインボーロボティクス"
+      },
+      "url": "https://www.rainbow-robotics.com",
+      "tagline": {
+        "ko": "삼성전자가 35%를 쥐고 연결 자회사로 편입한 국내 휴머노이드",
+        "en": "The Korean humanoid maker Samsung took to 35% and consolidated",
+        "ja": "サムスン電子が35%を握り連結子会社にした韓国のヒューマノイド"
+      },
+      "posts": []
+    },
+    {
+      "slug": "hyundai-motor",
+      "industry": "humanoids",
+      "order": 4,
+      "status": "관심",
+      "ticker": "005380",
+      "name": {
+        "ko": "현대자동차",
+        "en": "Hyundai Motor",
+        "ja": "現代自動車"
+      },
+      "url": "https://www.hyundai.com",
+      "tagline": {
+        "ko": "보스턴다이나믹스를 통해 양산형 아틀라스를 먼저 공장에 넣고 있음",
+        "en": "Through Boston Dynamics, putting a production Atlas into its own plants first",
+        "ja": "ボストン・ダイナミクスを通じて量産型アトラスを先に工場へ"
+      },
+      "posts": []
+    },
+    {
+      "slug": "siemens",
+      "industry": "robot-software",
+      "order": 1,
+      "status": "관심",
+      "ticker": "SIE.DE",
+      "name": {
+        "ko": "지멘스",
+        "en": "Siemens",
+        "ja": "シーメンス"
+      },
+      "url": "https://www.siemens.com",
+      "tagline": {
+        "ko": "공장을 먼저 가상으로 세우는 산업 소프트웨어",
+        "en": "The industrial software that builds the factory virtually first",
+        "ja": "工場をまず仮想で建てる産業ソフトウェア"
+      },
+      "posts": []
+    },
+    {
+      "slug": "dassault-systemes",
+      "industry": "robot-software",
+      "order": 2,
+      "status": "관심",
+      "ticker": "DSY.PA",
+      "name": {
+        "ko": "다쏘시스템",
+        "en": "Dassault Systèmes",
+        "ja": "ダッソー・システムズ"
+      },
+      "url": "https://www.3ds.com",
+      "tagline": {
+        "ko": "설계와 시뮬레이션. 로봇이 태어나기 전의 단계",
+        "en": "Design and simulation, the stage before a robot exists",
+        "ja": "設計とシミュレーション。ロボットが生まれる前の段階"
+      },
+      "posts": []
+    },
+    {
+      "slug": "symbotic",
+      "industry": "robot-applications",
+      "order": 1,
+      "status": "관심",
+      "ticker": "SYM",
+      "name": {
+        "ko": "심보틱",
+        "en": "Symbotic",
+        "ja": "シンボティック"
+      },
+      "url": "https://www.symbotic.com",
+      "tagline": {
+        "ko": "창고 전체를 로봇으로 바꾸는 물류 자동화",
+        "en": "Turning a whole warehouse over to robots",
+        "ja": "倉庫まるごとをロボットに置き換える物流自動化"
+      },
+      "posts": []
+    },
+    {
+      "slug": "daifuku",
+      "industry": "robot-applications",
+      "order": 2,
+      "status": "관심",
+      "ticker": "6383.T",
+      "name": {
+        "ko": "다이후쿠",
+        "en": "Daifuku",
+        "ja": "ダイフク"
+      },
+      "url": "https://www.daifuku.com",
+      "tagline": {
+        "ko": "반도체 팹과 공항까지, 물건을 옮기는 설비의 강자",
+        "en": "From semiconductor fabs to airports, the mover of things",
+        "ja": "半導体工場から空港まで、物を運ぶ設備の強者"
+      },
+      "posts": []
+    },
+    {
+      "slug": "intuitive-surgical",
+      "industry": "robot-applications",
+      "order": 3,
+      "status": "관심",
+      "ticker": "ISRG",
+      "name": {
+        "ko": "인튜이티브서지컬",
+        "en": "Intuitive Surgical",
+        "ja": "インテュイティブ・サージカル"
+      },
+      "url": "https://www.intuitive.com",
+      "tagline": {
+        "ko": "다빈치. 이미 수십 년간 돈을 벌어온 로봇",
+        "en": "Da Vinci: a robot that has been earning for decades already",
+        "ja": "ダヴィンチ。すでに数十年稼いできたロボット"
+      },
+      "posts": []
+    },
+    {
+      "slug": "curexo",
+      "industry": "robot-applications",
+      "order": 4,
+      "status": "관심",
+      "ticker": "060280",
+      "name": {
+        "ko": "큐렉소",
+        "en": "Curexo",
+        "ja": "キュレクソ"
+      },
+      "url": "https://www.curexo.com",
+      "tagline": {
+        "ko": "국내 수술로봇. 인공관절과 척추",
+        "en": "Korea’s surgical robot maker, in joints and spine",
+        "ja": "韓国の手術ロボット。人工関節と脊椎"
+      },
       "posts": []
     }
   ]
