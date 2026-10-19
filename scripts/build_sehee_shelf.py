@@ -11,6 +11,7 @@ import pathlib, re, hashlib
 
 BOOKS = [
     "서양미술사",
+    "안도 다다오",
 ]
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
