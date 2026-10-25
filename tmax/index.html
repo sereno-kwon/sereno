@@ -182,7 +182,7 @@
   .m-hero .eyebrow { margin-bottom: 14px; }
   .m-hero h1 { margin-bottom: 14px; }
   .m-hero .tagline { margin-bottom: 26px; }
-  .m-hero .rule { width: 44px; height: 3px; background: var(--accent); margin: 0 0 26px; border-radius: 1px; }
+  .m-hero .rule { width: 44px; height: 4px; background: var(--swatch, var(--accent)); box-shadow: inset 0 0 0 1px var(--line); margin: 0 0 26px; border-radius: 1px; }
   .m-hero .lede { max-width: 34ch; }
   .specs li { grid-template-columns: 8em 1fr; }
   .specs b { color: var(--muted); font-weight: 300; }
@@ -202,6 +202,11 @@
   .others a[aria-current] { color: var(--muted); border-color: transparent; pointer-events: none; }
   nav a.active::after { background: var(--accent); }
 </style>
+<style>
+  :root { --accent: #62666c; --swatch: #7a7e84; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --accent: #a7abb1; } }
+  :root[data-theme="dark"] { --accent: #a7abb1; }
+</style>
 </head>
 <body>
 <div class="wrap">
@@ -211,6 +216,7 @@
       <a href="../gti/">Golf GTI</a>
       <a href="../monkey/">Monkey 125</a>
       <a href="../tmax/" class="active" aria-current="page">T-MAX 560</a>
+      <a href="../s1000rr/">S 1000 RR</a>
       <a href="../moulton/">Moulton</a>
       <a href="../tsubasa/">Tsubasa Crow</a>
     </nav>
@@ -219,7 +225,7 @@
   <section class="m-hero">
     <p class="eyebrow">MOBILITY · 모터사이클</p>
     <h1>T-MAX 560</h1>
-    <p class="tagline">Yamaha · 562cc · Parallel twin</p>
+    <p class="tagline">Yamaha · 562cc · Gray</p>
     <div class="rule" aria-hidden="true"></div>
     <p class="lede">도시를 빠져나가는 가장 편안한 방법. 계획 없이 출발해도 괜찮은 거리.</p>
   </section>
@@ -231,6 +237,7 @@
       <li><b>출력</b><span>47.6마력 · 55.7Nm</span></li>
       <li><b>변속기</b><span>벨트 구동 CVT</span></li>
       <li><b>무게</b><span>218kg (주행 가능 상태)</span></li>
+      <li><b>색상</b><span>그레이</span></li>
     </ul>
   </section>
 
@@ -250,6 +257,7 @@
       <li><a href="../gti/">Golf GTI</a></li>
       <li><a href="../monkey/">Monkey 125</a></li>
       <li><a href="../tmax/" aria-current="page">T-MAX 560</a></li>
+      <li><a href="../s1000rr/">S 1000 RR</a></li>
       <li><a href="../moulton/">Moulton</a></li>
       <li><a href="../tsubasa/">Tsubasa Crow</a></li>
     </ul>

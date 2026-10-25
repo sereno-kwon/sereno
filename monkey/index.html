@@ -182,7 +182,7 @@
   .m-hero .eyebrow { margin-bottom: 14px; }
   .m-hero h1 { margin-bottom: 14px; }
   .m-hero .tagline { margin-bottom: 26px; }
-  .m-hero .rule { width: 44px; height: 3px; background: var(--accent); margin: 0 0 26px; border-radius: 1px; }
+  .m-hero .rule { width: 44px; height: 4px; background: var(--swatch, var(--accent)); box-shadow: inset 0 0 0 1px var(--line); margin: 0 0 26px; border-radius: 1px; }
   .m-hero .lede { max-width: 34ch; }
   .specs li { grid-template-columns: 8em 1fr; }
   .specs b { color: var(--muted); font-weight: 300; }
@@ -202,6 +202,11 @@
   .others a[aria-current] { color: var(--muted); border-color: transparent; pointer-events: none; }
   nav a.active::after { background: var(--accent); }
 </style>
+<style>
+  :root { --accent: #1c1d21; --swatch: #111111; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --accent: #d9d8d3; } }
+  :root[data-theme="dark"] { --accent: #d9d8d3; }
+</style>
 </head>
 <body>
 <div class="wrap">
@@ -211,6 +216,7 @@
       <a href="../gti/">Golf GTI</a>
       <a href="../monkey/" class="active" aria-current="page">Monkey 125</a>
       <a href="../tmax/">T-MAX 560</a>
+      <a href="../s1000rr/">S 1000 RR</a>
       <a href="../moulton/">Moulton</a>
       <a href="../tsubasa/">Tsubasa Crow</a>
     </nav>
@@ -219,7 +225,7 @@
   <section class="m-hero">
     <p class="eyebrow">MOBILITY · 모터사이클</p>
     <h1>Monkey 125</h1>
-    <p class="tagline">Honda · 125cc · Five-speed</p>
+    <p class="tagline">Honda · 125cc · Black</p>
     <div class="rule" aria-hidden="true"></div>
     <p class="lede">가장 작은 엔진이 가장 느린 길을 알려준다. 국도와 작은 마을, 멈추고 싶은 곳에서 멈추는 속도.</p>
   </section>
@@ -232,6 +238,7 @@
       <li><b>변속기</b><span>5단 수동</span></li>
       <li><b>무게</b><span>104kg</span></li>
       <li><b>시트 높이</b><span>775mm</span></li>
+      <li><b>색상</b><span>블랙</span></li>
     </ul>
   </section>
 
@@ -251,6 +258,7 @@
       <li><a href="../gti/">Golf GTI</a></li>
       <li><a href="../monkey/" aria-current="page">Monkey 125</a></li>
       <li><a href="../tmax/">T-MAX 560</a></li>
+      <li><a href="../s1000rr/">S 1000 RR</a></li>
       <li><a href="../moulton/">Moulton</a></li>
       <li><a href="../tsubasa/">Tsubasa Crow</a></li>
     </ul>

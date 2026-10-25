@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Build the Mobility pages: one page per machine at /<slug>/index.html.
 
-Source:  mobility/data.json   {items: [{slug, name, maker, kind, tagline, accent, accent_dark,
+Source:  mobility/data.json   {items: [{slug, name, maker, kind, tagline, accent, accent_dark, swatch,
                                        lede, specs[[label, value]], story[paragraph],
                                        posts[writing slug], log[{date, place, with, note}]}]}
 Style:   the <head> of scripts/post_template.html, so these pages move with Writing.
@@ -34,7 +34,7 @@ PAGE_CSS = """
   .m-hero .eyebrow { margin-bottom: 14px; }
   .m-hero h1 { margin-bottom: 14px; }
   .m-hero .tagline { margin-bottom: 26px; }
-  .m-hero .rule { width: 44px; height: 3px; background: var(--accent); margin: 0 0 26px; border-radius: 1px; }
+  .m-hero .rule { width: 44px; height: 4px; background: var(--swatch, var(--accent)); box-shadow: inset 0 0 0 1px var(--line); margin: 0 0 26px; border-radius: 1px; }
   .m-hero .lede { max-width: 34ch; }
   .specs li { grid-template-columns: 8em 1fr; }
   .specs b { color: var(--muted); font-weight: 300; }
@@ -58,12 +58,13 @@ PAGE_CSS = """
 
 
 def accent_css(item):
-    a, d = item.get('accent'), item.get('accent_dark')
+    a, d, sw = item.get('accent'), item.get('accent_dark'), item.get('swatch')
     if not a:
-        return ''
+        return f'<style>\n  :root {{ --swatch: {sw}; }}\n</style>\n' if sw else ''
     d = d or a
+    sw_css = f' --swatch: {sw};' if sw else ''
     return ('<style>\n'
-            f'  :root {{ --accent: {a}; }}\n'
+            f'  :root {{ --accent: {a};{sw_css} }}\n'
             f'  @media (prefers-color-scheme: dark) {{ :root:not([data-theme="light"]) {{ --accent: {d}; }} }}\n'
             f'  :root[data-theme="dark"] {{ --accent: {d}; }}\n'
             '</style>\n')
