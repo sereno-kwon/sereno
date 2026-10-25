@@ -108,22 +108,23 @@
     },
     {
       "slug": "tsubasa",
-      "name": "Tsubasa Crow",
+      "name": "Tsubasa",
       "maker": "Tsubasa Bicycles",
       "kind": "자전거",
-      "tagline": "Tsubasa Bicycles · Road",
-      "accent": "",
-      "accent_dark": "",
+      "tagline": "Tsubasa Bicycles · Crow · Black",
+      "accent": "#1c1d21",
+      "accent_dark": "#d9d8d3",
       "lede": "안장 위의 고요. 혼자 깊이 들어가는 시간을 위한 로드바이크.",
       "specs": [
         ["브랜드", "Tsubasa Bicycles, 영국"],
         ["모델", "Crow"],
-        ["종류", "로드바이크"]
+        ["종류", "로드바이크"],
+        ["색상", "블랙"]
       ],
       "story": [],
       "posts": [],
       "log": [],
-      "swatch": ""
+      "swatch": "#111111"
     }
   ]
 }
