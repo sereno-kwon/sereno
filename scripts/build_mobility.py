@@ -46,7 +46,7 @@ PAGE_CSS = """
   body { word-break: keep-all; overflow-wrap: anywhere; }
   .m-hero { padding-block: 72px 56px; }
   .m-hero .eyebrow { margin-bottom: 14px; }
-  .m-hero h1 { margin-bottom: 14px; }
+  .m-hero h1 { font-size: clamp(32px, 6vw, 44px); line-height: 1.05; margin-bottom: 12px; }
   .m-hero .tagline { margin-bottom: 26px; }
   .m-hero .rule { width: 44px; height: 4px; background: var(--swatch, var(--accent)); box-shadow: inset 0 0 0 1px var(--line); margin: 0 0 26px; border-radius: 1px; }
   .m-hero .lede { max-width: 34ch; }
