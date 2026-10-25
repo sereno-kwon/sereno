@@ -25,12 +25,17 @@
 
 ## Mobility
 
-함께하는 이동수단마다 한 페이지씩 둡니다: `/gti/`, `/monkey/`, `/tmax/`, `/s1000rr/`, `/moulton/`, `/tsubasa/`.
-원본은 `mobility/data.json` 하나이고, 고친 뒤 `python3 scripts/build_mobility.py`를 실행하면 각 폴더의 `index.html`이 다시 만들어집니다 (직접 편집하지 않음).
-- `specs`: 기계 정보 `[항목, 값]`
-- `story`: 이야기 문단, `posts`: 이 이동수단에 관한 Writing 글 슬러그
-- `log`: 함께한 장소와 사람 `{date, place, with, note}`, 최근 순으로 정렬
-- `accent`: 페이지 강조색, 비우면 사이트 기본색. `swatch`: 차체 색 (제목 아래 색 띠), 비우면 accent를 씀
+이동수단마다 한 페이지씩 둡니다: `/gti/`, `/monkey/`, `/tmax/`, `/s1000rr/`, `/moulton/`, `/tsubasa/`. 내용은 노션 세 데이터베이스에서 오고, 월요일 동기화가 반영합니다.
+- **Mobility**: 이동수단 하나가 한 줄. 이름, 슬러그(URL), 종류, 한 줄, 리드, 제원(줄마다 `항목: 값`), 차체색·강조색, 순서, 표시. **페이지 본문이 Story**가 됩니다. 표시를 끄면 페이지가 내려갑니다.
+- **Mobility 기록**: 함께 간 장소와 사람. 공개에 체크한 것만 Places & People에 올라갑니다.
+- **차계부**: 주유·정비·지출 기록. 사이트(Logbook)에는 누적 주행거리, 평균 연비(가득 주유 기준), 정비·소모품 이력(날짜, 구분, 내용, km)만 나갑니다. **금액·장소·메모는 저장소에 절대 들어오지 않습니다**: 동기화가 원본을 저장소 밖 임시 파일로 받아 `scripts/summarize_logbook.py`로 공개 요약(`mobility/logbook.json`)만 만듭니다.
+- **Writing**의 "관련 이동수단" 릴레이션: 글을 걸면 그 이동수단 Story 아래에 글이 연결됩니다.
+
+이미지는 구글 드라이브 **SERENO Mobility** 폴더에 둡니다.
+- `<슬러그>-cover.jpg`: 제목 아래 대표 사진 (예: `gti-cover.jpg`)
+- `<슬러그>-<번호>.jpg`: Story 사진. 노션 본문의 n번째 이미지 자리에 들어가고, 자리가 없으면 Story 끝에 순서대로 붙습니다.
+
+생성: `mobility/data.json`(이동수단과 기록), `mobility/src/<슬러그>.md`(Story), `mobility/img/`, `mobility/logbook.json` → `python3 scripts/build_mobility.py` → 각 폴더의 `index.html`. 이 파일들은 동기화가 만들므로 직접 편집하지 않습니다.
 
 ## Map
 
