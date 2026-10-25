@@ -34,7 +34,8 @@
       "posts": [],
       "swatch": "",
       "order": 1,
-      "notion": "404ee748-6ef8-815c-892a-e0bc52b31c76"
+      "notion": "404ee7486ef8815c892ae0bc52b31c76",
+      "edited": "2026-10-25T13:31:14.450Z"
     },
     {
       "slug": "monkey",
@@ -74,7 +75,8 @@
       "posts": [],
       "swatch": "#111111",
       "order": 2,
-      "notion": "404ee748-6ef8-8171-9659-c4976a40314f"
+      "notion": "404ee7486ef881719659c4976a40314f",
+      "edited": "2026-10-25T13:09:25.830Z"
     },
     {
       "slug": "tmax",
@@ -110,7 +112,8 @@
       "posts": [],
       "swatch": "#7a7e84",
       "order": 3,
-      "notion": "404ee748-6ef8-81a8-920f-ebfa801d71df"
+      "notion": "404ee7486ef881a8920febfa801d71df",
+      "edited": "2026-10-25T13:09:25.830Z"
     },
     {
       "slug": "s1000rr",
@@ -146,7 +149,8 @@
       ],
       "posts": [],
       "order": 4,
-      "notion": "404ee748-6ef8-81c3-bb8c-f6e403d9b816"
+      "notion": "404ee7486ef881c3bb8cf6e403d9b816",
+      "edited": "2026-10-25T13:09:25.830Z"
     },
     {
       "slug": "moulton",
@@ -178,7 +182,8 @@
       "posts": [],
       "swatch": "",
       "order": 5,
-      "notion": "404ee748-6ef8-8136-ba85-eeaa605aa5e7"
+      "notion": "404ee7486ef88136ba85eeaa605aa5e7",
+      "edited": "2026-10-25T13:09:25.830Z"
     },
     {
       "slug": "tsubasa",
@@ -210,7 +215,8 @@
       "posts": [],
       "swatch": "#111111",
       "order": 6,
-      "notion": "404ee748-6ef8-8198-ab81-fb83248c93b3"
+      "notion": "404ee7486ef88198ab81fb83248c93b3",
+      "edited": "2026-10-25T13:09:25.830Z"
     }
   ]
 }
