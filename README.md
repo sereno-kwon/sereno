@@ -23,6 +23,15 @@
 - 직접 번역을 올리려면 노션 Writing에 페이지를 만들고 "언어"를 EN 또는 JA로, "원문 슬러그"에 원문 글의 슬러그를 적고 상태를 발행으로 바꿉니다. 자동 번역을 대체합니다.
 - 생성 결과: `writing/<슬러그>.html`, `writing/en/…`, `writing/ja/…`, 언어별 목록 `writing/index.html`, `writing/en/index.html`, `writing/ja/index.html`
 
+## Mobility
+
+함께하는 이동수단마다 한 페이지씩 둡니다: `/gti/`, `/monkey/`, `/tmax/`, `/moulton/`, `/tsubasa/`.
+원본은 `mobility/data.json` 하나이고, 고친 뒤 `python3 scripts/build_mobility.py`를 실행하면 각 폴더의 `index.html`이 다시 만들어집니다 (직접 편집하지 않음).
+- `specs`: 기계 정보 `[항목, 값]`
+- `story`: 이야기 문단, `posts`: 이 이동수단에 관한 Writing 글 슬러그
+- `log`: 함께한 장소와 사람 `{date, place, with, note}`, 최근 순으로 정렬
+- `accent`: 페이지 강조색 (차체 색), 비우면 사이트 기본색
+
 ## Map
 
 관심 산업을 마인드맵으로 그리고, 가지 끝의 회사를 Writing 글과 잇는 섹션입니다. 데이터는 노션의 세 데이터베이스에서 옵니다.
