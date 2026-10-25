@@ -4,8 +4,8 @@
 Sources
   mobility/data.json      {items: [{slug, name, maker, kind, tagline, lede, specs[[label, value]],
                                     accent, accent_dark, swatch, order, notion, edited,
-                                    posts[writing slug], log[{date, place, with, note}], story[paragraph]?}]}
-                          Written by the Monday sync from the Notion "Mobility" and "Mobility 기록" databases.
+                                    posts[writing slug], story[paragraph]?}]}
+                          Written by the Monday sync from the Notion "Mobility" database.
   mobility/src/<slug>.md  Story body (markdown) from the Notion page body. Image placeholders
                           ![](img/<slug>-<n>.jpg) resolve to mobility/img/; unplaced images are appended.
                           Falls back to item.story paragraphs when the file is missing.
@@ -185,16 +185,6 @@ def render(item):
         parts.append('    <ul class="posts">\n' + '\n'.join(links) + '\n    </ul>')
     story = '\n'.join(parts) or '    <p class="empty">아직 쓰지 않은 이야기입니다.</p>'
 
-    log_items = []
-    for e in sorted(item.get('log', []), key=lambda e: e.get('date') or '', reverse=True):
-        date = e.get('date') or ''
-        who = f'<span class="who"> · {esc(e["with"])}</span>' if e.get('with') else ''
-        note = f'<p class="note">{esc(e["note"])}</p>' if e.get('note') else ''
-        log_items.append(f'      <li><time datetime="{esc(date)}">{esc(ym(date))}</time>'
-                         f'<div><b>{esc(e.get("place", ""))}</b>{who}{note}</div></li>')
-    log = ('    <ul class="log">\n' + '\n'.join(log_items) + '\n    </ul>') if log_items \
-        else '    <p class="empty">첫 번째 기록을 기다리고 있습니다.</p>'
-
     others = '\n'.join(
         f'      <li><a href="../{o["slug"]}/"{" aria-current=\"page\"" if o["slug"] == slug else ""}>{esc(o["name"])}</a></li>'
         for o in items)
@@ -230,11 +220,6 @@ def render(item):
   <section class="story">
     <h2>Story</h2>
 {story}
-  </section>
-
-  <section>
-    <h2>Places &amp; People</h2>
-{log}
   </section>
 
 {logbook_html(slug)}  <section>
