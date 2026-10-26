@@ -11,6 +11,10 @@ Outputs
   map/index.html, map/en/index.html, map/ja/index.html      the mind map (SVG) + outline
   map/<company>.html, map/en/<company>.html, map/ja/<company>.html
 
+Hand-written figures
+  map/figures/<company>.<lang>.html   optional HTML fragment (a diagram, say) inserted above the company's Writing list.
+                                      Falls back to the ko fragment when a language has none. Survives rebuilds.
+
 The page chrome (fonts, colours, header) is taken from scripts/post_template.html so the section stays in step with Writing.
 
 Usage: python3 scripts/build_map.py
@@ -155,7 +159,9 @@ for lang in LANGS:
                 f'<time datetime="{p["date"]}">{p["date"][:7].replace("-", ".")}</time></li>' for p in related) + '</ul>'
         else:
             posts_html = f'<p class="sample">{UI[lang]["no_posts"]}</p>'
+        fig = next((f for f in [out / 'figures' / f'{c["slug"]}.{lang}.html', out / 'figures' / f'{c["slug"]}.ko.html'] if f.exists()), None)
         (d / f'{c["slug"]}.html').write_text(fill(ctpl, {
+            'figure_html': fig.read_text(encoding='utf-8') if fig else '',
             'lang': lang, 'home': prefix + '../index.html', 'lang_switch': switcher(lang, f'{c["slug"]}.html'),
             'map_label': UI[lang]['map'], 'writing_label': UI[lang]['writing'], 'back': UI[lang]['back'],
             'title': html.escape(t(c['name'], lang)), 'crumbs': crumbs,
