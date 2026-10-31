@@ -20,6 +20,7 @@ The page chrome (fonts, colours, header) is taken from scripts/post_template.htm
 Usage: python3 scripts/build_map.py
 """
 import json, re, pathlib, html
+import seo  # scripts/seo.py: sitemap (Map pages stay noindex and out of it)
 
 root = pathlib.Path(__file__).resolve().parent.parent
 out = root / 'map'
@@ -171,3 +172,4 @@ for lang in LANGS:
             'posts_html': posts_html,
         }), encoding='utf-8')
 print(f'{len(inds)} industries, {len(comps)} companies, {sum(len(c.get("posts", [])) for c in comps.values())} post links')
+seo.write_sitemap()

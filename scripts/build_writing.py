@@ -18,6 +18,7 @@ Usage: python3 scripts/build_writing.py
 """
 import json, re, pathlib, html
 import markdown  # pip install markdown
+import seo  # scripts/seo.py: canonical, hreflang, Open Graph, sitemap
 
 root = pathlib.Path(__file__).resolve().parent.parent
 src = root / 'writing' / 'src'; out = root / 'writing'
@@ -91,6 +92,17 @@ def render(p, lang, prev_, next_):
     }
     page = tpl
     for k, val in fields.items(): page = page.replace('[[' + k + ']]', val)
+    # search engines: canonical, hreflang (languages that exist), description, Open Graph, BlogPosting
+    url = lambda L: f'{seo.SITE}/writing/{"" if L == "ko" else L + "/"}{p["slug"]}.html'
+    alts = {L: url(L) for L in LANGS if L == 'ko' or L in p}
+    first_img = re.search(r'!\[[^\]]*\]\((?:\.\./)?img/([^)\s]+)\)', body_md)
+    image = f'{seo.SITE}/writing/img/{first_img.group(1)}' if first_img else None
+    desc = v.get('summary') or seo.plain(markdown.markdown(v['body']))
+    ld = {"@context": "https://schema.org", "@type": "BlogPosting", "headline": v['title'], "description": desc,
+          "inLanguage": lang, "mainEntityOfPage": url(lang), "author": seo.AUTHOR, "publisher": seo.AUTHOR}
+    if p['date']: ld["datePublished"] = p['date']
+    if image: ld["image"] = image
+    page = seo.insert_after_title(page, seo.head_tags(url(lang) if lang in alts else url('ko'), f'{v["title"]} · SERENO', desc, lang, alts, image, 'article', ld))
     return page
 
 for lang in LANGS:
@@ -108,6 +120,9 @@ for lang in LANGS:
     prefix = '' if lang == 'ko' else '../'
     switcher = '<span class="sep">/</span>'.join(f'<a href="{prefix}{"" if L == "ko" else L + "/"}index.html" class="{"active" if L == lang else ""}">{L.upper()}</a>' for L in LANGS)
     page = ltpl.replace('[[items]]', items).replace('[[home]]', prefix + '../index.html').replace('[[lang]]', lang).replace('[[lang_switch]]', switcher)
+    lurl = lambda L: f'{seo.SITE}/writing/{"" if L == "ko" else L + "/"}'
+    ldesc = {'ko': '세레노의 글. 자전거, 일, 여행, 생각에 대한 기록.', 'en': 'Writing by Sereno: notes on bicycles, work, travel and thought.', 'ja': 'セレノの文章。自転車、仕事、旅、考えについての記録。'}[lang]
+    page = seo.insert_after_title(page, seo.head_tags(lurl(lang), 'Writing · SERENO', ldesc, lang, {L: lurl(L) for L in LANGS}, None, 'website'))
     (d / 'index.html').write_text(page, encoding='utf-8')
 
 index = []
@@ -118,3 +133,4 @@ for p in ordered:
     index.append(e)
 (out / 'index.json').write_text(json.dumps(index, ensure_ascii=False, indent=2), encoding='utf-8')
 print(f'{len(ordered)} posts; en {sum("en" in p for p in ordered)}, ja {sum("ja" in p for p in ordered)}')
+seo.write_sitemap()

@@ -48,3 +48,9 @@
 - `map/<슬러그>.html`, `map/en/…`, `map/ja/…`: 회사 페이지 (한 줄 소개, 관심 이유, 티커, 홈페이지, 관련 글)
 
 페이지 스타일은 `scripts/post_template.html`의 머리 부분을 그대로 가져다 쓰므로 Writing과 같이 움직입니다. 이름·설명·소개·이유의 EN/JA는 노션에 적은 값을 쓰고, 비우면 동기화 때 자동 번역합니다. `map/data.json` 외의 `map/` 파일은 자동 생성됩니다.
+
+## 검색 최적화 (구글, 네이버)
+
+- `scripts/seo.py`가 글·모빌리티 페이지에 대표 주소(canonical), 언어별 주소(hreflang), 설명, Open Graph, 구조화 데이터를 넣고 `sitemap.xml`을 다시 만듭니다. `build_writing.py`, `build_mobility.py`, `build_map.py`가 실행될 때 자동으로 돌아가므로 월요일 동기화에도 유지됩니다.
+- `noindex`가 붙은 페이지(숨겨진 페이지, Map)는 사이트맵에 넣지 않습니다. 숨겨진 페이지 주소가 드러나지 않도록 `robots.txt`에도 적지 않습니다.
+- 사이트맵만 다시 만들려면 `python3 scripts/seo.py`.

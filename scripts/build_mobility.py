@@ -23,6 +23,7 @@ import shutil
 from pathlib import Path
 
 import markdown  # pip install markdown
+import seo  # scripts/seo.py: canonical, Open Graph, sitemap
 
 ROOT = Path(__file__).resolve().parent.parent
 MOB = ROOT / 'mobility'
@@ -192,8 +193,10 @@ def render(item):
 
     title = item['name']
     out = head.replace('[[lang]]', 'ko').replace('[[title]]', esc(title))
-    out = out.replace('<meta name="viewport"',
-                      f'<meta name="description" content="{esc(item.get("lede", ""))}">\n<meta name="viewport"', 1)
+    image = f'{seo.SITE}/mobility/img/{slug}-cover.jpg' if (MOB / 'img' / f'{slug}-cover.jpg').exists() else None
+    out = seo.insert_after_title(out, seo.head_tags(
+        f'{seo.SITE}/{slug}/', f'{title} · SERENO', seo.plain(item.get('lede', '') or item.get('tagline', '')), 'ko', None, image, 'article',
+        {"@context": "https://schema.org", "@type": "WebPage", "name": title, "url": f'{seo.SITE}/{slug}/', "inLanguage": "ko", "author": seo.AUTHOR}))
     out += PAGE_CSS + accent_css(item) + '</head>\n<body>\n'
     out += f"""<div class="wrap">
   <header>
@@ -268,3 +271,4 @@ for gone in sorted(previous - set(current)):
         shutil.rmtree(d)
         print('removed', f'/{gone}/')
 built_file.write_text(json.dumps(current) + '\n', encoding='utf-8')
+seo.write_sitemap()
