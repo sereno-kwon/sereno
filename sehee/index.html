@@ -123,6 +123,19 @@
   .palette .chip-pad { padding-left: 22px; }
   .palette .hex { font-variant-numeric: tabular-nums; letter-spacing: 0.02em; }
   .palette .rgb { display: inline-block; font-size: 12.5px; color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  @media (max-width: 560px) {
+    .day.design { padding: 22px 16px; gap: 16px; }
+    .day.design .pieces { gap: 10px; }
+    .day.design .piece { padding: 14px 14px 16px; gap: 6px; }
+    .day.design .piece h4 { font-size: 17px; }
+    .piece .type-sample { font-size: 30px; }
+    .piece .type-sample small { font-size: 13px; margin-top: 4px; }
+    .piece.spec > p:last-child { font-size: 13.5px; }
+    .spec .logo { width: 150px; margin: 2px 0 0; }
+    .palette td { padding: 9px 6px 9px 0; }
+    .palette th { padding-bottom: 8px; }
+    .palette td:first-child { font-size: 14px; }
+  }
   @media (max-width: 480px) { .palette { font-size: 13px; } .palette td, .palette th { padding-right: 6px; } .palette .rgb { font-size: 11px; padding-left: 0; display: block; margin-left: 22px; } .palette th { white-space: nowrap; font-size: 11px; } }
   .day.san { background: var(--tint-san); }
   .day.park { background: var(--tint-park); }
