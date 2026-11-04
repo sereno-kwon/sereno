@@ -7,7 +7,7 @@
 <title>Jeonsehee</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600&family=Noto+Sans+KR:wght@300;400;500&family=Cinzel:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600&family=Noto+Sans+KR:wght@300;400;500&family=Cinzel:wght@400;500&family=Bodoni+Moda:wght@400;500&display=swap">
 <style>
   /* Layout: a single narrow column, like a folded letter. Two "days" as full-width spreads, each with a soft tinted ground. */
   :root {
@@ -109,6 +109,21 @@
 
   /* Day spreads */
   .day { margin-top: 48px; border-radius: 6px; padding: 32px 26px; display: grid; gap: 22px; }
+  .day.design { background: var(--tint-book); }
+  .spec { display: grid; gap: 12px; }
+  .piece .type-sample { font-family: "Bodoni Moda", "Bodoni 72", "Didot", serif; font-size: clamp(34px, 7vw, 46px); line-height: 1.15; font-weight: 400; margin: 2px 0 0; color: var(--fg); }
+  .piece .type-sample small { display: block; font-size: 17px; letter-spacing: 0.04em; color: var(--muted); margin-top: 6px; }
+  .spec .logo { margin: 6px 0 2px; width: 220px; max-width: 100%; }
+  .palette { width: 100%; border-collapse: collapse; font-size: 14px; line-height: 1.6; }
+  .palette th { text-align: left; font-weight: 400; font-size: 12px; letter-spacing: 0.06em; color: var(--muted); padding: 0 10px 10px 0; border-bottom: 1px solid var(--line); }
+  .palette td { padding: 12px 10px 12px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .palette tr:last-child td { border-bottom: 0; }
+  .palette td:first-child { font-family: var(--display); font-size: 16px; white-space: nowrap; }
+  .chip { display: inline-block; width: 14px; height: 14px; border-radius: 50%; border: 1px solid var(--line); vertical-align: -2px; margin-right: 8px; }
+  .palette .chip-pad { padding-left: 22px; }
+  .palette .hex { font-variant-numeric: tabular-nums; letter-spacing: 0.02em; }
+  .palette .rgb { display: inline-block; font-size: 12.5px; color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  @media (max-width: 480px) { .palette { font-size: 13px; } .palette td, .palette th { padding-right: 6px; } .palette .rgb { font-size: 11px; padding-left: 0; display: block; margin-left: 22px; } .palette th { white-space: nowrap; font-size: 11px; } }
   .day.san { background: var(--tint-san); }
   .day.park { background: var(--tint-park); }
   .day.hall { background: var(--tint-hall); }
@@ -242,6 +257,7 @@
       <img class="dark" src="logo-dark.png" alt="" width="677" height="116">
     </div>
     <nav class="site-nav" aria-label="섹션">
+      <a href="#design">디자인</a>
       <a href="#library">서재</a>
       <a href="#quoc">슈즈</a>
       <span class="navgroup">
@@ -490,6 +506,51 @@
     <h1 class="ita">Sono tua<br>disposizione.</h1>
     <p>미감을 찾아 떠나는 여행.</p>
   </header>
+
+  <section class="day design" id="design">
+    <div class="day-head">
+      <p class="eyebrow">세희씨를 이루는 요소</p>
+      <h2>디자인</h2>
+      <p class="where"><b>서체 · 로고 · 색</b> · Jeonsehee의 기본값</p>
+    </div>
+
+    <div class="works">
+      <div class="pieces">
+        <article class="piece spec">
+          <h4>서체 <span class="lat">Typeface</span></h4>
+          <p class="type-sample">Bodoni<small>Jeonsehee &middot; Aa Bb Cc 0123</small></p>
+          <p>굵은 획과 가는 획의 대비가 또렷한 세리프 서체, 보도니.</p>
+        </article>
+        <article class="piece spec">
+          <h4>로고 <span class="lat">Logo</span></h4>
+          <div class="logo" aria-label="Jeonsehee 로고">
+            <img class="light" src="logo-light.png" alt="Jeonsehee 로고" width="677" height="116" loading="lazy">
+            <img class="dark" src="logo-dark.png" alt="" width="677" height="116" loading="lazy">
+          </div>
+        </article>
+        <article class="piece spec">
+          <h4>색 <span class="lat">Color</span></h4>
+          <table class="palette">
+            <thead>
+              <tr><th scope="col">색</th><th scope="col">일러스트 (현재)</th><th scope="col">참고 포스터 (추출)</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>아이보리</td>
+                <td><span class="chip" style="background: #F7EFE1"></span><span class="hex">#F7EFE1</span><br><span class="rgb chip-pad">RGB 247, 239, 225</span></td>
+                <td><span class="chip" style="background: #F8F0DB"></span><span class="hex">#F8F0DB</span><br><span class="rgb chip-pad">RGB 248, 240, 219</span></td>
+              </tr>
+              <tr>
+                <td>연보라</td>
+                <td><span class="chip" style="background: #8B9FEA"></span><span class="hex">#8B9FEA</span><br><span class="rgb chip-pad">RGB 139, 159, 234</span></td>
+                <td><span class="chip" style="background: #8E9FE6"></span><span class="hex">#8E9FE6</span><br><span class="rgb chip-pad">RGB 142, 159, 230</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </article>
+      </div>
+    </div>
+  </section>
 
   <section class="day book" id="library">
     <div class="day-head">
