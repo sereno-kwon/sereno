@@ -53,7 +53,7 @@
   .new:hover{color:var(--ink)}
   .tabs{display:flex;gap:6px;margin-top:14px;padding-bottom:12px;border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none}
   .tabs::-webkit-scrollbar{display:none}
-  .tab{flex:none;padding:8px 16px;border-radius:999px;font-size:14px;color:var(--ink-2);border:1px solid var(--line);background:transparent;transition:.2s}
+  .tab{flex:none;padding:8px 13px;border-radius:999px;font-size:14px;color:var(--ink-2);border:1px solid var(--line);background:transparent;transition:.2s}
   .tab[aria-selected="true"]{background:var(--lav-soft);border-color:var(--lav);color:var(--ink)}
 
   main{flex:1;overflow-y:auto;padding:24px 20px 12px;-webkit-overflow-scrolling:touch}
@@ -128,6 +128,7 @@
     <nav class="tabs" role="tablist" aria-label="모드">
       <button class="tab" role="tab" data-mode="styling">화보·스타일링</button>
       <button class="tab" role="tab" data-mode="instagram">인스타그램</button>
+      <button class="tab" role="tab" data-mode="travel">여행</button>
       <button class="tab" role="tab" data-mode="daily">일상</button>
     </nav>
   </header>
@@ -168,6 +169,11 @@ const MODES = {
     sub: '캡션, 해시태그, 피드 기획, 릴스 구성을 도와드릴게요.',
     ideas: ['오늘 라이딩 사진에 어울리는 캡션 써 주세요', '라이딩과 일상이 섞인 이번 주 피드 3개 기획해 주세요', '가루와 산책하는 릴스 아이디어 주세요']
   },
+  travel: {
+    title: '피렌체, 베네치아, 로마<br><em>어디부터</em> 걸어 볼까요?',
+    sub: '일정, 예약할 곳, 화보 장소, 아침 러닝 코스까지 함께 준비해 드릴게요.',
+    ideas: ['베네치아, 피렌체, 로마 7박 8일 일정 짜 주세요', '보볼리 정원에서 찍을 아이보리·연보라 화보 콘셉트', '세 도시에서 아침 러닝하기 좋은 코스 알려 주세요']
+  },
   daily: {
     title: '무엇을<br><em>도와</em>드릴까요?',
     sub: '할 일 정리, 글 다듬기, 메시지 초안, 가벼운 질문까지요.',
@@ -185,7 +191,7 @@ const store = {
 };
 
 let mode = store.get('sh.mode', 'styling');
-let histories = { styling: [], instagram: [], daily: [] };
+let histories = { styling: [], instagram: [], travel: [], daily: [] };
 Object.keys(histories).forEach(m => histories[m] = store.get('sh.h.' + m, []));
 let pending = [];   // 첨부 대기 사진 [{media_type, data, url}]
 let busy = false;
