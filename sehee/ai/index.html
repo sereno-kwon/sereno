@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+<meta name="robots" content="noindex, nofollow">
+<title>Jeonsehee. Personal Assistant</title>
+<meta name="theme-color" content="#F6F1E7">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Jeonsehee.">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" type="image/png" href="icon-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Noto+Serif+KR:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+  :root{
+    --ivory:#F6F1E7; --ivory-2:#EFE8DA; --paper:#FBF8F2;
+    --lav:#B9A8DA; --lav-soft:#E7E0F3; --lav-deep:#7E6AAE;
+    --ink:#2D2832; --ink-2:#6B6472; --line:#E2DACB;
+    --serif:"Bodoni Moda","Noto Serif KR",serif;
+    --sans:"Pretendard",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo",sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--ivory);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:anywhere}
+  button,textarea,input{font:inherit;color:inherit}
+  button{cursor:pointer;background:none;border:0}
+
+  /* 잠금 화면 */
+  .gate{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;padding:32px;background:var(--ivory);z-index:20}
+  .gate[hidden]{display:none}
+  .gate-box{width:100%;max-width:320px;text-align:center}
+  .logo{font-family:var(--serif);font-weight:400;letter-spacing:.01em}
+  .gate .logo{font-size:44px;line-height:1.1}
+  .eyebrow{font-family:var(--serif);font-style:italic;color:var(--lav-deep);font-size:15px;letter-spacing:.02em}
+  .gate .eyebrow{margin:10px 0 40px}
+  .gate input{width:100%;padding:14px 4px;border:0;border-bottom:1px solid var(--ink);background:transparent;text-align:center;font-size:17px;outline:none;letter-spacing:.2em}
+  .gate input::placeholder{letter-spacing:0;color:var(--ink-2)}
+  .gate .enter{margin-top:28px;width:100%;padding:14px;background:var(--ink);color:var(--ivory);border-radius:999px;font-size:15px}
+  .gate .err{min-height:22px;margin-top:14px;font-size:13px;color:#A0526B}
+
+  /* 앱 */
+  .app{display:flex;flex-direction:column;height:100dvh;max-width:720px;margin:0 auto}
+  header{padding:calc(14px + env(safe-area-inset-top)) 20px 0;background:var(--ivory)}
+  .top{display:flex;align-items:baseline;justify-content:space-between}
+  header .logo{font-size:26px}
+  .new{font-size:13px;color:var(--ink-2);padding:6px 0 6px 12px}
+  .new:hover{color:var(--ink)}
+  .tabs{display:flex;gap:6px;margin-top:14px;padding-bottom:12px;border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none}
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{flex:none;padding:8px 16px;border-radius:999px;font-size:14px;color:var(--ink-2);border:1px solid var(--line);background:transparent;transition:.2s}
+  .tab[aria-selected="true"]{background:var(--lav-soft);border-color:var(--lav);color:var(--ink)}
+
+  main{flex:1;overflow-y:auto;padding:24px 20px 12px;-webkit-overflow-scrolling:touch}
+  .empty{padding:28px 0 8px}
+  .empty h2{font-family:var(--serif);font-weight:400;font-size:28px;line-height:1.35}
+  .empty h2 em{color:var(--lav-deep);font-style:normal}
+  .empty p{margin-top:10px;color:var(--ink-2);font-size:15px}
+  .ideas{display:flex;flex-direction:column;gap:8px;margin-top:24px}
+  .idea{text-align:left;padding:14px 16px;border:1px solid var(--line);border-radius:14px;background:var(--paper);font-size:15px;transition:.2s}
+  .idea:hover{border-color:var(--lav)}
+
+  .msg{margin:0 0 22px;display:flex;flex-direction:column}
+  .msg.user{align-items:flex-end}
+  .bubble{max-width:88%}
+  .user .bubble{background:var(--lav-soft);padding:11px 16px;border-radius:18px 18px 4px 18px;white-space:pre-wrap}
+  .user .bubble img{display:block;max-width:220px;max-height:260px;border-radius:12px;margin-bottom:8px;object-fit:cover}
+  .user .bubble .photo-note{font-size:13px;color:var(--ink-2)}
+  .assistant .bubble{max-width:100%;padding:2px 2px}
+  .assistant .bubble p{margin:0 0 .8em}
+  .assistant .bubble h3{font-family:var(--serif);font-weight:500;font-size:18px;margin:1.1em 0 .4em}
+  .assistant .bubble ul,.assistant .bubble ol{margin:0 0 .8em 1.2em}
+  .assistant .bubble li{margin:.2em 0}
+  .assistant .bubble strong{font-weight:600}
+  .assistant .bubble hr{border:0;border-top:1px solid var(--line);margin:1em 0}
+  .assistant .bubble blockquote{border-left:2px solid var(--lav);padding:2px 0 2px 12px;margin:0 0 .8em;color:var(--ink)}
+  .actions{margin-top:2px}
+  .copy{font-size:12px;color:var(--ink-2);padding:4px 0}
+  .copy:hover{color:var(--lav-deep)}
+  .typing{display:flex;gap:5px;padding:8px 2px}
+  .typing i{width:6px;height:6px;border-radius:50%;background:var(--lav);animation:b 1.2s infinite}
+  .typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+  @keyframes b{0%,80%,100%{opacity:.3;transform:translateY(0)}40%{opacity:1;transform:translateY(-3px)}}
+  .error{font-size:14px;color:#A0526B}
+
+  footer{padding:10px 14px calc(12px + env(safe-area-inset-bottom));background:var(--ivory)}
+  .preview{display:flex;gap:8px;padding:0 6px 10px}
+  .preview[hidden]{display:none}
+  .thumb{position:relative}
+  .thumb img{width:64px;height:64px;object-fit:cover;border-radius:10px;display:block}
+  .thumb button{position:absolute;top:-6px;right:-6px;width:22px;height:22px;border-radius:50%;background:var(--ink);color:var(--ivory);font-size:13px;line-height:22px}
+  .composer{display:flex;align-items:flex-end;gap:6px;background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:6px 6px 6px 8px}
+  .composer:focus-within{border-color:var(--lav)}
+  .icon{flex:none;width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--ink-2)}
+  .icon:hover{color:var(--ink)}
+  .icon svg{width:21px;height:21px}
+  textarea{flex:1;border:0;background:transparent;resize:none;outline:none;padding:8px 2px;max-height:160px;line-height:1.5;font-size:16px}
+  .send{background:var(--ink);color:var(--ivory)}
+  .send:hover{color:var(--ivory)}
+  .send:disabled{background:var(--line);color:var(--paper);cursor:default}
+  .note{text-align:center;font-size:11px;color:var(--ink-2);margin-top:8px;font-family:var(--serif);font-style:italic}
+</style>
+</head>
+<body>
+
+<!-- 잠금 화면 -->
+<div class="gate" id="gate" hidden>
+  <form class="gate-box" id="gateForm" autocomplete="off">
+    <div class="logo">Jeonsehee.</div>
+    <div class="eyebrow">Personal Assistant</div>
+    <input type="password" id="pw" placeholder="비밀번호" aria-label="비밀번호" autocomplete="current-password">
+    <button class="enter" type="submit">들어가기</button>
+    <div class="err" id="gateErr" role="alert"></div>
+  </form>
+</div>
+
+<div class="app" id="app">
+  <header>
+    <div class="top">
+      <div class="logo">Jeonsehee.</div>
+      <button class="new" id="newChat" type="button">새 대화</button>
+    </div>
+    <nav class="tabs" role="tablist" aria-label="모드">
+      <button class="tab" role="tab" data-mode="styling">화보·스타일링</button>
+      <button class="tab" role="tab" data-mode="instagram">인스타그램</button>
+      <button class="tab" role="tab" data-mode="daily">일상</button>
+    </nav>
+  </header>
+
+  <main id="thread" aria-live="polite"></main>
+
+  <footer>
+    <div class="preview" id="preview" hidden></div>
+    <form class="composer" id="composer">
+      <label class="icon" title="사진 첨부" aria-label="사진 첨부">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="15" rx="3"/><circle cx="12" cy="12.5" r="3.5"/><path d="M8.5 5l1.2-2h4.6l1.2 2"/></svg>
+        <input type="file" id="file" accept="image/*" multiple hidden>
+      </label>
+      <textarea id="input" rows="1" placeholder="무엇이든 물어보세요" aria-label="메시지"></textarea>
+      <button class="icon send" id="send" type="submit" aria-label="보내기" disabled>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+      </button>
+    </form>
+    <div class="note">Made for Sehee, with care</div>
+  </footer>
+</div>
+
+<script>
+/* ===== 설정: Apps Script 웹 앱 배포 주소를 넣어 주세요 ===== */
+const API_URL = 'https://script.google.com/macros/s/AKfycbwGIFPSoze3b2zY2EkY_gNOxwKe3lBZwietK6rW2DUemfAzvLVk5Tayk1tKwbxCMSF_yA/exec';
+/* ========================================================== */
+
+const DEMO = API_URL.includes('PASTE_DEPLOYMENT_ID');
+
+const MODES = {
+  styling: {
+    title: '오늘은 어떤 <em>장면</em>을<br>만들어 볼까요?',
+    sub: '화보 콘셉트, 의상, 장소, 빛까지 함께 정리해 드릴게요. 옷 사진을 보내 주셔도 좋아요.',
+    ideas: ['가을 러닝을 주제로 한 화보 콘셉트 3가지 제안해 주세요', '아이보리·연보라 톤으로 도시 공간에서 찍을 화보 스타일링', '이 옷 조합 어때요? 어울리는 장소도 추천해 주세요']
+  },
+  instagram: {
+    title: '오늘의 이야기를<br><em>한 장</em>에 담아 볼까요?',
+    sub: '캡션, 해시태그, 피드 기획, 릴스 구성을 도와드릴게요.',
+    ideas: ['이 사진에 어울리는 캡션 써 주세요', '이번 주 피드 게시물 3개 기획해 주세요', '가루와 산책하는 릴스 아이디어 주세요']
+  },
+  daily: {
+    title: '무엇을<br><em>도와</em>드릴까요?',
+    sub: '할 일 정리, 글 다듬기, 메시지 초안, 가벼운 질문까지요.',
+    ideas: ['오늘 할 일 정리 도와주세요', '이 문장 자연스럽게 다듬어 주세요', '주말에 다녀오기 좋은 서울 근교 산책 코스 추천해 주세요']
+  }
+};
+
+const $ = s => document.querySelector(s);
+const thread = $('#thread'), input = $('#input'), sendBtn = $('#send'), fileIn = $('#file'), preview = $('#preview');
+
+const store = {
+  get(k, d){ try{ const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; }catch(e){ return d; } },
+  set(k, v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} },
+  del(k){ try{ localStorage.removeItem(k); }catch(e){} }
+};
+
+let mode = store.get('sh.mode', 'styling');
+let histories = { styling: [], instagram: [], daily: [] };
+Object.keys(histories).forEach(m => histories[m] = store.get('sh.h.' + m, []));
+let pending = [];   // 첨부 대기 사진 [{media_type, data, url}]
+let busy = false;
+let password = store.get('sh.pw', '');
+
+/* ---------- 잠금 ---------- */
+async function api(body){
+  if (DEMO) {
+    await new Promise(r => setTimeout(r, 600));
+    if (body.action === 'ping') return { ok: true };
+    return { ok: true, text: '아직 백엔드가 연결되지 않은 미리보기 화면입니다.\n\n**연결 방법**\n- Apps Script 웹 앱을 배포하고\n- 이 페이지의 `API_URL`에 배포 주소를 넣으면 바로 대화할 수 있어요.' };
+  }
+  const res = await fetch(API_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify({ password, ...body }) });
+  return res.json();
+}
+
+async function unlock(pw){
+  password = pw;
+  const r = await api({ action: 'ping' });
+  if (r.ok) { store.set('sh.pw', pw); $('#gate').hidden = true; input.focus(); return true; }
+  return false;
+}
+
+$('#gateForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const pw = $('#pw').value.trim();
+  if (!pw) return;
+  $('#gateErr').textContent = '';
+  try {
+    if (!(await unlock(pw))) { $('#gateErr').textContent = '비밀번호가 맞지 않아요.'; $('#pw').select(); }
+  } catch (err) { $('#gateErr').textContent = '연결이 원활하지 않아요. 잠시 후 다시 시도해 주세요.'; }
+});
+
+/* ---------- 마크다운 (간단) ---------- */
+function esc(s){ return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function inline(s){
+  return esc(s)
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/`([^`]+)`/g, '<code>$1</code>');
+}
+function md(text){
+  const lines = text.split('\n'); let html = '', list = null, para = [];
+  const flushP = () => { if (para.length){ html += '<p>' + para.map(inline).join('<br>') + '</p>'; para = []; } };
+  const flushL = () => { if (list){ html += '</' + list + '>'; list = null; } };
+  for (const raw of lines) {
+    const line = raw.trimEnd();
+    let m;
+    if (!line.trim()) { flushP(); flushL(); continue; }
+    if ((m = line.match(/^#{1,6}\s+(.*)/))) { flushP(); flushL(); html += '<h3>' + inline(m[1]) + '</h3>'; continue; }
+    if (/^(-{3,}|\*{3,})$/.test(line.trim())) { flushP(); flushL(); html += '<hr>'; continue; }
+    if ((m = line.match(/^>\s?(.*)/))) { flushP(); flushL(); html += '<blockquote>' + inline(m[1]) + '</blockquote>'; continue; }
+    if ((m = line.match(/^\s*[-*•]\s+(.*)/))) { flushP(); if (list !== 'ul'){ flushL(); html += '<ul>'; list = 'ul'; } html += '<li>' + inline(m[1]) + '</li>'; continue; }
+    if ((m = line.match(/^\s*\d+[.)]\s+(.*)/))) { flushP(); if (list !== 'ol'){ flushL(); html += '<ol>'; list = 'ol'; } html += '<li>' + inline(m[1]) + '</li>'; continue; }
+    flushL(); para.push(line);
+  }
+  flushP(); flushL();
+  return html;
+}
+
+/* ---------- 화면 ---------- */
+function setMode(m){
+  mode = m; store.set('sh.mode', m);
+  document.querySelectorAll('.tab').forEach(t => t.setAttribute('aria-selected', t.dataset.mode === m));
+  render();
+}
+
+function render(){
+  const h = histories[mode];
+  thread.innerHTML = '';
+  if (!h.length) {
+    const M = MODES[mode];
+    const box = document.createElement('div'); box.className = 'empty';
+    box.innerHTML = `<h2>${M.title}</h2><p>${M.sub}</p><div class="ideas"></div>`;
+    M.ideas.forEach(t => {
+      const b = document.createElement('button'); b.className = 'idea'; b.type = 'button'; b.textContent = t;
+      b.onclick = () => { input.value = t; autosize(); updateSend(); input.focus(); };
+      box.querySelector('.ideas').appendChild(b);
+    });
+    thread.appendChild(box);
+    return;
+  }
+  h.forEach(addBubble);
+  scrollDown();
+}
+
+function addBubble(msg){
+  const wrap = document.createElement('div'); wrap.className = 'msg ' + msg.role;
+  const b = document.createElement('div'); b.className = 'bubble';
+  if (msg.role === 'user') {
+    (msg.images || []).forEach(src => { const img = document.createElement('img'); img.src = src; img.alt = '첨부한 사진'; b.appendChild(img); });
+    if (msg.photoNote) { const n = document.createElement('div'); n.className = 'photo-note'; n.textContent = msg.photoNote; b.appendChild(n); }
+    if (msg.text) b.appendChild(document.createTextNode(msg.text));
+    wrap.appendChild(b);
+  } else {
+    b.innerHTML = md(msg.text);
+    wrap.appendChild(b);
+    const a = document.createElement('div'); a.className = 'actions';
+    const c = document.createElement('button'); c.className = 'copy'; c.type = 'button'; c.textContent = '복사';
+    c.onclick = async () => { try { await navigator.clipboard.writeText(msg.text); c.textContent = '복사했어요'; setTimeout(() => c.textContent = '복사', 1500); } catch(e){} };
+    a.appendChild(c); wrap.appendChild(a);
+  }
+  thread.appendChild(wrap);
+  return wrap;
+}
+
+function scrollDown(){ requestAnimationFrame(() => thread.scrollTop = thread.scrollHeight); }
+function autosize(){ input.style.height = 'auto'; input.style.height = Math.min(input.scrollHeight, 160) + 'px'; }
+function updateSend(){ sendBtn.disabled = busy || (!input.value.trim() && !pending.length); }
+
+/* 저장: 사진 데이터는 용량 때문에 빼고 메모만 남김 */
+function save(m){
+  const slim = histories[m].map(x => x.role === 'user'
+    ? { role: 'user', text: x.text, photoNote: (x.images && x.images.length) ? `사진 ${x.images.length}장` : x.photoNote }
+    : { role: x.role, text: x.text });
+  store.set('sh.h.' + m, slim.slice(-60));
+}
+
+/* API로 보낼 형식 */
+function toApi(h){
+  return h.map(x => {
+    if (x.role === 'assistant') return { role: 'assistant', content: x.text };
+    const blocks = [];
+    (x.payload || []).forEach(p => blocks.push({ type: 'image', source: { type: 'base64', media_type: p.media_type, data: p.data } }));
+    let t = x.text || '';
+    if (!x.payload && x.photoNote) t = `(이전에 ${x.photoNote}을 보냈음) ` + t;
+    if (!t && blocks.length) t = '이 사진을 봐 주세요.';
+    if (t) blocks.push({ type: 'text', text: t });
+    return { role: 'user', content: blocks };
+  });
+}
+
+/* ---------- 사진 ---------- */
+function resize(file){
+  return new Promise((resolve, reject) => {
+    const img = new Image(); const url = URL.createObjectURL(file);
+    img.onload = () => {
+      const max = 1280, s = Math.min(1, max / Math.max(img.width, img.height));
+      const cv = document.createElement('canvas'); cv.width = Math.round(img.width * s); cv.height = Math.round(img.height * s);
+      cv.getContext('2d').drawImage(img, 0, 0, cv.width, cv.height);
+      const dataUrl = cv.toDataURL('image/jpeg', 0.85);
+      URL.revokeObjectURL(url);
+      resolve({ media_type: 'image/jpeg', data: dataUrl.split(',')[1], url: dataUrl });
+    };
+    img.onerror = reject; img.src = url;
+  });
+}
+
+function renderPreview(){
+  preview.innerHTML = ''; preview.hidden = !pending.length;
+  pending.forEach((p, i) => {
+    const t = document.createElement('div'); t.className = 'thumb';
+    t.innerHTML = `<img src="${p.url}" alt="첨부할 사진"><button type="button" aria-label="사진 빼기">×</button>`;
+    t.querySelector('button').onclick = () => { pending.splice(i, 1); renderPreview(); updateSend(); };
+    preview.appendChild(t);
+  });
+}
+
+fileIn.addEventListener('change', async () => {
+  const files = [...fileIn.files].slice(0, 4 - pending.length);
+  for (const f of files) { try { pending.push(await resize(f)); } catch(e){} }
+  fileIn.value = ''; renderPreview(); updateSend();
+});
+
+/* ---------- 보내기 ---------- */
+async function send(){
+  const text = input.value.trim();
+  if (busy || (!text && !pending.length)) return;
+  const h = histories[mode], m = mode;
+  if (!h.length) thread.innerHTML = '';
+  const sent = pending;
+  const userMsg = { role: 'user', text, images: sent.map(p => p.url), payload: sent.map(({media_type, data}) => ({media_type, data})) };
+  h.push(userMsg); addBubble(userMsg);
+  input.value = ''; pending = []; renderPreview(); autosize();
+  busy = true; updateSend();
+
+  const wait = document.createElement('div'); wait.className = 'msg assistant';
+  wait.innerHTML = '<div class="typing"><i></i><i></i><i></i></div>'; thread.appendChild(wait); scrollDown();
+
+  let errMsg = '';
+  try {
+    const r = await api({ mode: m, messages: toApi(h) });
+    if (r.ok) {
+      h.push({ role: 'assistant', text: r.text || '(빈 답변)' });
+    } else if (r.error === 'auth') {
+      store.del('sh.pw'); $('#gate').hidden = false; errMsg = '비밀번호를 다시 입력해 주세요.';
+    } else {
+      errMsg = r.error === 'limit' ? '오늘 사용량을 다 썼어요. 내일 다시 이야기해요.' : '답을 받지 못했어요. 잠시 후 다시 보내 주세요.';
+    }
+  } catch (err) {
+    errMsg = '연결이 원활하지 않아요. 잠시 후 다시 보내 주세요.';
+  }
+  wait.remove();
+
+  if (errMsg) {
+    // 실패하면 보낸 내용을 입력창으로 되돌림
+    h.pop(); input.value = text; pending = sent; renderPreview();
+  } else {
+    // 사진 원본은 바로 다음 질문까지만 유지하고, 그 전 것은 메모로 대체
+    h.forEach(x => { if (x.payload && x !== userMsg) { if (x.images && x.images.length) x.photoNote = `사진 ${x.images.length}장`; delete x.payload; } });
+  }
+  save(m); busy = false;
+  if (mode === m) render();
+  if (errMsg) showError(errMsg);
+  autosize(); updateSend();
+}
+
+function showError(t){ const e = document.createElement('div'); e.className = 'msg assistant'; e.innerHTML = `<div class="error">${esc(t)}</div>`; thread.appendChild(e); scrollDown(); setTimeout(() => e.remove(), 6000); }
+
+$('#composer').addEventListener('submit', e => { e.preventDefault(); send(); });
+input.addEventListener('input', () => { autosize(); updateSend(); });
+input.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && !e.shiftKey && !e.isComposing && window.matchMedia('(hover: hover)').matches) { e.preventDefault(); send(); }
+});
+document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => !busy && setMode(t.dataset.mode)));
+$('#newChat').addEventListener('click', () => { if (busy) return; histories[mode] = []; store.del('sh.h.' + mode); render(); });
+
+/* ---------- 시작 ---------- */
+setMode(mode);
+if (password && !DEMO) { unlock(password).then(ok => { if (!ok) { store.del('sh.pw'); $('#gate').hidden = false; } }).catch(() => {}); }
+else if (!password) $('#gate').hidden = false;
+</script>
+</body>
+</html>
