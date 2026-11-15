@@ -7,9 +7,23 @@
     "h": 400
   },
   {
+    "full": "The 911-full.jpg",
+    "thumb": "The 911-thumb.jpg",
+    "caption": "The 911",
+    "w": 400,
+    "h": 400
+  },
+  {
     "full": "Swan in London-full.jpg",
     "thumb": "Swan in London-thumb.jpg",
     "caption": "Swan in London",
+    "w": 400,
+    "h": 400
+  },
+  {
+    "full": "Porsche Vibe in Seoul-full.jpg",
+    "thumb": "Porsche Vibe in Seoul-thumb.jpg",
+    "caption": "Porsche Vibe in Seoul",
     "w": 400,
     "h": 400
   },
