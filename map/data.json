@@ -294,6 +294,21 @@
         "en": "Logistics, surgery, agriculture. The side that pulls demand",
         "ja": "物流、手術、農業。需要を引っぱる側"
       }
+    },
+    {
+      "slug": "shipbuilding",
+      "parent": null,
+      "order": null,
+      "name": {
+        "ko": "조선",
+        "en": "Shipbuilding",
+        "ja": "造船"
+      },
+      "desc": {
+        "ko": "선박과 해양설비를 수주해 짓는 산업",
+        "en": "The industry that wins orders for, and builds, ships and offshore facilities",
+        "ja": "船舶と海洋設備を受注して造る産業"
+      }
     }
   ],
   "companies": [
@@ -849,7 +864,7 @@
       "status": "관심",
       "ticker": "6954.T",
       "name": {
-        "ko": "화낙",
+        "ko": "화낭",
         "en": "Fanuc",
         "ja": "ファナック"
       },
@@ -1064,7 +1079,7 @@
       },
       "url": "https://www.daifuku.com",
       "tagline": {
-        "ko": "반도체 팹과 공항까지, 물건을 옮기는 설비의 강자",
+        "ko": "반도체 팬과 공항까지, 물건을 옮기는 설비의 강자",
         "en": "From semiconductor fabs to airports, the mover of things",
         "ja": "半導体工場から空港まで、物を運ぶ設備の強者"
       },
@@ -1105,6 +1120,25 @@
         "ko": "국내 수술로봇. 인공관절과 척추",
         "en": "Korea’s surgical robot maker, in joints and spine",
         "ja": "韓国の手術ロボット。人工関節と脊椎"
+      },
+      "posts": []
+    },
+    {
+      "slug": "samsung-heavy",
+      "industry": "shipbuilding",
+      "order": null,
+      "status": "관심",
+      "ticker": "010140",
+      "name": {
+        "ko": "삼성중공업",
+        "en": "Samsung Heavy Industries",
+        "ja": "サムスン重工業"
+      },
+      "url": "https://www.samsungshi.com",
+      "tagline": {
+        "ko": "LNG운반선과 FLNG 같은 고부가 선박·해양설비를 수주해 짓는 조선사",
+        "en": "A shipbuilder that wins and builds high-value vessels and offshore facilities such as LNG carriers and FLNG",
+        "ja": "LNG運搬船やFLNGなど高付加価値の船舶・海洋設備を受注して造る造船会社"
       },
       "posts": []
     }

@@ -5,6 +5,16 @@
     "ko": {
       "title": "점은 쌓이고, 합의는 뒤따른다",
       "summary": "본태박물관에서 만난 쿠사마 야요이의 호박과 무한 거울방. 합의는 가치를 확정하지만 발명하지는 못합니다."
+    },
+    "en": {
+      "title": "Dots Accumulate, Consensus Follows",
+      "summary": "Yayoi Kusama's pumpkin and Infinity Mirror Room at the Bonte Museum. Consensus confirms value, but it cannot invent it.",
+      "translated": "auto"
+    },
+    "ja": {
+      "title": "点は積もり、合意はあとに続く",
+      "summary": "ボンテ博物館で出会った草間彌生のかぼちゃと無限の鏡の間。合意は価値を確定させるけれど、発明することはできません。",
+      "translated": "auto"
     }
   },
   {
@@ -13,6 +23,16 @@
     "ko": {
       "title": "방주교회, 물 위의 회색지대",
       "summary": "철과 나무, 그리고 물과 풍경. 이타미 준의 방주교회에서 포용과 경건의 회색지대를 봅니다."
+    },
+    "en": {
+      "title": "Ark Church, a Gray Zone on the Water",
+      "summary": "Iron and wood, water and landscape. At Itami Jun's Ark Church, I look at a gray zone between embrace and reverence.",
+      "translated": "auto"
+    },
+    "ja": {
+      "title": "方舟教会、水の上のグレーゾーン",
+      "summary": "鉄と木、そして水と風景。イタミ・ジュンの方舟教会に、包容と敬虔のグレーゾーンを見ます。",
+      "translated": "auto"
     }
   },
   {
