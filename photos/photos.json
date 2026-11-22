@@ -21,6 +21,13 @@
     "h": 400
   },
   {
+    "full": "Sunbathing Cat-full.jpg",
+    "thumb": "Sunbathing Cat-thumb.jpg",
+    "caption": "Sunbathing Cat",
+    "w": 400,
+    "h": 400
+  },
+  {
     "full": "Porsche Vibe in Seoul-full.jpg",
     "thumb": "Porsche Vibe in Seoul-thumb.jpg",
     "caption": "Porsche Vibe in Seoul",
@@ -52,6 +59,20 @@
     "full": "Milano's Couple-full.jpg",
     "thumb": "Milano's Couple-thumb.jpg",
     "caption": "Milano's Couple",
+    "w": 400,
+    "h": 400
+  },
+  {
+    "full": "Kusama's Pumpkin at Bonte-full.jpg",
+    "thumb": "Kusama's Pumpkin at Bonte-thumb.jpg",
+    "caption": "Kusama's Pumpkin at Bonte",
+    "w": 400,
+    "h": 400
+  },
+  {
+    "full": "Frosted Hallasan-full.jpg",
+    "thumb": "Frosted Hallasan-thumb.jpg",
+    "caption": "Frosted Hallasan",
     "w": 400,
     "h": 400
   },
