@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>방주교회, 물 위의 회색지대 · SERENO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap">
+<style>
+  /* S-Core Dream (에스코어 드림): 3 Light / 4 Regular / 5 Medium */
+  @font-face { font-family: "S-CoreDream"; font-weight: 300; font-display: swap; src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff") format("woff"); }
+  @font-face { font-family: "S-CoreDream"; font-weight: 400; font-display: swap; src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-4Regular.woff") format("woff"); }
+  @font-face { font-family: "S-CoreDream"; font-weight: 500; font-display: swap; src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-5Medium.woff") format("woff"); }
+
+  /* Layout: one quiet left-aligned column, 620px wide, sections separated by air rather than rules.
+     The only bold move is the wordmark: a large light Cormorant "SERENO" set tight against a tiny mono eyebrow. */
+  :root {
+    --bg: #f6f6f4;
+    --fg: #1c1d21;
+    --muted: #6d6f78;
+    --line: #dcdcd8;
+    --accent: #8b2635;
+    --hl: #f1e2b3;
+    --display: "Cormorant Garamond", "Noto Serif KR", Georgia, serif;
+    --body: "S-CoreDream", "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
+    --mono: "S-CoreDream", "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #141518; --fg: #e6e5e0; --muted: #8e9099; --line: #2b2c31; --accent: #d26a78; --hl: #4a3c17; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #141518; --fg: #e6e5e0; --muted: #8e9099; --line: #2b2c31; --accent: #d26a78; --hl: #4a3c17; color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  html { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--body);
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.85;
+    -webkit-font-smoothing: antialiased;
+    padding-inline: 20px;
+    padding-block: 0;
+  }
+  a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--line); transition: border-color .2s; }
+  a:hover, a:focus-visible { border-color: var(--accent); outline: none; }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-color: transparent; }
+
+  .wrap { max-width: 620px; margin: 0 auto; }
+
+  header {
+    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10;
+    display: flex; justify-content: space-between; align-items: baseline; gap: 16px;
+    padding-block: 18px 12px;
+    background: var(--bg);
+    border-bottom: 1px solid transparent;
+    transition: border-color .25s;
+  }
+  header.scrolled { border-bottom-color: var(--line); }
+  @media (min-width: 700px) {
+    header { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 24px; row-gap: 2px; align-items: baseline; }
+    .mark { grid-column: 1; grid-row: 1; }
+    nav { grid-column: 2; grid-row: 1; justify-self: end; max-width: 100%; }
+    .lang { grid-column: 1; grid-row: 2; }
+  }
+  .mark { font-family: var(--display); font-size: 20px; letter-spacing: .08em; color: var(--fg); border: 0; flex: none; }
+  nav { position: relative; display: flex; gap: 16px; min-width: 0; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  nav::-webkit-scrollbar { display: none; }
+  @media (max-width: 699px) { nav { -webkit-mask-image: linear-gradient(90deg, transparent, #000 14px, #000 calc(100% - 14px), transparent); mask-image: linear-gradient(90deg, transparent, #000 14px, #000 calc(100% - 14px), transparent); padding-inline: 4px; } }
+  nav a {
+    font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); border: 0; white-space: nowrap;
+    padding-bottom: 6px; position: relative; transition: color .2s;
+  }
+  nav a::after {
+    content: ""; position: absolute; left: 0; bottom: 0; width: 18px; height: 1px;
+    background: var(--fg); transform: scaleX(0); transform-origin: left; transition: transform .25s ease;
+  }
+  nav a:hover { color: var(--fg); }
+  nav a.active { color: var(--fg); }
+  nav a.active::after { transform: scaleX(1); }
+    .lang { display: flex; align-items: baseline; gap: 8px; flex: none; }
+  .lang .sep { font-size: 11px; color: var(--muted); opacity: .5; padding-bottom: 6px; }
+  .lang a { border: 0; font-family: var(--body); font-weight: 300; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); padding-bottom: 6px; }
+  .lang a.active { color: var(--fg); }
+  .lang a.missing { opacity: .4; }
+  .lang a:hover { color: var(--fg); }
+  @media (max-width: 480px) {
+    body { font-size: 15px; }
+    header { padding-block: 14px 10px; }
+    nav { gap: 16px; }
+    .auto-note { font-size: 12px; color: var(--muted); letter-spacing: .02em; margin: 0 0 24px; }
+    .hero { padding-block: 56px 48px; }
+    section { padding-block: 0 56px; }
+  }
+
+  .hero { padding-block: 92px 72px; }
+  .eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: .14em; color: var(--muted); margin: 0 0 6px; }
+  h1 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(44px, 9vw, 68px);
+    line-height: .95;
+    letter-spacing: -.01em;
+    margin: 0 0 10px;
+    text-wrap: balance;
+  }
+  .tagline { font-size: 14px; letter-spacing: .12em; color: var(--muted); margin: 0 0 30px; }
+  .lede { font-size: 18px; max-width: 40ch; margin: 0; }
+
+  section { padding-block: 0 72px; }
+  h2 {
+    font-family: var(--mono); font-weight: 400; font-size: 12px; letter-spacing: .14em;
+    color: var(--muted); text-transform: uppercase; margin: 0 0 22px;
+  }
+  h2::after { content: ""; display: block; width: 28px; height: 1px; background: var(--fg); opacity: .55; margin-top: 12px; }
+  p { margin: 0 0 1.2em; max-width: 62ch; }
+  p:last-child { margin-bottom: 0; }
+  em { font-style: normal; font-weight: 400; }
+  mark { background: linear-gradient(transparent 45%, var(--hl) 45%, var(--hl) 92%, transparent 92%); color: inherit; font-weight: 400; padding-inline: 2px; }
+
+  .channels { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+  .channels li {
+    display: grid; grid-template-columns: 9.5em 1fr; gap: 16px;
+    padding-block: 14px; border-bottom: 1px solid var(--line);
+  }
+  .channels b { font-weight: 400; }
+  .channels b a { border-bottom: 1px solid var(--line); }
+  .channels b a:hover { color: var(--accent); border-color: var(--accent); }
+  .channels span { color: var(--muted); min-width: 0; }
+  @media (max-width: 440px) { .channels li { grid-template-columns: 1fr; gap: 2px; } }
+
+
+  .plain { list-style: none; margin: 0; padding: 0; }
+  .plain li { padding-block: 4px; }
+  .plain .note { color: var(--muted); }
+
+  .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .gallery figure { margin: 0; min-width: 0; }
+  .gallery a { border: 0; display: block; }
+  .gallery img { display: block; width: 100%; max-width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; background: var(--line); }
+  .gallery figcaption { font-size: 12px; color: var(--muted); margin-top: 8px; letter-spacing: .02em; }
+  @media (max-width: 440px) { .gallery { grid-template-columns: repeat(2, 1fr); } }
+
+  .posts { list-style: none; margin: 0; padding: 0; }
+  .posts li {
+    display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: baseline;
+    padding-block: 12px; border-bottom: 1px solid var(--line);
+  }
+  .posts li:first-child { border-top: 1px solid var(--line); }
+  .posts a { border: 0; font-weight: 400; min-width: 0; }
+  .posts a:hover { color: var(--accent); }
+  .posts time { font-family: var(--mono); font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .sample { font-family: var(--mono); font-size: 11px; color: var(--muted); margin-top: 12px; letter-spacing: .04em; }
+
+  .contact { font-family: var(--mono); font-size: 14px; list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+  .contact span { color: var(--muted); display: inline-block; width: 7em; }
+  .contact a { border: 0; }
+  .contact a:hover { color: var(--accent); }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding-block: 24px 48px;
+    font-family: var(--mono); font-size: 12px; color: var(--muted);
+    display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .hero { animation: rise .7s ease-out both; }
+    @keyframes rise { from { opacity: .001; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  }
+</style>
+</head>
+<body>
+<style>
+  .post { padding-block: 56px 72px; }
+  .post .eyebrow { margin-bottom: 14px; }
+  .post h1 { font-family: var(--body); font-weight: 400; font-size: 30px; line-height: 1.35; letter-spacing: -.01em; margin: 0 0 10px; }
+  .post .summary { color: var(--muted); margin: 0 0 40px; }
+  .post .body p { max-width: 62ch; }
+  .post .body h2 { font-family: var(--body); font-size: 17px; font-weight: 500; text-transform: none; letter-spacing: 0; color: var(--fg); margin: 40px 0 12px; }
+  .post .body h2::after { display: none; }
+  .post .body img { display: block; max-width: 100%; height: auto; margin: 28px 0; }
+  .post .body blockquote { margin: 24px 0; padding-left: 16px; border-left: 1px solid var(--line); color: var(--muted); }
+  .post .body ul, .post .body ol { padding-left: 1.2em; }
+  .post .body a { border-bottom: 1px solid var(--line); }
+  .pager { display: flex; justify-content: space-between; gap: 16px; border-top: 1px solid var(--line); padding-top: 20px; font-size: 14px; }
+  .pager a { border: 0; color: var(--muted); } .pager a:hover { color: var(--fg); }
+</style>
+
+<div class="wrap">
+  <header>
+    <a class="mark" href="../index.html">SERENO</a>
+    <nav><a href="../index.html#writing">Writing</a></nav>
+    <div class="lang" role="group" aria-label="Language"><a href="bangju-church.html" class="active">KO</a><span class="sep">/</span><a href="en/bangju-church.html" class=" missing">EN</a><span class="sep">/</span><a href="ja/bangju-church.html" class=" missing">JA</a></div>
+  </header>
+  <article class="post">
+    <p class="eyebrow">2026.11.22</p>
+    <h1>방주교회, 물 위의 회색지대</h1>
+    <p class="summary">철과 나무, 그리고 물과 풍경. 이타미 준의 방주교회에서 포용과 경건의 회색지대를 봅니다.</p>
+    <div class="body">
+<h2>11월의 제주</h2>
+<p>11월, 출장으로 제주에 내려갔습니다. 1100고지에는 벌써 눈이 내렸다는데, 아래쪽 날씨는 이상하리만치 따뜻했습니다. 한 섬 안에서 겨울과 가을이 나란히 놓여 있는 날이었습니다.</p>
+<p>일정 사이 점심 무렵, 안덕면의 방주교회에 들렀습니다. 재일 건축가 이타미 준(유동룡)이 노아의 방주를 모티브로 설계해 2009년에 완공한 교회입니다. 이름은 오래전부터 알고 있었지만, 직접 마주한 건 이번이 처음이었습니다.</p>
+<h2>빛을 반사하는 지붕</h2>
+<p>차에서 내리자마자 지붕이 먼저 눈에 들어왔습니다. 삼각형 금속 판 수백 장이 제각각 다른 각도로 햇빛을 되돌려 보내고 있었습니다. 구름이 지날 때마다 반짝임의 자리가 바뀌었고, 지붕은 멈춰 있는데도 움직이는 것처럼 보였습니다.</p>
+<p>그 장면 앞에서 작은 경외와 찬란함, 그리고 예상하지 못한 안도감이 한꺼번에 들었습니다. 방주라는 이름 때문이었을까요. 큰 물을 지나 마침내 안전한 곳에 닿은 배를 바라보는 기분이었습니다.</p>
+<p><img alt="" src="img/bangju-church-1.jpg" /></p>
+<p><img alt="" src="img/bangju-church-2.jpg" /></p>
+<h2>물 위에 떠 있는 건물</h2>
+<p>건물 둘레에는 얕은 수조가 놓여 있습니다. 가까이 다가갈수록 교회는 땅이 아니라 작은 호수 위에 떠 있는 것처럼 보였습니다. 수면에는 하늘과 구름, 건물의 유리 벽이 그대로 비쳤습니다.</p>
+<p>그곳의 고요함은 우연히 생긴 것이 아니라는 느낌이 들었습니다. 물은 건물과 사람 사이에 한 걸음의 거리를 두고, 그 거리가 목소리를 낮추고 걸음을 늦춥니다. 의도된 고요함이었습니다.</p>
+<p><img alt="" src="img/bangju-church-3.jpg" /></p>
+<h2>나무와 철</h2>
+<p>벽은 세로로 긴 나무로 두른 파사드이고, 그 위를 철제 지붕이 덮고 있습니다. 나무는 빛을 머금고, 철은 빛을 튕겨 냅니다. 한 건물 안에서 빛을 대하는 방식이 정반대입니다.</p>
+<p>오래 비바람을 맞아 회색으로 바랜 나무는 주변의 억새, 돌담, 누렇게 마른 잔디와 자연스럽게 이어집니다. 반면 지붕은 주변 어느 것과도 닮지 않았습니다. 땅에 속한 것과 하늘에 속한 것이 한 치의 틈 없이 맞물려 있고, 이 대비가 건물에 힘을 줍니다.</p>
+<p><img alt="" src="img/bangju-church-4.jpg" /></p>
+<p><img alt="" src="img/bangju-church-5.jpg" /></p>
+<h2>회색지대</h2>
+<p>예배당은 대중과 너무 가까워서도, 그렇다고 너무 떨어져 있어서도 안 되는 공간이라고 생각합니다. 누구나 들어올 수 있어야 하지만, 들어온 사람은 바깥과 다른 곳에 왔다고 느껴야 합니다. 그 사이 어딘가에 있는 회색지대입니다.</p>
+<p>하나의 소재로 건물 전체를 구성했다면 이 회색의 영역을 구현하기 어려웠을 것입니다. 나무만으로는 너무 친근하고, 철만으로는 너무 차갑습니다. 철과 나무, 그리고 물과 풍경. 이 모든 것의 조합이 ‘포용’의 메시지와 ‘경건’의 분위기를 동시에 전합니다.</p>
+<p>돌아오는 길, 다시 돌아본 지붕은 여전히 빛나고 있었습니다. 멀리 눈 덮인 한라산 아래, 따뜻한 점심의 햇빛을 담고 물 위에 조용히 멈춰 있는 배 한 척이었습니다.</p>
+<p><img alt="" src="img/bangju-church-6.jpg" /></p>
+    </div>
+  </article>
+  <nav class="pager">
+    <span><a href="ichiro.html">← 일상을 채우는 스즈키 이치로의 명언들</a></span>
+    <span></span>
+  </nav>
+  <footer>
+    <span>© 2026 Sereno</span>
+    <span>Seoul, KR</span>
+  </footer>
+</div>
+<script>
+  // 언어 링크를 누르면 홈에서도 같은 언어가 유지되도록 저장
+  document.querySelectorAll('.lang a').forEach(a => a.addEventListener('click', () => { try { localStorage.setItem('sereno-lang', a.textContent.toLowerCase()); } catch (e) {} }));
+</script>
+</body>
+</html>
