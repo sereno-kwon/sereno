@@ -25,6 +25,7 @@
     --tint-book: #E8E9E4;
     --tint-shoe: #E6E7E9;
     --tint-park: #F0E9DB;
+    --tint-pasta: #F3EEE3;
     --letter: #FBF7EC;
     --letter-rule: rgba(120, 100, 60, 0.13);
     --letter-margin: #D9A0A0;
@@ -35,14 +36,14 @@
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
       --bg: #171A15; --paper: #1F241D; --fg: #ECEBE3; --muted: #A3A89B; --line: #353B31;
-      --moss: #8FAE7B; --amber: #D9A05B; --tint-san: #1C221A; --tint-park: #262118; --tint-hall: #1A1E21; --tint-tokyo: #211D1A; --tint-clay: #221E1C; --tint-book: #1C1F1D; --tint-shoe: #1E1F21;
+      --moss: #8FAE7B; --amber: #D9A05B; --tint-san: #1C221A; --tint-park: #262118; --tint-hall: #1A1E21; --tint-tokyo: #211D1A; --tint-clay: #221E1C; --tint-book: #1C1F1D; --tint-shoe: #1E1F21; --tint-pasta: #23211B;
       --letter: #26231C; --letter-rule: rgba(255, 235, 190, 0.07); --letter-margin: #8A5B5B; --hl: rgba(142, 159, 230, 0.38);
       color-scheme: dark;
     }
   }
   :root[data-theme="dark"] {
     --bg: #171A15; --paper: #1F241D; --fg: #ECEBE3; --muted: #A3A89B; --line: #353B31;
-    --moss: #8FAE7B; --amber: #D9A05B; --tint-san: #1C221A; --tint-park: #262118; --tint-hall: #1A1E21; --tint-tokyo: #211D1A; --tint-clay: #221E1C; --tint-book: #1C1F1D; --tint-shoe: #1E1F21;
+    --moss: #8FAE7B; --amber: #D9A05B; --tint-san: #1C221A; --tint-park: #262118; --tint-hall: #1A1E21; --tint-tokyo: #211D1A; --tint-clay: #221E1C; --tint-book: #1C1F1D; --tint-shoe: #1E1F21; --tint-pasta: #23211B;
     --letter: #26231C; --letter-rule: rgba(255, 235, 190, 0.07); --letter-margin: #8A5B5B; --hl: rgba(142, 159, 230, 0.38);
     color-scheme: dark;
   }
@@ -145,6 +146,24 @@
   .day.book { background: var(--tint-book); }
   .day.brand { background: var(--tint-hall); }
   .day.shoe { background: var(--tint-shoe); }
+  .day.pasta { background: var(--tint-pasta); }
+  .day.pasta .works { gap: 12px; }
+  .day.pasta .eyebrow { text-transform: none; letter-spacing: 0.1em; }
+  .recipe details { border-top: 1px solid var(--line); padding-top: 10px; margin-top: 2px; }
+  .recipe summary { cursor: pointer; font-size: 13px; letter-spacing: 0.04em; color: var(--muted); list-style: none; display: flex; align-items: center; gap: 8px; }
+  .recipe summary::-webkit-details-marker { display: none; }
+  .recipe summary::before { content: "+"; font-family: var(--body); width: 12px; color: var(--amber); }
+  .recipe details[open] summary::before { content: "\2212"; }
+  .recipe .ing { margin-top: 10px; font-size: 14px; line-height: 1.85; }
+  .recipe .ing b { font-weight: 500; margin-right: 6px; }
+  .recipe ol { margin: 10px 0 0; padding-left: 20px; display: grid; gap: 6px; font-size: 14.5px; line-height: 1.8; }
+  .recipe ol li::marker { color: var(--amber); font-size: 12px; }
+  .spots { list-style: none; margin: 0; padding: 0; display: grid; border-top: 1px solid var(--line); counter-reset: sp; }
+  .spots li { counter-increment: sp; display: grid; grid-template-columns: 34px 1fr auto; gap: 10px; align-items: baseline; padding-block: 12px; border-bottom: 1px solid var(--line); }
+  .spots li::before { content: counter(sp, decimal-leading-zero); font-size: 11px; letter-spacing: .1em; color: var(--muted); }
+  .spots a { font-family: var(--display); font-size: 17px; color: var(--fg); text-decoration: none; }
+  .spots a:hover { color: var(--moss); }
+  .spots span { font-size: 12px; color: var(--muted); }
   .poster { display: grid; gap: 10px; justify-items: start; }
   .poster img { width: 100%; max-width: 300px; height: auto; border-radius: 4px; display: block; }
   .poster .cap { font-size: 13px; color: var(--muted); }
@@ -275,6 +294,7 @@
       <a href="#branding">브랜딩</a>
       <a href="#library">서재</a>
       <a href="#quoc">슈즈</a>
+      <a href="#pasta">파스타</a>
       <span class="navgroup">
         <a href="#events" class="group-label">이벤트</a>
         <span class="subnav">
@@ -672,6 +692,162 @@
     </div>
 
     <p class="lede note">&ldquo;<mark class="hl">나중에 기회되면 제가 아는 포토그래퍼와 함께 Lifestyle Shoot 을 찍어봐도 재미있을 것 같아요.</mark>&rdquo;</p>
+  </section>
+
+  <section class="day pasta" id="pasta">
+    <div class="day-head">
+      <p class="eyebrow">Dopo il giro · 라이딩이 끝나고</p>
+      <h2>파스타</h2>
+      <p class="where"><b>세희씨가 직접 만드는 한 접시</b> · 손으로 빚는 생면부터 15분이면 끝나는 건면까지</p>
+    </div>
+    <p class="lede">긴 라이딩 뒤에는 몸이 탄수화물과 단백질을 먼저 찾아요. 그래서 파스타예요. 반죽을 치대는 느린 일요일도, 샤워하고 나와서 물부터 올리는 평일 저녁도 다 세희씨답게 보여줄 수 있어요. 레시피는 모두 2인분 기준이에요.</p>
+
+    <div class="works">
+      <p class="eyebrow">생면 · Pasta fresca</p>
+      <div class="pieces">
+        <article class="piece recipe">
+          <h4>레몬 버터 탈리아텔레 <span class="lat">Tagliatelle al limone</span></h4>
+          <p class="eyebrow">에밀리아로마냐 · 달걀 반죽 · 약 70분</p>
+          <p>모든 생면의 시작이 되는 달걀 반죽이에요. 노란 면에 레몬 향만 얹어서, 처음 보여주는 레시피로 가장 잘 어울려요.</p>
+          <details>
+            <summary>재료와 만드는 법</summary>
+            <p class="ing"><b>반죽</b> 00 밀가루 200g, 달걀 2개<br><b>소스</b> 버터 40g, 레몬 1개(제스트 전부, 즙 반 개), 파르미지아노 레지아노 40g, 후추</p>
+            <ol>
+              <li>밀가루를 우물 모양으로 두고 가운데 달걀을 풀어 포크로 조금씩 섞어요.</li>
+              <li>한 덩어리가 되면 손바닥으로 밀어가며 10분 치대요. 표면이 매끈해지면 랩에 싸서 30분 쉬어요.</li>
+              <li>밀대나 파스타 머신으로 1mm 두께, 손이 비칠 듯 얇게 밀어요. 덧가루를 뿌려 접고 7mm 폭으로 썰어요.</li>
+              <li>소금물(물 1L에 소금 10g)에 2~3분 삶아요.</li>
+              <li>팬에 버터를 녹이고 면수 한 국자, 레몬 제스트와 즙을 넣어요. 면을 옮기고 불을 끈 뒤 치즈를 넣어 크림처럼 될 때까지 흔들어요.</li>
+            </ol>
+          </details>
+          <p class="listen">라이딩 노트 · 닭가슴살을 얇게 구워 올리면 회복식으로 충분해요.</p>
+        </article>
+        <article class="piece recipe">
+          <h4>피치 알리오네 <span class="lat">Pici all'aglione</span></h4>
+          <p class="eyebrow">토스카나 · 물 반죽 · 약 80분</p>
+          <p>피렌체 여행 전에 미리 먹어보는 파스타예요. 기계 없이 손바닥으로 굴려 만드는 굵은 면이라, 손으로 빚는 장면이 영상에서 가장 예뻐요.</p>
+          <details>
+            <summary>재료와 만드는 법</summary>
+            <p class="ing"><b>반죽</b> 밀가루 200g, 미지근한 물 100ml, 올리브오일 1큰술, 소금 한 꼬집<br><b>소스</b> 마늘 6쪽, 올리브오일 3큰술, 홀토마토 1캔(400g), 페페론치노 약간, 페코리노 약간</p>
+            <ol>
+              <li>반죽 재료를 모두 섞어 10분 치대고 30분 쉬어요.</li>
+              <li>1cm 두께로 밀어 1cm 폭으로 자르고, 한 가닥씩 손바닥으로 굴려 우동보다 조금 가는 굵기로 늘여요.</li>
+              <li>마늘을 얇게 저며 올리브오일에 약불로 10분, 색이 나지 않게 부드러워질 때까지 익혀요.</li>
+              <li>토마토를 으깨 넣고 페페론치노와 함께 20분 졸여요.</li>
+              <li>면은 4~6분 삶아 소스에 버무리고 페코리노를 갈아 올려요.</li>
+            </ol>
+          </details>
+          <p class="listen">라이딩 노트 · 소스는 전날 만들어두면 돌아와서 면만 삶으면 돼요.</p>
+        </article>
+        <article class="piece recipe">
+          <h4>브로콜리니 오레키에테 <span class="lat">Orecchiette con cime di rapa</span></h4>
+          <p class="eyebrow">풀리아 · 세몰리나 반죽 · 약 70분</p>
+          <p>'작은 귀'라는 이름의 파스타예요. 엄지로 하나씩 눌러 만드는 모양이 단정해서, 세희씨의 단아한 느낌과 잘 맞아요. 현지 채소인 치메 디 라파 대신 브로콜리니를 써요.</p>
+          <details>
+            <summary>재료와 만드는 법</summary>
+            <p class="ing"><b>반죽</b> 세몰라 리마치나타 200g, 미지근한 물 100ml<br><b>소스</b> 브로콜리니 1단, 마늘 2쪽, 안초비 2쪽, 페페론치노, 올리브오일 3큰술, 빵가루 2큰술</p>
+            <ol>
+              <li>세몰리나와 물을 섞어 10분 치대고 20분 쉬어요.</li>
+              <li>손가락 굵기로 길게 굴려 1cm씩 자르고, 버터나이프로 도마 위를 당기듯 밀어 말린 뒤 엄지에 뒤집어 씌워 귀 모양을 만들어요.</li>
+              <li>빵가루는 마른 팬에 노릇하게 볶아 덜어둬요.</li>
+              <li>올리브오일에 마늘, 안초비, 페페론치노를 녹여요.</li>
+              <li>같은 냄비에 브로콜리니와 면을 함께 3~4분 삶아 팬으로 옮기고, 면수를 조금씩 넣어 버무린 뒤 빵가루를 뿌려요.</li>
+            </ol>
+          </details>
+          <p class="listen">라이딩 노트 · 반죽에 달걀이 없어서 넉넉히 빚어 얼려두기 좋아요.</p>
+        </article>
+      </div>
+    </div>
+
+    <div class="works">
+      <p class="eyebrow">건면 · Pasta secca</p>
+      <div class="pieces">
+        <article class="piece recipe">
+          <h4>새우 루콜라 알리오 올리오 <span class="lat">Spaghetti aglio, olio e gamberi</span></h4>
+          <p class="eyebrow">평일 저녁 · 스파게티 · 15분</p>
+          <p>집에 들어와서 물부터 올리면 샤워를 마칠 즈음 완성되는 한 접시예요. 새우로 단백질을, 루콜라로 초록색을 더했어요.</p>
+          <details>
+            <summary>재료와 만드는 법</summary>
+            <p class="ing">스파게티 180g, 새우 10마리, 마늘 4쪽, 올리브오일 4큰술, 페페론치노, 루콜라 한 줌, 레몬 반 개</p>
+            <ol>
+              <li>소금물에 스파게티를 봉지에 적힌 시간보다 1분 짧게 삶아요.</li>
+              <li>올리브오일에 저민 마늘과 페페론치노를 약불로 가장자리가 노릇해질 때까지 익혀요.</li>
+              <li>새우를 넣고 1~2분 익혀요.</li>
+              <li>면과 면수 한 국자를 넣고 팬을 흔들어 기름과 물이 뽀얗게 섞이게 해요.</li>
+              <li>불을 끄고 루콜라를 넣어 숨만 죽인 뒤 레몬즙을 짜요.</li>
+            </ol>
+          </details>
+          <p class="listen">라이딩 노트 · 가장 따라 하기 쉬운 레시피라 시리즈 첫 편으로 좋아요.</p>
+        </article>
+        <article class="piece recipe">
+          <h4>카초 에 페페 <span class="lat">Cacio e pepe</span></h4>
+          <p class="eyebrow">로마 · 스파게티 또는 톤나렐리 · 20분</p>
+          <p>재료는 치즈와 후추, 면 세 가지뿐인데 온도 하나로 성패가 갈리는 로마 파스타예요. 실패하고 다시 해보는 과정까지 콘텐츠가 돼요.</p>
+          <details>
+            <summary>재료와 만드는 법</summary>
+            <p class="ing">스파게티 180g, 페코리노 로마노 80g(곱게 간 것), 통후추 2작은술</p>
+            <ol>
+              <li>치즈가 짜니까 면수는 평소보다 소금을 절반만 넣고, 물도 적게 잡아 전분을 진하게 만들어요.</li>
+              <li>통후추를 굵게 빻아 마른 팬에 볶다가 면수 한 국자를 부어요.</li>
+              <li>볼에 페코리노와 미지근한 면수 조금을 섞어 되직한 페이스트를 만들어요.</li>
+              <li>1분 덜 삶은 면을 후추 팬으로 옮겨 마저 익히고, 불을 끈 뒤 1분 식혀요.</li>
+              <li>치즈 페이스트를 넣고 빠르게 섞으며 면수로 농도를 맞춰요. 너무 뜨거우면 치즈가 뭉치니 여기서 서두르지 않아요.</li>
+            </ol>
+          </details>
+          <p class="listen">라이딩 노트 · 로마에 가면 트라스테베레에서 원조와 비교해보기로 해요.</p>
+        </article>
+        <article class="piece recipe">
+          <h4>비골리 인 살사 <span class="lat">Bigoli in salsa</span></h4>
+          <p class="eyebrow">베네치아 · 통밀 비골리 또는 통밀 스파게티 · 40분</p>
+          <p>양파를 오래 볶아 단맛을 끌어내고 안초비로 간을 하는 베네치아의 소박한 파스타예요. 통밀면이라 라이딩 뒤 든든하게 먹기 좋아요.</p>
+          <details>
+            <summary>재료와 만드는 법</summary>
+            <p class="ing">통밀 비골리(또는 통밀 스파게티) 180g, 양파 2개, 안초비 6쪽, 올리브오일 5큰술, 이탈리안 파슬리</p>
+            <ol>
+              <li>양파를 아주 얇게 채 썰어요.</li>
+              <li>올리브오일에 양파를 넣고 약불로 25분, 물을 조금씩 넣어가며 갈색이 아니라 투명하고 무르게 익혀요.</li>
+              <li>안초비를 넣고 주걱으로 눌러 녹여요.</li>
+              <li>삶은 면과 면수를 넣어 소스가 면을 감쌀 때까지 버무려요.</li>
+              <li>파슬리를 다져 올려요.</li>
+            </ol>
+          </details>
+          <p class="listen">라이딩 노트 · 양파 볶는 25분은 스트레칭하기 딱 좋은 시간이에요.</p>
+        </article>
+      </div>
+    </div>
+
+    <div class="works">
+      <p class="eyebrow">이렇게 보여주면 좋겠어요</p>
+      <div class="pieces">
+        <article class="piece">
+          <h4>한 편의 흐름</h4>
+          <p>라이딩 루트 한 컷, 돌아오는 길에 장보기, 반죽하거나 물 올리기, 완성된 한 접시. 네 장면을 매번 같은 순서로 두면 시리즈처럼 보여요. 저지를 입은 채로 앞치마만 두르는 장면이 세희씨만의 표식이 될 거예요.</p>
+        </article>
+        <article class="piece">
+          <h4>시리즈 이름</h4>
+          <p>Dopo il giro, 이탈리아어로 '라이딩이 끝나고'라는 뜻이에요. 보도니 서체로 아이보리 바탕에 올리면 디자인 섹션의 톤과 그대로 이어져요.</p>
+        </article>
+        <article class="piece">
+          <h4>여행으로 이어지는 이야기</h4>
+          <p>피치는 피렌체, 카초 에 페페는 로마, 비골리는 베네치아. 집에서 먼저 만들어 보고, 이탈리아에 가서 현지의 한 접시와 나란히 놓으면 자연스럽게 다음 이야기가 생겨요.</p>
+        </article>
+      </div>
+    </div>
+
+    <div class="works">
+      <p class="eyebrow">함께 가볼 파스타집</p>
+      <p class="lede note">만드는 것만큼 먹어보는 것도 공부예요. 지도에 하나씩 표시해둔 곳들이에요.</p>
+      <ol class="spots">
+        <li><a href="https://maps.app.goo.gl/pFooq8tQASAadxgAA" target="_blank" rel="noopener">파스타집 01</a><span>구글 지도에서 보기</span></li>
+        <li><a href="https://maps.app.goo.gl/sQuQAPgfHhbtzY4DA" target="_blank" rel="noopener">파스타집 02</a><span>구글 지도에서 보기</span></li>
+        <li><a href="https://maps.app.goo.gl/sgF44hXCQvj3RzeB9" target="_blank" rel="noopener">파스타집 03</a><span>구글 지도에서 보기</span></li>
+        <li><a href="https://maps.app.goo.gl/sxqcAiiqzPrNUjm26" target="_blank" rel="noopener">파스타집 04</a><span>구글 지도에서 보기</span></li>
+        <li><a href="https://maps.app.goo.gl/EyzP8ZoqhRamNkJN8" target="_blank" rel="noopener">파스타집 05</a><span>구글 지도에서 보기</span></li>
+        <li><a href="https://maps.app.goo.gl/QbKvcB8JYQdz5pjy7" target="_blank" rel="noopener">파스타집 06</a><span>구글 지도에서 보기</span></li>
+        <li><a href="https://maps.app.goo.gl/KdrHbkgLEYfkVXwp9" target="_blank" rel="noopener">파스타집 07</a><span>구글 지도에서 보기</span></li>
+        <li><a href="https://maps.app.goo.gl/wgvNr2QN5meVzvSn6" target="_blank" rel="noopener">파스타집 08</a><span>구글 지도에서 보기</span></li>
+      </ol>
+    </div>
   </section>
 
   <section id="events" class="group" aria-labelledby="events-title">
@@ -1430,7 +1606,7 @@
   (function () {
     var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if ('IntersectionObserver' in window && !reduce) {
-      var targets = document.querySelectorAll('.group-head, .day-head, .lede, .map, .stop, .notes, .story-block, .work, .piece, .poster, .snap, .shelf, .product, .essay > *, .duomo, .next h3, .next-list li');
+      var targets = document.querySelectorAll('.group-head, .day-head, .lede, .map, .stop, .notes, .story-block, .work, .piece, .poster, .snap, .shelf, .product, .spots li, .essay > *, .duomo, .next h3, .next-list li');
       var io = new IntersectionObserver(function (entries) {
         entries.forEach(function (e) {
           if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
